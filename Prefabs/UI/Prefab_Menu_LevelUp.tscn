@@ -1,0 +1,86 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Textures/Items/spr_pickup_coin_a2xt.png" type="Texture" id=1]
+[ext_resource path="res://Textures/Items/spr_pickup_exp3_a2xt.png" type="Texture" id=2]
+[ext_resource path="res://Textures/Items/spr_pickup_cactus_a2xt.png" type="Texture" id=3]
+[ext_resource path="res://StyleBox_Popups.tres" type="StyleBox" id=4]
+[ext_resource path="res://Fonts/DynFont_BodyText.tres" type="DynamicFont" id=5]
+[ext_resource path="res://StyleBox_BlankBG.tres" type="StyleBox" id=6]
+[ext_resource path="res://Scripts/Menu_LevelUp.gd" type="Script" id=7]
+[ext_resource path="res://Scripts/ItemList_LevelUp.gd" type="Script" id=8]
+[ext_resource path="res://StyleBox_Menu_Selection.tres" type="StyleBox" id=9]
+[ext_resource path="res://Fonts/DynFont_MenuItem.tres" type="DynamicFont" id=10]
+[ext_resource path="res://Fonts/DynFont_Headers.tres" type="DynamicFont" id=11]
+
+[node name="LevelUpMenu" type="CanvasLayer"]
+script = ExtResource( 7 )
+
+[node name="Panel" type="Panel" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -300.0
+margin_top = -119.0
+margin_right = 300.0
+margin_bottom = 181.0
+rect_pivot_offset = Vector2( 300, 150 )
+custom_styles/panel = ExtResource( 4 )
+
+[node name="Header" type="Label" parent="Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -112.5
+margin_top = -165.0
+margin_right = 112.5
+margin_bottom = -117.0
+custom_fonts/font = ExtResource( 11 )
+text = "Level UP!!!"
+align = 1
+valign = 1
+
+[node name="ItemList" type="ItemList" parent="Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -250.0
+margin_top = -117.0
+margin_right = 250.0
+margin_bottom = 91.0
+rect_pivot_offset = Vector2( 250, 104 )
+custom_colors/guide_color = Color( 0, 0, 0, 0 )
+custom_colors/font_color_selected = Color( 1, 1, 1, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_constants/vseparation = 0
+custom_constants/icon_margin = 33
+custom_fonts/font = ExtResource( 10 )
+custom_styles/cursor = ExtResource( 9 )
+custom_styles/selected_focus = ExtResource( 9 )
+custom_styles/cursor_unfocused = ExtResource( 9 )
+custom_styles/selected = ExtResource( 9 )
+custom_styles/bg = ExtResource( 6 )
+items = [ "Item 0 Test AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", ExtResource( 3 ), false, "Item 1", ExtResource( 1 ), false, "Item 2", ExtResource( 2 ), false ]
+auto_height = true
+fixed_icon_size = Vector2( 32, 32 )
+script = ExtResource( 8 )
+
+[node name="Description" type="Label" parent="Panel"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -200.0
+margin_top = -59.0
+margin_right = 200.0
+margin_bottom = -11.0
+custom_fonts/font = ExtResource( 5 )
+text = "item description"
+align = 1
+autowrap = true
+
+[node name="Tween" type="Tween" parent="."]
+
+[connection signal="gui_input" from="Panel/ItemList" to="Panel/ItemList" method="_on_ItemList_gui_input"]

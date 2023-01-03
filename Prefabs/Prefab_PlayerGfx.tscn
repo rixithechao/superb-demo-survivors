@@ -1,0 +1,35 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Textures/Characters/spr_player_demo_a2xt.png" type="Texture" id=1]
+[ext_resource path="res://Animations/Anim_Demo_Walk.tres" type="Animation" id=2]
+[ext_resource path="res://Animations/Anim_Demo_Idle.tres" type="Animation" id=3]
+[ext_resource path="res://Animations/Anim_Demo_Look.tres" type="Animation" id=4]
+[ext_resource path="res://Animations/Anim_Demo_LookUp.tres" type="Animation" id=5]
+[ext_resource path="res://Animations/Anim_Demo_LookDown.tres" type="Animation" id=6]
+[ext_resource path="res://Animations/AnimNodeBlendTree_Player.tres" type="AnimationNodeBlendTree" id=7]
+[ext_resource path="res://Scripts/PlayerGfx.gd" type="Script" id=8]
+
+[node name="Graphic" type="Node2D"]
+script = ExtResource( 8 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -32 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 1 )
+hframes = 8
+vframes = 8
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = ExtResource( 7 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/looking/current = 2
+parameters/movement/current = 0
+parameters/walkSpeed/scale = 1.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Anim_Demo_Idle = ExtResource( 3 )
+anims/Anim_Demo_Look = ExtResource( 4 )
+anims/Anim_Demo_LookDown = ExtResource( 6 )
+anims/Anim_Demo_LookUp = ExtResource( 5 )
+anims/Anim_Demo_Walk = ExtResource( 2 )

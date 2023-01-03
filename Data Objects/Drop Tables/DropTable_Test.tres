@@ -1,0 +1,22 @@
+[gd_resource type="Resource" load_steps=5 format=2]
+
+[ext_resource path="res://Scripts/ScriptableObjects/DropTableData.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/ScriptableObjects/DropTableEntry.gd" type="Script" id=2]
+
+[sub_resource type="Resource" id=1]
+resource_name = "Empty"
+script = ExtResource( 2 )
+min_count = 0
+max_count = 0
+weight = 1
+
+[sub_resource type="Resource" id=2]
+resource_name = "Drop"
+script = ExtResource( 2 )
+min_count = 1
+max_count = 1
+weight = 1
+
+[resource]
+script = ExtResource( 1 )
+drops = [ SubResource( 1 ), SubResource( 2 ) ]
