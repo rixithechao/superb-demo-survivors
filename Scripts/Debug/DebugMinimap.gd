@@ -2,5 +2,5 @@ extends Sprite
 
 
 func _ready():
-	texture = MapManager.heatmap_texture
+	texture = WorldManager.heatmap_texture
 	pass

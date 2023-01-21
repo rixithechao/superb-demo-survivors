@@ -1,0 +1,103 @@
+[gd_scene load_steps=21 format=2]
+
+[ext_resource path="res://Textures/Characters/spr_player_demo_a2xt.png" type="Texture" id=1]
+[ext_resource path="res://Animations/Anim_Demo_Walk.tres" type="Animation" id=2]
+[ext_resource path="res://Animations/Anim_Demo_Idle.tres" type="Animation" id=3]
+[ext_resource path="res://Animations/Anim_Demo_Look.tres" type="Animation" id=4]
+[ext_resource path="res://Animations/Anim_Demo_LookUp.tres" type="Animation" id=5]
+[ext_resource path="res://Animations/Anim_Demo_LookDown.tres" type="Animation" id=6]
+[ext_resource path="res://Animations/AnimNodeBlendTree_Player.tres" type="AnimationNodeBlendTree" id=7]
+[ext_resource path="res://Scripts/PlayerGraphic.gd" type="Script" id=8]
+[ext_resource path="res://Scripts/MakeshiftWhiteFlash.gd" type="Script" id=9]
+[ext_resource path="res://Materials/ShaderMaterial_Character.tres" type="Material" id=10]
+[ext_resource path="res://Textures/Particles/spr_particle_smokePuff.png" type="Texture" id=11]
+[ext_resource path="res://Animations/Anim_Demo_Die.tres" type="Animation" id=12]
+[ext_resource path="res://Animations/Anim_Demo_Plucked.tres" type="Animation" id=13]
+[ext_resource path="res://Animations/Anim_Demo_Plucking.tres" type="Animation" id=14]
+
+[sub_resource type="CanvasItemMaterial" id=1]
+
+[sub_resource type="Gradient" id=2]
+colors = PoolColorArray( 0.282353, 0.658824, 0.909804, 1, 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
+
+[sub_resource type="Curve" id=4]
+_data = [ Vector2( 0, 0 ), 0.0, 9.10971, 0, 0, Vector2( 0.252033, 1 ), 0.137969, 0.137969, 0, 0, Vector2( 1, 0 ), -2.79248, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=5]
+curve = SubResource( 4 )
+
+[sub_resource type="ParticlesMaterial" id=6]
+flag_disable_z = true
+direction = Vector3( 0, -1, 0 )
+spread = 180.0
+gravity = Vector3( 0, -128, 0 )
+initial_velocity = 116.67
+initial_velocity_random = 1.0
+angular_velocity = 180.0
+angular_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 1.0
+linear_accel = -100.0
+radial_accel = -100.0
+tangential_accel_random = 1.0
+angle_random = 1.0
+scale = 2.0
+scale_random = 1.0
+scale_curve = SubResource( 5 )
+color_initial_ramp = SubResource( 3 )
+
+[node name="Graphic" type="Node2D"]
+script = ExtResource( 8 )
+sprites = [ NodePath("Sprite") ]
+flash_sprites = [ NodePath("MakeshiftWhiteFlash") ]
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -32 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 1 )
+hframes = 8
+vframes = 8
+
+[node name="MakeshiftWhiteFlash" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+material = ExtResource( 10 )
+position = Vector2( 0, -32 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 1 )
+hframes = 8
+vframes = 8
+script = ExtResource( 9 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = ExtResource( 7 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/looking/current = 2
+parameters/movement/current = 0
+parameters/walkSpeed/scale = 1.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Anim_Demo_Die = ExtResource( 12 )
+anims/Anim_Demo_Idle = ExtResource( 3 )
+anims/Anim_Demo_Look = ExtResource( 4 )
+anims/Anim_Demo_LookDown = ExtResource( 6 )
+anims/Anim_Demo_LookUp = ExtResource( 5 )
+anims/Anim_Demo_Plucked = ExtResource( 13 )
+anims/Anim_Demo_Plucking = ExtResource( 14 )
+anims/Anim_Demo_Walk = ExtResource( 2 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="DeathParticles1" type="Particles2D" parent="."]
+material = SubResource( 1 )
+position = Vector2( 0, -24 )
+emitting = false
+amount = 32
+one_shot = true
+explosiveness = 1.0
+visibility_rect = Rect2( 0, 0, 0, 0 )
+process_material = SubResource( 6 )
+texture = ExtResource( 11 )

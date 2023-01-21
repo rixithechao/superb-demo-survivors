@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://addons/test_plugin/test_plugin_dock.gd" type="Script" id=1]
+[ext_resource path="res://addons/test_plugin/StatChangeData.gd" type="Script" id=2]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 2 )
+change = {
+0: 0,
+1: 0
+}
+
+[sub_resource type="Resource" id=2]
+script = ExtResource( 2 )
+change = {
+0: 11,
+1: 0
+}
+
+[sub_resource type="Resource" id=3]
+script = ExtResource( 2 )
+change = {
+0: 11,
+1: 0
+}
+
+[sub_resource type="Resource" id=4]
+script = ExtResource( 2 )
+change = {
+0: 11,
+1: 0
+}
+
+[node name="Node" type="Node"]
+script = ExtResource( 1 )
+stat_changes = [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ]
+
+[node name="HSplitContainer" type="HSplitContainer" parent="."]
+margin_right = 319.0
+margin_bottom = 40.0
+
+[node name="OptionButton" type="OptionButton" parent="HSplitContainer"]
+margin_right = 72.0
+margin_bottom = 40.0
+text = "Item 0"
+items = [ "Item 0", null, false, 0, null, "Item 1", null, false, 1, null, "Item 2", null, false, 2, null, "Item 3", null, false, 3, null ]
+selected = 0
+
+[node name="MenuButton" type="MenuButton" parent="HSplitContainer"]
+margin_left = 84.0
+margin_right = 319.0
+margin_bottom = 40.0
+text = "TESTING?"
+items = [ "Item 0", null, 2, false, false, 0, 0, null, "", false, "Item 1", null, 1, false, false, 1, 0, null, "", false ]

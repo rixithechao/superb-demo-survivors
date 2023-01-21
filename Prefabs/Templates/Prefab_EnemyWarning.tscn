@@ -1,0 +1,122 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Scripts/EnemyWarning.gd" type="Script" id=1]
+[ext_resource path="res://Sound Effects/Sound_Warning_01.ogg" type="AudioStream" id=2]
+[ext_resource path="res://Prefabs/Enemies/Prefab_Enemy_Goopa.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Textures/Particles/spr_particle_spawn.png" type="Texture" id=4]
+[ext_resource path="res://Sound Effects/Sound_MapEvent_Spawn.ogg" type="AudioStream" id=5]
+[ext_resource path="res://Textures/UI/tex_ui_spawnWarning_time.png" type="Texture" id=6]
+[ext_resource path="res://Textures/UI/tex_ui_spawnWarning_exclaim.png" type="Texture" id=7]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 4 )
+region = Rect2( 256, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 4 )
+region = Rect2( 64, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 4 )
+region = Rect2( 128, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 4 )
+region = Rect2( 192, 0, 64, 64 )
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 1 ) ],
+"loop": false,
+"name": "default",
+"speed": 15.0
+} ]
+
+[sub_resource type="Animation" id=7]
+resource_name = "Sequence_SpawnEnemy"
+tracks/0/type = "method"
+tracks/0/path = NodePath("AnimatedSprite")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "", false ],
+"method": "play"
+} ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("SpawnSound")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+} ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "spawn"
+} ]
+}
+
+[node name="Enemy Warning" type="Node2D" groups=["enemyWarning"]]
+script = ExtResource( 1 )
+enemy_scene = ExtResource( 3 )
+
+[node name="Telegraph" type="Node2D" parent="."]
+scale = Vector2( 2, 2 )
+
+[node name="ProgressRotation" type="Node2D" parent="Telegraph"]
+
+[node name="Progress" type="TextureProgress" parent="Telegraph/ProgressRotation"]
+margin_left = -32.0
+margin_top = -32.0
+margin_right = 32.0
+margin_bottom = 32.0
+value = 100.0
+texture_under = ExtResource( 6 )
+texture_over = ExtResource( 7 )
+texture_progress = ExtResource( 6 )
+fill_mode = 4
+tint_over = Color( 1, 0.4, 0.4, 1 )
+tint_progress = Color( 1, 0.4, 0.4, 1 )
+
+[node name="WarningSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+volume_db = -10.0
+
+[node name="SpawnSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = -10.0
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0, -24 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 6 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Sequence_SpawnEnemy = SubResource( 7 )
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

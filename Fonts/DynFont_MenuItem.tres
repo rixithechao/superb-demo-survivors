@@ -1,10 +1,10 @@
 [gd_resource type="DynamicFont" load_steps=2 format=2]
 
-[ext_resource path="res://Fonts/Amaranth-Bold.otf" type="DynamicFontData" id=1]
+[ext_resource path="res://Fonts/grov_alphabet_bold.otf" type="DynamicFontData" id=1]
 
 [resource]
 size = 20
-outline_size = 1
-outline_color = Color( 0.256027, 0.295427, 0.464844, 1 )
+outline_size = 2
+outline_color = Color( 0.160784, 0.2, 0.368627, 1 )
 use_filter = true
 font_data = ExtResource( 1 )

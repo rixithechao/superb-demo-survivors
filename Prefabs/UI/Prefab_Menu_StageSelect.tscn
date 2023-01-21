@@ -1,0 +1,231 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Prefabs/UI/Prefab_Menu_ItemList.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Sound Effects/Sound_UI_EnterLevel.ogg" type="AudioStream" id=2]
+[ext_resource path="res://Fonts/DynFont_HeadersBackOutline2.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Fonts/DynFont_Rank.tres" type="DynamicFont" id=4]
+[ext_resource path="res://Fonts/DynFont_Subheaders.tres" type="DynamicFont" id=5]
+[ext_resource path="res://addons/antialiased_line2d/antialiased_polygon2d.gd" type="Script" id=6]
+[ext_resource path="res://Textures/UI/tex_ui_icon_stage.png" type="Texture" id=7]
+[ext_resource path="res://Scripts/UI/Menu_StageSelect.gd" type="Script" id=8]
+[ext_resource path="res://Textures/UI/tex_ui_icon_endless.png" type="Texture" id=9]
+[ext_resource path="res://Fonts/DynFont_Headers.tres" type="DynamicFont" id=10]
+[ext_resource path="res://addons/antialiased_line2d/antialiased_regular_polygon2d.gd" type="Script" id=11]
+[ext_resource path="res://Prefabs/UI/HeaderBackOutline.gd" type="Script" id=12]
+[ext_resource path="res://Textures/Level Previews/tex_levelpreview_01.png" type="Texture" id=13]
+[ext_resource path="res://Scripts/UI/ItemList_StageSelect.gd" type="Script" id=14]
+
+[node name="Menu - Stage Select" instance=ExtResource( 1 )]
+script = ExtResource( 8 )
+
+[node name="Gradient" parent="Background" index="1"]
+margin_left = -31.0
+margin_top = -22.0
+margin_right = 802.0
+margin_bottom = 452.0
+
+[node name="Skew" parent="." index="2"]
+position = Vector2( 415, 222 )
+
+[node name="ScorePanel" type="Node2D" parent="Skew" index="0"]
+position = Vector2( 27, 6 )
+
+[node name="DurationBackOutline" type="Label" parent="Skew/ScorePanel" index="0"]
+show_behind_parent = true
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -331.0
+margin_top = 108.0
+margin_right = -223.0
+margin_bottom = 157.0
+grow_horizontal = 0
+grow_vertical = 0
+custom_fonts/font = ExtResource( 3 )
+text = "15:00"
+align = 2
+valign = 1
+script = ExtResource( 12 )
+header_path = NodePath("../Duration")
+
+[node name="AntialiasedRegularPolygon2D2" type="Polygon2D" parent="Skew/ScorePanel" index="1"]
+show_behind_parent = true
+position = Vector2( -377, 130 )
+scale = Vector2( 0.96875, 0.968752 )
+color = Color( 0.282353, 0.658824, 0.909804, 1 )
+polygon = PoolVector2Array( -1.39876e-06, -32, 6.24289, -31.3851, 12.2459, -29.5641, 17.7782, -26.607, 22.6274, -22.6274, 26.607, -17.7782, 29.5641, -12.2459, 31.3851, -6.24289, 32, 0, 31.3851, 6.24289, 29.5641, 12.2459, 26.607, 17.7782, 22.6274, 22.6274, 17.7782, 26.607, 12.2459, 29.5641, 6.24289, 31.3851, -1.39876e-06, 32, -6.24289, 31.3851, -12.2459, 29.5641, -17.7782, 26.607, -22.6274, 22.6274, -26.607, 17.7783, -29.5641, 12.2459, -31.3851, 6.2429, -32, 4.83187e-06, -31.3851, -6.24289, -29.5641, -12.2459, -26.607, -17.7782, -22.6274, -22.6274, -17.7783, -26.607, -12.2459, -29.5641, -6.24289, -31.3851 )
+script = ExtResource( 11 )
+stroke_color = Color( 0.282353, 0.658824, 0.909804, 1 )
+stroke_width = 5.0
+
+[node name="AntialiasedPolygon2D2" type="Polygon2D" parent="Skew/ScorePanel" index="2"]
+color = Color( 0.160784, 0.2, 0.368627, 1 )
+polygon = PoolVector2Array( -471, 128, -213, 130, -83, 261, -465, 259 )
+script = ExtResource( 6 )
+stroke_color = Color( 0.282353, 0.658824, 0.909804, 1 )
+stroke_width = 8.0
+
+[node name="AntialiasedPolygon2D3" type="Polygon2D" parent="Skew/ScorePanel" index="3"]
+visible = false
+color = Color( 0.160784, 0.2, 0.368627, 1 )
+polygon = PoolVector2Array( -428, 129, -213, 130, -156, 188, 226, 188, 238, 187, 250, 184, 259, 180, 267, 175, 275, 168, 281, 160, 285, 152, 289, 141, 291, 127, 291, 70, 305, 50, 299, -263, 323, -258, 329, 261, -428, 260 )
+script = ExtResource( 6 )
+stroke_color = Color( 0.682353, 0.984314, 1, 1 )
+stroke_width = 5.0
+
+[node name="AntialiasedPolygon2D" type="Polygon2D" parent="Skew/ScorePanel" index="4"]
+position = Vector2( 30, 2 )
+color = Color( 0.282353, 0.658824, 0.909804, 1 )
+polygon = PoolVector2Array( -484, 139, -249, 139, -235, 154, -296, 154, -264, 241, -482, 239 )
+script = ExtResource( 6 )
+stroke_color = Color( 0.282353, 0.658824, 0.909804, 1 )
+stroke_width = 7.0
+stroke_sharp_limit = 8.0
+stroke_round_precision = 14
+
+[node name="Node2D" type="Node2D" parent="Skew/ScorePanel" index="5"]
+
+[node name="TimerIcon" type="Sprite" parent="Skew/ScorePanel" index="6"]
+self_modulate = Color( 0.160784, 0.2, 0.368627, 1 )
+position = Vector2( -377, 130 )
+scale = Vector2( 0.507614, 0.507615 )
+texture = ExtResource( 7 )
+
+[node name="AntialiasedRegularPolygon2D" type="Polygon2D" parent="Skew/ScorePanel/TimerIcon" index="0"]
+show_behind_parent = true
+position = Vector2( 7.36336e-06, 0 )
+scale = Vector2( 1.60062, 1.60062 )
+color = Color( 0.682353, 0.984314, 1, 1 )
+polygon = PoolVector2Array( -1.39876e-06, -32, 6.24289, -31.3851, 12.2459, -29.5641, 17.7782, -26.607, 22.6274, -22.6274, 26.607, -17.7782, 29.5641, -12.2459, 31.3851, -6.24289, 32, 0, 31.3851, 6.24289, 29.5641, 12.2459, 26.607, 17.7782, 22.6274, 22.6274, 17.7782, 26.607, 12.2459, 29.5641, 6.24289, 31.3851, -1.39876e-06, 32, -6.24289, 31.3851, -12.2459, 29.5641, -17.7782, 26.607, -22.6274, 22.6274, -26.607, 17.7783, -29.5641, 12.2459, -31.3851, 6.2429, -32, 4.83187e-06, -31.3851, -6.24289, -29.5641, -12.2459, -26.607, -17.7782, -22.6274, -22.6274, -17.7783, -26.607, -12.2459, -29.5641, -6.24289, -31.3851 )
+script = ExtResource( 11 )
+stroke_color = Color( 0.682353, 0.984314, 1, 1 )
+stroke_width = 5.0
+
+[node name="EndlessIcon" type="Sprite" parent="Skew/ScorePanel" index="7"]
+self_modulate = Color( 0.682353, 0.984314, 1, 1 )
+position = Vector2( -381, 180 )
+rotation = -0.117109
+scale = Vector2( 0.551098, 0.551099 )
+texture = ExtResource( 9 )
+
+[node name="AntialiasedRegularPolygon2D" type="Polygon2D" parent="Skew/ScorePanel/EndlessIcon" index="0"]
+show_behind_parent = true
+position = Vector2( -14.7476, 1.28247 )
+scale = Vector2( 0.749408, 0.638484 )
+color = Color( 0.160784, 0.2, 0.368627, 1 )
+polygon = PoolVector2Array( -1.39876e-06, -32, 6.24289, -31.3851, 12.2459, -29.5641, 17.7782, -26.607, 22.6274, -22.6274, 26.607, -17.7782, 29.5641, -12.2459, 31.3851, -6.24289, 32, 0, 31.3851, 6.24289, 29.5641, 12.2459, 26.607, 17.7782, 22.6274, 22.6274, 17.7782, 26.607, 12.2459, 29.5641, 6.24289, 31.3851, -1.39876e-06, 32, -6.24289, 31.3851, -12.2459, 29.5641, -17.7782, 26.607, -22.6274, 22.6274, -26.607, 17.7783, -29.5641, 12.2459, -31.3851, 6.2429, -32, 4.83187e-06, -31.3851, -6.24289, -29.5641, -12.2459, -26.607, -17.7782, -22.6274, -22.6274, -17.7783, -26.607, -12.2459, -29.5641, -6.24289, -31.3851 )
+script = ExtResource( 11 )
+stroke_color = Color( 0.160784, 0.2, 0.368627, 1 )
+
+[node name="AntialiasedRegularPolygon2D2" type="Polygon2D" parent="Skew/ScorePanel/EndlessIcon" index="1"]
+show_behind_parent = true
+position = Vector2( 16.4024, 0.139099 )
+scale = Vector2( 0.765144, 0.651891 )
+color = Color( 0.160784, 0.2, 0.368627, 1 )
+polygon = PoolVector2Array( -1.39876e-06, -32, 6.24289, -31.3851, 12.2459, -29.5641, 17.7782, -26.607, 22.6274, -22.6274, 26.607, -17.7782, 29.5641, -12.2459, 31.3851, -6.24289, 32, 0, 31.3851, 6.24289, 29.5641, 12.2459, 26.607, 17.7782, 22.6274, 22.6274, 17.7782, 26.607, 12.2459, 29.5641, 6.24289, 31.3851, -1.39876e-06, 32, -6.24289, 31.3851, -12.2459, 29.5641, -17.7782, 26.607, -22.6274, 22.6274, -26.607, 17.7783, -29.5641, 12.2459, -31.3851, 6.2429, -32, 4.83187e-06, -31.3851, -6.24289, -29.5641, -12.2459, -26.607, -17.7782, -22.6274, -22.6274, -17.7783, -26.607, -12.2459, -29.5641, -6.24289, -31.3851 )
+script = ExtResource( 11 )
+stroke_color = Color( 0.160784, 0.2, 0.368627, 1 )
+
+[node name="Duration" type="Label" parent="Skew/ScorePanel" index="8"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -331.0
+margin_top = 108.0
+margin_right = -223.0
+margin_bottom = 157.0
+grow_horizontal = 0
+grow_vertical = 0
+custom_colors/font_color = Color( 0.682353, 0.984314, 1, 1 )
+custom_fonts/font = ExtResource( 10 )
+text = "15:00"
+align = 2
+valign = 1
+
+[node name="AntialiasedPolygon2D" type="Polygon2D" parent="Skew/ScorePanel/Duration" index="0"]
+show_behind_parent = true
+position = Vector2( 12.5908, 8.71604 )
+scale = Vector2( 0.529386, 0.728396 )
+color = Color( 0.160784, 0.2, 0.368627, 1 )
+polygon = PoolVector2Array( 7, 10, 99, 10, 98.44, 40, 6.44, 40 )
+script = ExtResource( 6 )
+stroke_color = Color( 0.160784, 0.2, 0.368627, 1 )
+stroke_joint_mode = 2
+
+[node name="TimeRecord" type="Label" parent="Skew/ScorePanel" index="9"]
+margin_left = -358.0
+margin_top = 159.0
+margin_right = -268.0
+margin_bottom = 196.0
+grow_horizontal = 0
+grow_vertical = 0
+custom_colors/font_color = Color( 0.682353, 0.984314, 1, 1 )
+custom_fonts/font = ExtResource( 5 )
+text = "-- : --"
+align = 2
+valign = 1
+
+[node name="Rank" type="Label" parent="Skew/ScorePanel" index="10"]
+margin_left = -246.0
+margin_top = 156.0
+margin_right = -171.0
+margin_bottom = 205.0
+custom_colors/font_color = Color( 0.682353, 0.984314, 1, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "S+"
+align = 1
+valign = 1
+
+[node name="Panel" parent="Skew" index="1"]
+margin_left = -94.0
+margin_top = -185.0
+margin_right = 278.0
+margin_bottom = 173.0
+patch_margin_top = 67
+patch_margin_bottom = 76
+
+[node name="HeaderBackOutline" parent="Skew/Panel" index="0"]
+text = "Select a Stage!"
+
+[node name="PanelDropShadow2" parent="Skew/Panel" index="1"]
+patch_margin_top = 95
+
+[node name="PanelDropShadow" parent="Skew/Panel" index="2"]
+patch_margin_top = 81
+patch_margin_bottom = 48
+
+[node name="Header" parent="Skew/Panel" index="3"]
+text = "Select a Stage!"
+
+[node name="ItemList" parent="Skew/Panel" index="4"]
+script = ExtResource( 14 )
+
+[node name="LevelPreview" type="Node2D" parent="Skew" index="2"]
+
+[node name="AntialiasedPolygon2D" type="Polygon2D" parent="Skew/LevelPreview" index="0"]
+color = Color( 0.160784, 0.2, 0.368627, 1 )
+polygon = PoolVector2Array( -476, -197, -154.928, -197, -134, -179, -133, -23, -153, 18, -153, 51, -154, 60, -156, 66, -158, 70, -161, 74, -165, 77, -171, 80, -178, 82, -187, 83, -476, 82 )
+script = ExtResource( 6 )
+stroke_color = Color( 0.282353, 0.658824, 0.909804, 1 )
+stroke_width = 6.0
+
+[node name="AntialiasedPolygon2D2" type="Polygon2D" parent="Skew/LevelPreview" index="1"]
+color = Color( 0.282353, 0.658824, 0.909804, 1 )
+polygon = PoolVector2Array( -465, -187, -162.469, -184.105, -152, -175, -151, -33, -178, 16, -178, 36.3599, -179, 42, -180, 45, -183, 49, -186, 52, -189, 54, -194, 56, -199.495, 57.2137, -208, 58, -465, 58 )
+script = ExtResource( 6 )
+stroke_color = Color( 0.282353, 0.658824, 0.909804, 1 )
+
+[node name="TextureRect" type="TextureRect" parent="Skew/LevelPreview" index="2"]
+margin_left = -399.0
+margin_top = -176.0
+margin_right = -199.0
+margin_bottom = 24.0
+rect_clip_content = true
+texture = ExtResource( 13 )
+expand = true
+stretch_mode = 5
+
+[node name="ConfirmSound" type="AudioStreamPlayer" parent="." index="5"]
+stream = ExtResource( 2 )

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/ScriptableObjects/StatData.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+name = "Crit Damage Multiplier"
+type = 1
+stack_type = 1
+base_value = 2.0
+description = "The damage multiplier for critical hits."

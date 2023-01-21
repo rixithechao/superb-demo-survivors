@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/ScriptableObjects/StatData.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+name = "Inertia"
+type = 0
+stack_type = 0
+base_value = 0.0
+description = "The degree to which an enemy can resist freeze."

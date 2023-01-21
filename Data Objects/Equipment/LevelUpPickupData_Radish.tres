@@ -1,0 +1,121 @@
+[gd_resource type="Resource" load_steps=20 format=2]
+
+[ext_resource path="res://Scripts/ScriptableObjects/LevelUpPickupData.gd" type="Script" id=1]
+[ext_resource path="res://Prefabs/Pickups/Prefab_Pickup_Coin.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/ScriptableObjects/LevelModifierData.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/ScriptableObjects/StatSheetData.gd" type="Script" id=4]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 4 )
+stats = [  ]
+values = {
+}
+"Preset or Remove" = 0
+
+[sub_resource type="Resource" id=2]
+resource_name = "Level 2"
+script = ExtResource( 3 )
+description = ""
+Type = 0
+Stats = SubResource( 1 )
+
+[sub_resource type="Resource" id=3]
+script = ExtResource( 4 )
+stats = [  ]
+values = {
+}
+"Preset or Remove" = 0
+
+[sub_resource type="Resource" id=4]
+resource_name = "Level 3"
+script = ExtResource( 3 )
+description = ""
+Type = 0
+Stats = SubResource( 3 )
+
+[sub_resource type="Resource" id=5]
+script = ExtResource( 4 )
+stats = [  ]
+values = {
+}
+"Preset or Remove" = 0
+
+[sub_resource type="Resource" id=6]
+resource_name = "Level 4"
+script = ExtResource( 3 )
+description = ""
+Type = 0
+Stats = SubResource( 5 )
+
+[sub_resource type="Resource" id=7]
+script = ExtResource( 4 )
+stats = [  ]
+values = {
+}
+"Preset or Remove" = 0
+
+[sub_resource type="Resource" id=8]
+resource_name = "Level 5"
+script = ExtResource( 3 )
+description = ""
+Type = 0
+Stats = SubResource( 7 )
+
+[sub_resource type="Resource" id=9]
+script = ExtResource( 4 )
+stats = [  ]
+values = {
+}
+"Preset or Remove" = 0
+
+[sub_resource type="Resource" id=10]
+resource_name = "Level 6"
+script = ExtResource( 3 )
+description = ""
+Type = 0
+Stats = SubResource( 9 )
+
+[sub_resource type="Resource" id=11]
+script = ExtResource( 4 )
+stats = [  ]
+values = {
+}
+"Preset or Remove" = 0
+
+[sub_resource type="Resource" id=12]
+resource_name = "Level 7"
+script = ExtResource( 3 )
+description = ""
+Type = 0
+Stats = SubResource( 11 )
+
+[sub_resource type="Resource" id=13]
+script = ExtResource( 4 )
+stats = [  ]
+values = {
+}
+"Preset or Remove" = 0
+
+[sub_resource type="Resource" id=14]
+resource_name = "Level 8"
+script = ExtResource( 3 )
+description = ""
+Type = 0
+Stats = SubResource( 13 )
+
+[sub_resource type="Resource" id=15]
+script = ExtResource( 4 )
+stats = [  ]
+values = {
+}
+"Preset or Remove" = 0
+
+[resource]
+script = ExtResource( 1 )
+name = "Radish"
+description = "Restore some health."
+max_level = 8
+rarity = 100.0
+stats = SubResource( 15 )
+level_modifiers = [ SubResource( 2 ), SubResource( 4 ), SubResource( 6 ), SubResource( 8 ), SubResource( 10 ), SubResource( 12 ), SubResource( 14 ) ]
+pickup = ExtResource( 2 )

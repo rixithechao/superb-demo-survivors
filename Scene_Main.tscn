@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Prefabs/UI/Prefab_Menu_SplashScreens.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/Root.gd" type="Script" id=2]
+
+[node name="RootNode" type="Node2D"]
+pause_mode = 2
+script = ExtResource( 2 )
+
+[node name="LoadedStage" type="Node" parent="."]
+pause_mode = 1
+
+[node name="TopUI" type="CanvasLayer" parent="."]
+pause_mode = 2
+layer = 128
+
+[node name="Menu - Splash Screens" parent="TopUI" instance=ExtResource( 1 )]

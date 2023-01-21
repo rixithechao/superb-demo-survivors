@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Prefabs/Templates/Prefab_Pickup.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/Pickup_Coin.gd" type="Script" id=3]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 7.0
+height = 16.0
+
+[node name="Pickup_Coin" instance=ExtResource( 1 )]
+position = Vector2( 0, -12 )
+script = ExtResource( 3 )
+coins_granted = 1
+
+[node name="CollisionShape2D" parent="." index="2"]
+shape = SubResource( 1 )

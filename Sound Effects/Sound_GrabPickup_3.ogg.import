@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Sound_GrabPickup_3.ogg-ab1567257b702868d4dbd8439e8f83da.oggstr"
+
+[deps]
+
+source_file="res://Sound Effects/Sound_GrabPickup_3.ogg"
+dest_files=[ "res://.import/Sound_GrabPickup_3.ogg-ab1567257b702868d4dbd8439e8f83da.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

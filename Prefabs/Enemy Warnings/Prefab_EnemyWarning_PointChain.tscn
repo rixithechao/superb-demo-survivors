@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Prefabs/Templates/Prefab_EnemyWarning_Chain.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Prefabs/Enemy Warnings/Prefab_EnemyWarning_Point.tscn" type="PackedScene" id=2]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( -195.316, 111.798, 195.316, -111.798, -11.5098, -3, 198.147, 93.9498, -198.147, -93.9498, -14.3481, 113 )
+}
+
+[node name="Enemy Warning - Point Chain" instance=ExtResource( 1 )]
+warning_stamp = NodePath("Enemy Warning - Point")
+
+[node name="Path2D" parent="." index="0"]
+curve = SubResource( 1 )
+
+[node name="PathFollow2D" parent="Path2D" index="0"]
+rotation = -0.512061
+
+[node name="Enemy Warning - Point" parent="." index="1" instance=ExtResource( 2 )]
+
+[editable path="Enemy Warning - Point"]

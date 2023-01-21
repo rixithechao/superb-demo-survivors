@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Sound_LevelUp.ogg-7d25c080a7c837834ee205eb767aa444.oggstr"
+
+[deps]
+
+source_file="res://Sound Effects/Sound_LevelUp.ogg"
+dest_files=[ "res://.import/Sound_LevelUp.ogg-7d25c080a7c837834ee205eb767aa444.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=5 format=2]
+
+[ext_resource path="res://Scripts/ScriptableObjects/DropTableEntry.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/ScriptableObjects/DropTableData.gd" type="Script" id=2]
+[ext_resource path="res://Prefabs/Pickups/Prefab_Pickup_ExpLarge.tscn" type="PackedScene" id=3]
+
+[sub_resource type="Resource" id=2]
+resource_name = "Drop"
+script = ExtResource( 1 )
+pickup = ExtResource( 3 )
+weight = 1
+
+[resource]
+script = ExtResource( 2 )
+drops = [ SubResource( 2 ) ]

@@ -13,13 +13,13 @@ animation = "Anim_Demo_Look"
 animation = "Anim_Demo_LookDown"
 
 [sub_resource type="AnimationNodeAnimation" id=13]
-animation = "Anim_Demo_Idle"
+animation = "Anim_Demo_Die"
 
 [sub_resource type="AnimationNodeAnimation" id=14]
-animation = "Anim_Demo_Idle"
+animation = "Anim_Demo_Plucking"
 
 [sub_resource type="AnimationNodeAnimation" id=15]
-animation = "Anim_Demo_Idle"
+animation = "Anim_Demo_Plucked"
 
 [sub_resource type="AnimationNodeAnimation" id=3]
 animation = "Anim_Demo_Idle"
@@ -51,7 +51,7 @@ input_5/auto_advance = false
 [sub_resource type="AnimationNodeTimeScale" id=8]
 
 [resource]
-graph_offset = Vector2( -410.844, 58.0866 )
+graph_offset = Vector2( -259.715, 334.546 )
 nodes/Animation/node = SubResource( 3 )
 nodes/Animation/position = Vector2( -20, 60 )
 "nodes/Animation 2/node" = SubResource( 2 )
@@ -75,4 +75,4 @@ nodes/movement/position = Vector2( 600, 140 )
 nodes/output/position = Vector2( 840, 140 )
 nodes/walkSpeed/node = SubResource( 8 )
 nodes/walkSpeed/position = Vector2( 20, 200 )
-node_connections = [ "looking", 0, "Animation 4", "looking", 1, "Animation 3", "looking", 2, "Animation 5", "movement", 0, "Animation", "movement", 1, "walkSpeed", "movement", 2, "looking", "movement", 3, "Animation 6", "movement", 4, "Animation 7", "movement", 5, "Animation 8", "walkSpeed", 0, "Animation 2", "output", 0, "movement" ]
+node_connections = [ "output", 0, "movement", "movement", 0, "Animation", "movement", 1, "walkSpeed", "movement", 2, "looking", "movement", 3, "Animation 6", "movement", 4, "Animation 7", "movement", 5, "Animation 8", "looking", 0, "Animation 4", "looking", 1, "Animation 3", "looking", 2, "Animation 5", "walkSpeed", 0, "Animation 2" ]

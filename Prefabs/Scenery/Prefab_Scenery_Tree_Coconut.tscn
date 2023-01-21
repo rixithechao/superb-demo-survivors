@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Textures/Landmarks/spr_landmark_tree_coconut.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Scenery.gd" type="Script" id=2]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 23.0217
+
+[node name="Coconut Tree" type="StaticBody2D"]
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 2, 2 )
+texture = ExtResource( 1 )
+offset = Vector2( -14, -52.5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 3, -7 )
+shape = SubResource( 1 )

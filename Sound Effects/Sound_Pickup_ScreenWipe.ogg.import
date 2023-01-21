@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Sound_Pickup_ScreenWipe.ogg-b681060dd9188e5a0a2c3b9eb87f35a7.oggstr"
+
+[deps]
+
+source_file="res://Sound Effects/Sound_Pickup_ScreenWipe.ogg"
+dest_files=[ "res://.import/Sound_Pickup_ScreenWipe.ogg-b681060dd9188e5a0a2c3b9eb87f35a7.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -1,22 +1,29 @@
-[gd_resource type="Resource" load_steps=7 format=2]
+[gd_resource type="Resource" load_steps=9 format=2]
 
 [ext_resource path="res://Scripts/ScriptableObjects/WaveData.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/ScriptableObjects/EnemySpawnData.gd" type="Script" id=2]
-[ext_resource path="res://Data Objects/Enemies/Enemy_Furba.tres" type="Resource" id=3]
-[ext_resource path="res://Scripts/ScriptableObjects/BossData.gd" type="Script" id=4]
+[ext_resource path="res://Prefabs/Enemies/Prefab_Enemy_Furba.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Prefabs/Map Events/Prefab_MapEvent_Test.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scripts/ScriptableObjects/MapEventData.gd" type="Script" id=5]
+[ext_resource path="res://Scripts/Map Events/MapEventCond_Example.gd" type="Script" id=6]
 
 [sub_resource type="Resource" id=1]
-script = ExtResource( 4 )
-
-[sub_resource type="Resource" id=2]
 resource_name = "Spawn"
 script = ExtResource( 2 )
-enemies = [ ExtResource( 3 ) ]
-total = 1
 interval = 1.0
+delay = 0.0
+enemies = [ ExtResource( 3 ) ]
+
+[sub_resource type="Resource" id=2]
+resource_name = "Event 0"
+script = ExtResource( 5 )
+second = 3
+conditions = ExtResource( 6 )
+event_scene = ExtResource( 4 )
 
 [resource]
 script = ExtResource( 1 )
-enemy_spawns = [ SubResource( 2 ) ]
-bosses = [ SubResource( 1 ) ]
-map_events = [  ]
+minimum = 5.0
+enemy_spawns = [ SubResource( 1 ) ]
+bosses = [  ]
+map_events = [ SubResource( 2 ) ]

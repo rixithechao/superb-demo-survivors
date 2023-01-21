@@ -1,0 +1,120 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Prefabs/UI/Prefab_Menu.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Fonts/DynFont_MenuItem.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Fonts/DynFont_Headers.tres" type="DynamicFont" id=3]
+[ext_resource path="res://StyleBox_Menu_Selection.tres" type="StyleBox" id=4]
+[ext_resource path="res://Fonts/DynFont_HeadersBackOutline2.tres" type="DynamicFont" id=5]
+[ext_resource path="res://Scripts/UI/ItemListTweaks.gd" type="Script" id=6]
+[ext_resource path="res://StyleBox_BlankBG.tres" type="StyleBox" id=7]
+[ext_resource path="res://Sound Effects/Sound_UI_Cursor.ogg" type="AudioStream" id=8]
+[ext_resource path="res://Textures/UI/tex_panel_9slice_01.png" type="Texture" id=9]
+[ext_resource path="res://Scripts/UI/SkewedUIElement.gd" type="Script" id=10]
+[ext_resource path="res://Textures/UI/tex_panel_9slice_02.png" type="Texture" id=11]
+[ext_resource path="res://Prefabs/UI/HeaderBackOutline.gd" type="Script" id=12]
+
+[node name="Menu" instance=ExtResource( 1 )]
+
+[node name="Skew" type="Node2D" parent="." index="2"]
+position = Vector2( 388, 222 )
+script = ExtResource( 10 )
+
+[node name="Panel" type="NinePatchRect" parent="Skew" index="0"]
+self_modulate = Color( 0.682353, 0.984314, 1, 1 )
+margin_left = -249.0
+margin_top = -128.0
+margin_right = 251.0
+margin_bottom = 142.0
+rect_pivot_offset = Vector2( 250, 135 )
+texture = ExtResource( 11 )
+patch_margin_left = 76
+patch_margin_top = 63
+patch_margin_right = 70
+patch_margin_bottom = 61
+
+[node name="HeaderBackOutline" type="Label" parent="Skew/Panel" index="0"]
+show_behind_parent = true
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -146.5
+margin_top = -23.5
+margin_right = 146.5
+margin_bottom = 25.5
+custom_fonts/font = ExtResource( 5 )
+text = "Header Text"
+align = 1
+valign = 1
+script = ExtResource( 12 )
+header_path = NodePath("../Header")
+
+[node name="PanelDropShadow2" type="NinePatchRect" parent="Skew/Panel" index="1"]
+modulate = Color( 0.282353, 0.658824, 0.909804, 1 )
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -9.0
+margin_top = -9.0
+margin_right = 28.0
+margin_bottom = 30.0
+rect_pivot_offset = Vector2( 250, 135 )
+texture = ExtResource( 9 )
+patch_margin_left = 76
+patch_margin_top = 120
+patch_margin_right = 70
+patch_margin_bottom = 64
+
+[node name="PanelDropShadow" type="NinePatchRect" parent="Skew/Panel" index="2"]
+modulate = Color( 0.160784, 0.2, 0.368627, 1 )
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -5.0
+margin_top = -5.0
+margin_right = 22.0
+margin_bottom = 24.0
+rect_pivot_offset = Vector2( 250, 135 )
+texture = ExtResource( 9 )
+patch_margin_left = 76
+patch_margin_top = 124
+patch_margin_right = 70
+patch_margin_bottom = 54
+
+[node name="Header" type="Label" parent="Skew/Panel" index="3"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -146.5
+margin_top = -23.5
+margin_right = 146.5
+margin_bottom = 25.5
+custom_fonts/font = ExtResource( 3 )
+text = "Header Text"
+align = 1
+valign = 1
+
+[node name="ItemList" type="ItemList" parent="Skew/Panel" index="4"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 32.0
+margin_top = 32.0
+margin_right = -37.0
+margin_bottom = -32.0
+rect_pivot_offset = Vector2( 250, 104 )
+custom_colors/guide_color = Color( 0, 0, 0, 0 )
+custom_colors/font_color_selected = Color( 1, 1, 1, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_constants/vseparation = 0
+custom_constants/icon_margin = 33
+custom_fonts/font = ExtResource( 2 )
+custom_styles/cursor = ExtResource( 4 )
+custom_styles/selected_focus = ExtResource( 4 )
+custom_styles/cursor_unfocused = ExtResource( 4 )
+custom_styles/selected = ExtResource( 4 )
+custom_styles/bg = ExtResource( 7 )
+items = [ "Item 0", null, false, "Item 1", null, false, "Item 2", null, false, "Item 3", null, false, "Item 4", null, false ]
+fixed_icon_size = Vector2( 32, 32 )
+script = ExtResource( 6 )
+
+[node name="CursorSound" type="AudioStreamPlayer" parent="." index="4"]
+stream = ExtResource( 8 )
+
+[connection signal="gui_input" from="Skew/Panel/ItemList" to="Skew/Panel/ItemList" method="_on_ItemList_gui_input"]

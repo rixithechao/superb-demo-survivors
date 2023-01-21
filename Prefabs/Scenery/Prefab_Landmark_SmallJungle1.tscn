@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Prefabs/Scenery/Prefab_Scenery_Tree_Coconut.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/Landmark.gd" type="Script" id=2]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Coconut Tree" parent="." instance=ExtResource( 1 )]
+position = Vector2( -116, -70 )
+
+[node name="Coconut Tree2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 80, -115 )
+scale = Vector2( -1, 1 )
+
+[node name="Coconut Tree3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 214, 91 )
+
+[node name="Coconut Tree4" parent="." instance=ExtResource( 1 )]
+position = Vector2( -222, 128 )
+rotation = 3.14159
+scale = Vector2( 1, -1 )
+
+[node name="Coconut Tree5" parent="." instance=ExtResource( 1 )]
+position = Vector2( -16, 188 )
+rotation = 3.14159
+scale = Vector2( 1, -1 )
+
+[node name="Coconut Tree6" parent="." instance=ExtResource( 1 )]
+position = Vector2( -317, 0 )
+
+[node name="Coconut Tree7" parent="." instance=ExtResource( 1 )]
+position = Vector2( 103, 335 )
+rotation = 3.14159
+scale = Vector2( 1, -1 )
+
+[node name="Coconut Tree8" parent="." instance=ExtResource( 1 )]
+position = Vector2( -138, 389 )
+
+[node name="Coconut Tree9" parent="." instance=ExtResource( 1 )]
+position = Vector2( -360, 292 )
+
+[node name="Coconut Tree10" parent="." instance=ExtResource( 1 )]
+position = Vector2( 314, 175 )
+scale = Vector2( -1, 1 )

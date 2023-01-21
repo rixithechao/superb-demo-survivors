@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Sound_Player_HurtAccent_4.ogg-0b8b7aac1c276961917ca781e8619779.oggstr"
+
+[deps]
+
+source_file="res://Sound Effects/Sound_Player_HurtAccent_4.ogg"
+dest_files=[ "res://.import/Sound_Player_HurtAccent_4.ogg-0b8b7aac1c276961917ca781e8619779.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

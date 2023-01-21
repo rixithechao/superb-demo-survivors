@@ -1,19 +1,14 @@
-[gd_resource type="Resource" load_steps=5 format=2]
+[gd_resource type="Resource" load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/ScriptableObjects/StageData.gd" type="Script" id=1]
-[ext_resource path="res://Data Objects/Waves/Wave_Stage1_1.tres" type="Resource" id=2]
-[ext_resource path="res://Music/music_stage_dangerous.ogg" type="AudioStream" id=3]
-[ext_resource path="res://Tilesets/Tileset_TestLevel.tres" type="TileSet" id=4]
+[ext_resource path="res://Stage Scenes/Scene_Stage_1.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Data Objects/Waves/Wave_Stage1_1.tres" type="Resource" id=3]
+[ext_resource path="res://Data Objects/Waves/Wave_Stage1_2.tres" type="Resource" id=4]
+[ext_resource path="res://Data Objects/Waves/Wave_Stage1_3.tres" type="Resource" id=5]
 
 [resource]
 script = ExtResource( 1 )
-map_size = Vector2( 400, 400 )
-tileset = ExtResource( 4 )
-landmarks = [  ]
-special_landmarks = [  ]
-breakables = [  ]
-landmark_count = 50
-waves = [ ExtResource( 2 ) ]
-music = ExtResource( 3 )
-noise_period = 50
-noise_octaves = 2
+name = "Stage 1"
+scene = ExtResource( 2 )
+waves = [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ]
+minutes = 20

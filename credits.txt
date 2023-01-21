@@ -1,0 +1,25 @@
+SOUND EFFECTS:
+Title confirm, menu confirm --> Game Jingles & 8-Bit Sound FX by WOWSound
+Various sounds --> RPG Magic SFX Pack 2 by WOWSound
+_____ --> Casual Game SFX Pack by ZStreifel
+_____ --> Cute GUI Sounds Set by CactusBear
+
+FREESOUND:
+Grab pickups --> Henrythetrain
+Eating pickups --> ursenfuns
+XP pickups --> 16HPanskaZavadovsky_Igor
+Level up sound --> bergice
+Damage sounds --> nekoninja
+Damage accent sounds --> Iamgiorgio, RutgerMuller, LamaMakesMusic, eben-frostey, 3bagbrew
+Map event enemy spawn warning --> bbrocer
+Map event enemy spawn --> Euphrosyyn 
+
+
+
+PLUGINS:
+Random Audio Node Player --> Sander Vanhove
+Antialiased Line2D --> Calinou
+
+
+SHADERS:
+Halftone --> Elid Elid

@@ -13,8 +13,6 @@ func set_custom_res(value):
 			
 			if i==0:
 				drops[i].resource_name = "Empty"
-				drops[i].min_count = 0
-				drops[i].max_count = 0
 			else:
 				drops[i].resource_name = "Drop"
 

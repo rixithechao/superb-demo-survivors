@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Sound_Weapon_Leek_2.ogg-a5d7bbcf9c9e2e068420c74e19a4b89f.oggstr"
+
+[deps]
+
+source_file="res://Sound Effects/Sound_Weapon_Leek_2.ogg"
+dest_files=[ "res://.import/Sound_Weapon_Leek_2.ogg-a5d7bbcf9c9e2e068420c74e19a4b89f.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

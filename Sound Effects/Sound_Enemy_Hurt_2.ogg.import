@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Sound_Enemy_Hurt_2.ogg-113f3d2e380781a9ce0c316b7a1820d6.oggstr"
+
+[deps]
+
+source_file="res://Sound Effects/Sound_Enemy_Hurt_2.ogg"
+dest_files=[ "res://.import/Sound_Enemy_Hurt_2.ogg-113f3d2e380781a9ce0c316b7a1820d6.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

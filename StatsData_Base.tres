@@ -1,0 +1,23 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/ScriptableObjects/OldStatSheetData.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+Toggles/All = null
+Toggles/None = null
+"Toggles/ " = 16383
+Values/DAMAGE = 0
+Values/DEFENSE = 0
+Values/MAX_HP = 0
+Values/RECOVERY = 0
+Values/COOLDOWN = 0
+Values/AREA = 0
+Values/SPEED = 0
+Values/DURATION = 0
+Values/AMOUNT = 0
+Values/MOVEMENT = 0
+Values/PICKUP = 0
+Values/LUCK = 0
+Values/XP = 0
+Values/MONEY = 0

@@ -1,0 +1,674 @@
+[gd_scene load_steps=23 format=2]
+
+[ext_resource path="res://Prefabs/Enemy Warnings/Prefab_EnemyWarning_Point.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Prefabs/Enemy Warnings/Prefab_EnemyWarning_Vector.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Prefabs/Templates/Prefab_MapEvent.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Textures/Particles/spr_particle_spawn.png" type="Texture" id=4]
+[ext_resource path="res://Prefabs/Enemy Warnings/Prefab_EnemyWarning_VectorChain.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Prefabs/Enemy Warnings/Prefab_EnemyWarning_PointChain.tscn" type="PackedScene" id=6]
+
+[sub_resource type="Animation" id=8]
+resource_name = "Sequence_MapEvent"
+length = 30.0
+step = 1.0
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 10 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ NodePath("Enemy Warning - Point") ],
+"method": "start_warning"
+}, {
+"args": [ NodePath("Enemy Warning - Vector2") ],
+"method": "start_warning"
+} ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 3, 20 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ NodePath("Enemy Warning - Point2") ],
+"method": "start_warning"
+}, {
+"args": [ NodePath("Enemy Warning - Vector Chain") ],
+"method": "start_warning"
+} ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ NodePath("Enemy Warning - Point3") ],
+"method": "start_warning"
+} ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 7 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ NodePath("Enemy Warning - Vector") ],
+"method": "start_warning"
+} ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 15 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ NodePath("Enemy Warning - Point Chain") ],
+"method": "start_warning"
+} ]
+}
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 4 )
+region = Rect2( 256, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 4 )
+region = Rect2( 64, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 4 )
+region = Rect2( 128, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 4 )
+region = Rect2( 192, 0, 64, 64 )
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 1 ) ],
+"loop": false,
+"name": "default",
+"speed": 15.0
+} ]
+
+[sub_resource type="Animation" id=7]
+tracks/0/type = "method"
+tracks/0/path = NodePath("AnimatedSprite")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "", false ],
+"method": "play"
+} ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("SpawnSound")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+} ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "spawn"
+} ]
+}
+
+[sub_resource type="Animation" id=9]
+tracks/0/type = "method"
+tracks/0/path = NodePath("AnimatedSprite")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "", false ],
+"method": "play"
+} ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("SpawnSound")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+} ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "spawn"
+} ]
+}
+
+[sub_resource type="Animation" id=10]
+tracks/0/type = "method"
+tracks/0/path = NodePath("AnimatedSprite")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "", false ],
+"method": "play"
+} ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("SpawnSound")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+} ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "spawn"
+} ]
+}
+
+[sub_resource type="Animation" id=11]
+tracks/0/type = "method"
+tracks/0/path = NodePath("AnimatedSprite")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "", false ],
+"method": "play"
+} ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("SpawnSound")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+} ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "spawn"
+} ]
+}
+
+[sub_resource type="Animation" id=12]
+tracks/0/type = "method"
+tracks/0/path = NodePath("AnimatedSprite")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "", false ],
+"method": "play"
+} ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("SpawnSound")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+} ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "spawn"
+} ]
+}
+
+[sub_resource type="Animation" id=13]
+tracks/0/type = "method"
+tracks/0/path = NodePath("AnimatedSprite")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "", false ],
+"method": "play"
+} ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("SpawnSound")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+} ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "spawn"
+} ]
+}
+
+[sub_resource type="Animation" id=14]
+tracks/0/type = "method"
+tracks/0/path = NodePath("AnimatedSprite")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "", false ],
+"method": "play"
+} ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("SpawnSound")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+} ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "spawn"
+} ]
+}
+
+[sub_resource type="Curve2D" id=15]
+_data = {
+"points": PoolVector2Array( -101.659, 175.438, 101.659, -175.438, -11.5098, -3, 202.032, -156.978, -202.032, 156.978, 286.506, -11, -96.2052, 198.602, 96.2052, -198.602, 558.978, 13 )
+}
+
+[sub_resource type="Curve2D" id=16]
+_data = {
+"points": PoolVector2Array( -1082.94, -429.986, 1082.94, 429.986, -11.5098, -3, 185.645, 95.8375, -185.645, -95.8375, 731.165, -658 )
+}
+
+[node name="Node2D" instance=ExtResource( 3 )]
+
+[node name="AnimationPlayer" parent="." index="0"]
+autoplay = "Sequence_MapEvent"
+anims/Sequence_MapEvent = SubResource( 8 )
+
+[node name="Enemy Warning - Point" parent="." index="1" instance=ExtResource( 1 )]
+position = Vector2( -134, -131 )
+
+[node name="Progress" parent="Enemy Warning - Point/Telegraph/ProgressRotation" index="0"]
+texture_under = null
+
+[node name="Enemy Warning - Point2" parent="." index="2" instance=ExtResource( 1 )]
+position = Vector2( 149, -64 )
+relative_to_player = true
+
+[node name="Progress" parent="Enemy Warning - Point2/Telegraph/ProgressRotation" index="0"]
+texture_under = null
+
+[node name="Enemy Warning - Point3" parent="." index="3" instance=ExtResource( 1 )]
+position = Vector2( 196, 52 )
+relative_to_player = true
+
+[node name="Progress" parent="Enemy Warning - Point3/Telegraph/ProgressRotation" index="0"]
+texture_under = null
+
+[node name="Enemy Warning - Vector" parent="." index="4" instance=ExtResource( 2 )]
+position = Vector2( -133, 84 )
+
+[node name="Direction" parent="Enemy Warning - Vector/Telegraph" index="0"]
+rotation = -0.523598
+
+[node name="Length" parent="Enemy Warning - Vector/Telegraph/Direction" index="0"]
+scale = Vector2( 3.84631, 1 )
+
+[node name="Progress" parent="Enemy Warning - Vector/Telegraph/ProgressRotation" index="0"]
+texture_under = null
+
+[node name="AnimatedSprite" parent="Enemy Warning - Vector" index="3"]
+position = Vector2( 0, -12 )
+frames = SubResource( 6 )
+
+[node name="Enemy Warning - Vector2" parent="." index="5" instance=ExtResource( 2 )]
+position = Vector2( 149, 252 )
+
+[node name="Direction" parent="Enemy Warning - Vector2/Telegraph" index="0"]
+rotation = -2.09439
+
+[node name="Length" parent="Enemy Warning - Vector2/Telegraph/Direction" index="0"]
+scale = Vector2( 13.102, 1 )
+
+[node name="Progress" parent="Enemy Warning - Vector2/Telegraph/ProgressRotation" index="0"]
+texture_under = null
+
+[node name="AnimatedSprite" parent="Enemy Warning - Vector2" index="3"]
+position = Vector2( 0, -12 )
+frames = SubResource( 6 )
+
+[node name="AnimationPlayer" parent="Enemy Warning - Vector2" index="4"]
+anims/Sequence_SpawnEnemy = SubResource( 7 )
+
+[node name="Enemy Warning - Vector3" parent="." index="6" instance=ExtResource( 2 )]
+position = Vector2( -1005, 0 )
+spawning = true
+warning_seconds = 0.0
+despawn_seconds = 120.0
+collides_with_other_enemies = false
+speed = 5.0
+
+[node name="Length" parent="Enemy Warning - Vector3/Telegraph/Direction" index="0"]
+scale = Vector2( 13.102, 1 )
+
+[node name="Progress" parent="Enemy Warning - Vector3/Telegraph/ProgressRotation" index="0"]
+texture_under = null
+
+[node name="AnimatedSprite" parent="Enemy Warning - Vector3" index="3"]
+position = Vector2( 0, -12 )
+frames = SubResource( 6 )
+
+[node name="AnimationPlayer" parent="Enemy Warning - Vector3" index="4"]
+anims/Sequence_SpawnEnemy = SubResource( 9 )
+
+[node name="Enemy Warning - Vector4" parent="." index="7" instance=ExtResource( 2 )]
+position = Vector2( -1005, -61 )
+spawning = true
+warning_seconds = 0.0
+despawn_seconds = 120.0
+collides_with_other_enemies = false
+speed = 5.0
+
+[node name="Length" parent="Enemy Warning - Vector4/Telegraph/Direction" index="0"]
+scale = Vector2( 13.102, 1 )
+
+[node name="Progress" parent="Enemy Warning - Vector4/Telegraph/ProgressRotation" index="0"]
+texture_under = null
+
+[node name="AnimatedSprite" parent="Enemy Warning - Vector4" index="3"]
+position = Vector2( 0, -12 )
+frames = SubResource( 6 )
+
+[node name="AnimationPlayer" parent="Enemy Warning - Vector4" index="4"]
+anims/Sequence_SpawnEnemy = SubResource( 10 )
+
+[node name="Enemy Warning - Vector5" parent="." index="8" instance=ExtResource( 2 )]
+position = Vector2( -1005, 64 )
+spawning = true
+warning_seconds = 0.0
+despawn_seconds = 120.0
+collides_with_other_enemies = false
+speed = 5.0
+
+[node name="Length" parent="Enemy Warning - Vector5/Telegraph/Direction" index="0"]
+scale = Vector2( 13.102, 1 )
+
+[node name="Progress" parent="Enemy Warning - Vector5/Telegraph/ProgressRotation" index="0"]
+texture_under = null
+
+[node name="AnimatedSprite" parent="Enemy Warning - Vector5" index="3"]
+position = Vector2( 0, -12 )
+frames = SubResource( 6 )
+
+[node name="AnimationPlayer" parent="Enemy Warning - Vector5" index="4"]
+anims/Sequence_SpawnEnemy = SubResource( 11 )
+
+[node name="Enemy Warning - Vector6" parent="." index="9" instance=ExtResource( 2 )]
+position = Vector2( -1005, 189 )
+spawning = true
+warning_seconds = 0.0
+despawn_seconds = 120.0
+collides_with_other_enemies = false
+speed = 5.0
+
+[node name="Length" parent="Enemy Warning - Vector6/Telegraph/Direction" index="0"]
+scale = Vector2( 13.102, 1 )
+
+[node name="Progress" parent="Enemy Warning - Vector6/Telegraph/ProgressRotation" index="0"]
+texture_under = null
+
+[node name="AnimatedSprite" parent="Enemy Warning - Vector6" index="3"]
+position = Vector2( 0, -12 )
+frames = SubResource( 6 )
+
+[node name="AnimationPlayer" parent="Enemy Warning - Vector6" index="4"]
+anims/Sequence_SpawnEnemy = SubResource( 12 )
+
+[node name="Enemy Warning - Vector7" parent="." index="10" instance=ExtResource( 2 )]
+position = Vector2( -1005, 128 )
+spawning = true
+warning_seconds = 0.0
+despawn_seconds = 120.0
+collides_with_other_enemies = false
+speed = 5.0
+
+[node name="Length" parent="Enemy Warning - Vector7/Telegraph/Direction" index="0"]
+scale = Vector2( 13.102, 1 )
+
+[node name="Progress" parent="Enemy Warning - Vector7/Telegraph/ProgressRotation" index="0"]
+texture_under = null
+
+[node name="AnimatedSprite" parent="Enemy Warning - Vector7" index="3"]
+position = Vector2( 0, -12 )
+frames = SubResource( 6 )
+
+[node name="AnimationPlayer" parent="Enemy Warning - Vector7" index="4"]
+anims/Sequence_SpawnEnemy = SubResource( 13 )
+
+[node name="Enemy Warning - Vector8" parent="." index="11" instance=ExtResource( 2 )]
+position = Vector2( -1005, 253 )
+spawning = true
+warning_seconds = 0.0
+despawn_seconds = 120.0
+collides_with_other_enemies = false
+speed = 5.0
+
+[node name="Length" parent="Enemy Warning - Vector8/Telegraph/Direction" index="0"]
+scale = Vector2( 13.102, 1 )
+
+[node name="Progress" parent="Enemy Warning - Vector8/Telegraph/ProgressRotation" index="0"]
+texture_under = null
+
+[node name="AnimatedSprite" parent="Enemy Warning - Vector8" index="3"]
+position = Vector2( 0, -12 )
+frames = SubResource( 6 )
+
+[node name="AnimationPlayer" parent="Enemy Warning - Vector8" index="4"]
+anims/Sequence_SpawnEnemy = SubResource( 14 )
+
+[node name="Enemy Warning - Point Chain" parent="." index="12" instance=ExtResource( 6 )]
+position = Vector2( -559, -318 )
+duration = 0.0
+
+[node name="Path2D" parent="Enemy Warning - Point Chain" index="0"]
+curve = SubResource( 15 )
+
+[node name="PathFollow2D" parent="Enemy Warning - Point Chain/Path2D" index="0"]
+rotation = -1.03365
+
+[node name="Enemy Warning - Point" parent="Enemy Warning - Point Chain" index="1"]
+relative_to_player = true
+
+[node name="Progress" parent="Enemy Warning - Point Chain/Enemy Warning - Point/Telegraph/ProgressRotation" index="0"]
+texture_under = null
+
+[node name="Enemy Warning - Vector Chain" parent="." index="13" instance=ExtResource( 5 )]
+position = Vector2( -416, 373 )
+gap = 32.0
+duration = 0.5
+
+[node name="Path2D" parent="Enemy Warning - Vector Chain" index="0"]
+curve = SubResource( 16 )
+
+[node name="PathFollow2D" parent="Enemy Warning - Vector Chain/Path2D" index="0"]
+rotation = 0.377047
+
+[node name="Enemy Warning - Vector" parent="Enemy Warning - Vector Chain" index="1"]
+rotation = -1.309
+
+[node name="Length" parent="Enemy Warning - Vector Chain/Enemy Warning - Vector/Telegraph/Direction" index="0"]
+scale = Vector2( 4.80483, 1 )
+
+[node name="Progress" parent="Enemy Warning - Vector Chain/Enemy Warning - Vector/Telegraph/ProgressRotation" index="0"]
+texture_under = null
+
+[editable path="Enemy Warning - Point"]
+[editable path="Enemy Warning - Point2"]
+[editable path="Enemy Warning - Point3"]
+[editable path="Enemy Warning - Vector"]
+[editable path="Enemy Warning - Vector2"]
+[editable path="Enemy Warning - Vector3"]
+[editable path="Enemy Warning - Vector4"]
+[editable path="Enemy Warning - Vector5"]
+[editable path="Enemy Warning - Vector6"]
+[editable path="Enemy Warning - Vector7"]
+[editable path="Enemy Warning - Vector8"]
+[editable path="Enemy Warning - Point Chain"]
+[editable path="Enemy Warning - Point Chain/Enemy Warning - Point"]
+[editable path="Enemy Warning - Vector Chain"]
+[editable path="Enemy Warning - Vector Chain/Enemy Warning - Vector"]

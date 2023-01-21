@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Sound_Player_Hurt_2.ogg-b90527ba936a7d5404f83ef757ca3850.oggstr"
+
+[deps]
+
+source_file="res://Sound Effects/Sound_Player_Hurt_2.ogg"
+dest_files=[ "res://.import/Sound_Player_Hurt_2.ogg-b90527ba936a7d5404f83ef757ca3850.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/ScriptableObjects/StageData.gd" type="Script" id=1]
+[ext_resource path="res://Stage Scenes/Scene_Stage_Debug.tscn" type="PackedScene" id=2]
+
+[resource]
+script = ExtResource( 1 )
+name = "Debug Room"
+scene = ExtResource( 2 )
+waves = [  ]
+minutes = 0

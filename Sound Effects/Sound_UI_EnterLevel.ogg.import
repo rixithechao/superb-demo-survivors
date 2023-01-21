@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Sound_UI_EnterLevel.ogg-994e391044b9e77334167b6232396da9.oggstr"
+
+[deps]
+
+source_file="res://Sound Effects/Sound_UI_EnterLevel.ogg"
+dest_files=[ "res://.import/Sound_UI_EnterLevel.ogg-994e391044b9e77334167b6232396da9.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

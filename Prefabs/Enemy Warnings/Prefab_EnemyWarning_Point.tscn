@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Prefabs/Templates/Prefab_EnemyWarning.tscn" type="PackedScene" id=1]
+[ext_resource path="res://addons/antialiased_line2d/antialiased_regular_polygon2d.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/EnemyWarning_Point.gd" type="Script" id=3]
+
+[node name="Enemy Warning - Point" groups=["enemyWarning_point"] instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+
+[node name="SpawnRadius" type="Polygon2D" parent="Telegraph" index="0"]
+color = Color( 1, 0.501961, 0.501961, 0.352941 )
+polygon = PoolVector2Array( -1.39876e-06, -32, 6.24289, -31.3851, 12.2459, -29.5641, 17.7782, -26.607, 22.6274, -22.6274, 26.607, -17.7782, 29.5641, -12.2459, 31.3851, -6.24289, 32, 0, 31.3851, 6.24289, 29.5641, 12.2459, 26.607, 17.7782, 22.6274, 22.6274, 17.7782, 26.607, 12.2459, 29.5641, 6.24289, 31.3851, -1.39876e-06, 32, -6.24289, 31.3851, -12.2459, 29.5641, -17.7782, 26.607, -22.6274, 22.6274, -26.607, 17.7783, -29.5641, 12.2459, -31.3851, 6.2429, -32, 4.83187e-06, -31.3851, -6.24289, -29.5641, -12.2459, -26.607, -17.7782, -22.6274, -22.6274, -17.7783, -26.607, -12.2459, -29.5641, -6.24289, -31.3851 )
+script = ExtResource( 2 )
+stroke_color = Color( 0.871094, 0.207403, 0.207403, 1 )
+stroke_width = 3.0
+
+[node name="TimeRing" type="Polygon2D" parent="Telegraph" index="1"]
+color = Color( 1, 1, 1, 0 )
+polygon = PoolVector2Array( -1.39876e-06, -32, 6.24289, -31.3851, 12.2459, -29.5641, 17.7782, -26.607, 22.6274, -22.6274, 26.607, -17.7782, 29.5641, -12.2459, 31.3851, -6.24289, 32, 0, 31.3851, 6.24289, 29.5641, 12.2459, 26.607, 17.7782, 22.6274, 22.6274, 17.7782, 26.607, 12.2459, 29.5641, 6.24289, 31.3851, -1.39876e-06, 32, -6.24289, 31.3851, -12.2459, 29.5641, -17.7782, 26.607, -22.6274, 22.6274, -26.607, 17.7783, -29.5641, 12.2459, -31.3851, 6.2429, -32, 4.83187e-06, -31.3851, -6.24289, -29.5641, -12.2459, -26.607, -17.7782, -22.6274, -22.6274, -17.7783, -26.607, -12.2459, -29.5641, -6.24289, -31.3851 )
+script = ExtResource( 2 )
+stroke_color = Color( 1, 0.4, 0.4, 1 )
+stroke_width = 3.0

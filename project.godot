@@ -9,10 +9,70 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Line2D",
+"class": "AntialiasedLine2D",
+"language": "GDScript",
+"path": "res://addons/antialiased_line2d/antialiased_line2d.gd"
+}, {
+"base": "Polygon2D",
+"class": "AntialiasedPolygon2D",
+"language": "GDScript",
+"path": "res://addons/antialiased_line2d/antialiased_polygon2d.gd"
+}, {
+"base": "Polygon2D",
+"class": "AntialiasedRegularPolygon2D",
+"language": "GDScript",
+"path": "res://addons/antialiased_line2d/antialiased_regular_polygon2d.gd"
+}, {
+"base": "PackedArrayPropertyEditor",
+"class": "ArrayPropertyEditor",
+"language": "GDScript",
+"path": "res://addons/dictionary_inspector/elements/array_property_editor.gd"
+}, {
+"base": "Resource",
+"class": "AverageDictionaryEnjoyer",
+"language": "GDScript",
+"path": "res://average_dictionary_enjoyer.gd"
+}, {
+"base": "VBoxContainer",
+"class": "BaseCollectionPropertyEditor",
+"language": "GDScript",
+"path": "res://addons/dictionary_inspector/elements/base_property_editor.gd"
+}, {
 "base": "Resource",
 "class": "BossData",
 "language": "GDScript",
 "path": "res://Scripts/ScriptableObjects/BossData.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Character",
+"language": "GDScript",
+"path": "res://Scripts/Character.gd"
+}, {
+"base": "Button",
+"class": "CollectionHeaderButton",
+"language": "GDScript",
+"path": "res://addons/dictionary_inspector/elements/collection_header_button.gd"
+}, {
+"base": "EditorResourcePicker",
+"class": "CustomResourcePicker",
+"language": "GDScript",
+"path": "res://addons/dictionary_inspector/elements/custom_resource_picker.gd"
+}, {
+"base": "PackedArrayPropertyEditor",
+"class": "DictPropertyEditor",
+"language": "GDScript",
+"path": "res://addons/dictionary_inspector/elements/dict_property_editor.gd"
+}, {
+"base": "EditorInspectorPlugin",
+"class": "DictionaryInspectorPlugin",
+"language": "GDScript",
+"path": "res://addons/dictionary_inspector/inspector_plugin.gd"
+}, {
+"base": "EditorProperty",
+"class": "DictionaryInspectorProperty",
+"language": "GDScript",
+"path": "res://addons/dictionary_inspector/inspector_property.gd"
 }, {
 "base": "Resource",
 "class": "DropTableData",
@@ -23,6 +83,11 @@ _global_script_classes=[ {
 "class": "DropTableEntry",
 "language": "GDScript",
 "path": "res://Scripts/ScriptableObjects/DropTableEntry.gd"
+}, {
+"base": "Button",
+"class": "EditorArrayIndex",
+"language": "GDScript",
+"path": "res://addons/dictionary_inspector/elements/array_index.gd"
 }, {
 "base": "Resource",
 "class": "EnemyData",
@@ -39,6 +104,36 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/ScriptableObjects/EquipmentData.gd"
 }, {
+"base": "Resource",
+"class": "LevelModifierData",
+"language": "GDScript",
+"path": "res://Scripts/ScriptableObjects/LevelModifierData.gd"
+}, {
+"base": "EquipmentData",
+"class": "LevelUpPickupData",
+"language": "GDScript",
+"path": "res://Scripts/ScriptableObjects/LevelUpPickupData.gd"
+}, {
+"base": "Resource",
+"class": "MapEventData",
+"language": "GDScript",
+"path": "res://Scripts/ScriptableObjects/MapEventData.gd"
+}, {
+"base": "BaseCollectionPropertyEditor",
+"class": "ObjectPropertyEditor",
+"language": "GDScript",
+"path": "res://addons/dictionary_inspector/elements/object_property_editor.gd"
+}, {
+"base": "Resource",
+"class": "OldStatSheetData",
+"language": "GDScript",
+"path": "res://Scripts/ScriptableObjects/OldStatSheetData.gd"
+}, {
+"base": "BaseCollectionPropertyEditor",
+"class": "PackedArrayPropertyEditor",
+"language": "GDScript",
+"path": "res://addons/dictionary_inspector/elements/packed_array_property_editor.gd"
+}, {
 "base": "EquipmentData",
 "class": "PassiveData",
 "language": "GDScript",
@@ -54,10 +149,45 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/ScriptableObjects/PlayableData.gd"
 }, {
+"base": "Node",
+"class": "RandomAudioNodePlayer",
+"language": "GDScript",
+"path": "res://addons/RandomAudioNodePlayer/RandomAudioNodePlayer.gd"
+}, {
 "base": "Resource",
 "class": "StageData",
 "language": "GDScript",
 "path": "res://Scripts/ScriptableObjects/StageData.gd"
+}, {
+"base": "Resource",
+"class": "StatChangeData",
+"language": "GDScript",
+"path": "res://addons/test_plugin/StatChangeData.gd"
+}, {
+"base": "Resource",
+"class": "StatData",
+"language": "GDScript",
+"path": "res://Scripts/ScriptableObjects/StatData.gd"
+}, {
+"base": "Resource",
+"class": "StatSheetData",
+"language": "GDScript",
+"path": "res://Scripts/ScriptableObjects/StatSheetData.gd"
+}, {
+"base": "GridContainer",
+"class": "TensorPropertyEditor",
+"language": "GDScript",
+"path": "res://addons/dictionary_inspector/elements/tensor_property_editor.gd"
+}, {
+"base": "Button",
+"class": "ThemeIconButton",
+"language": "GDScript",
+"path": "res://addons/dictionary_inspector/elements/editor_icon_button.gd"
+}, {
+"base": "OptionButton",
+"class": "TypeOptionButton",
+"language": "GDScript",
+"path": "res://addons/dictionary_inspector/elements/type_option_button.gd"
 }, {
 "base": "Resource",
 "class": "WaveData",
@@ -70,16 +200,42 @@ _global_script_classes=[ {
 "path": "res://Scripts/ScriptableObjects/WeaponData.gd"
 } ]
 _global_script_class_icons={
+"AntialiasedLine2D": "res://addons/antialiased_line2d/antialiased_line2d.svg",
+"AntialiasedPolygon2D": "res://addons/antialiased_line2d/antialiased_polygon2d.svg",
+"AntialiasedRegularPolygon2D": "res://addons/antialiased_line2d/antialiased_regular_polygon2d.svg",
+"ArrayPropertyEditor": "",
+"AverageDictionaryEnjoyer": "",
+"BaseCollectionPropertyEditor": "",
 "BossData": "",
+"Character": "",
+"CollectionHeaderButton": "",
+"CustomResourcePicker": "",
+"DictPropertyEditor": "",
+"DictionaryInspectorPlugin": "",
+"DictionaryInspectorProperty": "",
 "DropTableData": "",
 "DropTableEntry": "",
+"EditorArrayIndex": "",
 "EnemyData": "",
 "EnemySpawnData": "",
 "EquipmentData": "",
+"LevelModifierData": "",
+"LevelUpPickupData": "",
+"MapEventData": "",
+"ObjectPropertyEditor": "",
+"OldStatSheetData": "",
+"PackedArrayPropertyEditor": "",
 "PassiveData": "",
 "PickupData": "",
 "PlayableData": "",
+"RandomAudioNodePlayer": "",
 "StageData": "",
+"StatChangeData": "",
+"StatData": "",
+"StatSheetData": "",
+"TensorPropertyEditor": "",
+"ThemeIconButton": "",
+"TypeOptionButton": "",
 "WaveData": "",
 "WeaponData": ""
 }
@@ -87,17 +243,27 @@ _global_script_class_icons={
 [application]
 
 config/name="Superb Demo Survivors"
-run/main_scene="res://Scenes/Level_Stage1.tscn"
+run/main_scene="res://Scene_Main.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
-MapManager="*res://Scripts/Managers/MapManager.gd"
-PlayerManager="*res://Scripts/Managers/PlayerManager.gd"
-TimeManager="*res://Scripts/Managers/TimeManager.gd"
-MenuManager="*res://Scripts/Managers/MenuManager.gd"
-EquipmentManager="*res://Scripts/Managers/EquipmentManager.gd"
+CameraManager="*res://Scripts/Managers/CameraManager.gd"
+CommandConsoleManager="*res://Scripts/Managers/CommandConsoleManager.gd"
 EnemyManager="*res://Scripts/Managers/EnemyManager.gd"
+EquipmentManager="*res://Scripts/Managers/EquipmentManager.gd"
+GameManager="*res://Scripts/Managers/GameManager.gd"
+MenuManager="*res://Scripts/Managers/MenuManager.gd"
+PlayerManager="*res://Scripts/Managers/PlayerManager.gd"
+ProjectileManager="*res://Scripts/Managers/ProjectileManager.gd"
+RootManager="*res://Scripts/Managers/RootManager.gd"
+StageManager="*res://Scripts/Managers/StageManager.gd"
+StatsManager="*res://Scripts/Managers/StatsManager.gd"
+TimeManager="*res://Scripts/Managers/TimeManager.gd"
+UIManager="*res://Scripts/Managers/UIManager.gd"
+VFXManager="*res://Scripts/Managers/VFXManager.gd"
+WorldManager="*res://Scripts/Managers/WorldManager.gd"
+AntialiasedLine2DTexture="*res://addons/antialiased_line2d/texture.gd"
 
 [display]
 
@@ -110,9 +276,67 @@ window/vsync/use_vsync=false
 window/stretch/mode="viewport"
 window/stretch/aspect="keep_height"
 
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/RandomAudioNodePlayer/plugin.cfg", "res://addons/antialiased_line2d/plugin.cfg", "res://addons/explore-editor-theme/plugin.cfg" )
+
+[global]
+
+scene=false
+
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true
+
+[input]
+
+ui_accept={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777221,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777222,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":11,"pressure":0.0,"pressed":false,"script":null)
+ ]
+}
+ui_select={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":90,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":1,"pressure":0.0,"pressed":false,"script":null)
+ ]
+}
+ui_cancel={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":88,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":0,"pressure":0.0,"pressed":false,"script":null)
+ ]
+}
+ui_focus_next={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777218,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+ui_anykey={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777221,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777222,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":90,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":88,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":67,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":0,"pressure":0.0,"pressed":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":1,"pressure":0.0,"pressed":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":2,"pressure":0.0,"pressed":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":3,"pressure":0.0,"pressed":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":4,"pressure":0.0,"pressed":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":5,"pressure":0.0,"pressed":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":6,"pressure":0.0,"pressed":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":7,"pressure":0.0,"pressed":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":8,"pressure":0.0,"pressed":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":9,"pressure":0.0,"pressed":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":10,"pressure":0.0,"pressed":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":11,"pressure":0.0,"pressed":false,"script":null)
+, Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
 
 [layer_names]
 
@@ -121,6 +345,14 @@ common/drop_mouse_on_gui_input_disabled=true
 2d_physics/layer_3="pickups"
 2d_physics/layer_4="enemies"
 2d_physics/layer_5="weapons"
+2d_physics/layer_6="cameraRegion"
+2d_physics/layer_7="playerHurtbox"
+2d_physics/layer_8="intangibleEnemies"
+
+[network]
+
+limits/debugger_stdout/max_chars_per_second=10000
+limits/debugger_stdout/max_messages_per_frame=100
 
 [physics]
 

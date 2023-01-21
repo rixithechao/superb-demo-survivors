@@ -1,0 +1,10 @@
+[gd_resource type="AnimationNodeBlendTree" load_steps=2 format=2]
+
+[sub_resource type="AnimationNodeAnimation" id=1]
+animation = "Anim_Enemy_Walk_2Frame"
+
+[resource]
+graph_offset = Vector2( -221.178, 80.4173 )
+nodes/Animation/node = SubResource( 1 )
+nodes/Animation/position = Vector2( -40, 140 )
+node_connections = [ "output", 0, "Animation" ]
