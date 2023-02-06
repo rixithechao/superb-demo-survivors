@@ -1,0 +1,19 @@
+[gd_resource type="Resource" load_steps=5 format=2]
+
+[ext_resource path="res://Prefabs/Enemies/Prefab_Enemy_Furba.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/ScriptableObjects/WaveData.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/ScriptableObjects/EnemySpawnData.gd" type="Script" id=5]
+
+[sub_resource type="Resource" id=1]
+resource_name = "Spawn"
+script = ExtResource( 5 )
+interval = 1.0
+delay = 0.0
+enemies = [ ExtResource( 1 ) ]
+
+[resource]
+script = ExtResource( 3 )
+minimum = 5.0
+enemy_spawns = [ SubResource( 1 ) ]
+bosses = [  ]
+map_events = [  ]

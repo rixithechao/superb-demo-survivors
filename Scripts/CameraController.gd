@@ -2,8 +2,8 @@ extends Camera2D
 
 
 func _process(_delta):
-	#if  self.target == null:
-	#	self.target = PlayerManager.instance
+	#if  PlayerManager.instance != null  and  get_parent() != PlayerManager.instance:
+	#	PlayerManager.instance.add_child(self)
 	pass
 
 func _ready():

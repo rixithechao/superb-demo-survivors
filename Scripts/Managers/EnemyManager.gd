@@ -4,12 +4,22 @@ extends "res://Scripts/ManagerForGroupedObjects.gd"
 var spawner_point = preload("res://Prefabs/Enemy Warnings/Prefab_EnemyWarning_Point.tscn")
 var spawner_vector = preload("res://Prefabs/Enemy Warnings/Prefab_EnemyWarning_Vector.tscn")
 
+var kills = 0
+
+
+signal change_kills
 
 
 #var data_cache = {}
 
 func get_group_name():
 	return "enemy"
+
+
+
+func add_kill():
+	kills += 1
+	emit_signal("change_kills")
 
 
 
@@ -66,6 +76,12 @@ func init_stage_enemies():
 	#		for enemy in spawn.enemies:
 	#			data_cache[enemy] = enemy
 	pass
+
+
+func kill_all():
+	for enemy in get_all():
+		enemy.die()
+
 
 
 func _ready():

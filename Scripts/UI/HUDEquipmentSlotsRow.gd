@@ -42,5 +42,5 @@ func set_graphics(slots):
 
 	
 func _ready():
-	PlayerManager.connect("give_equipment", self, "_on_get_equipment")
+	PlayerManager.connect("change_equipment", self, "_on_get_equipment")
 	set_graphics([])

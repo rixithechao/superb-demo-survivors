@@ -1,15 +1,25 @@
 extends Node2D
+class_name CharacterGraphic
 
 export var tint : Color = Color(1,1,1,0)
 export(Array, NodePath) var sprites
 export(Array, NodePath) var flash_sprites
 
+export var height : float = 0
 export var shake_intensity : float = 0
+
+export var draw_shadow : bool = true
+export var override_height : bool = false
+export var animate_while_paused : bool = false
+
 var shake_offset = Vector2.ZERO
 var shake_timer = 0
 
 
+
 const SHAKE_FREQUENCY = 0.1
+
+
 
 
 func clear_shake():
@@ -51,6 +61,11 @@ func fade(new_alpha, seconds):
 
 
 
+func death_effects():
+	pass
+
+
+
 func _process(delta):
 
 	# Shake
@@ -63,6 +78,13 @@ func _process(delta):
 	else:
 		shake_offset = Vector2.ZERO
 
+	# Height
+	if  not override_height:
+		$AirOffset.position.y = -16*height
+
+	# Shadow
+	if  get_node_or_null("Shadow") != null:
+		$Shadow.modulate.a = (1 if draw_shadow else 0)
 
 	# Makeshift tinting
 	for sprite in flash_sprites:

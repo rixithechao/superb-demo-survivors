@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=5 format=2]
+
+[ext_resource path="res://Scripts/ScriptableObjects/WaveData.gd" type="Script" id=1]
+[ext_resource path="res://Prefabs/Map Events/Prefab_MapEvent_Test.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/ScriptableObjects/MapEventData.gd" type="Script" id=3]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 3 )
+second = 3
+event_scene = ExtResource( 2 )
+
+[resource]
+script = ExtResource( 1 )
+minimum = 10
+enemy_spawns = [  ]
+bosses = [  ]
+map_events = [ SubResource( 1 ) ]

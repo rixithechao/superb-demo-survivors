@@ -44,10 +44,20 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/ScriptableObjects/BossData.gd"
 }, {
+"base": "HarmableCharacter",
+"class": "BreakableObject",
+"language": "GDScript",
+"path": "res://Scripts/BreakableObject.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Character",
 "language": "GDScript",
 "path": "res://Scripts/Character.gd"
+}, {
+"base": "Node2D",
+"class": "CharacterGraphic",
+"language": "GDScript",
+"path": "res://Scripts/CharacterGraphic.gd"
 }, {
 "base": "Button",
 "class": "CollectionHeaderButton",
@@ -89,6 +99,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/dictionary_inspector/elements/array_index.gd"
 }, {
+"base": "HarmableCharacter",
+"class": "EnemyCharacter",
+"language": "GDScript",
+"path": "res://Scripts/EnemyCharacter.gd"
+}, {
+"base": "EnemyCharacter",
+"class": "EnemyCharacter_Hopper",
+"language": "GDScript",
+"path": "res://Scripts/EnemyCharacter_Hopper.gd"
+}, {
 "base": "Resource",
 "class": "EnemyData",
 "language": "GDScript",
@@ -99,10 +119,20 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/ScriptableObjects/EnemySpawnData.gd"
 }, {
+"base": "Warning",
+"class": "EnemyWarning",
+"language": "GDScript",
+"path": "res://Scripts/EnemyWarning.gd"
+}, {
 "base": "Resource",
 "class": "EquipmentData",
 "language": "GDScript",
 "path": "res://Scripts/ScriptableObjects/EquipmentData.gd"
+}, {
+"base": "Character",
+"class": "HarmableCharacter",
+"language": "GDScript",
+"path": "res://Scripts/HarmableCharacter.gd"
 }, {
 "base": "Resource",
 "class": "LevelModifierData",
@@ -118,6 +148,11 @@ _global_script_classes=[ {
 "class": "MapEventData",
 "language": "GDScript",
 "path": "res://Scripts/ScriptableObjects/MapEventData.gd"
+}, {
+"base": "Resource",
+"class": "MusicData",
+"language": "GDScript",
+"path": "res://Scripts/ScriptableObjects/MusicData.gd"
 }, {
 "base": "BaseCollectionPropertyEditor",
 "class": "ObjectPropertyEditor",
@@ -149,10 +184,45 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/ScriptableObjects/PlayableData.gd"
 }, {
+"base": "CharacterGraphic",
+"class": "PlayerGraphic",
+"language": "GDScript",
+"path": "res://Scripts/PlayerGraphic.gd"
+}, {
 "base": "Node",
 "class": "RandomAudioNodePlayer",
 "language": "GDScript",
 "path": "res://addons/RandomAudioNodePlayer/RandomAudioNodePlayer.gd"
+}, {
+"base": "RichTextEffect",
+"class": "RichTextMatrix",
+"language": "GDScript",
+"path": "res://Scripts/Rich Text Effects/RichTextMatrix.gd"
+}, {
+"base": "SaveableData",
+"class": "Save_Progress",
+"language": "GDScript",
+"path": "res://Scripts/Saved Data/Save_Progress.gd"
+}, {
+"base": "SaveableData",
+"class": "Save_Records",
+"language": "GDScript",
+"path": "res://Scripts/Saved Data/Save_Records.gd"
+}, {
+"base": "SaveableData",
+"class": "Save_Serac",
+"language": "GDScript",
+"path": "res://Scripts/Saved Data/Save_Serac.gd"
+}, {
+"base": "SaveableData",
+"class": "Save_Settings",
+"language": "GDScript",
+"path": "res://Scripts/Saved Data/Save_Settings.gd"
+}, {
+"base": "Resource",
+"class": "SaveableData",
+"language": "GDScript",
+"path": "res://Scripts/Saved Data/SaveableData.gd"
 }, {
 "base": "Resource",
 "class": "StageData",
@@ -189,6 +259,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/dictionary_inspector/elements/type_option_button.gd"
 }, {
+"base": "Node2D",
+"class": "Warning",
+"language": "GDScript",
+"path": "res://Scripts/Warning.gd"
+}, {
 "base": "Resource",
 "class": "WaveData",
 "language": "GDScript",
@@ -207,7 +282,9 @@ _global_script_class_icons={
 "AverageDictionaryEnjoyer": "",
 "BaseCollectionPropertyEditor": "",
 "BossData": "",
+"BreakableObject": "",
 "Character": "",
+"CharacterGraphic": "",
 "CollectionHeaderButton": "",
 "CustomResourcePicker": "",
 "DictPropertyEditor": "",
@@ -216,19 +293,31 @@ _global_script_class_icons={
 "DropTableData": "",
 "DropTableEntry": "",
 "EditorArrayIndex": "",
+"EnemyCharacter": "",
+"EnemyCharacter_Hopper": "",
 "EnemyData": "",
 "EnemySpawnData": "",
+"EnemyWarning": "",
 "EquipmentData": "",
+"HarmableCharacter": "",
 "LevelModifierData": "",
 "LevelUpPickupData": "",
 "MapEventData": "",
+"MusicData": "",
 "ObjectPropertyEditor": "",
 "OldStatSheetData": "",
 "PackedArrayPropertyEditor": "",
 "PassiveData": "",
 "PickupData": "",
 "PlayableData": "",
+"PlayerGraphic": "",
 "RandomAudioNodePlayer": "",
+"RichTextMatrix": "",
+"Save_Progress": "",
+"Save_Records": "",
+"Save_Serac": "",
+"Save_Settings": "",
+"SaveableData": "",
 "StageData": "",
 "StatChangeData": "",
 "StatData": "",
@@ -236,6 +325,7 @@ _global_script_class_icons={
 "TensorPropertyEditor": "",
 "ThemeIconButton": "",
 "TypeOptionButton": "",
+"Warning": "",
 "WaveData": "",
 "WeaponData": ""
 }
@@ -248,20 +338,30 @@ config/icon="res://icon.png"
 
 [autoload]
 
+BreakableManager="*res://Scripts/Managers/BreakableManager.gd"
 CameraManager="*res://Scripts/Managers/CameraManager.gd"
+CharacterManager="*res://Scripts/Managers/CharacterManager.gd"
 CommandConsoleManager="*res://Scripts/Managers/CommandConsoleManager.gd"
 EnemyManager="*res://Scripts/Managers/EnemyManager.gd"
 EquipmentManager="*res://Scripts/Managers/EquipmentManager.gd"
 GameManager="*res://Scripts/Managers/GameManager.gd"
+HarmableManager="*res://Scripts/Managers/HarmableManager.gd"
+InputManager="*res://Scripts/Managers/InputManager.gd"
+LandmarkManager="*res://Scripts/Managers/LandmarkManager.gd"
+MapEventManager="*res://Scripts/Managers/MapEventManager.gd"
 MenuManager="*res://Scripts/Managers/MenuManager.gd"
+MusicManager="*res://Scripts/Managers/MusicManager.gd"
 PlayerManager="*res://Scripts/Managers/PlayerManager.gd"
+PickupManager="*res://Scripts/Managers/PickupManager.gd"
 ProjectileManager="*res://Scripts/Managers/ProjectileManager.gd"
 RootManager="*res://Scripts/Managers/RootManager.gd"
+SaveManager="*res://Scripts/Managers/SaveManager.gd"
 StageManager="*res://Scripts/Managers/StageManager.gd"
 StatsManager="*res://Scripts/Managers/StatsManager.gd"
 TimeManager="*res://Scripts/Managers/TimeManager.gd"
 UIManager="*res://Scripts/Managers/UIManager.gd"
 VFXManager="*res://Scripts/Managers/VFXManager.gd"
+WarningManager="*res://Scripts/Managers/WarningManager.gd"
 WorldManager="*res://Scripts/Managers/WorldManager.gd"
 AntialiasedLine2DTexture="*res://addons/antialiased_line2d/texture.gd"
 
@@ -270,15 +370,16 @@ AntialiasedLine2DTexture="*res://addons/antialiased_line2d/texture.gd"
 window/size/width=768
 window/size/height=432
 window/size/resizable=false
-window/size/test_width=1536
-window/size/test_height=864
+window/size/always_on_top=true
+window/size/test_width=768
+window/size/test_height=432
 window/vsync/use_vsync=false
 window/stretch/mode="viewport"
 window/stretch/aspect="keep_height"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/RandomAudioNodePlayer/plugin.cfg", "res://addons/antialiased_line2d/plugin.cfg", "res://addons/explore-editor-theme/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/MaxSizeContainer/plugin.cfg", "res://addons/RandomAudioNodePlayer/plugin.cfg", "res://addons/antialiased_line2d/plugin.cfg", "res://addons/explore-editor-theme/plugin.cfg", "res://addons/imrp/plugin.cfg" )
 
 [global]
 
@@ -314,6 +415,14 @@ ui_focus_next={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777218,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
+ui_select_or_cancel={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":90,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":88,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":1,"pressure":0.0,"pressed":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":0,"pressure":0.0,"pressed":false,"script":null)
+ ]
+}
 ui_anykey={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777221,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
@@ -335,6 +444,15 @@ ui_anykey={
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":10,"pressure":0.0,"pressed":false,"script":null)
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":11,"pressure":0.0,"pressed":false,"script":null)
 , Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777217,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+ui_pause={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777217,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":11,"pressure":0.0,"pressed":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777221,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777222,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
 
@@ -348,6 +466,8 @@ ui_anykey={
 2d_physics/layer_6="cameraRegion"
 2d_physics/layer_7="playerHurtbox"
 2d_physics/layer_8="intangibleEnemies"
+2d_physics/layer_9="breakables"
+2d_physics/layer_10="playerPickup"
 
 [network]
 

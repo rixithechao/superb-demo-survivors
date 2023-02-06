@@ -1,14 +1,24 @@
-extends "res://Scripts/EnemyWarning.gd"
+extends EnemyWarning
 
 
 export var speed : float = 1
 
 
+var _temp_direction
+
+
 func configure_enemy(spawned):
-	var applied_angle = $Telegraph/Direction.global_rotation
+	var applied_angle = _temp_direction
 	spawned.move_mode = 1
 	spawned.move_speed = Vector2(speed,0).rotated(applied_angle)
+	#print("VECTOR SPAWN CONFIGURED ENEMY: ", rad2deg(applied_angle), ", ", spawned.move_speed)
 
+
+
+
+func on_start_spawning():
+	_temp_direction = $Telegraph/Direction.global_rotation
+	.on_start_spawning()
 
 func update_telegraphing():
 	var new_radius = lerp(radius, 1, fmod(4*percent, 1.0))

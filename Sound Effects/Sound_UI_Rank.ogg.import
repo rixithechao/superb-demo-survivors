@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Sound_UI_Rank.ogg-b57b476aae4e8b8d4f37d4649d91ccdd.oggstr"
+
+[deps]
+
+source_file="res://Sound Effects/Sound_UI_Rank.ogg"
+dest_files=[ "res://.import/Sound_UI_Rank.ogg-b57b476aae4e8b8d4f37d4649d91ccdd.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -9,5 +9,11 @@ data = ExtResource( 2 )
 "Spawning/Spawn Type" = 1
 "Spawning/Boss Treasure" = null
 
-[node name="Sprite" parent="Graphic" index="0"]
+[node name="Sprite" parent="Graphic/AirOffset" index="0"]
 texture = ExtResource( 3 )
+frame = 1
+
+[node name="MakeshiftWhiteFlash" parent="Graphic/AirOffset" index="1"]
+texture = ExtResource( 3 )
+
+[editable path="Graphic"]

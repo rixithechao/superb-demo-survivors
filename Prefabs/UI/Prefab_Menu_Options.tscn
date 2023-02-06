@@ -1,0 +1,561 @@
+[gd_scene load_steps=30 format=2]
+
+[ext_resource path="res://Fonts/DynFont_Results.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Fonts/DynFont_HeadersBackOutline2.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Fonts/DynFont_Headers.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Fonts/DynFont_BodyText.tres" type="DynamicFont" id=4]
+[ext_resource path="res://Prefabs/UI/Prefab_Menu.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Textures/UI/tex_ui_settings_leftArrow.png" type="Texture" id=6]
+[ext_resource path="res://Textures/UI/tex_ui_settings_rightArrow.png" type="Texture" id=7]
+[ext_resource path="res://Textures/UI/tex_panel_9slice_02.png" type="Texture" id=8]
+[ext_resource path="res://Textures/UI/tex_panel_9slice_01.png" type="Texture" id=9]
+[ext_resource path="res://Scripts/UI/SkewedUIElement.gd" type="Script" id=10]
+[ext_resource path="res://Scripts/UI/HeaderBackOutline.gd" type="Script" id=11]
+[ext_resource path="res://StyleBox_MenuButton.tres" type="StyleBox" id=12]
+[ext_resource path="res://StyleBox_TabBG.tres" type="StyleBox" id=13]
+[ext_resource path="res://StyleBox_TabFG.tres" type="StyleBox" id=14]
+[ext_resource path="res://StyleBox_TabPanel.tres" type="StyleBox" id=15]
+[ext_resource path="res://StyleBox_MenuButton_Unfocused.tres" type="StyleBox" id=16]
+[ext_resource path="res://Scripts/UI/Menu_Options.gd" type="Script" id=17]
+[ext_resource path="res://Scripts/UI/OptionsTabNavigation.gd" type="Script" id=18]
+[ext_resource path="res://Sound Effects/Sound_UI_Cursor.ogg" type="AudioStream" id=19]
+[ext_resource path="res://Scripts/UI/ItemList_Options.gd" type="Script" id=20]
+[ext_resource path="res://StyleBox_TabsSelected.tres" type="StyleBox" id=21]
+[ext_resource path="res://StyleBox_Menu_Selection2.tres" type="StyleBox" id=22]
+[ext_resource path="res://Scripts/UI/AllInputsButton.gd" type="Script" id=23]
+[ext_resource path="res://Scripts/UI/OptionsTabs.gd" type="Script" id=24]
+
+[sub_resource type="StyleBoxEmpty" id=8]
+
+[sub_resource type="StyleBoxEmpty" id=7]
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="Animation" id=5]
+resource_name = "Menu_Options"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Skew:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 388, 667 ), Vector2( 388, 222 ), Vector2( 388, 222 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "Menu_Options_Close"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("Skew:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 388, 222 ), Vector2( 388, 222 ), Vector2( 388, 667 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.6 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "cancel_close"
+} ]
+}
+
+[node name="Menu - Options" instance=ExtResource( 5 )]
+script = ExtResource( 17 )
+cancel_to_close = true
+cancel_sequence = "Menu_Options_Close"
+
+[node name="Skew" type="Node2D" parent="." index="2"]
+position = Vector2( 388, 444.5 )
+script = ExtResource( 10 )
+
+[node name="Panel" type="NinePatchRect" parent="Skew" index="0"]
+self_modulate = Color( 0.682353, 0.984314, 1, 1 )
+margin_left = -356.0
+margin_top = -180.0
+margin_right = 323.0
+margin_bottom = 166.0
+rect_pivot_offset = Vector2( 250, 135 )
+texture = ExtResource( 8 )
+patch_margin_left = 76
+patch_margin_top = 63
+patch_margin_right = 70
+patch_margin_bottom = 61
+
+[node name="HeaderBackOutline" type="Label" parent="Skew/Panel" index="0"]
+show_behind_parent = true
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -146.5
+margin_top = -23.5
+margin_right = 146.5
+margin_bottom = 25.5
+custom_fonts/font = ExtResource( 2 )
+text = "Settings"
+align = 1
+valign = 1
+script = ExtResource( 11 )
+header_path = NodePath("../Header")
+
+[node name="PanelDropShadow2" type="NinePatchRect" parent="Skew/Panel" index="1"]
+modulate = Color( 0.282353, 0.658824, 0.909804, 1 )
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -9.0
+margin_top = -9.0
+margin_right = 28.0
+margin_bottom = 30.0
+rect_pivot_offset = Vector2( 250, 135 )
+texture = ExtResource( 9 )
+patch_margin_left = 76
+patch_margin_top = 106
+patch_margin_right = 70
+patch_margin_bottom = 64
+
+[node name="PanelDropShadow" type="NinePatchRect" parent="Skew/Panel" index="2"]
+modulate = Color( 0.160784, 0.2, 0.368627, 1 )
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -5.0
+margin_top = -5.0
+margin_right = 22.0
+margin_bottom = 24.0
+rect_pivot_offset = Vector2( 250, 135 )
+texture = ExtResource( 9 )
+patch_margin_left = 76
+patch_margin_top = 99
+patch_margin_right = 70
+patch_margin_bottom = 54
+
+[node name="Header" type="Label" parent="Skew/Panel" index="3"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -146.5
+margin_top = -23.5
+margin_right = 146.5
+margin_bottom = 25.5
+custom_fonts/font = ExtResource( 3 )
+text = "Settings"
+align = 1
+valign = 1
+
+[node name="TabNavigation" type="Button" parent="Skew/Panel" index="4"]
+anchor_right = 1.0
+margin_left = 180.0
+margin_top = 32.0
+margin_right = -190.0
+margin_bottom = 71.0
+custom_styles/hover = ExtResource( 21 )
+custom_styles/pressed = ExtResource( 21 )
+custom_styles/focus = ExtResource( 21 )
+custom_styles/disabled = SubResource( 8 )
+custom_styles/normal = SubResource( 8 )
+script = ExtResource( 18 )
+
+[node name="TabContainer" type="TabContainer" parent="Skew/Panel" index="5"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 23.0
+margin_top = 37.0
+margin_right = -35.0
+margin_bottom = -68.0
+custom_fonts/font = ExtResource( 4 )
+custom_styles/tab_fg = ExtResource( 14 )
+custom_styles/tab_bg = ExtResource( 13 )
+custom_styles/panel = ExtResource( 15 )
+all_tabs_in_front = true
+script = ExtResource( 24 )
+cursor_sound = NodePath("../../../CursorSound")
+
+[node name="Audio" type="Control" parent="Skew/Panel/TabContainer" index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 31.0
+margin_right = -8.0
+margin_bottom = -8.0
+
+[node name="ItemList" type="ItemList" parent="Skew/Panel/TabContainer/Audio" index="0"]
+margin_left = 54.0
+margin_top = 26.0
+margin_right = 554.0
+margin_bottom = 176.0
+rect_min_size = Vector2( 500, 150 )
+rect_clip_content = false
+focus_neighbour_top = NodePath("../../../TabNavigation")
+focus_neighbour_bottom = NodePath("../../../CloseButton")
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_colors/guide_color = Color( 0, 0, 0, 0 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_constants/vseparation = 4
+custom_fonts/font = ExtResource( 1 )
+custom_styles/cursor = ExtResource( 22 )
+custom_styles/selected_focus = ExtResource( 22 )
+custom_styles/bg_focus = SubResource( 7 )
+custom_styles/cursor_unfocused = SubResource( 7 )
+custom_styles/selected = SubResource( 7 )
+custom_styles/bg = SubResource( 7 )
+items = [ "Music Volume", null, false, "Sound Effect Volume", null, false ]
+script = ExtResource( 20 )
+menu_node = NodePath("../../../../..")
+cursor_sound_node = NodePath("../../../../../CursorSound")
+custom_navigation = false
+controls_nodes = [ NodePath("../ControlsGrid/MusicVolumeSlider"), NodePath("../ControlsGrid/SFXVolumeSlider") ]
+
+[node name="ControlsGrid" type="GridContainer" parent="Skew/Panel/TabContainer/Audio" index="1"]
+margin_left = 364.0
+margin_top = 26.0
+margin_right = 564.0
+margin_bottom = 176.0
+mouse_filter = 2
+custom_constants/vseparation = 15
+
+[node name="MusicVolumeSlider" type="HSlider" parent="Skew/Panel/TabContainer/Audio/ControlsGrid" index="0"]
+margin_right = 200.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 200, 0 )
+focus_mode = 1
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+size_flags_vertical = 1
+step = 0.01
+value = 70.0
+
+[node name="SFXVolumeSlider" type="HSlider" parent="Skew/Panel/TabContainer/Audio/ControlsGrid" index="1"]
+margin_top = 31.0
+margin_right = 200.0
+margin_bottom = 47.0
+rect_min_size = Vector2( 200, 0 )
+focus_mode = 1
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+step = 0.01
+value = 70.0
+
+[node name="Display" type="Control" parent="Skew/Panel/TabContainer" index="1"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 31.0
+margin_right = -8.0
+margin_bottom = -8.0
+
+[node name="ItemList" type="ItemList" parent="Skew/Panel/TabContainer/Display" index="0"]
+margin_left = 54.0
+margin_top = 26.0
+margin_right = 554.0
+margin_bottom = 176.0
+rect_min_size = Vector2( 500, 150 )
+rect_clip_content = false
+focus_neighbour_top = NodePath("../../../TabNavigation")
+focus_neighbour_bottom = NodePath("../../../CloseButton")
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_colors/guide_color = Color( 0, 0, 0, 0 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_constants/vseparation = 10
+custom_fonts/font = ExtResource( 1 )
+custom_styles/cursor = ExtResource( 22 )
+custom_styles/selected_focus = ExtResource( 22 )
+custom_styles/bg_focus = SubResource( 7 )
+custom_styles/cursor_unfocused = SubResource( 7 )
+custom_styles/selected = SubResource( 7 )
+custom_styles/bg = SubResource( 7 )
+items = [ "Window Scale", null, false, "Fullscreen", null, false, "Vsync", null, false ]
+script = ExtResource( 20 )
+menu_node = NodePath("../../../../..")
+cursor_sound_node = NodePath("../../../../../CursorSound")
+immediate_focus = false
+custom_navigation = false
+controls_nodes = [ NodePath("../ControlsGrid/HBoxContainer/WindowScaleTabs"), NodePath("../ControlsGrid/FullscreenToggleCenter/FullscreenToggle"), NodePath("../ControlsGrid/VsyncToggleCenter/VsyncToggle") ]
+
+[node name="ControlsGrid" type="GridContainer" parent="Skew/Panel/TabContainer/Display" index="1"]
+margin_left = 428.0
+margin_top = 26.0
+margin_right = 550.0
+margin_bottom = 176.0
+rect_min_size = Vector2( 0, 150 )
+mouse_filter = 2
+size_flags_horizontal = 3
+custom_constants/vseparation = 15
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Skew/Panel/TabContainer/Display/ControlsGrid" index="0"]
+margin_right = 122.0
+margin_bottom = 32.0
+
+[node name="WindowScaleLeftArrow" type="TextureButton" parent="Skew/Panel/TabContainer/Display/ControlsGrid/HBoxContainer" index="0"]
+self_modulate = Color( 0.682353, 0.984314, 1, 1 )
+margin_right = 32.0
+margin_bottom = 32.0
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 6 )
+texture_hover = ExtResource( 6 )
+texture_disabled = ExtResource( 6 )
+texture_focused = ExtResource( 6 )
+
+[node name="LeftArrow2" type="TextureRect" parent="Skew/Panel/TabContainer/Display/ControlsGrid/HBoxContainer/WindowScaleLeftArrow" index="0"]
+self_modulate = Color( 0.256027, 0.295427, 0.464844, 1 )
+show_behind_parent = true
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 34.0
+margin_bottom = 34.0
+texture = ExtResource( 6 )
+
+[node name="WindowScaleTabs" type="TabContainer" parent="Skew/Panel/TabContainer/Display/ControlsGrid/HBoxContainer" index="1"]
+margin_left = 36.0
+margin_right = 86.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 50, 0 )
+custom_colors/font_color_disabled = Color( 0, 0, 0, 0 )
+custom_styles/tab_fg = SubResource( 4 )
+custom_styles/tab_disabled = SubResource( 4 )
+custom_styles/tab_bg = SubResource( 4 )
+custom_styles/panel = SubResource( 4 )
+tabs_visible = false
+script = ExtResource( 24 )
+cursor_sound = NodePath("../../../../../../../CursorSound")
+
+[node name="100x" type="Label" parent="Skew/Panel/TabContainer/Display/ControlsGrid/HBoxContainer/WindowScaleTabs" index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color_shadow = Color( 0.0851834, 0.117517, 0.256552, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "1x"
+align = 1
+valign = 1
+
+[node name="200x" type="Label" parent="Skew/Panel/TabContainer/Display/ControlsGrid/HBoxContainer/WindowScaleTabs" index="1"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color_shadow = Color( 0.0851834, 0.117517, 0.256552, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "2x"
+align = 1
+valign = 1
+
+[node name="300x" type="Label" parent="Skew/Panel/TabContainer/Display/ControlsGrid/HBoxContainer/WindowScaleTabs" index="2"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color_shadow = Color( 0.0851834, 0.117517, 0.256552, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "3x"
+align = 1
+valign = 1
+
+[node name="400x" type="Label" parent="Skew/Panel/TabContainer/Display/ControlsGrid/HBoxContainer/WindowScaleTabs" index="3"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color_shadow = Color( 0.0851834, 0.117517, 0.256552, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "4x"
+align = 1
+valign = 1
+
+[node name="WindowScaleRightArrow" type="TextureButton" parent="Skew/Panel/TabContainer/Display/ControlsGrid/HBoxContainer" index="2"]
+self_modulate = Color( 0.682353, 0.984314, 1, 1 )
+margin_left = 90.0
+margin_right = 122.0
+margin_bottom = 32.0
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 7 )
+texture_hover = ExtResource( 7 )
+texture_disabled = ExtResource( 7 )
+texture_focused = ExtResource( 7 )
+
+[node name="RightArrow2" type="TextureRect" parent="Skew/Panel/TabContainer/Display/ControlsGrid/HBoxContainer/WindowScaleRightArrow" index="0"]
+self_modulate = Color( 0.256027, 0.295427, 0.464844, 1 )
+show_behind_parent = true
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 34.0
+margin_bottom = 34.0
+texture = ExtResource( 7 )
+
+[node name="FullscreenToggleCenter" type="CenterContainer" parent="Skew/Panel/TabContainer/Display/ControlsGrid" index="1"]
+margin_top = 47.0
+margin_right = 122.0
+margin_bottom = 71.0
+
+[node name="FullscreenToggle" type="CheckBox" parent="Skew/Panel/TabContainer/Display/ControlsGrid/FullscreenToggleCenter" index="0"]
+margin_left = 49.0
+margin_right = 73.0
+margin_bottom = 24.0
+focus_mode = 1
+
+[node name="VsyncToggleCenter" type="CenterContainer" parent="Skew/Panel/TabContainer/Display/ControlsGrid" index="2"]
+margin_top = 86.0
+margin_right = 122.0
+margin_bottom = 110.0
+
+[node name="VsyncToggle" type="CheckBox" parent="Skew/Panel/TabContainer/Display/ControlsGrid/VsyncToggleCenter" index="0"]
+margin_left = 49.0
+margin_right = 73.0
+margin_bottom = 24.0
+
+[node name="Effects" type="Control" parent="Skew/Panel/TabContainer" index="2"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 31.0
+margin_right = -8.0
+margin_bottom = -8.0
+
+[node name="ItemList" type="ItemList" parent="Skew/Panel/TabContainer/Effects" index="0"]
+margin_left = 54.0
+margin_top = 26.0
+margin_right = 554.0
+margin_bottom = 176.0
+rect_min_size = Vector2( 500, 150 )
+rect_clip_content = false
+focus_neighbour_top = NodePath("../../../TabNavigation")
+focus_neighbour_bottom = NodePath("../../../CloseButton")
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_colors/guide_color = Color( 0, 0, 0, 0 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_constants/vseparation = 6
+custom_fonts/font = ExtResource( 1 )
+custom_styles/cursor = ExtResource( 22 )
+custom_styles/selected_focus = ExtResource( 22 )
+custom_styles/bg_focus = SubResource( 7 )
+custom_styles/cursor_unfocused = SubResource( 7 )
+custom_styles/selected = SubResource( 7 )
+custom_styles/bg = SubResource( 7 )
+items = [ "Screen Shake", null, false, "Damage Numbers", null, false ]
+script = ExtResource( 20 )
+menu_node = NodePath("../../../../..")
+cursor_sound_node = NodePath("../../../../../CursorSound")
+immediate_focus = false
+custom_navigation = false
+controls_nodes = [ NodePath("../ControlsGrid/ScreenshakeToggleCenter/ScreenshakeToggle"), NodePath("../ControlsGrid/DamageNumToggleCenter/DamageNumToggle") ]
+
+[node name="ControlsGrid" type="GridContainer" parent="Skew/Panel/TabContainer/Effects" index="1"]
+margin_left = 430.0
+margin_top = 26.0
+margin_right = 550.0
+margin_bottom = 176.0
+rect_min_size = Vector2( 0, 150 )
+mouse_filter = 2
+size_flags_horizontal = 3
+custom_constants/vseparation = 10
+
+[node name="ScreenshakeToggleCenter" type="CenterContainer" parent="Skew/Panel/TabContainer/Effects/ControlsGrid" index="0"]
+margin_right = 120.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 120, 0 )
+
+[node name="ScreenshakeToggle" type="CheckBox" parent="Skew/Panel/TabContainer/Effects/ControlsGrid/ScreenshakeToggleCenter" index="0"]
+margin_left = 48.0
+margin_right = 72.0
+margin_bottom = 24.0
+focus_mode = 1
+
+[node name="DamageNumToggleCenter" type="CenterContainer" parent="Skew/Panel/TabContainer/Effects/ControlsGrid" index="1"]
+margin_top = 34.0
+margin_right = 120.0
+margin_bottom = 58.0
+rect_min_size = Vector2( 120, 0 )
+
+[node name="DamageNumToggle" type="CheckBox" parent="Skew/Panel/TabContainer/Effects/ControlsGrid/DamageNumToggleCenter" index="0"]
+margin_left = 48.0
+margin_right = 72.0
+margin_bottom = 24.0
+focus_mode = 1
+
+[node name="CloseButton" type="Button" parent="Skew/Panel" index="6"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -115.5
+margin_top = -65.0
+margin_right = 115.5
+margin_bottom = -23.0
+custom_colors/font_color_disabled = Color( 0.345098, 0.345098, 0.345098, 1 )
+custom_colors/font_color_focus = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 1 )
+custom_styles/hover = ExtResource( 12 )
+custom_styles/pressed = ExtResource( 12 )
+custom_styles/focus = ExtResource( 12 )
+custom_styles/disabled = ExtResource( 12 )
+custom_styles/normal = ExtResource( 16 )
+text = "Done"
+script = ExtResource( 23 )
+
+[node name="CursorSound" type="AudioStreamPlayer" parent="." index="4"]
+stream = ExtResource( 19 )
+bus = "SoundEffects"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="6"]
+autoplay = "Menu_Options"
+anims/Menu_Options = SubResource( 5 )
+anims/Menu_Options_Close = SubResource( 6 )
+
+[node name="SaveDelayTimer" type="Timer" parent="." index="7"]
+wait_time = 0.25
+one_shot = true
+
+[node name="RegainFocusTimer" type="Timer" parent="." index="8"]
+wait_time = 0.125
+one_shot = true
+
+[connection signal="focus_entered" from="Skew/Panel/TabNavigation" to="Skew/Panel/TabNavigation" method="_on_TabNavigation_focus_entered"]
+[connection signal="tab_selected" from="Skew/Panel/TabContainer" to="Skew/Panel/TabNavigation" method="_on_TabContainer_tab_selected"]
+[connection signal="focus_entered" from="Skew/Panel/TabContainer/Audio/ItemList" to="Skew/Panel/TabContainer/Audio/ItemList" method="_on_ItemList_focus_entered"]
+[connection signal="gui_input" from="Skew/Panel/TabContainer/Audio/ItemList" to="Skew/Panel/TabContainer/Audio/ItemList" method="_on_ItemList_gui_input"]
+[connection signal="item_selected" from="Skew/Panel/TabContainer/Audio/ItemList" to="Skew/Panel/TabContainer/Audio/ItemList" method="_on_ItemList_item_selected"]
+[connection signal="mouse_entered" from="Skew/Panel/TabContainer/Audio/ItemList" to="Skew/Panel/TabContainer/Audio/ItemList" method="_on_ItemList_mouse_entered"]
+[connection signal="mouse_exited" from="Skew/Panel/TabContainer/Audio/ItemList" to="Skew/Panel/TabContainer/Audio/ItemList" method="_on_ItemList_mouse_exited"]
+[connection signal="value_changed" from="Skew/Panel/TabContainer/Audio/ControlsGrid/MusicVolumeSlider" to="." method="_on_MusicVolumeSlider_value_changed"]
+[connection signal="value_changed" from="Skew/Panel/TabContainer/Audio/ControlsGrid/SFXVolumeSlider" to="." method="_on_SFXVolumeSlider_value_changed"]
+[connection signal="focus_entered" from="Skew/Panel/TabContainer/Display/ItemList" to="Skew/Panel/TabContainer/Display/ItemList" method="_on_ItemList_focus_entered"]
+[connection signal="gui_input" from="Skew/Panel/TabContainer/Display/ItemList" to="Skew/Panel/TabContainer/Display/ItemList" method="_on_ItemList_gui_input"]
+[connection signal="item_selected" from="Skew/Panel/TabContainer/Display/ItemList" to="Skew/Panel/TabContainer/Display/ItemList" method="_on_ItemList_item_selected"]
+[connection signal="mouse_entered" from="Skew/Panel/TabContainer/Display/ItemList" to="Skew/Panel/TabContainer/Display/ItemList" method="_on_ItemList_mouse_entered"]
+[connection signal="mouse_exited" from="Skew/Panel/TabContainer/Display/ItemList" to="Skew/Panel/TabContainer/Display/ItemList" method="_on_ItemList_mouse_exited"]
+[connection signal="pressed" from="Skew/Panel/TabContainer/Display/ControlsGrid/HBoxContainer/WindowScaleLeftArrow" to="." method="_on_WindowScaleLeftArrow_pressed"]
+[connection signal="tab_changed" from="Skew/Panel/TabContainer/Display/ControlsGrid/HBoxContainer/WindowScaleTabs" to="." method="_on_WindowScaleTabs_tab_changed"]
+[connection signal="pressed" from="Skew/Panel/TabContainer/Display/ControlsGrid/HBoxContainer/WindowScaleRightArrow" to="." method="_on_WindowScaleRightArrow_pressed"]
+[connection signal="toggled" from="Skew/Panel/TabContainer/Display/ControlsGrid/FullscreenToggleCenter/FullscreenToggle" to="." method="_on_FullscreenToggle_toggled"]
+[connection signal="toggled" from="Skew/Panel/TabContainer/Display/ControlsGrid/VsyncToggleCenter/VsyncToggle" to="." method="_on_VsyncToggle_toggled"]
+[connection signal="focus_entered" from="Skew/Panel/TabContainer/Effects/ItemList" to="Skew/Panel/TabContainer/Effects/ItemList" method="_on_ItemList_focus_entered"]
+[connection signal="gui_input" from="Skew/Panel/TabContainer/Effects/ItemList" to="Skew/Panel/TabContainer/Effects/ItemList" method="_on_ItemList_gui_input"]
+[connection signal="item_selected" from="Skew/Panel/TabContainer/Effects/ItemList" to="Skew/Panel/TabContainer/Effects/ItemList" method="_on_ItemList_item_selected"]
+[connection signal="mouse_entered" from="Skew/Panel/TabContainer/Effects/ItemList" to="Skew/Panel/TabContainer/Effects/ItemList" method="_on_ItemList_mouse_entered"]
+[connection signal="mouse_exited" from="Skew/Panel/TabContainer/Effects/ItemList" to="Skew/Panel/TabContainer/Effects/ItemList" method="_on_ItemList_mouse_exited"]
+[connection signal="toggled" from="Skew/Panel/TabContainer/Effects/ControlsGrid/ScreenshakeToggleCenter/ScreenshakeToggle" to="." method="_on_ScreenshakeToggle_toggled"]
+[connection signal="toggled" from="Skew/Panel/TabContainer/Effects/ControlsGrid/DamageNumToggleCenter/DamageNumToggle" to="." method="_on_DamageNumToggle_toggled"]
+[connection signal="focus_entered" from="Skew/Panel/CloseButton" to="." method="_on_CloseButton_focus_entered"]
+[connection signal="gui_input" from="Skew/Panel/CloseButton" to="." method="_on_CloseButton_gui_input"]
+[connection signal="mouse_entered" from="Skew/Panel/CloseButton" to="." method="_on_CloseButton_mouse_entered"]
+[connection signal="timeout" from="SaveDelayTimer" to="." method="_on_SaveDelayTimer_timeout"]

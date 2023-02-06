@@ -1,10 +1,8 @@
-[gd_resource type="Resource" load_steps=31 format=2]
+[gd_resource type="Resource" load_steps=15 format=2]
 
 [ext_resource path="res://Scripts/ScriptableObjects/WeaponData.gd" type="Script" id=1]
 [ext_resource path="res://Textures/Items/spr_weapon_placeholder.png" type="Texture" id=2]
 [ext_resource path="res://Scripts/ScriptableObjects/StatSheetData.gd" type="Script" id=3]
-[ext_resource path="res://Data Objects/Stats/Stat_Strength.tres" type="Resource" id=4]
-[ext_resource path="res://Scripts/ScriptableObjects/LevelModifierData.gd" type="Script" id=5]
 [ext_resource path="res://Data Objects/Stats/Stat_ShotInterval.tres" type="Resource" id=6]
 [ext_resource path="res://Data Objects/Stats/Stat_HitInterval.tres" type="Resource" id=7]
 [ext_resource path="res://Data Objects/Stats/Stat_Amount.tres" type="Resource" id=8]
@@ -16,132 +14,20 @@
 [ext_resource path="res://Data Objects/Stats/Stat_Duration.tres" type="Resource" id=14]
 [ext_resource path="res://Data Objects/Stats/Stat_Damage.tres" type="Resource" id=15]
 
-[sub_resource type="Resource" id=14]
-script = ExtResource( 3 )
-stats = [ ExtResource( 4 ) ]
-values = {
-ExtResource( 4 ): 1.0
-}
-Values/Strength = 1.0
-"Preset or Remove" = 0
-
-[sub_resource type="Resource" id=3]
-resource_name = "Level 2"
-script = ExtResource( 5 )
-description = ""
-Type = 0
-Stats = SubResource( 14 )
-
-[sub_resource type="Resource" id=15]
-script = ExtResource( 3 )
-stats = [ ExtResource( 4 ) ]
-values = {
-ExtResource( 4 ): 1.0
-}
-Values/Strength = 1.0
-"Preset or Remove" = 0
-
-[sub_resource type="Resource" id=5]
-resource_name = "Level 3"
-script = ExtResource( 5 )
-description = ""
-Type = 0
-Stats = SubResource( 15 )
-
-[sub_resource type="Resource" id=16]
-script = ExtResource( 3 )
-stats = [ ExtResource( 4 ) ]
-values = {
-ExtResource( 4 ): 1.0
-}
-Values/Strength = 1.0
-"Preset or Remove" = 0
-
-[sub_resource type="Resource" id=7]
-resource_name = "Level 4"
-script = ExtResource( 5 )
-description = ""
-Type = 0
-Stats = SubResource( 16 )
-
-[sub_resource type="Resource" id=17]
-script = ExtResource( 3 )
-stats = [ ExtResource( 4 ) ]
-values = {
-ExtResource( 4 ): 1.0
-}
-Values/Strength = 1.0
-"Preset or Remove" = 0
-
-[sub_resource type="Resource" id=9]
-resource_name = "Level 5"
-script = ExtResource( 5 )
-description = ""
-Type = 0
-Stats = SubResource( 17 )
-
-[sub_resource type="Resource" id=18]
-script = ExtResource( 3 )
-stats = [ ExtResource( 4 ) ]
-values = {
-ExtResource( 4 ): 1.0
-}
-Values/Strength = 1.0
-"Preset or Remove" = 0
-
-[sub_resource type="Resource" id=11]
-resource_name = "Level 6"
-script = ExtResource( 5 )
-description = ""
-Type = 0
-Stats = SubResource( 18 )
-
-[sub_resource type="Resource" id=19]
-script = ExtResource( 3 )
-stats = [ ExtResource( 4 ) ]
-values = {
-ExtResource( 4 ): 1.0
-}
-Values/Strength = 1.0
-"Preset or Remove" = 0
-
-[sub_resource type="Resource" id=13]
-resource_name = "Level 7"
-script = ExtResource( 5 )
-description = ""
-Type = 0
-Stats = SubResource( 19 )
-
-[sub_resource type="Resource" id=20]
-script = ExtResource( 3 )
-stats = [ ExtResource( 4 ) ]
-values = {
-ExtResource( 4 ): 1.0
-}
-Values/Strength = 1.0
-"Preset or Remove" = 0
-
-[sub_resource type="Resource" id=21]
-resource_name = "Level 8"
-script = ExtResource( 5 )
-description = ""
-Type = 0
-Stats = SubResource( 20 )
-
 [sub_resource type="Resource" id=1]
 script = ExtResource( 3 )
 stats = [ ExtResource( 15 ), ExtResource( 8 ), ExtResource( 14 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 13 ) ]
 values = {
+ExtResource( 15 ): 10.0,
+ExtResource( 10 ): 1.0,
 ExtResource( 11 ): 1.0,
 ExtResource( 12 ): 1.0,
-ExtResource( 7 ): 1.0,
 ExtResource( 14 ): 1.0,
-ExtResource( 10 ): 1.0,
-ExtResource( 13 ): 2.0,
-ExtResource( 15 ): 10.0,
 ExtResource( 9 ): 1.0,
+ExtResource( 6 ): 1.0,
 ExtResource( 8 ): 1.0,
-ExtResource( 6 ): 1.0
+ExtResource( 13 ): 2.0,
+ExtResource( 7 ): 1.0
 }
 Values/Damage = 10.0
 Values/Amount = 1.0
@@ -163,7 +49,7 @@ description = ""
 max_level = 0
 rarity = 100.0
 stats = SubResource( 1 )
-level_modifiers = [ SubResource( 3 ), SubResource( 5 ), SubResource( 7 ), SubResource( 9 ), SubResource( 11 ), SubResource( 13 ), SubResource( 21 ) ]
+level_modifiers = [  ]
 pierce_type = 0
 pool_limit = 30
 blocked_by_terrain = false

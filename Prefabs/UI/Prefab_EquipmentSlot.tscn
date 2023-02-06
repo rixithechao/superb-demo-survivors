@@ -4,27 +4,43 @@
 [ext_resource path="res://Fonts/DynFont_EquipmentLevels.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Textures/UI/tex_ui_hudEquipSlot.png" type="Texture" id=4]
 
-[node name="EquipmentSlot" type="TextureRect"]
+[node name="EquipmentSlot" type="Control"]
 anchor_right = 0.042
-anchor_bottom = 0.074
-margin_right = -0.256004
-margin_bottom = 0.0319996
-texture = ExtResource( 4 )
-stretch_mode = 3
+anchor_bottom = 0.079
+margin_right = -0.256001
+margin_bottom = -2.128
+rect_min_size = Vector2( 24, 32 )
 script = ExtResource( 2 )
 
+[node name="PlateIcon" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -8.0
+margin_top = -24.0
+margin_right = 8.0
+margin_bottom = -8.0
+texture = ExtResource( 4 )
+stretch_mode = 1
+
 [node name="EquipmentIcon" type="TextureRect" parent="."]
-margin_top = -8.0
-margin_right = 16.0
-margin_bottom = 8.0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -8.0
+margin_top = -32.0
+margin_right = 8.0
+margin_bottom = -16.0
 stretch_mode = 1
 
 [node name="LevelLabel" type="Label" parent="."]
 anchor_top = 1.0
+anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 2.0
-margin_top = -21.0
-margin_right = 29.0
-margin_bottom = -7.0
+margin_top = -15.0
 custom_fonts/font = ExtResource( 3 )
 text = "Lv 1"
+align = 1
+valign = 2

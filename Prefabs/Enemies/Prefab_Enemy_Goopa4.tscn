@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Prefabs/Templates/Prefab_EnemyCharacter.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Data Objects/Enemies/EnemyData_Goopa.tres" type="Resource" id=2]
+[ext_resource path="res://Textures/Characters/spr_enemy_goopa4_a2xt.png" type="Texture" id=3]
+
+[node name="Enemy - Goopa" instance=ExtResource( 1 )]
+data = ExtResource( 2 )
+
+[node name="Sprite" parent="Graphic/AirOffset" index="0"]
+position = Vector2( 0, -28 )
+texture = ExtResource( 3 )
+frame = 1
+
+[node name="MakeshiftWhiteFlash" parent="Graphic/AirOffset" index="1"]
+position = Vector2( 0, -28 )
+texture = ExtResource( 3 )
+
+[editable path="Graphic"]

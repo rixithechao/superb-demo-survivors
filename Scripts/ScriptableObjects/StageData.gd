@@ -2,7 +2,10 @@ extends Resource
 class_name StageData
 
 export var name : String
+export var preview : Texture
 export var scene : Resource
+export var tint : Color
+export var music_data : Resource
 export(Array, Resource) var waves
 export var minutes : int = 20
 

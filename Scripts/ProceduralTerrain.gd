@@ -15,10 +15,11 @@ var breakables_scenes = []
 var landmark_nodes = {}
 var breakable_nodes = {}
 
+var img_vp
 var heatmap = {}
 
 var rng = RandomNumberGenerator.new()
-var opSimNoise = OpenSimplexNoise.new()
+var opSimNoise
 
 var map_size_tile_offset
 
@@ -40,12 +41,17 @@ func loadLandmarkScenes():
 		for scene in stage_data.landmarks:
 			landmark_scenes.append(scene)
 			i += 1
-			UIManager.load_screen_break(lerp(0, 0.2, i/total_count))
+			UIManager.load_screen_break(lerp(0.05, 0.2, i/total_count))
+		
+		print("landmark scene array: ", landmark_scenes)
 
 		for scene in stage_data.breakables:
 			breakables_scenes.append(scene)
 			i += 1
-			UIManager.load_screen_break(lerp(0, 0.2, i/total_count))
+			UIManager.load_screen_break(lerp(0.05, 0.2, i/total_count))
+
+		print("breakables scene array: ", breakables_scenes, "\n")
+
 
 
 
@@ -105,6 +111,8 @@ func addLandmarkPoint(point_type_array):
 
 	points_all.append(new_point)
 	point_type_array.append(new_point)
+	
+	return new_point
 
 
 func generateLandmarks():
@@ -117,20 +125,35 @@ func generateLandmarks():
 	var num_special = stage_data.special_landmarks.size()
 	
 	if num_special > 0:
-		points_landmarks_special.append(map_size_tile_offset)
-		points_all.append(map_size_tile_offset)
-		
-		for i in range(num_special-1):
-			var pos = addLandmarkPoint(points_landmarks_special)
-			var sc = load(stage_data.special_landmarks[i])
-			var sc_spawned = sc.instance()
-			sc_spawned.transform.position = pos
-			WorldManager.add_object(sc_spawned)
-			
-			UIManager.load_screen_break(lerp(0.2, 0.5, i/i_total))
 
+		# Spawn the first at the center of the map
+		points_landmarks_special.append(map_size_tile_offset)
+		var home_lm = stage_data.special_landmarks[0]
+		var home_lm_spawned = home_lm.instance()
+		home_lm_spawned.position = Vector2.ZERO
+		WorldManager.add_object(home_lm_spawned)
+
+		points_all.append(map_size_tile_offset)
+
+
+		# Spawn the others in random locations around the map
+		if  num_special > 1:
+			for i in range(1,num_special-1):
+				var pos = addLandmarkPoint(points_landmarks_special)
+				var sc = stage_data.special_landmarks[i]
+				var sc_spawned = sc.instance()
+				sc_spawned.position = WorldManager.tile_to_world(pos - map_size_tile_offset)
+				WorldManager.add_object(sc_spawned)
+				
+				#print ("SPECIAL LANDMARK ", i, " AT ", pos, "/", sc_spawned.global_position)
+				
+				UIManager.load_screen_break(lerp(0.2, 0.5, i/i_total))
+
+
+	# If no special landmarks exist, spawn a normal landmark at the center of the map
 	else:
 		points_landmarks_normal.append(map_size_tile_offset)
+		landmark_indices.append(randi() % (max(1, landmark_scenes.size()) as int))
 		points_all.append(map_size_tile_offset)
 
 
@@ -147,51 +170,69 @@ func generateLandmarks():
 
 		UIManager.load_screen_break(lerp(0.2, 0.5, (_i+stage_data.landmark_count)/i_total))
 
+	print ("SPECIAL LANDMARKS: ", stage_data.special_landmarks, points_landmarks_special, "\nNORMAL LANDMARKS: ", stage_data.landmarks, points_landmarks_normal, "\nBREAKABLES: ", stage_data.breakables, points_breakables, "\n")
 
 
 func initNoise():
+	opSimNoise = $Noise.texture.noise
 	opSimNoise.seed = randi()
 	opSimNoise.period = stage_data.noise_period
 	opSimNoise.octaves = stage_data.noise_octaves
 
 
-func generateHeatMap():
-	
+func generateViewport():
 	# Generate the heatmap image	
-	var img_blit = []
-	for i in range(0,4):
-		var img = Image.new()
-		img.load("res://Textures/tex_landmarkBlit_"+String(i)+".png")
-		img_blit.append(img)
+	var blit_imgs = WorldManager._blit_images
+	var blit_texs = WorldManager._blit_textures
+	#print("BLIT TEXTURES: ", blit_imgs, ", ", blit_texs)
 	
+	#&var img_points = Image.new()
+	#&img_points.create(stage_data.map_size.x, stage_data.map_size.y, false, 5)
 	
-	var img_points = Image.new()
-	img_points.create(stage_data.map_size.x, stage_data.map_size.y, false, 5)
-	
-	var img_merged = Image.new()
-	img_merged.create(stage_data.map_size.x, stage_data.map_size.y, false, 5)
+	#print(blit_imgs.get_format(), " ", img_points.get_format())
 
-	#print(img_blit.get_format(), " ", img_points.get_format())
-
-	img_points.lock()
-	img_points.fill(Color.black)
+	#&img_points.lock()
+	#&img_points.fill(Color.black)
 	
 	var points_landmarks_all = points_landmarks_normal.duplicate(false) + points_landmarks_special
 	
-	var i_blit = points_landmarks_all.size()
-	var i_total = i_blit + stage_data.map_size.x
+	var i_total = points_landmarks_all.size()
 	var i = 0
-	
+
+	$Viewport.size = stage_data.map_size
+
 	for v in points_landmarks_all:
 		#print(v)
-		img_points.blend_rect(img_blit[randi() % img_blit.size()], Rect2(0,0,32,32), Vector2(v.x-16,v.y-16))
+		#var this_blit_img = blit_imgs[randi() % blit_imgs.size()]
+		var this_blit_tex = blit_texs[randi() % blit_imgs.size()]
+		var this_blit_rect = TextureRect.new()
+		var this_blit_pos = Vector2(v.x-16,v.y-16)
+
+		this_blit_rect.	pause_mode = Node.PAUSE_MODE_PROCESS
+		this_blit_rect.set_texture(this_blit_tex)
+		this_blit_rect.rect_size = Vector2(32,32)
+		$Viewport.add_child(this_blit_rect)
+		this_blit_rect.rect_position = this_blit_pos
+
+		#print("THIS BLIT AFTER: ", this_blit_tex, ", ", this_blit_rect.texture)
+
+		#&img_points.blend_rect(this_blit_img, Rect2(0,0,32,32), this_blit_pos)
 		i += 1
-		UIManager.load_screen_break(lerp(0.5, 0.8, i/i_total))
+		UIManager.load_screen_break(lerp(0.5, 0.65, i/i_total))
 	
-	img_points.unlock()
-	
+	#&img_points.unlock()
+	yield(get_tree(), "idle_frame")
+	VisualServer.force_draw()
+
+	WorldManager.viewport_texture = $Viewport.get_texture()
+	img_vp = WorldManager.viewport_texture.get_data()
+	#img_vp.flip_y()
+	img_vp.lock()
 	#print(" ")
 
+
+
+func generateHeatMap():
 
 	# Populate the heatmap grid
 	var heatmap_script 
@@ -204,51 +245,74 @@ func generateHeatMap():
 			pass
 
 	initNoise()
-	img_points.lock()
+	#&img_points.lock()
+
+	var i_total = stage_data.map_size.x
+	var i = 0
+
+	var img_merged = Image.new()
+	img_merged.create(stage_data.map_size.x, stage_data.map_size.y, false, 5)
+	
 	img_merged.lock()
 	for x in range(stage_data.map_size.x):
 		for y in range(stage_data.map_size.y):
 			var pos = Vector2(x,y)
-			var a = img_points.get_pixelv(pos).get_luminance()
+			var a = img_vp.get_pixelv(pos).get_luminance()
 			var b = 1.5*abs(opSimNoise.get_noise_2d(x,y))
 			var chosen = heatmap_script.process(pos, a, b)
 			heatmap[pos] = chosen
-			img_merged.set_pixelv(pos, Color.from_hsv(0,0,chosen,1))
-			#UIManager.load_screen_break(lerp(0.5, 0.8, 0.5))
-	
-			if a != 0:
+			#img_merged.set_pixelv(pos, Color.from_hsv(0,0,chosen,1))
+			#UIManager.load_screen_break()
+
+			if chosen > 0.6:
 				#print("(", x, ", ", y, "), a=", a, ", b=", b, ", chosen=", chosen)
 				pass
 
-		i += 1
-		UIManager.load_screen_break(lerp(0.5, 0.8, (i+i_blit)/i_total))
+		#i += 1
+		UIManager.load_screen_break(lerp(0.65, 0.8, i/i_total))
 
-
-	WorldManager.heatmap_texture.create_from_image(img_merged)
+	#print("HEATMAP: ", heatmap)
+	#WorldManager.heatmap_texture.create_from_image(img_merged)
 
 
 
 
 func generate():
+	WorldManager.terrain_node = self
+	
 	$TileMap.z_index = VisualServer.CANVAS_ITEM_Z_MIN
 	map_size_tile_offset = Vector2(floor(0.5*stage_data.map_size.x), floor(0.5*stage_data.map_size.y))
 
 	print("GENERATING MAP:\nLoading landmark scenes")
-	UIManager.load_screen_break(0.0)
+	UIManager.load_screen_break(0.05)
 	loadLandmarkScenes()
+
+	yield(get_tree().create_timer(0.05), "timeout")
 	
 	print("Generating landmarks")
 	UIManager.load_screen_break(0.2)
 	generateLandmarks()
-	
-	print("Generating Heatmap")
+
+	yield(get_tree().create_timer(0.05), "timeout")
+
+	print("Generating Viewport")
 	UIManager.load_screen_break(0.5)
+	generateViewport()
+
+	yield(get_tree().create_timer(0.05), "timeout")
+
+	print("Generating Heatmap")
+	UIManager.load_screen_break(0.65)
 	generateHeatMap()
-	
+
+	yield(get_tree().create_timer(0.05), "timeout")
+
 	print("Applying tiles")
 	UIManager.load_screen_break(0.8)
 	$TileMap.apply(stage_data, heatmap, map_size_tile_offset)
-	
+
+	yield(get_tree().create_timer(0.05), "timeout")
+
 	print("Generation done!\n")
 	UIManager.load_screen_break(1.0)
 	StageManager.on_stage_generated()
@@ -257,10 +321,10 @@ func generate():
 	pass # Replace with function body.
 
 
-func spawn_landmark(scene_idx, position):
+func spawn_landmark(scene_idx, pos):
 	var scene = landmark_scenes[scene_idx]
 	var spawned = scene.instance()
-	spawned.position = position
+	spawned.global_position = pos
 	WorldManager.add_object(spawned)
 
 	print("SPAWNING LANDMARK: pos = ", position, ", name = ", spawned.name, "\n")
@@ -268,35 +332,77 @@ func spawn_landmark(scene_idx, position):
 	return spawned
 
 
+func spawn_breakable(pos):
+	var scene = breakables_scenes[randi() % breakables_scenes.size()]
+	var spawned = scene.instance()
+	spawned.global_position = pos
+	WorldManager.add_object(spawned)
+
+	#print("SPAWNING BREAKABLE: pos = ", position, ", name = ", spawned.name, "\n")
+	
+	return spawned
+	
+
+
+var funcref_landmark = funcref(self, "spawn_landmark")
+var funcref_breakable = funcref(self, "spawn_breakable")
+
+
+func handle_proximity_spawning(func_spawn: FuncRef, point_list: Array, node_table: Dictionary, max_distance: float = 2048, object_string: String = "LANDMARK", index_list = null):
+
+	if  PlayerManager.instance == null:
+		return
+
+	var dist_to_player
+	
+	for  i  in  range(point_list.size()):
+		var point = point_list[i]
+		var point_world_space = WorldManager.tile_to_world(point - map_size_tile_offset)
+		
+		#print("CHECKING DISTANCE TO " + object_string + ": ", point, ", ", point_world_space)
+		
+		dist_to_player = (PlayerManager.instance.position - point_world_space).length()
+		
+		var node_exists = node_table.has(point)
+		
+		if  dist_to_player < max_distance  and  not node_exists:
+			if  index_list == null  or  (index_list.size() > i  and index_list[i] >= 0):
+				print("SPAWNING ", object_string, ": dist = ", dist_to_player, ", texture space = ", point, ", tile_space = ", point-map_size_tile_offset, ", world space = ", point_world_space, "\n")
+
+				if  index_list != null:
+					node_table[point] = func_spawn.call_func(index_list[i], point_world_space)
+				else:
+					node_table[point] = func_spawn.call_func(point_world_space)
+
+			else:
+				print("CAN'T SPAWN ", object_string, ":\n")
+				if  index_list != null:
+					print("i=", i, ", index list size = ", index_list.size())
+					pass
+				pass
+			
+
+
+		if  dist_to_player > max_distance+256  and  node_exists:
+			var node = node_table[point]
+			print("DESPAWNING " + object_string + ": ", node.name, "\n")
+
+			node.unload()
+			# warning-ignore:return_value_discarded
+			node_table.erase(point)
+
+
+
 
 func _process(_delta):
 	
 	if  not generated  or  PlayerManager.instance == null:
 		return
+
+	# Landmark loading/unloading
+	if  points_landmarks_normal.size() > 0:
+		handle_proximity_spawning(funcref_landmark, points_landmarks_normal, landmark_nodes, 2048, "LANDMARK", landmark_indices)
 	
-	var dist_to_player
-	
-	for  i  in  range(points_landmarks_normal.size()):
-		var point = points_landmarks_normal[i]
-		var point_tile_space = point - map_size_tile_offset
-		var point_world_space = point_tile_space*64 + Vector2(16,16)
-		
-		#print("CHECKING DISTANCE TO LANDMARK: ", point, ", ", point_tile_space, ", ", point_world_space)
-		
-		dist_to_player = (PlayerManager.instance.position - point_world_space).length()
-		
-		var node_exists = landmark_nodes.has(point)
-		
-		if  dist_to_player < 2048  and  not node_exists  and  landmark_indices.has(i):
-			#print("SPAWNING LANDMARK: dist = ", dist_to_player, ", point = ", point_world_space, "\n")
-
-			landmark_nodes[point] = spawn_landmark(landmark_indices[i], point_world_space)
-
-		if  dist_to_player > 2048+256  and  node_exists:
-			var node = landmark_nodes[point]
-			print("DESPAWNING LANDMARK: ", node.name, "\n")
-
-			node.unload()
-			landmark_nodes.erase(point)
-
-	pass
+	# Breakable object spawning
+	if  points_breakables.size() > 0:
+		handle_proximity_spawning(funcref_breakable, points_breakables, breakable_nodes, 2048, "BREAKABLE")

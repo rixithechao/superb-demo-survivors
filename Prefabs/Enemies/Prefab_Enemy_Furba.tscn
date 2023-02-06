@@ -4,8 +4,6 @@
 [ext_resource path="res://Data Objects/Enemies/EnemyData_Furba.tres" type="Resource" id=2]
 
 [node name="Enemy - Furba" instance=ExtResource( 1 )]
-collision_layer = 8
 data = ExtResource( 2 )
 
-[node name="Sprite" parent="Graphic" index="0"]
-frame = 0
+[editable path="Graphic"]

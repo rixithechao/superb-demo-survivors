@@ -2,7 +2,7 @@ tool
 extends Resource
 class_name WaveData
 
-export(float) var minimum = 10
+export(float) var minimum = 10.0
 export(Array, Resource) var enemy_spawns setget set_custom_spawns
 export(Array, Resource) var bosses setget set_custom_bosses
 export(Array, Resource) var map_events setget set_custom_map_events

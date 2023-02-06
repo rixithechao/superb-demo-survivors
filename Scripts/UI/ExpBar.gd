@@ -1,11 +1,11 @@
-extends ProgressBar
+extends TextureProgress
 
 
-func _on_get_exp():
+func _on_update_exp_bar():
 	max_value = PlayerManager.exp_needed
 	value = PlayerManager.current_exp
-
+	$LevelLabel.text = "Level " + String(PlayerManager.level)
 
 func _ready():
-	PlayerManager.connect("get_exp", self, "_on_get_exp")
-	_on_get_exp()
+	PlayerManager.connect("update_exp_bar", self, "_on_update_exp_bar")
+	_on_update_exp_bar()

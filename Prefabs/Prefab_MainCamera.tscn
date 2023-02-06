@@ -9,6 +9,7 @@ extents = Vector2( 1024, 690 )
 extents = Vector2( 840, 500 )
 
 [node name="Camera2D" type="Camera2D"]
+pause_mode = 2
 current = true
 zoom = Vector2( 2, 2 )
 script = ExtResource( 1 )

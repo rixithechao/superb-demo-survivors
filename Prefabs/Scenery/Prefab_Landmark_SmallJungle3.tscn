@@ -3,7 +3,7 @@
 [ext_resource path="res://Prefabs/Scenery/Prefab_Scenery_Tree_Coconut.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Landmark.gd" type="Script" id=2]
 
-[node name="Node2D" type="Node2D"]
+[node name="Landmark - Jungle C" type="Node2D" groups=["landmark"]]
 script = ExtResource( 2 )
 
 [node name="Coconut Tree" parent="." instance=ExtResource( 1 )]

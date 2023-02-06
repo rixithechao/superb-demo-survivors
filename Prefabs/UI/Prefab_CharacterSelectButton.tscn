@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Fonts/DynFont_MenuItem.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Scripts/UI/CharacterSelectButton.gd" type="Script" id=2]
+[ext_resource path="res://StyleBox_BlankBG.tres" type="StyleBox" id=3]
+[ext_resource path="res://StyleBox_Menu_Selection.tres" type="StyleBox" id=4]
+[ext_resource path="res://Sound Effects/Sound_UI_Cursor.ogg" type="AudioStream" id=5]
+
+[node name="Button - Character" type="Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 100, 100 )
+custom_styles/hover = ExtResource( 3 )
+custom_styles/pressed = ExtResource( 4 )
+custom_styles/focus = ExtResource( 4 )
+custom_styles/disabled = ExtResource( 3 )
+custom_styles/normal = ExtResource( 3 )
+icon_align = 1
+script = ExtResource( 2 )
+
+[node name="PlayerGraphicPosition" type="Control" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_top = 71.0
+margin_bottom = 71.0
+
+[node name="Label" type="Label" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -21.0
+margin_bottom = 25.0
+grow_horizontal = 2
+custom_fonts/font = ExtResource( 1 )
+text = "Character
+Name"
+align = 1
+valign = 1
+
+[node name="CursorSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+
+[connection signal="focus_entered" from="." to="." method="_on_Button__Character_focus_entered"]
+[connection signal="mouse_entered" from="." to="." method="_on_Button__Character_mouse_entered"]
+[connection signal="pressed" from="." to="." method="_on_Button__Character_pressed"]

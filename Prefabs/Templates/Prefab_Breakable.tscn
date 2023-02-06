@@ -1,0 +1,74 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Animations/AnimNodeBlendTree_Enemy_Basic_2Frame.tres" type="AnimationNodeBlendTree" id=1]
+[ext_resource path="res://Materials/ShaderMaterial_Character.tres" type="Material" id=2]
+[ext_resource path="res://Textures/Characters/spr_enemy_furba_a2xt.png" type="Texture" id=3]
+[ext_resource path="res://Scripts/MakeshiftWhiteFlash.gd" type="Script" id=4]
+[ext_resource path="res://Scripts/BreakableObject.gd" type="Script" id=5]
+[ext_resource path="res://Scripts/CharacterGraphic.gd" type="Script" id=6]
+[ext_resource path="res://Data Objects/Drop Tables/DropTable_Breakable_Basic.tres" type="Resource" id=7]
+
+[sub_resource type="Animation" id=6]
+length = 0.5
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("AirOffset/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
+[sub_resource type="CapsuleShape2D" id=4]
+radius = 11.0
+height = 0.0
+
+[node name="KinematicBody2D" type="KinematicBody2D" groups=["breakable", "harmable"]]
+collision_layer = 256
+collision_mask = 50
+collision/safe_margin = 8.0
+script = ExtResource( 5 )
+drop_table = ExtResource( 7 )
+
+[node name="Graphic" type="Node2D" parent="."]
+script = ExtResource( 6 )
+sprites = [ NodePath("AirOffset/Sprite") ]
+flash_sprites = [ NodePath("AirOffset/MakeshiftWhiteFlash") ]
+
+[node name="AirOffset" type="Node2D" parent="Graphic"]
+
+[node name="Sprite" type="Sprite" parent="Graphic/AirOffset"]
+position = Vector2( 0, -16 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 3 )
+hframes = 2
+frame = 1
+
+[node name="MakeshiftWhiteFlash" type="Sprite" parent="Graphic/AirOffset"]
+material = ExtResource( 2 )
+position = Vector2( 0, -16 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 3 )
+hframes = 2
+script = ExtResource( 4 )
+
+[node name="AnimationTree" type="AnimationTree" parent="Graphic"]
+tree_root = ExtResource( 1 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Graphic"]
+anims/Anim_Enemy_Walk_2Frame = SubResource( 6 )
+
+[node name="Tween" type="Tween" parent="Graphic"]
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -14 )
+shape = SubResource( 4 )
+disabled = true

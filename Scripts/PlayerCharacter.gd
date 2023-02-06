@@ -13,17 +13,24 @@ var current_8dir = Vector2(1,0)
 var last_facing_arrow = Vector2(1,0)
 var lock_alpha = 0
 
-var draw_shadow = true
+export var movement_locked : bool = false
+
 
 
 func _ready():
 	PlayerManager.instance = self
 	PlayerManager.enemy_collision_area = $EnemyCollision
-	$Graphic/AnimationTree.active = true
+	
+	if  CameraManager.instance.get_parent() != null:
+		CameraManager.instance.get_parent().remove_child(CameraManager.instance)
+	self.add_child(CameraManager.instance)
+	
+	start_sequence("Sequence_Spawn")
+	
 
-func _draw():
-	draw_set_transform(Vector2(0,-2), 0, Vector2(1,0.5))
-	draw_circle(Vector2.ZERO, 12.0, Color(0, 0, 0, (0.5 if draw_shadow else 0.0)))
+#func _draw():
+#	draw_set_transform(Vector2(0,-2), 0, Vector2(1,0.5))
+#	draw_circle(Vector2.ZERO, 12.0, Color(0, 0, 0, (0.5 if draw_shadow else 0.0)))
 
 
 func damage_effects():
@@ -31,52 +38,44 @@ func damage_effects():
 	$Graphic.flash(Color(1,1,1,0.5), PlayerManager.mercy_seconds)
 	$HurtSound.play()
 	$HurtAccentSound.play()
-	
+
+
 
 
 func _process(delta):
-	$HPBar.value = PlayerManager.hp
-	$HPBar.max_value = PlayerManager.get_stat(StatsManager.MAX_HP)
 
-	if TimeManager.is_paused:
+	if  $Graphic == null:
 		return
-	elif PlayerManager.dead:
-		draw_shadow = false
+
+	if  TimeManager.is_paused:
+		$Graphic.pause_mode = (Node.PAUSE_MODE_PROCESS if (not StageManager.started) else Node.PAUSE_MODE_INHERIT)
+		return
+
+	if PlayerManager.dead:
+		$Graphic.draw_shadow = false
 		z_index = VisualServer.CANVAS_ITEM_Z_MAX
-		$Graphic/AnimationTree.set("parameters/movement/current", 3)
-		$FacingArrowLock.modulate = Color(1,1,1,0)
-		$FacingArrow.modulate = Color(1,1,1,0)
-		$HPBar.modulate = Color(1,1,1,0)
+		$Graphic.state = PlayerGraphic.PlayerAnimState.DIE
 		return
 
-	
-	draw_shadow = true
+	# Elevation
+	._process(delta)
+
+	# Other unsorted things
+	$Graphic.draw_shadow = true
 	direction_input = Vector2.ZERO
-	
-	if Input.is_action_pressed("ui_left"):
-		direction_input.x = -1
-		#$Sprite.flip_h = true
 
-	if Input.is_action_pressed("ui_right"):
-		direction_input.x = 1
-		#$Sprite.flip_h = false
-	
-	if Input.is_action_pressed("ui_up"):
-		direction_input.y = -1
-		#$Sprite.flip_h = true
-
-	if Input.is_action_pressed("ui_down"):
-		direction_input.y = 1
-		#$Sprite.flip_h = false
+	if  not movement_locked:
+		direction_input.x = Input.get_axis("ui_left", "ui_right")
+		direction_input.y = Input.get_axis("ui_up","ui_down")
 	
 	if direction_input == Vector2.ZERO:
 		direction.x = lerp(direction.x, 0, delta / HALT_SPEED)
 		direction.y = lerp(direction.y, 0, delta / HALT_SPEED)
-		$Graphic/AnimationTree.set("parameters/movement/current", 0)
+		$Graphic.state = PlayerGraphic.PlayerAnimState.IDLE
 	else:
 		direction.x = lerp(direction_input.x * MAX_SPEED, 0, delta)
 		direction.y = lerp(direction_input.y * MAX_SPEED, 0, delta)
-		$Graphic/AnimationTree.set("parameters/movement/current", 1)
+		$Graphic.state = PlayerGraphic.PlayerAnimState.WALK
 	
 	if  not Input.is_action_pressed("ui_select"):
 		if  direction.x != 0:
@@ -99,12 +98,8 @@ func _process(delta):
 			last_facing_arrow = last_facing_arrow.slerp(direction.normalized(), 0.25*TimeManager.time_rate)
 
 	lock_alpha = lerp(lock_alpha, (0 if not Input.is_action_pressed("ui_select") else 1), 0.25)
-	$FacingArrowLock.modulate = Color(1,1,1,lock_alpha)
-	$FacingArrow.modulate = Color(1,1,1,1-lock_alpha)
-	$FacingArrow.rect_rotation = rad2deg(last_facing_arrow.angle())
-	$FacingArrowLock.global_position = $FacingArrow/Sprite.global_position
 
-	$Graphic/Sprite.set_flip_h( current_diagonal.x == -1 )
+	$Graphic/AirOffset/Sprite.set_flip_h( current_diagonal.x == -1 )
 	
 	move_and_slide(direction*TimeManager.time_rate, Vector2.UP)
 	
@@ -113,3 +108,20 @@ func _process(delta):
 	if Input.is_action_just_pressed("ui_focus_next"):
 		MenuManager.open("console")
 
+	if Input.is_action_just_pressed("ui_pause"):
+		MenuManager.open("pause")
+
+
+
+func restart():
+	position = Vector2.ZERO
+	direction = Vector2.ZERO
+	$Graphic.state = PlayerGraphic.PlayerAnimState.IDLE
+	$Graphic.tint = Color(1,1,1,0)
+
+func set_anim_state(state : int):
+	$Graphic.state = state
+	#$Graphic/AnimationPlayer.play(sequence_name)
+
+func start_sequence(sequence_name : String):
+	$SequenceAnimPlayer.play(sequence_name)

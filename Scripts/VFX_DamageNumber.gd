@@ -20,7 +20,10 @@ func _ready():
 
 
 func _process(_delta):
-	$LocalPosition/Label.text = String(value)
+	if  SaveManager.settings.damage_numbers:
+		$LocalPosition/Label.text = String(value)
+	else:
+		$LocalPosition/Label.text = ""
 
 
 

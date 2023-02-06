@@ -36,6 +36,7 @@ autoplay = true
 
 [node name="Audio1" type="AudioStreamPlayer" parent="HurtSound" index="0"]
 stream = ExtResource( 5 )
+pitch_scale = 1.07757
 
 [node name="Audio2" type="AudioStreamPlayer" parent="HurtSound" index="1"]
 stream = ExtResource( 4 )

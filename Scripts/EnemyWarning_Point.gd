@@ -1,7 +1,7 @@
-extends "res://Scripts/EnemyWarning.gd"
+extends EnemyWarning
 
 
-func configure_enemy(spawned):
+func configure_enemy(_spawned):
 	pass
 	
 func update_telegraphing():

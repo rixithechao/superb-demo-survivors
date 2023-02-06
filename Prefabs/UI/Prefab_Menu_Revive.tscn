@@ -1,0 +1,359 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://Prefabs/UI/Prefab_Menu.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Prefabs/UI/Prefab_SpeechBubble.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Textures/UI/tex_gameOver_serac_a2xt.png" type="Texture" id=3]
+[ext_resource path="res://Textures/UI/tex_gameOver_seracGlow_a2xt.png" type="Texture" id=4]
+[ext_resource path="res://Scripts/UI/ItemListTweaks.gd" type="Script" id=5]
+[ext_resource path="res://Fonts/DynFont_Subheaders.tres" type="DynamicFont" id=6]
+[ext_resource path="res://Scripts/UI/Menu_Revive.gd" type="Script" id=7]
+[ext_resource path="res://Scripts/UI/SeracGlow.gd" type="Script" id=8]
+[ext_resource path="res://Scripts/UI/SkewedUIElement.gd" type="Script" id=9]
+[ext_resource path="res://addons/antialiased_line2d/antialiased_polygon2d.gd" type="Script" id=10]
+[ext_resource path="res://Sound Effects/Sound_UI_Cursor.ogg" type="AudioStream" id=11]
+
+[sub_resource type="StyleBoxFlat" id=1]
+content_margin_left = 16.0
+content_margin_right = 16.0
+bg_color = Color( 0.247375, 0.528342, 0.753906, 1 )
+skew = Vector2( 0.05, 0 )
+border_color = Color( 0.8, 0.8, 0.8, 0 )
+corner_radius_top_left = 16
+corner_radius_top_right = 8
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 8
+shadow_color = Color( 0.256027, 0.295427, 0.464844, 1 )
+shadow_size = 1
+shadow_offset = Vector2( 4, 4 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+content_margin_left = 16.0
+content_margin_right = 16.0
+bg_color = Color( 0.247375, 0.528342, 0.753906, 1 )
+skew = Vector2( 0.05, 0 )
+border_color = Color( 0.8, 0.8, 0.8, 0 )
+corner_radius_top_left = 16
+corner_radius_top_right = 8
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 8
+shadow_color = Color( 0.256027, 0.295427, 0.464844, 1 )
+shadow_size = 1
+shadow_offset = Vector2( 4, 4 )
+
+[sub_resource type="StyleBoxEmpty" id=8]
+
+[sub_resource type="StyleBoxFlat" id=3]
+content_margin_left = 16.0
+content_margin_right = 16.0
+bg_color = Color( 0.247375, 0.528342, 0.753906, 1 )
+skew = Vector2( 0.05, 0 )
+border_color = Color( 0.8, 0.8, 0.8, 0 )
+corner_radius_top_left = 16
+corner_radius_top_right = 8
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 8
+shadow_color = Color( 0.256027, 0.295427, 0.464844, 1 )
+shadow_size = 1
+shadow_offset = Vector2( 4, 4 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+content_margin_left = 16.0
+content_margin_right = 16.0
+bg_color = Color( 0.247375, 0.528342, 0.753906, 1 )
+skew = Vector2( 0.05, 0 )
+border_color = Color( 0.8, 0.8, 0.8, 0 )
+corner_radius_top_left = 16
+corner_radius_top_right = 8
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 8
+shadow_color = Color( 0.256027, 0.295427, 0.464844, 1 )
+shadow_size = 1
+shadow_offset = Vector2( 4, 4 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+content_margin_left = 32.0
+content_margin_right = 32.0
+content_margin_top = 32.0
+content_margin_bottom = 32.0
+bg_color = Color( 1, 1, 1, 0 )
+draw_center = false
+border_color = Color( 0.8, 0.8, 0.8, 0 )
+expand_margin_left = 32.0
+expand_margin_right = 32.0
+expand_margin_top = 32.0
+expand_margin_bottom = 32.0
+anti_aliasing = false
+
+[sub_resource type="Animation" id=6]
+resource_name = "Menu_Revive"
+length = 3.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Skew:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2.2, 2.6, 2.8, 3.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 596, 0 ), Vector2( 596, 0 ), Vector2( 596, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Serac:rect_position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.5, 1.1, 1.3, 2.2, 2.6, 2.8, 3.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 389, 900 ), Vector2( 389, 900 ), Vector2( 389, 284 ), Vector2( 389, 300 ), Vector2( 389, 300 ), Vector2( 389, 300 ), Vector2( 389, 300 ), Vector2( 206, 300 ), Vector2( 206, 300 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("Serac/Message Box")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "start"
+} ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Serac/Serac Sprite:rect_rotation")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.3, 0.7, 0.9, 1.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 180.0, 180.0, -380.0, -350.0, -360.0 ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 1.7 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ NodePath("Serac/Message Box") ],
+"method": "wait_for_speech_bubble_done"
+} ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Serac/Message Box:interactive")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Skew/List/ItemList:active")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 3.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/7/type = "method"
+tracks/7/path = NodePath("Skew/List/ItemList")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 3.2, 3.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "grab_focus"
+}, {
+"args": [ 0 ],
+"method": "hover_item"
+} ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "Menu_Revive_Close"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Skew/List/ItemList:active")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Serac:rect_position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 206, 300 ), Vector2( 206, 300 ), Vector2( 206, 300 ), Vector2( -264, 300 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("Serac/Message Box")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "close"
+} ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "close"
+} ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Skew:position")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 768, 0 ) ]
+}
+
+[node name="Menu - Serac" instance=ExtResource( 1 )]
+script = ExtResource( 7 )
+
+[node name="Background" parent="." index="1"]
+modulate = Color( 1, 1, 1, 0 )
+
+[node name="Skew" type="Node2D" parent="." index="2"]
+position = Vector2( 596, 0 )
+script = ExtResource( 9 )
+
+[node name="AntialiasedPolygon2D" type="Polygon2D" parent="Skew" index="0"]
+color = Color( 0, 0, 0, 1 )
+polygon = PoolVector2Array( 865, -75, 642, -73, 611, 155, 710, 155, 703, 238, 407, 237, 399, 318, 480, 319, 457, 500, 864, 501 )
+script = ExtResource( 10 )
+stroke_color = Color( 0, 0, 0, 1 )
+
+[node name="List" type="Control" parent="Skew" index="1"]
+margin_right = 768.0
+margin_bottom = 432.0
+
+[node name="ItemList" type="ItemList" parent="Skew/List" index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 399.0
+margin_top = 132.0
+margin_right = -51.0
+margin_bottom = -66.0
+rect_pivot_offset = Vector2( 250, 104 )
+custom_colors/guide_color = Color( 0, 0, 0, 0 )
+custom_colors/font_color_selected = Color( 1, 1, 1, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_constants/vseparation = 24
+custom_fonts/font = ExtResource( 6 )
+custom_styles/cursor = SubResource( 1 )
+custom_styles/selected_focus = SubResource( 2 )
+custom_styles/bg_focus = SubResource( 8 )
+custom_styles/cursor_unfocused = SubResource( 3 )
+custom_styles/selected = SubResource( 4 )
+custom_styles/bg = SubResource( 5 )
+items = [ "Revive (-X Coins)", null, false, "I'm good, thanks", null, false ]
+auto_height = true
+fixed_icon_size = Vector2( 128, 128 )
+script = ExtResource( 5 )
+menu_node = NodePath("../../..")
+cursor_sound_node = NodePath("../../../CursorSound")
+active = false
+immediate_focus = false
+
+[node name="Serac" type="Control" parent="." index="3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 389.0
+margin_top = 900.0
+margin_right = 389.0
+margin_bottom = 900.0
+
+[node name="Message Box" parent="Serac" index="0" instance=ExtResource( 2 )]
+modulate = Color( 1, 0.673993, 0.673993, 1 )
+anchor_right = 0.0
+margin_left = -142.0
+margin_top = -203.0
+margin_right = 155.0
+margin_bottom = -103.0
+rect_pivot_offset = Vector2( 142, 70 )
+text_name = ""
+text_body = [ "Oh dear, did someone have a little accident?", "You know, I could... [wave amp=50 freq=2]overlook[/wave]
+that death.  For a price." ]
+tail_direction = 1
+
+[node name="Serac Sprite" type="Control" parent="Serac" index="1"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_rotation = 180.0
+
+[node name="Sprite" type="Sprite" parent="Serac/Serac Sprite" index="0"]
+position = Vector2( -2, -24 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 3 )
+
+[node name="Glow" type="Sprite" parent="Serac/Serac Sprite" index="1"]
+modulate = Color( 0.870588, 0.207843, 0.207843, 0.285224 )
+position = Vector2( -2, -24 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 4 )
+script = ExtResource( 8 )
+speed = 90.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
+autoplay = "Menu_Revive"
+anims/Menu_Revive = SubResource( 6 )
+anims/Menu_Revive_Close = SubResource( 7 )
+
+[node name="CursorSound" type="AudioStreamPlayer" parent="." index="6"]
+stream = ExtResource( 11 )
+bus = "SoundEffects"
+
+[connection signal="gui_input" from="Skew/List/ItemList" to="Skew/List/ItemList" method="_on_ItemList_gui_input"]

@@ -19,6 +19,16 @@ signal new_second
 signal new_minute
 
 
+func reset_timer():
+	_cached_seconds = 0
+	_cached_minutes = 0
+	current_time = 0
+	UIManager.reset_timer()
+	#emit_signal("new_second")
+	#emit_signal("new_minute")
+
+
+
 
 func add_pause(name):
 	get_tree().paused = true

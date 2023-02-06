@@ -1,14 +1,10 @@
-[gd_resource type="Resource" load_steps=26 format=2]
+[gd_resource type="Resource" load_steps=22 format=2]
 
 [ext_resource path="res://Scripts/ScriptableObjects/PlayableData.gd" type="Script" id=1]
 [ext_resource path="res://Data Objects/Equipment/Weapons/Weapon_Leek.tres" type="Resource" id=2]
-[ext_resource path="res://Animations/Anim_Demo_Walk.tres" type="Animation" id=3]
-[ext_resource path="res://Animations/Anim_Demo_Idle.tres" type="Animation" id=4]
-[ext_resource path="res://Textures/Characters/spr_player_demo.png" type="Texture" id=5]
-[ext_resource path="res://Animations/Anim_Demo_LookUp.tres" type="Animation" id=6]
-[ext_resource path="res://Animations/Anim_Demo_Look.tres" type="Animation" id=7]
-[ext_resource path="res://Animations/Anim_Demo_LookDown.tres" type="Animation" id=8]
-[ext_resource path="res://Animations/Anim_Demo_Fidget.tres" type="Animation" id=9]
+[ext_resource path="res://Textures/Characters/spr_player_demo_a2xt.png" type="Texture" id=3]
+[ext_resource path="res://Prefabs/Prefab_PlayerGfx_Demo.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Prefabs/Prefab_PlayerCharacter_Demo.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scripts/ScriptableObjects/StatSheetData.gd" type="Script" id=10]
 [ext_resource path="res://Data Objects/Stats/Stat_Damage.tres" type="Resource" id=11]
 [ext_resource path="res://Data Objects/Stats/Stat_Amount.tres" type="Resource" id=12]
@@ -29,20 +25,20 @@
 script = ExtResource( 10 )
 stats = [ ExtResource( 11 ), ExtResource( 18 ), ExtResource( 24 ), ExtResource( 21 ), ExtResource( 13 ), ExtResource( 17 ), ExtResource( 20 ), ExtResource( 14 ), ExtResource( 12 ), ExtResource( 23 ), ExtResource( 19 ), ExtResource( 15 ), ExtResource( 22 ), ExtResource( 16 ) ]
 values = {
+ExtResource( 23 ): 1.0,
 ExtResource( 11 ): 1,
+ExtResource( 24 ): 100.0,
 ExtResource( 13 ): 1.0,
 ExtResource( 14 ): 1.0,
 ExtResource( 12 ): 1.0,
-ExtResource( 17 ): 1.0,
-ExtResource( 24 ): 100.0,
-ExtResource( 23 ): 1.0,
-ExtResource( 18 ): 1.0,
 ExtResource( 15 ): 1.0,
+ExtResource( 21 ): 0.0,
 ExtResource( 16 ): 1.0,
 ExtResource( 19 ): 1.0,
-ExtResource( 21 ): 0.0,
-ExtResource( 22 ): 1.0,
-ExtResource( 20 ): 1.0
+ExtResource( 18 ): 1.0,
+ExtResource( 17 ): 1.0,
+ExtResource( 20 ): 1.0,
+ExtResource( 22 ): 1.0
 }
 Values/Damage = 1
 Values/Defense = 1.0
@@ -63,18 +59,10 @@ Values/Luck = 1.0
 [resource]
 script = ExtResource( 1 )
 name = "Demo"
-bio = ""
-sprite_sheet = ExtResource( 5 )
-animations = {
-"die": null,
-"fidget": ExtResource( 9 ),
-"idle": ExtResource( 4 ),
-"look": ExtResource( 7 ),
-"lookdown": ExtResource( 8 ),
-"lookup": ExtResource( 6 ),
-"pluck1": null,
-"pluck2": null,
-"walk": ExtResource( 3 )
-}
+bio = "An Armless Bipedal Cycloptic Demon created by the Artist.  Likes to tackle things head-on."
+ability_description = ""
+prefab = ExtResource( 5 )
+gfx_prefab = ExtResource( 4 )
+sprite_sheet = ExtResource( 3 )
 starting_weapon = ExtResource( 2 )
 stats = SubResource( 1 )

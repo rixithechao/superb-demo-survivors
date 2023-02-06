@@ -4,7 +4,7 @@ var generated = false
 
 
 
-func apply(stage_data, heatmap, map_size_offset):
+func apply(_stage_data, heatmap, map_size_offset):
 
 	var i_total = heatmap.size()
 	var _i = 0

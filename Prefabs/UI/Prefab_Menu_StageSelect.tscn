@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Prefabs/UI/Prefab_Menu_ItemList.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Sound Effects/Sound_UI_EnterLevel.ogg" type="AudioStream" id=2]
@@ -11,24 +11,118 @@
 [ext_resource path="res://Textures/UI/tex_ui_icon_endless.png" type="Texture" id=9]
 [ext_resource path="res://Fonts/DynFont_Headers.tres" type="DynamicFont" id=10]
 [ext_resource path="res://addons/antialiased_line2d/antialiased_regular_polygon2d.gd" type="Script" id=11]
-[ext_resource path="res://Prefabs/UI/HeaderBackOutline.gd" type="Script" id=12]
+[ext_resource path="res://Scripts/UI/HeaderBackOutline.gd" type="Script" id=12]
 [ext_resource path="res://Textures/Level Previews/tex_levelpreview_01.png" type="Texture" id=13]
-[ext_resource path="res://Scripts/UI/ItemList_StageSelect.gd" type="Script" id=14]
+[ext_resource path="res://Prefabs/UI/Prefab_MenuBG_Halftone.tscn" type="PackedScene" id=15]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Menu_StageSelect"
+step = 0.025
+tracks/0/type = "value"
+tracks/0/path = NodePath("Skew/ScorePanel:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -57, 230 ), Vector2( -57, 230 ), Vector2( 27, 6 ), Vector2( 27, 6 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Skew/Panel:rect_position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 377, -185 ), Vector2( -94, -185 ), Vector2( -94, -185 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Skew/LevelPreview:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -321, 0 ), Vector2( -321, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "Menu_StageSelect_Close"
+length = 0.4
+step = 0.025
+tracks/0/type = "value"
+tracks/0/path = NodePath("Skew/ScorePanel:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.225, 0.35 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 27, 6 ), Vector2( 27, 6 ), Vector2( -57, 230 ), Vector2( -57, 230 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Skew/Panel:rect_position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.225, 0.35 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -94, -185 ), Vector2( -94, -185 ), Vector2( 377, -185 ), Vector2( 377, -185 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Skew/LevelPreview:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.225, 0.35 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( -321, 0 ), Vector2( -321, 0 ) ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "cancel_close"
+} ]
+}
 
 [node name="Menu - Stage Select" instance=ExtResource( 1 )]
 script = ExtResource( 8 )
+cancel_to_close = true
+cancel_sequence = "Menu_StageSelect_Close"
+cancel_menu = "title"
 
-[node name="Gradient" parent="Background" index="1"]
-margin_left = -31.0
-margin_top = -22.0
-margin_right = 802.0
-margin_bottom = 452.0
+[node name="Halftone BG" parent="Background" index="0" instance=ExtResource( 15 )]
 
 [node name="Skew" parent="." index="2"]
 position = Vector2( 415, 222 )
 
 [node name="ScorePanel" type="Node2D" parent="Skew" index="0"]
-position = Vector2( 27, 6 )
+position = Vector2( -57, 230 )
 
 [node name="DurationBackOutline" type="Label" parent="Skew/ScorePanel" index="0"]
 show_behind_parent = true
@@ -144,10 +238,20 @@ text = "15:00"
 align = 2
 valign = 1
 
-[node name="AntialiasedPolygon2D" type="Polygon2D" parent="Skew/ScorePanel/Duration" index="0"]
+[node name="TwoDigitFill" type="Polygon2D" parent="Skew/ScorePanel/Duration" index="0"]
 show_behind_parent = true
 position = Vector2( 12.5908, 8.71604 )
 scale = Vector2( 0.529386, 0.728396 )
+color = Color( 0.160784, 0.2, 0.368627, 1 )
+polygon = PoolVector2Array( 7, 10, 99, 10, 98.44, 40, 6.44, 40 )
+script = ExtResource( 6 )
+stroke_color = Color( 0.160784, 0.2, 0.368627, 1 )
+stroke_joint_mode = 2
+
+[node name="OneDigitFill" type="Polygon2D" parent="Skew/ScorePanel/Duration" index="1"]
+show_behind_parent = true
+position = Vector2( 26.4952, 8.71604 )
+scale = Vector2( 0.388937, 0.728396 )
 color = Color( 0.160784, 0.2, 0.368627, 1 )
 polygon = PoolVector2Array( 7, 10, 99, 10, 98.44, 40, 6.44, 40 )
 script = ExtResource( 6 )
@@ -174,14 +278,14 @@ margin_right = -171.0
 margin_bottom = 205.0
 custom_colors/font_color = Color( 0.682353, 0.984314, 1, 1 )
 custom_fonts/font = ExtResource( 4 )
-text = "S+"
+text = "--"
 align = 1
 valign = 1
 
 [node name="Panel" parent="Skew" index="1"]
-margin_left = -94.0
+margin_left = 377.0
 margin_top = -185.0
-margin_right = 278.0
+margin_right = 748.999
 margin_bottom = 173.0
 patch_margin_top = 67
 patch_margin_bottom = 76
@@ -199,10 +303,40 @@ patch_margin_bottom = 48
 [node name="Header" parent="Skew/Panel" index="3"]
 text = "Select a Stage!"
 
-[node name="ItemList" parent="Skew/Panel" index="4"]
-script = ExtResource( 14 )
+[node name="ColorRect" type="ColorRect" parent="Skew/Panel/Header" index="0"]
+show_behind_parent = true
+margin_left = 13.0
+margin_top = 23.0
+margin_right = 111.0
+margin_bottom = 37.0
+color = Color( 0.160784, 0.2, 0.368627, 1 )
+
+[node name="ColorRect2" type="ColorRect" parent="Skew/Panel/Header" index="1"]
+show_behind_parent = true
+margin_left = 8.0
+margin_top = 10.0
+margin_right = 24.0
+margin_bottom = 21.0
+color = Color( 0.160784, 0.2, 0.368627, 1 )
+
+[node name="ColorRect3" type="ColorRect" parent="Skew/Panel/Header" index="2"]
+show_behind_parent = true
+margin_left = 173.5
+margin_top = 10.0
+margin_right = 189.5
+margin_bottom = 21.0
+color = Color( 0.160784, 0.2, 0.368627, 1 )
+
+[node name="ColorRect4" type="ColorRect" parent="Skew/Panel/Header" index="3"]
+show_behind_parent = true
+margin_left = 194.0
+margin_top = 21.0
+margin_right = 284.0
+margin_bottom = 36.0
+color = Color( 0.160784, 0.2, 0.368627, 1 )
 
 [node name="LevelPreview" type="Node2D" parent="Skew" index="2"]
+position = Vector2( -321, 0 )
 
 [node name="AntialiasedPolygon2D" type="Polygon2D" parent="Skew/LevelPreview" index="0"]
 color = Color( 0.160784, 0.2, 0.368627, 1 )
@@ -227,5 +361,13 @@ texture = ExtResource( 13 )
 expand = true
 stretch_mode = 5
 
-[node name="ConfirmSound" type="AudioStreamPlayer" parent="." index="5"]
+[node name="ConfirmSound" type="AudioStreamPlayer" parent="." index="6"]
 stream = ExtResource( 2 )
+bus = "SoundEffects"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="7"]
+autoplay = "Menu_StageSelect"
+anims/Menu_StageSelect = SubResource( 1 )
+anims/Menu_StageSelect_Close = SubResource( 2 )
+
+[connection signal="item_hovered" from="Skew/Panel/ItemList" to="." method="_on_ItemList_item_hovered"]

@@ -4,9 +4,12 @@ class_name PlayableData
 
 
 export var name : String
-export var bio : String
+export (String, MULTILINE) var bio : String
+export (String, MULTILINE) var ability_description : String = ""
+export var prefab : PackedScene
+export var gfx_prefab : PackedScene
 export var sprite_sheet : Texture
-export(Dictionary) var animations = {idle=Object(), fidget=Object(), look=Object(),lookup=Object(),lookdown=Object(), walk=Object(), die=Object(), pluck1=Object(), pluck2=Object()}
+#export(Dictionary) var animations = {idle=Object(), fidget=Object(), look=Object(),lookup=Object(),lookdown=Object(), walk=Object(), die=Object(), pluck1=Object(), pluck2=Object()}
 export var starting_weapon : Resource
 
 export(Resource) var stats setget set_custom_stats,get_custom_stats

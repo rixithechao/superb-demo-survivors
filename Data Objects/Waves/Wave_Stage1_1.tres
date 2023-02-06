@@ -1,29 +1,31 @@
-[gd_resource type="Resource" load_steps=9 format=2]
+[gd_resource type="Resource" load_steps=13 format=2]
 
 [ext_resource path="res://Scripts/ScriptableObjects/WaveData.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/ScriptableObjects/EnemySpawnData.gd" type="Script" id=2]
-[ext_resource path="res://Prefabs/Enemies/Prefab_Enemy_Furba.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Prefabs/Map Events/Prefab_MapEvent_Test.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scripts/ScriptableObjects/MapEventData.gd" type="Script" id=5]
-[ext_resource path="res://Scripts/Map Events/MapEventCond_Example.gd" type="Script" id=6]
+[ext_resource path="res://Prefabs/Enemies/Prefab_Enemy_Goopa1.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Prefabs/Enemies/Prefab_Enemy_Caterpillar.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scripts/ScriptableObjects/BossData.gd" type="Script" id=5]
+[ext_resource path="res://Prefabs/Enemies/Prefab_Enemy_Goopa2.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Prefabs/Enemies/Prefab_Enemy_Goopa4.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Prefabs/Enemies/Prefab_Enemy_Goopa3.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Prefabs/Enemies/Prefab_Enemy_Goopa6.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Prefabs/Enemies/Prefab_Enemy_Goopa5.tscn" type="PackedScene" id=10]
 
-[sub_resource type="Resource" id=1]
+[sub_resource type="Resource" id=3]
+script = ExtResource( 5 )
+enemy = ExtResource( 4 )
+final = false
+
+[sub_resource type="Resource" id=2]
 resource_name = "Spawn"
 script = ExtResource( 2 )
 interval = 1.0
 delay = 0.0
-enemies = [ ExtResource( 3 ) ]
-
-[sub_resource type="Resource" id=2]
-resource_name = "Event 0"
-script = ExtResource( 5 )
-second = 3
-conditions = ExtResource( 6 )
-event_scene = ExtResource( 4 )
+enemies = [ ExtResource( 3 ), ExtResource( 6 ), ExtResource( 8 ), ExtResource( 7 ), ExtResource( 10 ), ExtResource( 9 ) ]
 
 [resource]
 script = ExtResource( 1 )
-minimum = 5.0
-enemy_spawns = [ SubResource( 1 ) ]
-bosses = [  ]
-map_events = [ SubResource( 2 ) ]
+minimum = 10.0
+enemy_spawns = [ SubResource( 2 ) ]
+bosses = [ SubResource( 3 ) ]
+map_events = [  ]

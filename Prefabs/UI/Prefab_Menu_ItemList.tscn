@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Prefabs/UI/Prefab_Menu.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Fonts/DynFont_MenuItem.tres" type="DynamicFont" id=2]
@@ -11,7 +11,9 @@
 [ext_resource path="res://Textures/UI/tex_panel_9slice_01.png" type="Texture" id=9]
 [ext_resource path="res://Scripts/UI/SkewedUIElement.gd" type="Script" id=10]
 [ext_resource path="res://Textures/UI/tex_panel_9slice_02.png" type="Texture" id=11]
-[ext_resource path="res://Prefabs/UI/HeaderBackOutline.gd" type="Script" id=12]
+[ext_resource path="res://Scripts/UI/HeaderBackOutline.gd" type="Script" id=12]
+
+[sub_resource type="StyleBoxEmpty" id=1]
 
 [node name="Menu" instance=ExtResource( 1 )]
 
@@ -102,19 +104,23 @@ rect_pivot_offset = Vector2( 250, 104 )
 custom_colors/guide_color = Color( 0, 0, 0, 0 )
 custom_colors/font_color_selected = Color( 1, 1, 1, 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_constants/vseparation = 0
+custom_constants/vseparation = 4
 custom_constants/icon_margin = 33
 custom_fonts/font = ExtResource( 2 )
 custom_styles/cursor = ExtResource( 4 )
 custom_styles/selected_focus = ExtResource( 4 )
+custom_styles/bg_focus = SubResource( 1 )
 custom_styles/cursor_unfocused = ExtResource( 4 )
 custom_styles/selected = ExtResource( 4 )
 custom_styles/bg = ExtResource( 7 )
 items = [ "Item 0", null, false, "Item 1", null, false, "Item 2", null, false, "Item 3", null, false, "Item 4", null, false ]
 fixed_icon_size = Vector2( 32, 32 )
 script = ExtResource( 6 )
+menu_node = NodePath("../../..")
+cursor_sound_node = NodePath("../../../CursorSound")
 
 [node name="CursorSound" type="AudioStreamPlayer" parent="." index="4"]
 stream = ExtResource( 8 )
+bus = "SoundEffects"
 
 [connection signal="gui_input" from="Skew/Panel/ItemList" to="Skew/Panel/ItemList" method="_on_ItemList_gui_input"]

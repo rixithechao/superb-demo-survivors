@@ -39,6 +39,7 @@ tracks/1/keys = {
 [node name="Projectile - Leek" instance=ExtResource( 1 )]
 orientation_mode = 4
 aim_type = 5
+alternate_type = 2
 speed = 2.0
 acceleration = Vector3( -6, 0, 0 )
 
@@ -66,9 +67,14 @@ autoplay = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="RandomAudioNodePlayer" index="0"]
 stream = ExtResource( 3 )
+pitch_scale = 1.20652
+bus = "SoundEffects"
 
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="RandomAudioNodePlayer" index="1"]
 stream = ExtResource( 5 )
+pitch_scale = 0.75114
+bus = "SoundEffects"
 
 [node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="RandomAudioNodePlayer" index="2"]
 stream = ExtResource( 6 )
+bus = "SoundEffects"

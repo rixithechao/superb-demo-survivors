@@ -50,14 +50,16 @@ func get_custom_stats():
 
 
 func set_custom_level_modifiers(value):
-	if Engine.editor_hint:
+	if  true:#Engine.editor_hint:
 		level_modifiers = value
-		level_modifiers.resize(max_level-1)
+		level_modifiers.resize(max(0, max_level-1))
 		for i in level_modifiers.size():
 			if not level_modifiers[i]:
 				level_modifiers[i] = LevelModifierData.new()
 
 			level_modifiers[i].resource_name = "Level " + String(i+2)
+		
+		_level_modifiers = level_modifiers
 
 
 
@@ -81,9 +83,11 @@ func apply_stats(modified, current_level = null):
 
 	# Go through each level up modifier
 	if  current_level > 1:
-		for i in range(current_level-2):
-			
-			if _level_modifiers.has(i):
+		for i in range(current_level-1):
+			#print (name, " CHECKING MODIFIER ", i)
+
+			if _level_modifiers.size() > i:
+				#print(name, " HAS LV. ", i, " MODIFIER")
 				var modifier = _level_modifiers[i]
 				modifier.apply_stats(modified)
 	

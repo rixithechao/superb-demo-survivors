@@ -1,0 +1,104 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Fonts/DynFont_Subx3headers.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Fonts/DynFont_Subx3headers_I.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Prefabs/UI/Prefab_Menu.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scripts/UI/Menu_Credits.gd" type="Script" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Close"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "cancel_close"
+} ]
+}
+
+[node name="Menu" instance=ExtResource( 3 )]
+script = ExtResource( 4 )
+cancel_to_close = true
+cancel_sequence = "Close"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." index="4"]
+margin_top = 432.0
+margin_right = 768.0
+margin_bottom = 864.0
+custom_fonts/mono_font = ExtResource( 1 )
+custom_fonts/bold_italics_font = ExtResource( 2 )
+custom_fonts/italics_font = ExtResource( 2 )
+custom_fonts/bold_font = ExtResource( 1 )
+custom_fonts/normal_font = ExtResource( 1 )
+bbcode_enabled = true
+bbcode_text = "[center]
+[font=res://Fonts//DynFont_Subheaders.tres]CREDITS[/font]
+
+
+
+[font=res://Fonts//DynFont_Subsubheaders.tres]Subheader[/font]
+
+Name
+Name
+Name
+
+
+[font=res://Fonts//DynFont_Subsubheaders.tres]Subheader[/font]
+
+Name
+
+
+[font=res://Fonts//DynFont_Subsubheaders.tres]Subheader[/font]
+
+Name
+Name
+[/center]
+
+"
+text = "
+CREDITS
+
+
+
+Subheader
+
+Name
+Name
+Name
+
+
+Subheader
+
+Name
+
+
+Subheader
+
+Name
+Name
+
+
+"
+fit_content_height = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="5"]
+anims/Close = SubResource( 1 )

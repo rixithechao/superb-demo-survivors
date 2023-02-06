@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Prefabs/Templates/Prefab_Pickup.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Textures/Items/spr_pickup_radish_a2xt.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/Pickup_Healing.gd" type="Script" id=3]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 7.0
+height = 16.0
+
+[node name="Pickup - Radish" instance=ExtResource( 1 )]
+position = Vector2( 0, -12 )
+script = ExtResource( 3 )
+health_granted = 30
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" parent="." index="2"]
+shape = SubResource( 1 )

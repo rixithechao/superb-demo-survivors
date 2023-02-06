@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://Music/music_stage_islands.ogg" type="AudioStream" id=1]
+[ext_resource path="res://Scripts/ScriptableObjects/MusicData.gd" type="Script" id=2]
+
+[resource]
+script = ExtResource( 2 )
+name = "Tropical Trials"
+artist = "Rixitic"
+audio_stream = ExtResource( 1 )

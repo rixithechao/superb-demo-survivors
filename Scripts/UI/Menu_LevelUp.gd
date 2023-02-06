@@ -10,7 +10,7 @@ func _ready():
 
 	var list_ref = $Skew/Panel/ItemList
 	
-	var equipment_roll = PlayerManager.roll_equipment(3)
+	var equipment_roll = PlayerManager.roll_equipment(3, false, true)
 	equipment = equipment_roll.selected
 	
 	list_ref.clear()
@@ -24,7 +24,7 @@ func _ready():
 			name = "(Lv. " + String(next_level) + ") " + eqp.name
 			
 		var desc = eqp.description
-		if  eqp._level_modifiers != null  and  eqp._level_modifiers.size() > next_level-2:
+		if  next_level >= 2  and  eqp._level_modifiers != null  and  eqp._level_modifiers.size() > next_level-2:
 			var next_mod = eqp._level_modifiers[next_level-2]
 			print(next_mod, ", ", next_mod.description)
 			desc = next_mod.description
@@ -50,7 +50,7 @@ func _process(_delta):
 	pass
 
 
-func choose(item):
+func on_choose(_node, item):
 	PlayerManager.give_equipment(equipment[item])
 	TimeManager.remove_pause("levelup")
 	PlayerManager.check_for_level_up()

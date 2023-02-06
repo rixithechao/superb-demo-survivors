@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Textures/UI/spr_hud_coin_a2xt.png" type="Texture" id=1]
+[ext_resource path="res://Fonts/DynFont_Results.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Scripts/ResultsScreenListedStat.gd" type="Script" id=3]
+
+[node name="Control" type="HBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+value_label = NodePath("Value")
+
+[node name="Icons" type="TextureRect" parent="."]
+margin_right = 32.0
+margin_bottom = 432.0
+rect_min_size = Vector2( 32, 0 )
+size_flags_vertical = 3
+texture = ExtResource( 1 )
+stretch_mode = 4
+
+[node name="Name" type="Label" parent="."]
+margin_left = 36.0
+margin_right = 400.0
+margin_bottom = 432.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 2 )
+text = "Stat:"
+valign = 1
+
+[node name="Value" type="Label" parent="."]
+margin_left = 404.0
+margin_right = 768.0
+margin_bottom = 432.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 2 )
+text = "####"
+align = 2
+valign = 1

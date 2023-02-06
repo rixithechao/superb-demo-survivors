@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/music_stage_islands.ogg-7c8fd6c3baaee71e7c7a67903023ca9b.oggstr"
+
+[deps]
+
+source_file="res://Music/music_stage_islands.ogg"
+dest_files=[ "res://.import/music_stage_islands.ogg-7c8fd6c3baaee71e7c7a67903023ca9b.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,17 +1,26 @@
 extends Node
 
-var stages = [
-	preload("res://Data Objects/Stages/Stage_Test.tres"),
+var all_stages = [
 	preload("res://Data Objects/Stages/Stage_Debug.tres"),
+	preload("res://Data Objects/Stages/Stage_Islands.tres")
 ]
 
-
-signal stage_loaded
-signal stage_generated
-
+var grouped_stages = {
+	"normal": [
+		all_stages[1]
+	],
+	"special": [
+		
+	],
+	"debug": all_stages[0]
+}
+var unlocked = []
 
 
 var started = false
+var cleared = false
+var exiting = false
+
 var current_wave = -1
 var current_wave_data
 var current_stage_data
@@ -19,16 +28,94 @@ var current_wave_minimum = 1
 var spawn_data = []
 var current_map_events = {}
 
+var instance
 
+
+
+signal stage_loaded
+signal stage_generated
+signal stage_exited
+
+
+
+# Stage select
+func update_unlocked_list():
+	unlocked.clear()
+	
+	if  OS.is_debug_build():
+		unlocked.append(grouped_stages.debug)
+	
+	# Add each normal stage based on clearing the previous one
+	for idx in range(grouped_stages.normal.size()):
+		if idx == 0  or  SaveManager.progress.normal_stage_clears.has(idx-1):
+			unlocked.append(grouped_stages.normal[idx])
+
+
+
+
+# Inside stage
 func init_stage():
+	started = false
+	
+	# Reset wave info
+	current_wave = -1
+	current_wave_data = null
+	current_map_events.clear()
+
+	# Set time to 0
+	TimeManager.reset_timer()
+	
+	# Reset player
 	PlayerManager.reset_player()
+	
+	# Reset enemy-related stuff
 	EnemyManager.init_stage_enemies()
+	EnemyManager.kills = 0
 
 
+
+func prompt_change_character():
+	if  PlayerManager.show_character_select:
+		MenuManager.open("character")
+	else:
+		spawn_player()
+
+func spawn_player():
+	PlayerManager.spawn()
+	WorldManager.instance.start_sequence("Sequence_SpawnPlayer")
 
 func start_stage():
 	started = true
+	MusicManager.play(current_stage_data.music_data)
+	print("STAGE STARTED\n")
 	_on_change_minute()
+
+
+func restart_stage():
+	TimeManager.remove_pause("restarting")
+	TimeManager.remove_pause("revive")
+	
+	for mangr in [EnemyManager, ProjectileManager, PickupManager, MapEventManager, WarningManager]:
+		mangr.erase_all()
+	PlayerManager.unload_player()
+	init_stage()
+	WorldManager.instance.start_sequence("Sequence_Start")
+	pass
+
+func clear_stage():
+	cleared = true
+	WorldManager.instance.start_sequence("Sequence_Clear")
+	pass
+
+func begin_restarting(prompt_character_change : bool = false):
+	TimeManager.add_pause("restarting")
+	PlayerManager.show_character_select = prompt_character_change
+	WorldManager.instance.start_sequence("Sequence_Restart")
+	pass
+
+func keep_going():
+	pass
+
 
 
 
@@ -36,8 +123,29 @@ func load_stage(stage_data):
 	print(stage_data, "\nname=", stage_data.name, "\nscene=", stage_data.scene, "\n")
 	current_stage_data = stage_data
 	var loaded_scene = stage_data.scene
-	var inst = loaded_scene.instance()
-	RootManager.stage.add_child(inst)
+	instance = loaded_scene.instance()
+	RootManager.stage.add_child(instance)
+
+func exit_stage():
+	exiting = true
+	started = false
+	TimeManager.add_pause("exiting")
+	MusicManager.fade_out(1)
+	UIManager.show_load_screen()
+	UIManager.connect("load_screen_faded_in", self, "on_load_screen_faded_in")
+	pass
+
+
+
+func on_load_screen_faded_in():
+	if  exiting:
+		emit_signal("stage_exited")
+		exiting = false
+		TimeManager.remove_pause("exiting")
+		instance.queue_free()
+		UIManager.load_screen_instance.finish()
+		MenuManager.open("title")
+
 
 
 func on_stage_loaded():
@@ -50,6 +158,7 @@ func on_stage_generated():
 	UIManager.finish_load_screen()
 	WorldManager.instance.start_sequence("Sequence_Start")
 	pass
+
 
 
 
@@ -67,11 +176,12 @@ func start_wave(wave):
 		spawn_data.append({"data":spawn, "timer":spawn.delay})
 
 	var count = EnemyManager.count
-	while (count < current_wave_minimum):
-		count = EnemyManager.count
-		for entry in spawn_data:
-			var data = entry.data
-			EnemyManager.spawn(data.enemies[randi() % data.enemies.size()])
+	if  spawn_data.size() > 0:
+		while (count < current_wave_minimum):
+			count = EnemyManager.count
+			for entry in spawn_data:
+				var data = entry.data
+				EnemyManager.spawn(data.enemies[randi() % data.enemies.size()])
 
 	# Map events
 	current_map_events.clear()

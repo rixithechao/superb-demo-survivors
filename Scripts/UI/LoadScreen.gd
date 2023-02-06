@@ -3,11 +3,6 @@ extends Control
 var progress : float = 0
 
 
-func _ready():
-	UIManager.load_screen_instance = self
-	$AnimationPlayer.play("Sequence_Enter")
-
-
 func _process(_delta):
 	$ProgressBar.value = progress
 	

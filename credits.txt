@@ -1,24 +1,25 @@
 SOUND EFFECTS:
-Title confirm, menu confirm --> Game Jingles & 8-Bit Sound FX by WOWSound
-Various sounds --> RPG Magic SFX Pack 2 by WOWSound
-_____ --> Casual Game SFX Pack by ZStreifel
-_____ --> Cute GUI Sounds Set by CactusBear
+	Title confirm, menu confirm --> Game Jingles & 8-Bit Sound FX by WOWSound
+	Various sounds --> RPG Magic SFX Pack 2 by WOWSound
+	_____ --> Casual Game SFX Pack by ZStreifel
+	_____ --> Cute GUI Sounds Set by CactusBear
 
 FREESOUND:
-Grab pickups --> Henrythetrain
-Eating pickups --> ursenfuns
-XP pickups --> 16HPanskaZavadovsky_Igor
-Level up sound --> bergice
-Damage sounds --> nekoninja
-Damage accent sounds --> Iamgiorgio, RutgerMuller, LamaMakesMusic, eben-frostey, 3bagbrew
-Map event enemy spawn warning --> bbrocer
-Map event enemy spawn --> Euphrosyyn 
-
+	Grab pickups --> Henrythetrain (pop)
+	Eating pickups --> ursenfuns (crunch)
+	XP pickups --> 16HPanskaZavadovsky_Igor (chamagne glass clink)
+	Level up sound --> bergice (funky guitar)
+	Damage sounds --> nekoninja (samurai slash)
+	Damage accent sounds --> Iamgiorgio (cuckoo clock), RutgerMuller (detuned piano stabs), LamaMakesMusic (rubber duck), eben-frostey (metallic clang), 3bagbrew (jaw harp), jmjeffries2 (metal clang)
+	Map event enemy spawn warning --> bbrocer (digital alarm loop)
+	Map event enemy spawn --> Euphrosyyn (anime teleport sounds)
+	Dialogue sounds --> Rvgerxini (reverse piano)
 
 
 PLUGINS:
 Random Audio Node Player --> Sander Vanhove
 Antialiased Line2D --> Calinou
+a number of others I need to add here
 
 
 SHADERS:

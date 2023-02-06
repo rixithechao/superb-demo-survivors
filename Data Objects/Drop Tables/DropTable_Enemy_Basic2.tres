@@ -1,0 +1,27 @@
+[gd_resource type="Resource" load_steps=8 format=2]
+
+[ext_resource path="res://Prefabs/Pickups/Prefab_Pickup_Coin.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Prefabs/Pickups/Prefab_Pickup_ExpMed.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/ScriptableObjects/DropTableEntry.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/ScriptableObjects/DropTableData.gd" type="Script" id=4]
+
+[sub_resource type="Resource" id=1]
+resource_name = "Empty"
+script = ExtResource( 3 )
+weight = 5
+
+[sub_resource type="Resource" id=2]
+resource_name = "Drop"
+script = ExtResource( 3 )
+pickup = ExtResource( 2 )
+weight = 10
+
+[sub_resource type="Resource" id=3]
+resource_name = "Drop"
+script = ExtResource( 3 )
+pickup = ExtResource( 1 )
+weight = 1
+
+[resource]
+script = ExtResource( 4 )
+drops = [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ) ]

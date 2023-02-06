@@ -10,7 +10,7 @@ func pickup_effect():
 	pass
 
 
-func _on_Pickup_body_entered(area):
+func _on_Pickup_body_entered(_area):
 	if  not collected:
 		collected = true
 		_tween = $Tween
@@ -29,7 +29,7 @@ func _on_Pickup_body_entered(area):
 
 
 
-func _on_Tween_tween_completed(object, key):
+func _on_Tween_tween_completed(_object, _key):
 	if  not effect_applied:
 		effect_applied = true
 		pickup_effect()
@@ -43,7 +43,7 @@ func _on_CollectSound_finished():
 
 
 
-func _process(delta):
+func _process(_delta):
 	if  collected:
 		var percent = _tween.tell()/TWEEN_TIME
 		position = lerp(self.position, PlayerManager.instance.position + Vector2(0,-32), percent)

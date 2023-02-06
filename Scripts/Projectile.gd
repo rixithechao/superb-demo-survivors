@@ -9,6 +9,11 @@ enum ProjectileOrientType {
 	ROTATE
 }
 
+enum ProjectileAlternateType {
+	NONE,
+	FLIP_X,
+	FLIP_Y
+}
 
 enum ProjectileTargetType {
 	PLAYER,
@@ -34,6 +39,7 @@ export var relative_position = true
 export var spawn_radius : float = 0
 export(ProjectileTargetType) var target_type = ProjectileTargetType.PLAYER
 export(ProjectileAimType) var aim_type = ProjectileAimType.PLAYER_HORIZONTAL
+export(ProjectileAlternateType) var alternate_type = ProjectileAlternateType.NONE
 export var aim_spread : float = 0
 export var speed : float = 1
 export var acceleration : Vector3
@@ -46,6 +52,8 @@ var target_node
 var target_offset = Vector2.ZERO
 
 var enemies_pierced = 0
+
+var volley_index = 0
 
 
 
@@ -72,10 +80,10 @@ func _ready():
 			target_offset.y = -24
 
 		ProjectileTargetType.ENEMY_RANDOM:
-			target_node = EnemyManager.get_random()
+			target_node = HarmableManager.get_random()
 
 		ProjectileTargetType.ENEMY_NEAREST:
-			target_node = EnemyManager.get_nearest()
+			target_node = HarmableManager.get_nearest()
 
 	#if not relative_position:
 	self.position = target_node.position + target_offset
@@ -105,12 +113,12 @@ func _ready():
 			enemy_node = PlayerManager.instance
 		
 		ProjectileAimType.TO_ENEMY_NEAREST:
-			enemy_node = EnemyManager.get_nearest()
+			enemy_node = HarmableManager.get_nearest()
 			if enemy_node == null:
 				fire_direction = PlayerManager.instance.direction
 
 		ProjectileAimType.TO_ENEMY_RANDOM:
-			enemy_node = EnemyManager.get_random()
+			enemy_node = HarmableManager.get_random()
 			if enemy_node == null:
 				fire_direction = PlayerManager.instance.direction
 
@@ -145,7 +153,16 @@ func _ready():
 			$LocalPos.rotation_degrees = rad2deg(fire_speed.angle())
 
 
-	
+	# Alternating swings and such
+	match alternate_type:
+		ProjectileAlternateType.FLIP_X:
+			$LocalPos.scale.x *= pow(-1, volley_index)
+		ProjectileAlternateType.FLIP_Y:
+			$LocalPos.scale.y *= pow(-1, volley_index)
+
+
+
+
 func _process(delta):
 	if  relative_position and target_node != null:
 		self.position = target_node.position + target_offset
@@ -165,6 +182,6 @@ func _on_Duration_timeout():
 
 func _on_LocalPos_body_entered(body):
 	
-	if body.is_in_group("enemy"):
+	if body.is_in_group("harmable"):
 		body.hit_by_projectile(self)
 		pass # Replace with function body.

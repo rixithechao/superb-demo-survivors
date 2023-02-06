@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Scripts/Debug/DebugMinimap.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/DynFont_Timer.tres" type="DynamicFont" id=2]
@@ -6,13 +6,18 @@
 [ext_resource path="res://Scripts/UI/ExpBar.gd" type="Script" id=4]
 [ext_resource path="res://Scripts/Debug/DebugText.gd" type="Script" id=5]
 [ext_resource path="res://Scripts/UI/HUD.gd" type="Script" id=6]
-[ext_resource path="res://Scripts/UI/HUDEquipmentSlotsRow.gd" type="Script" id=7]
-[ext_resource path="res://Prefabs/UI/Prefab_EquipmentSlot.tscn" type="PackedScene" id=8]
-[ext_resource path="res://StyleBox_ProgressBarBG.tres" type="StyleBox" id=9]
-[ext_resource path="res://StyleBox_ProgressBarFG.tres" type="StyleBox" id=10]
+[ext_resource path="res://Textures/UI/spr_hud_kills_a2xt.png" type="Texture" id=7]
+[ext_resource path="res://Prefabs/UI/Prefab_HUDEquipmentSlots.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Textures/UI/tex_ui_xpBar_fill.png" type="Texture" id=9]
+[ext_resource path="res://Textures/UI/tex_ui_xpBar_under.png" type="Texture" id=10]
+[ext_resource path="res://Textures/UI/spr_hud_coin_a2xt.png" type="Texture" id=11]
+[ext_resource path="res://Fonts/DynFont_EquipmentLevels.tres" type="DynamicFont" id=12]
+[ext_resource path="res://Fonts/DynFont_EXPBarLevel.tres" type="DynamicFont" id=13]
+[ext_resource path="res://Scripts/UI/HUDCoinCounter.gd" type="Script" id=14]
+[ext_resource path="res://Scripts/UI/HUDKillCounter.gd" type="Script" id=15]
 
 [sub_resource type="StyleBoxFlat" id=5]
-bg_color = Color( 0, 0, 0, 0.282353 )
+bg_color = Color( 0.160784, 0.2, 0.368627, 1 )
 corner_radius_top_left = 14
 corner_radius_bottom_right = 15
 
@@ -26,7 +31,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="Elements" type="Control" parent="."]
-modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 
@@ -51,6 +55,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = -10.0
 margin_bottom = -10.0
+grow_horizontal = 0
+grow_vertical = 0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
@@ -62,28 +68,41 @@ align = 2
 valign = 2
 script = ExtResource( 5 )
 
-[node name="ExpBar" type="ProgressBar" parent="Elements"]
+[node name="ExpBar" type="TextureProgress" parent="Elements"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -360.0
-margin_top = -200.0
-margin_right = 360.0
-margin_bottom = -184.0
+margin_left = -384.0
+margin_top = -216.0
+margin_right = 1152.0
+margin_bottom = -88.0
+rect_scale = Vector2( 0.5, 0.5 )
 mouse_filter = 2
-custom_styles/fg = ExtResource( 10 )
-custom_styles/bg = ExtResource( 9 )
-max_value = 5.0
-value = 1.0
-percent_visible = false
+texture_under = ExtResource( 10 )
+texture_progress = ExtResource( 9 )
+tint_progress = Color( 1, 0.905882, 0.388235, 1 )
 script = ExtResource( 4 )
 
+[node name="LevelLabel" type="Label" parent="Elements/ExpBar"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -768.0
+margin_top = -32.0
+margin_right = 768.0
+margin_bottom = 5.0
+custom_fonts/font = ExtResource( 13 )
+text = "Level ##"
+align = 1
+valign = 1
+
 [node name="Timer" type="Control" parent="Elements"]
-margin_left = 384.0
-margin_top = 56.0
-margin_right = 384.0
-margin_bottom = 56.0
+margin_left = 388.0
+margin_top = 70.0
+margin_right = 388.0
+margin_bottom = 70.0
 script = ExtResource( 3 )
 
 [node name="Panel" type="Panel" parent="Elements/Timer"]
@@ -91,12 +110,12 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -45.0
-margin_top = -13.0
-margin_right = 45.0
-margin_bottom = 11.0
+margin_left = -51.0299
+margin_top = -14.5683
+margin_right = 50.9701
+margin_bottom = 17.4317
 rect_rotation = 3.9
-rect_pivot_offset = Vector2( 45, 12 )
+rect_pivot_offset = Vector2( 51, 16 )
 custom_styles/panel = SubResource( 5 )
 
 [node name="TimerColon" type="Label" parent="Elements/Timer"]
@@ -104,10 +123,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -16.0
-margin_top = -13.0
-margin_right = 16.0
-margin_bottom = 11.0
+margin_left = -16.0299
+margin_top = -14.5683
+margin_right = 15.9701
+margin_bottom = 17.4317
 rect_pivot_offset = Vector2( 16, 12 )
 custom_fonts/font = ExtResource( 2 )
 text = ":"
@@ -116,10 +135,10 @@ valign = 1
 autowrap = true
 
 [node name="TimerSecondsOnes" type="Label" parent="Elements/Timer"]
-margin_left = 4.0
-margin_top = -10.0
-margin_right = 36.0
-margin_bottom = 14.0
+margin_left = 12.9701
+margin_top = -11.5683
+margin_right = 44.9701
+margin_bottom = 20.4317
 rect_pivot_offset = Vector2( 19, 12 )
 custom_fonts/font = ExtResource( 2 )
 text = "#"
@@ -127,10 +146,10 @@ align = 2
 valign = 1
 
 [node name="TimerSecondsTens" type="Label" parent="Elements/Timer"]
-margin_left = 4.0
-margin_top = -10.0
-margin_right = 22.0
-margin_bottom = 14.0
+margin_left = 5.97012
+margin_top = -11.5683
+margin_right = 24.9701
+margin_bottom = 20.4317
 rect_pivot_offset = Vector2( 19, 12 )
 custom_fonts/font = ExtResource( 2 )
 text = "#"
@@ -138,10 +157,10 @@ align = 2
 valign = 1
 
 [node name="TimerMinutesOnes" type="Label" parent="Elements/Timer"]
-margin_left = -41.0
-margin_top = -13.0
-margin_right = -9.0
-margin_bottom = 11.0
+margin_left = -39.0299
+margin_top = -14.5683
+margin_right = -7.02988
+margin_bottom = 17.4317
 rect_pivot_offset = Vector2( 19, 12 )
 custom_fonts/font = ExtResource( 2 )
 text = "#"
@@ -149,129 +168,141 @@ align = 2
 valign = 1
 
 [node name="TimerMinutesTens" type="Label" parent="Elements/Timer"]
-margin_left = -41.0
-margin_top = -13.0
-margin_right = -23.0
-margin_bottom = 11.0
+margin_left = -46.0299
+margin_top = -14.5683
+margin_right = -27.0299
+margin_bottom = 17.4317
 rect_pivot_offset = Vector2( 19, 12 )
 custom_fonts/font = ExtResource( 2 )
 text = "#"
 align = 2
 valign = 1
 
-[node name="Weapons" type="HBoxContainer" parent="Elements"]
-margin_left = 10.0
-margin_top = 51.0
-margin_right = 146.0
-margin_bottom = 83.0
-size_flags_horizontal = 0
-size_flags_vertical = 0
-script = ExtResource( 7 )
+[node name="Weapons" parent="Elements" instance=ExtResource( 8 )]
+margin_left = 11.0
+margin_top = 73.0
+margin_right = -545.0
+margin_bottom = 75.192
 slots_type = 1
 row_name_for_debug = "weapons"
 
-[node name="EquipmentSlot1" parent="Elements/Weapons" instance=ExtResource( 8 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 16.0
-margin_bottom = 32.0
+[node name="EquipmentSlot1" parent="Elements/Weapons" index="0"]
+margin_right = 26.0
 
-[node name="EquipmentSlot2" parent="Elements/Weapons" instance=ExtResource( 8 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="EquipmentSlot2" parent="Elements/Weapons" index="1"]
+margin_left = 30.0
+margin_right = 57.0
+
+[node name="EquipmentSlot3" parent="Elements/Weapons" index="2"]
+margin_left = 61.0
+margin_right = 88.0
+
+[node name="EquipmentSlot4" parent="Elements/Weapons" index="3"]
+margin_left = 92.0
+margin_right = 119.0
+
+[node name="EquipmentSlot5" parent="Elements/Weapons" index="4"]
+margin_left = 123.0
+margin_right = 150.0
+
+[node name="EquipmentSlot6" parent="Elements/Weapons" index="5"]
+margin_left = 154.0
+margin_right = 181.0
+
+[node name="EquipmentSlot7" parent="Elements/Weapons" index="6"]
+margin_left = 185.0
+margin_right = 212.0
+
+[node name="Passives" parent="Elements" instance=ExtResource( 8 )]
+margin_left = 11.0
+margin_top = 110.0
+margin_right = -545.0
+margin_bottom = 112.192
+
+[node name="EquipmentSlot1" parent="Elements/Passives" index="0"]
+margin_right = 26.0
+
+[node name="EquipmentSlot2" parent="Elements/Passives" index="1"]
+margin_left = 30.0
+margin_right = 57.0
+
+[node name="EquipmentSlot3" parent="Elements/Passives" index="2"]
+margin_left = 61.0
+margin_right = 88.0
+
+[node name="EquipmentSlot4" parent="Elements/Passives" index="3"]
+margin_left = 92.0
+margin_right = 119.0
+
+[node name="EquipmentSlot5" parent="Elements/Passives" index="4"]
+margin_left = 123.0
+margin_right = 150.0
+
+[node name="EquipmentSlot6" parent="Elements/Passives" index="5"]
+margin_left = 154.0
+margin_right = 181.0
+
+[node name="EquipmentSlot7" parent="Elements/Passives" index="6"]
+margin_left = 185.0
+margin_right = 212.0
+
+[node name="Money" type="HSplitContainer" parent="Elements"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 316.0
+margin_top = -152.0
+margin_right = 368.0
+margin_bottom = -132.0
+grow_horizontal = 0
+dragger_visibility = 2
+script = ExtResource( 14 )
+
+[node name="Sprite" type="TextureRect" parent="Elements/Money"]
+margin_right = 20.0
+margin_bottom = 20.0
+rect_clip_content = true
+texture = ExtResource( 11 )
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="Elements/Money"]
 margin_left = 20.0
-margin_right = 36.0
-margin_bottom = 32.0
+margin_top = 2.0
+margin_right = 52.0
+margin_bottom = 17.0
+custom_fonts/font = ExtResource( 12 )
+text = "####"
+align = 2
 
-[node name="EquipmentSlot3" parent="Elements/Weapons" instance=ExtResource( 8 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 40.0
-margin_right = 56.0
-margin_bottom = 32.0
+[node name="Kills" type="HSplitContainer" parent="Elements"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 316.0
+margin_top = -128.0
+margin_right = 368.0
+margin_bottom = -108.0
+grow_horizontal = 0
+dragger_visibility = 2
+script = ExtResource( 15 )
 
-[node name="EquipmentSlot4" parent="Elements/Weapons" instance=ExtResource( 8 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 60.0
-margin_right = 76.0
-margin_bottom = 32.0
+[node name="Sprite" type="TextureRect" parent="Elements/Kills"]
+margin_right = 20.0
+margin_bottom = 20.0
+rect_clip_content = true
+texture = ExtResource( 7 )
+stretch_mode = 3
 
-[node name="EquipmentSlot5" parent="Elements/Weapons" instance=ExtResource( 8 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 80.0
-margin_right = 96.0
-margin_bottom = 32.0
-
-[node name="EquipmentSlot6" parent="Elements/Weapons" instance=ExtResource( 8 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 100.0
-margin_right = 116.0
-margin_bottom = 32.0
-
-[node name="EquipmentSlot7" parent="Elements/Weapons" instance=ExtResource( 8 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 120.0
-margin_right = 136.0
-margin_bottom = 32.0
-
-[node name="Passives" type="HBoxContainer" parent="Elements"]
-margin_left = 10.0
-margin_top = 84.0
-margin_right = 146.0
-margin_bottom = 116.0
-size_flags_horizontal = 0
-size_flags_vertical = 0
-script = ExtResource( 7 )
-row_name_for_debug = "passives"
-
-[node name="EquipmentSlot1" parent="Elements/Passives" instance=ExtResource( 8 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 16.0
-margin_bottom = 32.0
-
-[node name="EquipmentSlot2" parent="Elements/Passives" instance=ExtResource( 8 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="Label" type="Label" parent="Elements/Kills"]
 margin_left = 20.0
-margin_right = 36.0
-margin_bottom = 32.0
+margin_top = 2.0
+margin_right = 52.0
+margin_bottom = 17.0
+custom_fonts/font = ExtResource( 12 )
+text = "####"
+align = 2
 
-[node name="EquipmentSlot3" parent="Elements/Passives" instance=ExtResource( 8 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 40.0
-margin_right = 56.0
-margin_bottom = 32.0
-
-[node name="EquipmentSlot4" parent="Elements/Passives" instance=ExtResource( 8 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 60.0
-margin_right = 76.0
-margin_bottom = 32.0
-
-[node name="EquipmentSlot5" parent="Elements/Passives" instance=ExtResource( 8 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 80.0
-margin_right = 96.0
-margin_bottom = 32.0
-
-[node name="EquipmentSlot6" parent="Elements/Passives" instance=ExtResource( 8 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 100.0
-margin_right = 116.0
-margin_bottom = 32.0
-
-[node name="EquipmentSlot7" parent="Elements/Passives" instance=ExtResource( 8 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 120.0
-margin_right = 136.0
-margin_bottom = 32.0
+[editable path="Elements/Weapons"]
+[editable path="Elements/Passives"]

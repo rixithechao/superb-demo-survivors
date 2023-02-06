@@ -5,7 +5,15 @@ func _process(_delta):
 	if  PlayerManager.instance == null:
 		return
 
+	if  StageManager.started == false:
+		self.queue_free()
+
 	position = PlayerManager.instance.position
+
+
+
+func set_random_rotation():
+	rotation_degrees = rand_range(0,360)
 
 
 

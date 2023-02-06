@@ -43,3 +43,9 @@ func get_random():
 		return get_all()[randi() % get_count()]
 	else:
 		return null
+
+
+
+func erase_all():
+	for obj in get_all():
+		obj.queue_free()

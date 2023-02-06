@@ -1,4 +1,4 @@
-extends TextureRect
+extends Control
 
 func update_gfx(new_icon, new_level):
 	if new_icon == null:

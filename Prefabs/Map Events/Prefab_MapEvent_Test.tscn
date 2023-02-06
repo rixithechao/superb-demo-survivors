@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Prefabs/Enemy Warnings/Prefab_EnemyWarning_Point.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Prefabs/Enemy Warnings/Prefab_EnemyWarning_Vector.tscn" type="PackedScene" id=2]
@@ -6,10 +6,14 @@
 [ext_resource path="res://Textures/Particles/spr_particle_spawn.png" type="Texture" id=4]
 [ext_resource path="res://Prefabs/Enemy Warnings/Prefab_EnemyWarning_VectorChain.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Prefabs/Enemy Warnings/Prefab_EnemyWarning_PointChain.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Prefabs/Enemy Warnings/Prefab_EnemyWarning_Side_U.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Prefabs/Enemy Warnings/Prefab_EnemyWarning_Side_D.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Prefabs/Enemy Warnings/Prefab_EnemyWarning_Side_L.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Prefabs/Enemy Warnings/Prefab_EnemyWarning_Side_R.tscn" type="PackedScene" id=10]
 
 [sub_resource type="Animation" id=8]
 resource_name = "Sequence_MapEvent"
-length = 30.0
+length = 40.0
 step = 1.0
 tracks/0/type = "method"
 tracks/0/path = NodePath(".")
@@ -18,7 +22,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 10 ),
+"times": PoolRealArray( 12, 22 ),
 "transitions": PoolRealArray( 1, 1 ),
 "values": [ {
 "args": [ NodePath("Enemy Warning - Point") ],
@@ -35,7 +39,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 3, 20 ),
+"times": PoolRealArray( 15, 32 ),
 "transitions": PoolRealArray( 1, 1 ),
 "values": [ {
 "args": [ NodePath("Enemy Warning - Point2") ],
@@ -52,9 +56,12 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 4 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 4, 16 ),
+"transitions": PoolRealArray( 1, 1 ),
 "values": [ {
+"args": [ NodePath("Enemy Warning - Vector Chain2") ],
+"method": "start_warning"
+}, {
 "args": [ NodePath("Enemy Warning - Point3") ],
 "method": "start_warning"
 } ]
@@ -66,7 +73,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 7 ),
+"times": PoolRealArray( 19 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [ NodePath("Enemy Warning - Vector") ],
@@ -80,10 +87,66 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 15 ),
+"times": PoolRealArray( 27 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [ NodePath("Enemy Warning - Point Chain") ],
+"method": "start_warning"
+} ]
+}
+tracks/5/type = "method"
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ NodePath("Enemy Warning - Side - U") ],
+"method": "start_warning"
+} ]
+}
+tracks/6/type = "method"
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ NodePath("Enemy Warning - Side - L") ],
+"method": "start_warning"
+} ]
+}
+tracks/7/type = "method"
+tracks/7/path = NodePath(".")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ NodePath("Enemy Warning - Side - D") ],
+"method": "start_warning"
+} ]
+}
+tracks/8/type = "method"
+tracks/8/path = NodePath(".")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ NodePath("Enemy Warning - Side - R") ],
 "method": "start_warning"
 } ]
 }
@@ -434,6 +497,11 @@ _data = {
 "points": PoolVector2Array( -1082.94, -429.986, 1082.94, 429.986, -11.5098, -3, 185.645, 95.8375, -185.645, -95.8375, 731.165, -658 )
 }
 
+[sub_resource type="Curve2D" id=20]
+_data = {
+"points": PoolVector2Array( -247.453, -538.341, 247.453, 538.341, 0, 5, -195.822, -353.483, 195.822, 353.483, 801, 1579 )
+}
+
 [node name="Node2D" instance=ExtResource( 3 )]
 
 [node name="AnimationPlayer" parent="." index="0"]
@@ -443,6 +511,12 @@ anims/Sequence_MapEvent = SubResource( 8 )
 [node name="Enemy Warning - Point" parent="." index="1" instance=ExtResource( 1 )]
 position = Vector2( -134, -131 )
 
+[node name="SpawnRadius" parent="Enemy Warning - Point/Telegraph" index="0"]
+polygon = PoolVector2Array( -1.39876e-06, -32, 6.24289, -31.3851, 12.2459, -29.5641, 17.7782, -26.607, 22.6274, -22.6274, 26.607, -17.7782, 29.5641, -12.2459, 31.3851, -6.24289, 32, 0, 31.3851, 6.24289, 29.5641, 12.2459, 26.607, 17.7782, 22.6274, 22.6274, 17.7782, 26.607, 12.2459, 29.5641, 6.24289, 31.3851, -1.39876e-06, 32, -6.24289, 31.3851, -12.2459, 29.5641, -17.7782, 26.607, -22.6274, 22.6274, -26.607, 17.7783, -29.5641, 12.2459, -31.3851, 6.2429, -32, 4.83187e-06, -31.3851, -6.24289, -29.5641, -12.2459, -26.607, -17.7782, -22.6274, -22.6274, -17.7783, -26.607, -12.2459, -29.5641, -6.24289, -31.3851 )
+
+[node name="TimeRing" parent="Enemy Warning - Point/Telegraph" index="1"]
+polygon = PoolVector2Array( -1.39876e-06, -32, 6.24289, -31.3851, 12.2459, -29.5641, 17.7782, -26.607, 22.6274, -22.6274, 26.607, -17.7782, 29.5641, -12.2459, 31.3851, -6.24289, 32, 0, 31.3851, 6.24289, 29.5641, 12.2459, 26.607, 17.7782, 22.6274, 22.6274, 17.7782, 26.607, 12.2459, 29.5641, 6.24289, 31.3851, -1.39876e-06, 32, -6.24289, 31.3851, -12.2459, 29.5641, -17.7782, 26.607, -22.6274, 22.6274, -26.607, 17.7783, -29.5641, 12.2459, -31.3851, 6.2429, -32, 4.83187e-06, -31.3851, -6.24289, -29.5641, -12.2459, -26.607, -17.7782, -22.6274, -22.6274, -17.7783, -26.607, -12.2459, -29.5641, -6.24289, -31.3851 )
+
 [node name="Progress" parent="Enemy Warning - Point/Telegraph/ProgressRotation" index="0"]
 texture_under = null
 
@@ -450,12 +524,24 @@ texture_under = null
 position = Vector2( 149, -64 )
 relative_to_player = true
 
+[node name="SpawnRadius" parent="Enemy Warning - Point2/Telegraph" index="0"]
+polygon = PoolVector2Array( -1.39876e-06, -32, 6.24289, -31.3851, 12.2459, -29.5641, 17.7782, -26.607, 22.6274, -22.6274, 26.607, -17.7782, 29.5641, -12.2459, 31.3851, -6.24289, 32, 0, 31.3851, 6.24289, 29.5641, 12.2459, 26.607, 17.7782, 22.6274, 22.6274, 17.7782, 26.607, 12.2459, 29.5641, 6.24289, 31.3851, -1.39876e-06, 32, -6.24289, 31.3851, -12.2459, 29.5641, -17.7782, 26.607, -22.6274, 22.6274, -26.607, 17.7783, -29.5641, 12.2459, -31.3851, 6.2429, -32, 4.83187e-06, -31.3851, -6.24289, -29.5641, -12.2459, -26.607, -17.7782, -22.6274, -22.6274, -17.7783, -26.607, -12.2459, -29.5641, -6.24289, -31.3851 )
+
+[node name="TimeRing" parent="Enemy Warning - Point2/Telegraph" index="1"]
+polygon = PoolVector2Array( -1.39876e-06, -32, 6.24289, -31.3851, 12.2459, -29.5641, 17.7782, -26.607, 22.6274, -22.6274, 26.607, -17.7782, 29.5641, -12.2459, 31.3851, -6.24289, 32, 0, 31.3851, 6.24289, 29.5641, 12.2459, 26.607, 17.7782, 22.6274, 22.6274, 17.7782, 26.607, 12.2459, 29.5641, 6.24289, 31.3851, -1.39876e-06, 32, -6.24289, 31.3851, -12.2459, 29.5641, -17.7782, 26.607, -22.6274, 22.6274, -26.607, 17.7783, -29.5641, 12.2459, -31.3851, 6.2429, -32, 4.83187e-06, -31.3851, -6.24289, -29.5641, -12.2459, -26.607, -17.7782, -22.6274, -22.6274, -17.7783, -26.607, -12.2459, -29.5641, -6.24289, -31.3851 )
+
 [node name="Progress" parent="Enemy Warning - Point2/Telegraph/ProgressRotation" index="0"]
 texture_under = null
 
 [node name="Enemy Warning - Point3" parent="." index="3" instance=ExtResource( 1 )]
 position = Vector2( 196, 52 )
 relative_to_player = true
+
+[node name="SpawnRadius" parent="Enemy Warning - Point3/Telegraph" index="0"]
+polygon = PoolVector2Array( -1.39876e-06, -32, 6.24289, -31.3851, 12.2459, -29.5641, 17.7782, -26.607, 22.6274, -22.6274, 26.607, -17.7782, 29.5641, -12.2459, 31.3851, -6.24289, 32, 0, 31.3851, 6.24289, 29.5641, 12.2459, 26.607, 17.7782, 22.6274, 22.6274, 17.7782, 26.607, 12.2459, 29.5641, 6.24289, 31.3851, -1.39876e-06, 32, -6.24289, 31.3851, -12.2459, 29.5641, -17.7782, 26.607, -22.6274, 22.6274, -26.607, 17.7783, -29.5641, 12.2459, -31.3851, 6.2429, -32, 4.83187e-06, -31.3851, -6.24289, -29.5641, -12.2459, -26.607, -17.7782, -22.6274, -22.6274, -17.7783, -26.607, -12.2459, -29.5641, -6.24289, -31.3851 )
+
+[node name="TimeRing" parent="Enemy Warning - Point3/Telegraph" index="1"]
+polygon = PoolVector2Array( -1.39876e-06, -32, 6.24289, -31.3851, 12.2459, -29.5641, 17.7782, -26.607, 22.6274, -22.6274, 26.607, -17.7782, 29.5641, -12.2459, 31.3851, -6.24289, 32, 0, 31.3851, 6.24289, 29.5641, 12.2459, 26.607, 17.7782, 22.6274, 22.6274, 17.7782, 26.607, 12.2459, 29.5641, 6.24289, 31.3851, -1.39876e-06, 32, -6.24289, 31.3851, -12.2459, 29.5641, -17.7782, 26.607, -22.6274, 22.6274, -26.607, 17.7783, -29.5641, 12.2459, -31.3851, 6.2429, -32, 4.83187e-06, -31.3851, -6.24289, -29.5641, -12.2459, -26.607, -17.7782, -22.6274, -22.6274, -17.7783, -26.607, -12.2459, -29.5641, -6.24289, -31.3851 )
 
 [node name="Progress" parent="Enemy Warning - Point3/Telegraph/ProgressRotation" index="0"]
 texture_under = null
@@ -634,6 +720,12 @@ rotation = -1.03365
 [node name="Enemy Warning - Point" parent="Enemy Warning - Point Chain" index="1"]
 relative_to_player = true
 
+[node name="SpawnRadius" parent="Enemy Warning - Point Chain/Enemy Warning - Point/Telegraph" index="0"]
+polygon = PoolVector2Array( -1.39876e-06, -32, 6.24289, -31.3851, 12.2459, -29.5641, 17.7782, -26.607, 22.6274, -22.6274, 26.607, -17.7782, 29.5641, -12.2459, 31.3851, -6.24289, 32, 0, 31.3851, 6.24289, 29.5641, 12.2459, 26.607, 17.7782, 22.6274, 22.6274, 17.7782, 26.607, 12.2459, 29.5641, 6.24289, 31.3851, -1.39876e-06, 32, -6.24289, 31.3851, -12.2459, 29.5641, -17.7782, 26.607, -22.6274, 22.6274, -26.607, 17.7783, -29.5641, 12.2459, -31.3851, 6.2429, -32, 4.83187e-06, -31.3851, -6.24289, -29.5641, -12.2459, -26.607, -17.7782, -22.6274, -22.6274, -17.7783, -26.607, -12.2459, -29.5641, -6.24289, -31.3851 )
+
+[node name="TimeRing" parent="Enemy Warning - Point Chain/Enemy Warning - Point/Telegraph" index="1"]
+polygon = PoolVector2Array( -1.39876e-06, -32, 6.24289, -31.3851, 12.2459, -29.5641, 17.7782, -26.607, 22.6274, -22.6274, 26.607, -17.7782, 29.5641, -12.2459, 31.3851, -6.24289, 32, 0, 31.3851, 6.24289, 29.5641, 12.2459, 26.607, 17.7782, 22.6274, 22.6274, 17.7782, 26.607, 12.2459, 29.5641, 6.24289, 31.3851, -1.39876e-06, 32, -6.24289, 31.3851, -12.2459, 29.5641, -17.7782, 26.607, -22.6274, 22.6274, -26.607, 17.7783, -29.5641, 12.2459, -31.3851, 6.2429, -32, 4.83187e-06, -31.3851, -6.24289, -29.5641, -12.2459, -26.607, -17.7782, -22.6274, -22.6274, -17.7783, -26.607, -12.2459, -29.5641, -6.24289, -31.3851 )
+
 [node name="Progress" parent="Enemy Warning - Point Chain/Enemy Warning - Point/Telegraph/ProgressRotation" index="0"]
 texture_under = null
 
@@ -646,6 +738,7 @@ duration = 0.5
 curve = SubResource( 16 )
 
 [node name="PathFollow2D" parent="Enemy Warning - Vector Chain/Path2D" index="0"]
+position = Vector2( -11.5098, -3 )
 rotation = 0.377047
 
 [node name="Enemy Warning - Vector" parent="Enemy Warning - Vector Chain" index="1"]
@@ -656,6 +749,39 @@ scale = Vector2( 4.80483, 1 )
 
 [node name="Progress" parent="Enemy Warning - Vector Chain/Enemy Warning - Vector/Telegraph/ProgressRotation" index="0"]
 texture_under = null
+
+[node name="Enemy Warning - Vector Chain2" parent="." index="14" instance=ExtResource( 5 )]
+position = Vector2( 1002, -718 )
+gap = 48.0
+duration = 0.0
+
+[node name="Path2D" parent="Enemy Warning - Vector Chain2" index="0"]
+curve = SubResource( 20 )
+
+[node name="PathFollow2D" parent="Enemy Warning - Vector Chain2/Path2D" index="0"]
+position = Vector2( 0, 5 )
+rotation = 1.13978
+
+[node name="Enemy Warning - Vector" parent="Enemy Warning - Vector Chain2" index="1"]
+position = Vector2( -1, 0 )
+rotation = 3.14159
+warning_seconds = 0.0
+despawn_seconds = 20.0
+collides_with_other_enemies = false
+spawn_effects = false
+speed = 2.0
+
+[node name="Enemy Warning - Side - R" parent="." index="15" instance=ExtResource( 10 )]
+warning_seconds = 1.0
+
+[node name="Enemy Warning - Side - D" parent="." index="16" instance=ExtResource( 8 )]
+warning_seconds = 1.0
+
+[node name="Enemy Warning - Side - U" parent="." index="17" instance=ExtResource( 7 )]
+warning_seconds = 1.0
+
+[node name="Enemy Warning - Side - L" parent="." index="18" instance=ExtResource( 9 )]
+warning_seconds = 1.0
 
 [editable path="Enemy Warning - Point"]
 [editable path="Enemy Warning - Point2"]
@@ -672,3 +798,5 @@ texture_under = null
 [editable path="Enemy Warning - Point Chain/Enemy Warning - Point"]
 [editable path="Enemy Warning - Vector Chain"]
 [editable path="Enemy Warning - Vector Chain/Enemy Warning - Vector"]
+[editable path="Enemy Warning - Vector Chain2"]
+[editable path="Enemy Warning - Vector Chain2/Enemy Warning - Vector"]

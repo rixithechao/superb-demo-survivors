@@ -1,7 +1,7 @@
 extends "res://Scripts/Tile Rules/TileRule_Default.gd"
 
 
-static func process(position, heat, noise):
+static func process(_position, heat, noise):
 	return pow(max(heat, noise), 1.4)
 
 

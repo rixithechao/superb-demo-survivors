@@ -26,7 +26,7 @@ func unload():
 
 
 
-func _process(delta):
+func _process(_delta):
 	dump_delay = max(-1, dump_delay-1)
 	if  dump_delay == 0:
 		dump()

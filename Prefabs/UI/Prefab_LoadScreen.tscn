@@ -5,21 +5,21 @@
 [ext_resource path="res://StyleBox_ProgressBarBG.tres" type="StyleBox" id=3]
 [ext_resource path="res://StyleBox_ProgressBarFG.tres" type="StyleBox" id=4]
 
-[sub_resource type="AtlasTexture" id=1]
+[sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 2 )
-region = Rect2( 0, 64, 32, 32 )
+region = Rect2( 0, 80, 32, 40 )
 
-[sub_resource type="AtlasTexture" id=2]
+[sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 2 )
-region = Rect2( 32, 64, 32, 32 )
+region = Rect2( 32, 80, 32, 40 )
 
-[sub_resource type="AtlasTexture" id=3]
+[sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 2 )
-region = Rect2( 64, 64, 32, 32 )
+region = Rect2( 64, 80, 32, 40 )
 
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
-"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ) ],
+"frames": [ SubResource( 7 ), SubResource( 8 ), SubResource( 9 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
@@ -85,7 +85,6 @@ tracks/1/keys = {
 }
 
 [node name="Control" type="Control"]
-modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
@@ -113,5 +112,6 @@ max_value = 1.0
 percent_visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Sequence_Enter"
 anims/Sequence_Enter = SubResource( 5 )
 anims/Sequence_Exit = SubResource( 6 )

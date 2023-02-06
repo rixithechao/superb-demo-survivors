@@ -8,7 +8,7 @@
 radius = 7.0
 height = 16.0
 
-[node name="Pickup_Exp2" instance=ExtResource( 1 )]
+[node name="Pickup - Med Exp" instance=ExtResource( 1 )]
 position = Vector2( 0, -12 )
 script = ExtResource( 3 )
 exp_granted = 8

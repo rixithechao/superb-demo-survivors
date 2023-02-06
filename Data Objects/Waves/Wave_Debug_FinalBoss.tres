@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=5 format=2]
+
+[ext_resource path="res://Prefabs/Enemies/Prefab_Enemy_Caterpillar.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/ScriptableObjects/WaveData.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/ScriptableObjects/BossData.gd" type="Script" id=4]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 4 )
+enemy = ExtResource( 1 )
+final = true
+
+[resource]
+script = ExtResource( 2 )
+minimum = 10
+enemy_spawns = [  ]
+bosses = [ SubResource( 1 ) ]
+map_events = [  ]

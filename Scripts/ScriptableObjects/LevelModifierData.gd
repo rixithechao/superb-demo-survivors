@@ -12,11 +12,11 @@ var modifier_script : Resource
 
 
 func apply_stats(modified):
-	print ("APPLYING STAT MODIFIER FOR " + self.resource_name)
+	#print ("APPLYING STAT MODIFIER FOR " + self.resource_name)
 
 	# Process stats
 	if  type != LevelModifierType.Code and stats != null:
-		stats.apply(modified)
+		stats.apply_stats(modified)
 	
 	# Process code
 	if  type != LevelModifierType.StatSheet and modifier_script != null:

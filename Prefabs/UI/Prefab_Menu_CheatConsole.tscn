@@ -7,17 +7,14 @@
 [node name="Menu" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
-[node name="ColorRect" type="ColorRect" parent="." index="1"]
+[node name="ColorRect" type="ColorRect" parent="Background" index="0"]
 margin_left = -18.0
 margin_top = -23.0
 margin_right = 785.0
 margin_bottom = 451.0
 color = Color( 0, 0, 0, 0.282353 )
 
-[node name="Background" parent="." index="2"]
-visible = false
-
-[node name="LineEdit" type="LineEdit" parent="." index="4"]
+[node name="LineEdit" type="LineEdit" parent="." index="2"]
 margin_left = 3.0
 margin_top = 406.0
 margin_right = 765.0
@@ -25,7 +22,7 @@ margin_bottom = 428.0
 custom_fonts/font = ExtResource( 3 )
 text = "fhqwhgads"
 
-[node name="Log" type="RichTextLabel" parent="." index="5"]
+[node name="Log" type="RichTextLabel" parent="." index="3"]
 margin_left = 13.0
 margin_top = 7.0
 margin_right = 755.0

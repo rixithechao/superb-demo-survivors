@@ -1,5 +1,950 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Prefabs/UI/Prefab_Menu.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Fonts/DynFont_Headers.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Fonts/DynFont_Subheaders.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Prefabs/UI/Prefab_ResultsScreen_ListedStat.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Prefabs/UI/Prefab_HUDEquipmentSlots.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Fonts/DynFont_MenuItem.tres" type="DynamicFont" id=6]
+[ext_resource path="res://StyleBox_Popups.tres" type="StyleBox" id=7]
+[ext_resource path="res://Fonts/DynFont_HeadersBackOutline3.tres" type="DynamicFont" id=8]
+[ext_resource path="res://Textures/UI/tex_panel_9slice_01.png" type="Texture" id=9]
+[ext_resource path="res://Fonts/DynFont_HeadersBackOutline2.tres" type="DynamicFont" id=10]
+[ext_resource path="res://Scripts/UI/Menu_GameOver.gd" type="Script" id=11]
+[ext_resource path="res://Scripts/UI/ItemListTweaks.gd" type="Script" id=12]
+[ext_resource path="res://Sound Effects/Sound_UI_Cursor.ogg" type="AudioStream" id=13]
+[ext_resource path="res://Sound Effects/Sound_UI_Rank.ogg" type="AudioStream" id=14]
+[ext_resource path="res://Sound Effects/Sound_UI_Results.ogg" type="AudioStream" id=15]
+[ext_resource path="res://StyleBox_Menu_Selection.tres" type="StyleBox" id=16]
+[ext_resource path="res://Sound Effects/Sound_Title_AnyKey.ogg" type="AudioStream" id=17]
+[ext_resource path="res://Textures/UI/spr_hud_kills_a2xt.png" type="Texture" id=18]
+[ext_resource path="res://Textures/UI/spr_results_level_a2xt.png" type="Texture" id=19]
+[ext_resource path="res://Textures/UI/spr_results_time_a2xt.png" type="Texture" id=20]
+[ext_resource path="res://Textures/UI/spr_results_revives_a2xt.png" type="Texture" id=21]
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="Animation" id=3]
+resource_name = "Sequence_CloseGameOver"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Control/ItemLists/DeathList:active")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Control/ItemLists/ClearList:active")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "close"
+} ]
+}
+tracks/4/type = "audio"
+tracks/4/path = NodePath("ConfirmSound")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 17 )
+} ],
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=1]
+resource_name = "Sequence_GameOver"
+length = 7.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Control/Header:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Control/Header:rect_position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 12 ), Vector2( 0, 32 ), Vector2( 0, 40 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Control/Header/ClearHeader/ClearBands:rect_size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 29 ), Vector2( 0, 29 ), Vector2( 806, 29 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Control/Header/ClearHeader/ClearBands:rect_position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 385, 21 ), Vector2( 385, 21 ), Vector2( -18, 21 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Control/Header/ClearHeader/ClearHeaderBack:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Control/Header/DeathHeader/DeathBands:rect_size")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 29 ), Vector2( 0, 29 ), Vector2( 806, 29 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Control/Header/DeathHeader/DeathBands:rect_position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 1, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 385, 21 ), Vector2( 385, 21 ), Vector2( -18, 21 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Control/Header/DeathHeader/DeathHeaderBack:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 1, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Control/Results/Panel:rect_size")
+tracks/8/interp = 2
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 1.7, 1.9, 2.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 135, 147 ), Vector2( 135, 147 ), Vector2( 604, 147 ), Vector2( 604, 147 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Control/Results/Panel:rect_position")
+tracks/9/interp = 2
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 1.7, 1.9, 2.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 235, 0 ), Vector2( 235, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Control/Results/Panel:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 1.7, 1.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Control/Results/HBoxContainer:modulate")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 1.9, 2.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("Control/Results/HBoxContainer/VBoxContainer/Time:modulate")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("Control/Results/HBoxContainer/VBoxContainer/Level:modulate")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("Control/Results/HBoxContainer/VBoxContainer/Coins:modulate")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("Control/Results/HBoxContainer/VBoxContainer/Kills:modulate")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("Control/Results/HBoxContainer/VBoxContainer/Revives:modulate")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("Control/Results/CenterContainer/Rank:modulate")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/18/type = "method"
+tracks/18/path = NodePath(".")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 2.6 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ NodePath("Control/Results/HBoxContainer/VBoxContainer/Time") ],
+"method": "show_node"
+} ]
+}
+tracks/19/type = "method"
+tracks/19/path = NodePath(".")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ NodePath("Control/Results/HBoxContainer/VBoxContainer/Level") ],
+"method": "show_node"
+} ]
+}
+tracks/20/type = "method"
+tracks/20/path = NodePath(".")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 3.4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ NodePath("Control/Results/HBoxContainer/VBoxContainer/Coins") ],
+"method": "show_node"
+} ]
+}
+tracks/21/type = "method"
+tracks/21/path = NodePath(".")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"times": PoolRealArray( 3.8 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ NodePath("Control/Results/HBoxContainer/VBoxContainer/Kills") ],
+"method": "show_node"
+} ]
+}
+tracks/22/type = "method"
+tracks/22/path = NodePath(".")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/keys = {
+"times": PoolRealArray( 4.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ NodePath("Control/Results/HBoxContainer/VBoxContainer/Revives") ],
+"method": "show_node"
+} ]
+}
+tracks/23/type = "method"
+tracks/23/path = NodePath(".")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/keys = {
+"times": PoolRealArray( 5.4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "show_rank"
+} ]
+}
+tracks/24/type = "method"
+tracks/24/path = NodePath(".")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/keys = {
+"times": PoolRealArray( 6.9 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "show_item_list"
+} ]
+}
+tracks/25/type = "value"
+tracks/25/path = NodePath("Control/ItemLists:modulate")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/26/type = "value"
+tracks/26/path = NodePath(".:modulate")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
 
 [node name="Menu - Game Over" instance=ExtResource( 1 )]
+modulate = Color( 1, 1, 1, 0 )
+script = ExtResource( 11 )
+
+[node name="CursorSound" type="AudioStreamPlayer" parent="." index="4"]
+stream = ExtResource( 13 )
+bus = "SoundEffects"
+
+[node name="ConfirmSound" type="AudioStreamPlayer" parent="." index="5"]
+stream = ExtResource( 17 )
+pitch_scale = 2.0
+bus = "SoundEffects"
+
+[node name="ResultSound" type="AudioStreamPlayer" parent="." index="6"]
+stream = ExtResource( 15 )
+bus = "SoundEffects"
+
+[node name="RankSound" type="AudioStreamPlayer" parent="." index="7"]
+stream = ExtResource( 14 )
+bus = "SoundEffects"
+
+[node name="Control" type="Control" parent="." index="8"]
+margin_right = 768.0
+margin_bottom = 432.0
+
+[node name="Header" type="Control" parent="Control" index="0"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -384.0
+margin_top = 40.0
+margin_right = 384.0
+margin_bottom = 111.0
+
+[node name="ClearHeader" type="Label" parent="Control/Header" index="0"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -384.0
+margin_right = 384.0
+margin_bottom = 71.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0.282353, 0.658824, 0.909804, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "STAGE CLEARED!"
+align = 1
+valign = 1
+
+[node name="ClearHeaderBack" type="Label" parent="Control/Header/ClearHeader" index="0"]
+show_behind_parent = true
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -384.0
+margin_right = 384.0
+margin_bottom = 71.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0.282353, 0.658824, 0.909804, 1 )
+custom_fonts/font = ExtResource( 10 )
+text = "STAGE CLEARED!"
+align = 1
+valign = 1
+
+[node name="ClearBands" type="Control" parent="Control/Header/ClearHeader" index="1"]
+show_behind_parent = true
+anchor_left = -0.023
+anchor_top = 0.296
+anchor_right = 1.026
+anchor_bottom = 0.704
+margin_left = -0.336
+margin_top = -0.0160007
+margin_right = 0.0319824
+margin_bottom = 0.0159988
+
+[node name="ColorRect2" type="ColorRect" parent="Control/Header/ClearHeader/ClearBands" index="0"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.282353, 0.658824, 0.909804, 1 )
+
+[node name="ColorRect4" type="ColorRect" parent="Control/Header/ClearHeader/ClearBands" index="1"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 4.0
+margin_bottom = -17.0
+color = Color( 0.160784, 0.2, 0.368627, 1 )
+
+[node name="ColorRect" type="ColorRect" parent="Control/Header/ClearHeader/ClearBands" index="2"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 17.0
+margin_bottom = -4.0
+color = Color( 0.160784, 0.2, 0.368627, 1 )
+
+[node name="TextFill" type="ColorRect" parent="Control/Header/ClearHeader/ClearBands" index="3"]
+show_behind_parent = true
+anchor_left = 0.496
+anchor_right = 0.496
+anchor_bottom = 1.0
+margin_left = -136.776
+margin_top = 4.0
+margin_right = 143.224
+margin_bottom = -4.0
+color = Color( 0.160784, 0.2, 0.368627, 1 )
+
+[node name="DeathHeader" type="Label" parent="Control/Header" index="1"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -384.0
+margin_right = 384.0
+margin_bottom = 71.0
+custom_colors/font_color = Color( 1, 0.4, 0.4, 1 )
+custom_colors/font_outline_modulate = Color( 1, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0.505882, 0, 0, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "GAME OVER"
+align = 1
+valign = 1
+
+[node name="DeathHeaderBack" type="Label" parent="Control/Header/DeathHeader" index="0"]
+show_behind_parent = true
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -384.0
+margin_right = 384.0
+margin_bottom = 71.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0.282353, 0.658824, 0.909804, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "GAME OVER"
+align = 1
+valign = 1
+
+[node name="DeathBands" type="Control" parent="Control/Header/DeathHeader" index="1"]
+show_behind_parent = true
+anchor_left = -0.023
+anchor_top = 0.296
+anchor_right = 1.026
+anchor_bottom = 0.704
+margin_left = -0.336
+margin_top = -0.0160007
+margin_right = 0.0319824
+margin_bottom = 0.0159988
+
+[node name="ColorRect2" type="ColorRect" parent="Control/Header/DeathHeader/DeathBands" index="0"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 1, 0.673993, 0.673993, 1 )
+
+[node name="ColorRect4" type="ColorRect" parent="Control/Header/DeathHeader/DeathBands" index="1"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 4.0
+margin_bottom = -17.0
+color = Color( 0.505882, 0, 0, 1 )
+
+[node name="ColorRect" type="ColorRect" parent="Control/Header/DeathHeader/DeathBands" index="2"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 17.0
+margin_bottom = -4.0
+color = Color( 0.505882, 0, 0, 1 )
+
+[node name="TextFill" type="ColorRect" parent="Control/Header/DeathHeader/DeathBands" index="3"]
+show_behind_parent = true
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -104.0
+margin_top = 4.0
+margin_right = 104.0
+margin_bottom = -4.0
+color = Color( 0.505882, 0, 0, 1 )
+
+[node name="Results" type="Control" parent="Control" index="1"]
+anchor_right = 1.0
+margin_left = 82.0
+margin_top = 140.0
+margin_right = -82.0
+margin_bottom = 287.0
+
+[node name="Panel" type="NinePatchRect" parent="Control/Results" index="0"]
+self_modulate = Color( 0.256027, 0.295427, 0.464844, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 9 )
+patch_margin_left = 69
+patch_margin_top = 60
+patch_margin_right = 66
+patch_margin_bottom = 54
+
+[node name="Panel" type="NinePatchRect" parent="Control/Results/Panel" index="0"]
+self_modulate = Color( 0.0851834, 0.117517, 0.256552, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -4.0
+margin_bottom = -4.0
+texture = ExtResource( 9 )
+patch_margin_left = 69
+patch_margin_top = 60
+patch_margin_right = 66
+patch_margin_bottom = 54
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Results" index="1"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 47.0
+margin_top = 10.0
+margin_right = -51.0
+margin_bottom = -11.0
+
+[node name="Equipment" type="GridContainer" parent="Control/Results/HBoxContainer" index="0"]
+margin_right = 192.0
+margin_bottom = 126.0
+
+[node name="Space" type="Control" parent="Control/Results/HBoxContainer/Equipment" index="0"]
+margin_right = 192.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 0, 15 )
+
+[node name="Weapons" parent="Control/Results/HBoxContainer/Equipment" index="1" instance=ExtResource( 5 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 19.0
+margin_right = 192.0
+margin_bottom = 51.0
+size_flags_horizontal = 1
+slots_type = 1
+row_name_for_debug = "weapons"
+
+[node name="Space2" type="Control" parent="Control/Results/HBoxContainer/Equipment" index="2"]
+margin_top = 55.0
+margin_right = 192.0
+margin_bottom = 65.0
+rect_min_size = Vector2( 0, 10 )
+
+[node name="Passives" parent="Control/Results/HBoxContainer/Equipment" index="3" instance=ExtResource( 5 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 69.0
+margin_right = 192.0
+margin_bottom = 101.0
+size_flags_horizontal = 1
+
+[node name="Space" type="Control" parent="Control/Results/HBoxContainer" index="1"]
+margin_left = 196.0
+margin_right = 242.0
+margin_bottom = 126.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Results/HBoxContainer" index="2"]
+margin_left = 246.0
+margin_right = 506.0
+margin_bottom = 126.0
+rect_min_size = Vector2( 260, 0 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Time" parent="Control/Results/HBoxContainer/VBoxContainer" index="0" instance=ExtResource( 4 )]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 260.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 130, 10 )
+
+[node name="Icons" parent="Control/Results/HBoxContainer/VBoxContainer/Time" index="0"]
+margin_bottom = 20.0
+texture = ExtResource( 20 )
+
+[node name="Name" parent="Control/Results/HBoxContainer/VBoxContainer/Time" index="1"]
+margin_right = 146.0
+margin_bottom = 20.0
+text = "Time"
+
+[node name="Value" parent="Control/Results/HBoxContainer/VBoxContainer/Time" index="2"]
+margin_left = 150.0
+margin_right = 260.0
+margin_bottom = 20.0
+text = "##:##"
+
+[node name="Level" parent="Control/Results/HBoxContainer/VBoxContainer" index="1" instance=ExtResource( 4 )]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 24.0
+margin_right = 260.0
+margin_bottom = 44.0
+rect_pivot_offset = Vector2( 130, 10 )
+
+[node name="Icons" parent="Control/Results/HBoxContainer/VBoxContainer/Level" index="0"]
+margin_bottom = 20.0
+texture = ExtResource( 19 )
+
+[node name="Name" parent="Control/Results/HBoxContainer/VBoxContainer/Level" index="1"]
+margin_right = 146.0
+margin_bottom = 20.0
+text = "Level"
+
+[node name="Value" parent="Control/Results/HBoxContainer/VBoxContainer/Level" index="2"]
+margin_left = 150.0
+margin_right = 260.0
+margin_bottom = 20.0
+text = "###"
+
+[node name="Coins" parent="Control/Results/HBoxContainer/VBoxContainer" index="2" instance=ExtResource( 4 )]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 48.0
+margin_right = 260.0
+margin_bottom = 68.0
+rect_pivot_offset = Vector2( 130, 10 )
+
+[node name="Icons" parent="Control/Results/HBoxContainer/VBoxContainer/Coins" index="0"]
+margin_bottom = 20.0
+
+[node name="Name" parent="Control/Results/HBoxContainer/VBoxContainer/Coins" index="1"]
+margin_right = 146.0
+margin_bottom = 20.0
+text = "Coins"
+
+[node name="Value" parent="Control/Results/HBoxContainer/VBoxContainer/Coins" index="2"]
+margin_left = 150.0
+margin_right = 260.0
+margin_bottom = 20.0
+text = "#####"
+
+[node name="Kills" parent="Control/Results/HBoxContainer/VBoxContainer" index="3" instance=ExtResource( 4 )]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 72.0
+margin_right = 260.0
+margin_bottom = 92.0
+rect_pivot_offset = Vector2( 130, 10 )
+
+[node name="Icons" parent="Control/Results/HBoxContainer/VBoxContainer/Kills" index="0"]
+margin_bottom = 20.0
+texture = ExtResource( 18 )
+
+[node name="Name" parent="Control/Results/HBoxContainer/VBoxContainer/Kills" index="1"]
+margin_right = 172.0
+margin_bottom = 20.0
+text = "Enemies Defeated"
+
+[node name="Value" parent="Control/Results/HBoxContainer/VBoxContainer/Kills" index="2"]
+margin_left = 176.0
+margin_right = 260.0
+margin_bottom = 20.0
+text = "#####"
+
+[node name="Revives" parent="Control/Results/HBoxContainer/VBoxContainer" index="4" instance=ExtResource( 4 )]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 96.0
+margin_right = 260.0
+margin_bottom = 116.0
+rect_pivot_offset = Vector2( 130, 10 )
+
+[node name="Icons" parent="Control/Results/HBoxContainer/VBoxContainer/Revives" index="0"]
+margin_bottom = 20.0
+texture = ExtResource( 21 )
+
+[node name="Name" parent="Control/Results/HBoxContainer/VBoxContainer/Revives" index="1"]
+margin_right = 146.0
+margin_bottom = 20.0
+text = "Revives"
+
+[node name="Value" parent="Control/Results/HBoxContainer/VBoxContainer/Revives" index="2"]
+margin_left = 150.0
+margin_right = 260.0
+margin_bottom = 20.0
+text = "##"
+
+[node name="CenterContainer" type="CenterContainer" parent="Control/Results" index="2"]
+anchor_top = 1.061
+anchor_right = 0.993
+anchor_bottom = 1.347
+margin_top = -8.96701
+margin_right = 0.227966
+margin_bottom = -9.00902
+
+[node name="Rank" type="HBoxContainer" parent="Control/Results/CenterContainer" index="0"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 218.0
+margin_top = 2.0
+margin_right = 380.0
+margin_bottom = 39.0
+rect_pivot_offset = Vector2( 81, 18 )
+
+[node name="RankLabel" type="Label" parent="Control/Results/CenterContainer/Rank" index="0"]
+margin_right = 83.0
+margin_bottom = 37.0
+custom_fonts/font = ExtResource( 3 )
+text = "Rank:"
+
+[node name="Space" type="Control" parent="Control/Results/CenterContainer/Rank" index="1"]
+margin_left = 87.0
+margin_right = 103.0
+margin_bottom = 37.0
+rect_min_size = Vector2( 16, 0 )
+size_flags_horizontal = 3
+
+[node name="RankValue" type="Label" parent="Control/Results/CenterContainer/Rank" index="2"]
+margin_left = 107.0
+margin_right = 162.0
+margin_bottom = 37.0
+custom_fonts/font = ExtResource( 3 )
+text = "S++"
+
+[node name="ItemLists" type="Control" parent="Control" index="2"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 49.0
+margin_top = 360.0
+margin_right = -49.0
+margin_bottom = -42.0
+rect_pivot_offset = Vector2( 335, 15 )
+
+[node name="ItemListBG" type="Control" parent="Control/ItemLists" index="0"]
+anchor_left = -0.1
+anchor_top = -0.167
+anchor_right = 1.103
+anchor_bottom = 1.0
+margin_top = 0.0100002
+margin_right = -0.0100098
+
+[node name="ColorRect3" type="ColorRect" parent="Control/ItemLists/ItemListBG" index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.256027, 0.295427, 0.464844, 1 )
+
+[node name="ColorRect" type="ColorRect" parent="Control/ItemLists/ItemListBG/ColorRect3" index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = -4.0
+color = Color( 0.0851834, 0.117517, 0.256552, 1 )
+
+[node name="DeathList" type="ItemList" parent="Control/ItemLists" index="1"]
+margin_right = 670.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 0, 30 )
+rect_clip_content = false
+custom_colors/guide_color = Color( 0, 0, 0, 0 )
+custom_colors/font_color_selected = Color( 1, 1, 1, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 6 )
+custom_styles/cursor = ExtResource( 7 )
+custom_styles/selected_focus = ExtResource( 7 )
+custom_styles/bg_focus = SubResource( 2 )
+custom_styles/cursor_unfocused = ExtResource( 7 )
+custom_styles/selected = ExtResource( 7 )
+custom_styles/bg = SubResource( 2 )
+items = [ "Restart", null, false, "Change character", null, false, "Main menu", null, false ]
+max_columns = 4
+same_column_width = true
+fixed_column_width = 215
+icon_mode = 0
+script = ExtResource( 12 )
+menu_node = NodePath("../../..")
+cursor_sound_node = NodePath("../../../CursorSound")
+active = false
+immediate_focus = false
+horizontal = true
+
+[node name="ClearList" type="ItemList" parent="Control/ItemLists" index="2"]
+margin_right = 670.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 0, 30 )
+rect_clip_content = false
+custom_colors/guide_color = Color( 0, 0, 0, 0 )
+custom_colors/font_color_selected = Color( 1, 1, 1, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 6 )
+custom_styles/cursor = ExtResource( 16 )
+custom_styles/selected_focus = ExtResource( 16 )
+custom_styles/bg_focus = SubResource( 2 )
+custom_styles/cursor_unfocused = ExtResource( 16 )
+custom_styles/selected = ExtResource( 16 )
+custom_styles/bg = SubResource( 2 )
+items = [ "Keep going", null, false, "Restart", null, false, "Change character", null, false, "Main menu", null, false ]
+max_columns = 4
+same_column_width = true
+fixed_column_width = 160
+icon_mode = 0
+script = ExtResource( 12 )
+menu_node = NodePath("../../..")
+cursor_sound_node = NodePath("../../../CursorSound")
+active = false
+immediate_focus = false
+horizontal = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="9"]
+autoplay = "Sequence_GameOver"
+anims/Sequence_CloseGameOver = SubResource( 3 )
+anims/Sequence_GameOver = SubResource( 1 )
+
+[connection signal="gui_input" from="Control/ItemLists/DeathList" to="Control/ItemLists/DeathList" method="_on_ItemList_gui_input"]
+[connection signal="gui_input" from="Control/ItemLists/ClearList" to="Control/ItemLists/ClearList" method="_on_ItemList_gui_input"]
+
+[editable path="Control/Results/HBoxContainer/VBoxContainer/Time"]
+[editable path="Control/Results/HBoxContainer/VBoxContainer/Level"]
+[editable path="Control/Results/HBoxContainer/VBoxContainer/Coins"]
+[editable path="Control/Results/HBoxContainer/VBoxContainer/Kills"]
+[editable path="Control/Results/HBoxContainer/VBoxContainer/Revives"]

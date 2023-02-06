@@ -1,7 +1,7 @@
 extends Node
 
 
-static func process(position, heat, noise):
+static func process(_position, heat, noise):
 	return max(heat, noise)
 
 

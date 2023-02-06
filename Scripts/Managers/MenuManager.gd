@@ -4,11 +4,18 @@ var resources = {
 	"splashes": preload("res://Prefabs/UI/Prefab_Menu_SplashScreens.tscn"),
 	"title": preload("res://Prefabs/UI/Prefab_Menu_Title.tscn"),
 	"stages": preload("res://Prefabs/UI/Prefab_Menu_StageSelect.tscn"),
+	"options": preload("res://Prefabs/UI/Prefab_Menu_Options.tscn"),
+	"credits": preload("res://Prefabs/UI/Prefab_Menu_Credits.tscn"),
+	"character": preload("res://Prefabs/UI/Prefab_Menu_CharacterSelect.tscn"),
 	"levelup": preload("res://Prefabs/UI/Prefab_Menu_LevelUp.tscn"),
-	"pause": preload("res://Prefabs/UI/Prefab_Menu_StageSelect.tscn"),
+	"pause": preload("res://Prefabs/UI/Prefab_Menu_Pause.tscn"),
+	"deathbg": preload("res://Prefabs/UI/Prefab_Menu_DeathBG.tscn"),
+	"revive": preload("res://Prefabs/UI/Prefab_Menu_Revive.tscn"),
 	"gameover": preload("res://Prefabs/UI/Prefab_Menu_GameOver.tscn"),
-	"console": preload("res://Prefabs/UI/Prefab_Menu_CheatConsole.tscn")
+	"console": preload("res://Prefabs/UI/Prefab_Menu_CheatConsole.tscn"),
 }
+
+var pressed_any_key = false
 
 var stack = []
 var instances_by_name = {}
@@ -26,6 +33,7 @@ func open(name):
 	#	UIManager.hud.add_child(inst)
 	#else:
 	RootManager.top_ui.add_child(inst)
+	return inst
 
 
 func close_name(name):
@@ -43,5 +51,5 @@ func close(node):
 		close_name(name)
 	else:
 		stack.erase(node)
-		node.queue_free()
 		names_by_instance.erase(node)
+		node.queue_free()

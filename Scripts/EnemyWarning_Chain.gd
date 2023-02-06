@@ -4,8 +4,8 @@ extends Node2D
 
 export (NodePath) var warning_stamp
 export (bool) var orient_to_path = false
-export (float, 0.1, 1000) var gap = 96
-export (float, 0, 200) var duration = 1
+export (float, 0.1, 1000.0) var gap = 96.0
+export (float, 0.0, 200.0) var duration = 1.0
 
 var stamp_node
 
@@ -38,6 +38,7 @@ func start():
 
 	# configure the path follower
 	follower.rotate = orient_to_path
+	var rotation_offset = follower.global_rotation
 
 	# spawn the points
 	for i in count:
@@ -54,19 +55,26 @@ func start():
 			spawned.speed = stamp_node.speed
 			spawned.get_node("Telegraph/Direction/Length").scale.x = stamp_node.get_node("Telegraph/Direction/Length").scale.x
 
+		spawned.warning_sound = stamp_node.warning_sound
 		spawned.radius = stamp_node.radius
 		spawned.relative_to_player = stamp_node.relative_to_player
 		spawned.warning_seconds = stamp_node.warning_seconds
 		spawned.despawn_seconds = stamp_node.despawn_seconds
 		spawned.collides_with_other_enemies = stamp_node.collides_with_other_enemies
 		spawned.enemy_scene = stamp_node.enemy_scene
+		spawned.spawn_effects = stamp_node.spawn_effects
 
 
 		# Place in the map event and apply the transformation
 		get_parent().add_child(spawned)
 		spawned.global_position = follower.global_position
 		if  orient_to_path:
-			spawned.get_node("Telegraph").global_rotation = follower.global_rotation + stamp_node.rotation
+			spawned.get_node("Telegraph/Direction").global_rotation = (follower.global_rotation - rotation_offset) + stamp_node.get_node("Telegraph/Direction").global_rotation
+		else:
+			spawned.get_node("Telegraph/Direction").global_rotation = stamp_node.get_node("Telegraph/Direction").global_rotation
+
+		#var new_rot = spawned.get_node("Telegraph/Direction").global_rotation
+		#print("SPAWN CHAIN ROTATION: ", rad2deg(new_rot))
 
 		# Start the spawner
 		spawned.start()

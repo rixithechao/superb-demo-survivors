@@ -1,18 +1,18 @@
 [gd_resource type="Resource" load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/ScriptableObjects/EnemyData.gd" type="Script" id=1]
-[ext_resource path="res://Data Objects/Drop Tables/DropTable_Boss.tres" type="Resource" id=2]
+[ext_resource path="res://Data Objects/Drop Tables/DropTable_Enemy_Boss.tres" type="Resource" id=2]
 [ext_resource path="res://Scripts/ScriptableObjects/StatSheetData.gd" type="Script" id=3]
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 3 )
 stats = [  ]
 values = {
-Resource( "res://Data Objects/Stats/Stat_Damage.tres" ): 10.0,
 Resource( "res://Data Objects/Stats/Stat_Movement.tres" ): 1.0,
-Resource( "res://Data Objects/Stats/Stat_MaxHP.tres" ): 100.0,
+Resource( "res://Data Objects/Stats/Stat_Inertia.tres" ): 0.0,
 Resource( "res://Data Objects/Stats/Stat_Sturdiness.tres" ): 0.0,
-Resource( "res://Data Objects/Stats/Stat_Inertia.tres" ): 0.0
+Resource( "res://Data Objects/Stats/Stat_Damage.tres" ): 10.0,
+Resource( "res://Data Objects/Stats/Stat_MaxHP.tres" ): 100.0
 }
 "Preset or Remove" = 0
 

@@ -1,8 +1,8 @@
 extends Node2D
 
-export onready var skew : float = -0.125
+export var skew : float = -0.125
 
 
-func _ready():
+func _process(_delta):
 	transform.y = Vector2(skew,1)
 	pass

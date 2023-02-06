@@ -1,0 +1,24 @@
+[gd_resource type="Resource" load_steps=7 format=2]
+
+[ext_resource path="res://Data Objects/Enemies/EnemyData_Furba.tres" type="Resource" id=1]
+[ext_resource path="res://Scripts/ScriptableObjects/WaveData.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/ScriptableObjects/EnemySpawnData.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/ScriptableObjects/BossData.gd" type="Script" id=4]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 4 )
+final = false
+
+[sub_resource type="Resource" id=2]
+resource_name = "Spawn"
+script = ExtResource( 3 )
+interval = 1.0
+delay = 0.0
+enemies = [ ExtResource( 1 ) ]
+
+[resource]
+script = ExtResource( 2 )
+minimum = 10
+enemy_spawns = [ SubResource( 2 ) ]
+bosses = [ SubResource( 1 ) ]
+map_events = [  ]

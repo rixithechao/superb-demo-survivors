@@ -30,5 +30,6 @@ wait_time = 0.5
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="2"]
 stream = ExtResource( 3 )
 autoplay = true
+bus = "SoundEffects"
 script = ExtResource( 4 )
 sounds = [ ExtResource( 3 ), ExtResource( 5 ), ExtResource( 6 ) ]
