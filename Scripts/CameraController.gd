@@ -2,6 +2,10 @@ extends Camera2D
 
 
 func _process(_delta):
+	CameraManager.positions.TL = $TL.global_position
+	CameraManager.positions.TR = $TR.global_position
+	CameraManager.positions.BL = $BL.global_position
+	CameraManager.positions.BR = $BR.global_position
 	#if  PlayerManager.instance != null  and  get_parent() != PlayerManager.instance:
 	#	PlayerManager.instance.add_child(self)
 	pass

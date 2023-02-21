@@ -9,13 +9,16 @@ var revives = 0
 
 var hp = 100
 var data = load("res://Data Objects/Playables/Playable_Demo.tres")
-var weapons = []
-var passives = []
-
+var equipment = {
+	"weapons": [],
+	"passives": [],
+	"boosts": []
+}
 var equipment_levels = {}
-var equipment_timers = {}
+var equipment_nodes = {}
 
 var mercy_seconds : float = 0
+var recovery_timer : float = 1
 
 var current_exp = 0
 var exp_needed = 5
@@ -27,27 +30,40 @@ var enemy_collision_area
 
 
 
-const WEAPON_SLOTS = 7
-const PASSIVE_SLOTS = 7
+const EQUIP_SLOTS = 4
 const REVIVE_COST_LEVEL_MULT = 0.25
 const REVIVE_COST_DEATH_MULT = 5
 const OBTAINED_BIAS_CHANCE = 0.6
 
 
+signal modify_stats
+signal modify_coins
+signal modify_exp
+
 signal change_coins
 signal change_exp
 signal update_exp_bar
 signal change_equipment
+signal take_hit
+signal take_damage
+
+signal revive_check
+
+
+
+func reset_equipment():
+	for  equip_group in equipment:
+		equipment[equip_group].clear()
+	equipment_levels.clear()
+	equipment_nodes.clear()
+
 
 
 
 func set_character(new_data):
 	data = new_data
-	weapons.clear()
-	passives.clear()
-	equipment_levels.clear()
-	equipment_timers.clear()
-	give_weapon(data.starting_weapon)
+	reset_equipment()
+
 	hp = data.stats.values[StatsManager.MAX_HP]
 
 
@@ -74,7 +90,11 @@ func change_hp(amount):
 	set_hp(hp+amount)
 
 func take_damage(amount):
-	change_hp(-amount)
+	var signal_data = {"cancelled":false, "damage_dealt":amount}
+	emit_signal("take_damage", signal_data)
+
+	if  not signal_data.cancelled:
+		change_hp(-signal_data.damage_dealt/get_stat(StatsManager.DEFENSE))
 
 func heal(amount):
 	change_hp(amount)
@@ -83,9 +103,14 @@ func heal(amount):
 func hit_by_enemy(enemyData):
 	#print("Player was hit by ", enemyData.name)
 	if mercy_seconds <= 0 and not dead:
-		take_damage(enemyData.stats.values[StatsManager.DAMAGE])
-		mercy_seconds = 0.75
-		instance.damage_effects()
+
+		var signal_data = {"cancelled":false, "enemy_data":enemyData}
+		emit_signal("take_hit", signal_data)
+
+		if  not signal_data.cancelled:
+			take_damage(enemyData.stats.values[StatsManager.DAMAGE])
+			mercy_seconds = 0.75
+			instance.damage_effects()
 
 
 
@@ -93,24 +118,36 @@ func get_base_stats():
 	return data.stats.values.duplicate()
 
 
-func get_current_stats():
+func get_current_stats(weaponData = null):
 	var modified = get_base_stats()
 
 	#print("GET STATS:\ninitial=", modified)
 	
-	for passive in passives:
+	for boost in equipment.boosts:
+		boost.apply_stats(modified)
+		pass
+		
+	for passive in equipment.passives:
 		passive.apply_stats(modified)
 		pass
 
-	#print("current=", modified, "\n")
+	emit_signal("modify_stats", modified)
+
+	if  weaponData != null:
+		modified = weaponData.apply_stats(modified)
+
+	#print("PLAYER MANAGER: ", signal_data.stats, "\n\n")
 
 	return modified
 
 
+func has_stat(stat, weaponData=null):
+	var current_stats = get_current_stats(weaponData)
+	
+	return current_stats.has(stat)
+
 func get_stat(stat, weaponData=null):
-	var current_stats = get_current_stats()
-	if weaponData != null:
-		current_stats = weaponData.apply_stats(current_stats)
+	var current_stats = get_current_stats(weaponData)
 	
 	if current_stats.has(stat):
 		return current_stats[stat]
@@ -119,23 +156,29 @@ func get_stat(stat, weaponData=null):
 
 
 
+
 func roll_equipment(count: int = 1, use_only_obtained = false, obtained_bias = false, offer_recovery = true):
 	var valid_equipment = []
 	var valid_owned = []
-	valid_owned.append_array(weapons)
-	valid_owned.append_array(passives)
+	valid_owned.append_array(equipment.weapons)
+	valid_owned.append_array(equipment.passives)
 
 	
-	# Main pool of weapons and passives depends on whether the player has slots available
-	if  weapons.size() < WEAPON_SLOTS  and  not use_only_obtained:
+	# Main pool of each equipment type depends on whether the player has slots available
+	if  equipment.weapons.size() < EQUIP_SLOTS  and  not use_only_obtained:
 		valid_equipment.append_array(EquipmentManager.all_weapons)
 	else:
-		valid_equipment.append_array(weapons)
-		
-	if  passives.size() < PASSIVE_SLOTS  and  not use_only_obtained:
+		valid_equipment.append_array(equipment.weapons)
+
+	if  equipment.passives.size() < EQUIP_SLOTS  and  not use_only_obtained:
 		valid_equipment.append_array(EquipmentManager.all_passives)
 	else:
-		valid_equipment.append_array(passives)
+		valid_equipment.append_array(equipment.passives)
+		
+	if  equipment.boosts.size() < EQUIP_SLOTS  and  not use_only_obtained:
+		valid_equipment.append_array(EquipmentManager.all_passives)
+	else:
+		valid_equipment.append_array(equipment.boosts)
 
 
 	# Remove equipment already at max level
@@ -227,10 +270,12 @@ func give_equipment(eqpData, type_array = null, should_emit_signal = true):
 	
 	if type_array == null:
 		match eqpData.equipment_type:
-			EquipmentData.EquipmentType.PASSIVE:
-				type_array = passives
 			EquipmentData.EquipmentType.WEAPON:
-				type_array = weapons
+				type_array = equipment.weapons
+			EquipmentData.EquipmentType.PASSIVE:
+				type_array = equipment.passives
+			EquipmentData.EquipmentType.BOOST:
+				type_array = equipment.boost
 
 	var is_new = (not equipment_levels.has(eqpData))
 	
@@ -241,31 +286,29 @@ func give_equipment(eqpData, type_array = null, should_emit_signal = true):
 		var tbl = {}
 		equipment_levels[eqpData] = 1
 
-		if eqpData.equipment_type == EquipmentData.EquipmentType.WEAPON:
-			var weapon_stats = eqpData.apply_stats(get_current_stats())
-			
-			tbl.timer_projectiles = 0
-			tbl.timer_cooldown = weapon_stats[StatsManager.COOLDOWN]
-			tbl.projectiles = weapon_stats[StatsManager.AMOUNT]-1
+		if  eqpData.prefab != null  and  instance != null  and  is_instance_valid(instance):
+			equipment_nodes[eqpData] = EquipmentManager.add(eqpData)
 
-			#print(eqpData, ", projScene=", eqpData.projectile, ", tbl=", tbl)
-			equipment_timers[eqpData] = tbl
-		
 	else:
 		equipment_levels[eqpData] += 1
-	
+
 	if  should_emit_signal:
+		print("EQUIPMENT CHANGED SIGNAL")
 		emit_signal("change_equipment", eqpData.equipment_type, type_array)
-	
+
 	return is_new
 
 func give_passive(eqpData, should_emit_signal = true):
-	give_equipment(eqpData, passives, should_emit_signal)
+	give_equipment(eqpData, equipment.passives, should_emit_signal)
 	print("Passive\n")
 
 func give_weapon(eqpData, should_emit_signal = true):
-	give_equipment(eqpData, weapons, should_emit_signal)
+	give_equipment(eqpData, equipment.weapons, should_emit_signal)
 	print("Weapon\n")
+
+func give_boost(eqpData, should_emit_signal = true):
+	give_equipment(eqpData, equipment.boosts, should_emit_signal)
+	print("Stat boost\n")
 
 
 
@@ -282,7 +325,11 @@ func set_exp(amount):
 	check_for_level_up()
 
 func give_exp(amount):
-	set_exp(current_exp + amount)
+	var signal_data = {"cancelled":false, "amount":amount}
+	emit_signal("modify_exp", signal_data)
+
+	if  not signal_data.cancelled:
+		set_exp(current_exp + ceil(signal_data.amount*get_stat(StatsManager.XP_MULT)))
 
 
 
@@ -291,7 +338,11 @@ func set_coins(amount):
 	emit_signal("change_coins")
 
 func give_coins(amount):
-	set_coins(coins + amount)
+	var signal_data = {"cancelled":false, "amount":amount}
+	emit_signal("modify_coins", signal_data)
+
+	if  not signal_data.cancelled:
+		set_coins(coins + ceil(signal_data.amount*get_stat(StatsManager.MONEY_MULT)))
 
 func remove_coins(amount):
 	set_coins(max(0, coins - amount))
@@ -299,7 +350,12 @@ func remove_coins(amount):
 
 
 func get_revive_cost():
-	return floor(pow(REVIVE_COST_DEATH_MULT*(deaths+1), 1 + REVIVE_COST_LEVEL_MULT*level))
+	var base_cost = floor(pow(REVIVE_COST_DEATH_MULT*(deaths+1), 1 + REVIVE_COST_LEVEL_MULT*level))
+
+	if  deaths == 0:
+		return clamp(coins, 1, base_cost)
+	else:
+		return base_cost
 
 func revive():
 	mercy_seconds = 3
@@ -313,35 +369,6 @@ func revive():
 
 
 
-func update_weapon(wpnData, delta):
-	var tbl = equipment_timers[wpnData]
-	
-	if not tbl.has("timer_projectiles"):
-		#print("WEAPON WITHOUT TIMER: ", wpnData, ", ", tbl)
-		return
-	
-	#print("UPDATING WEAPON: ", wpnData.name, "\n")
-	
-	tbl.timer_projectiles = max(0, tbl.timer_projectiles - delta)
-	tbl.timer_cooldown = max(0, tbl.timer_cooldown - delta)
-	
-	var current_stats = wpnData.apply_stats(get_current_stats())
-	#print ("FINAL WEAPON STATS: ", current_stats)
-	
-	if tbl.timer_projectiles <= 0  and  tbl.projectiles > 0:
-		tbl.projectiles -= 1
-		tbl.timer_projectiles = current_stats[StatsManager.SHOT_INTERVAL]
-		ProjectileManager.spawn(wpnData, tbl.projectiles)
-
-		#print("PROJECTILE FIRED: ", wpnData.name,"\n", tbl, "\n\n", wpnData.stats.apply_stats({}), "\n\n", current_stats, "\n")
-
-
-	if  tbl.timer_cooldown <= 0  and  tbl.projectiles == 0:
-		tbl.timer_cooldown = current_stats[StatsManager.COOLDOWN]
-		tbl.projectiles = current_stats[StatsManager.AMOUNT]-1
-
-
-
 
 func reset_player():
 	print("RESETTING PLAYER: ", data, "\n")
@@ -349,11 +376,9 @@ func reset_player():
 	dead = false
 	deaths = 0
 	revives = 0
-	weapons.clear()
-	passives.clear()
-	equipment_levels.clear()
-	equipment_timers.clear()
-	give_weapon(data.starting_weapon)
+
+	reset_equipment()
+
 	hp = data.stats.values[StatsManager.MAX_HP]
 	mercy_seconds = 0
 	set_coins(0)
@@ -372,6 +397,7 @@ func unload_player():
 func spawn():
 	instance = data.prefab.instance()
 	WorldManager.world_objects_node.add_child(instance)
+	give_weapon(data.starting_weapon)
 
 
 func _ready():
@@ -381,13 +407,16 @@ func _ready():
 	
 func _process(delta):
 	
-	if TimeManager.is_paused  or  dead:
+	if  TimeManager.is_paused  or  dead:
 		return
 
-	mercy_seconds = max(0, mercy_seconds-delta)
+	mercy_seconds = max(0, mercy_seconds-delta*TimeManager.time_rate)
 	
-	for w in weapons:
-		update_weapon(w, delta*TimeManager.time_rate)
+	recovery_timer -= delta*TimeManager.time_rate
+	while recovery_timer <= 0:
+		recovery_timer += 1
+		heal(get_stat(StatsManager.RECOVERY))
+
 
 
 

@@ -1,0 +1,127 @@
+[gd_resource type="Resource" load_steps=22 format=2]
+
+[ext_resource path="res://Scripts/ScriptableObjects/StatSheetData.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/ScriptableObjects/LevelModifierData.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/ScriptableObjects/PassiveData.gd" type="Script" id=3]
+[ext_resource path="res://Textures/Items/spr_passive_zebra_a2xt.png" type="Texture" id=4]
+[ext_resource path="res://Data Objects/Stats/Stat_SpawnRate.tres" type="Resource" id=5]
+[ext_resource path="res://Data Objects/Stats/Stat_MoneyMult.tres" type="Resource" id=6]
+
+[sub_resource type="Resource" id=2]
+script = ExtResource( 1 )
+stats = [  ]
+values = {
+}
+"Preset or Remove" = 0
+
+[sub_resource type="Resource" id=3]
+resource_name = "Level 2"
+script = ExtResource( 2 )
+description = ""
+Type = 0
+Stats = SubResource( 2 )
+
+[sub_resource type="Resource" id=4]
+script = ExtResource( 1 )
+stats = [  ]
+values = {
+}
+"Preset or Remove" = 0
+
+[sub_resource type="Resource" id=5]
+resource_name = "Level 3"
+script = ExtResource( 2 )
+description = ""
+Type = 0
+Stats = SubResource( 4 )
+
+[sub_resource type="Resource" id=6]
+script = ExtResource( 1 )
+stats = [  ]
+values = {
+}
+"Preset or Remove" = 0
+
+[sub_resource type="Resource" id=7]
+resource_name = "Level 4"
+script = ExtResource( 2 )
+description = ""
+Type = 0
+Stats = SubResource( 6 )
+
+[sub_resource type="Resource" id=8]
+script = ExtResource( 1 )
+stats = [  ]
+values = {
+}
+"Preset or Remove" = 0
+
+[sub_resource type="Resource" id=9]
+resource_name = "Level 5"
+script = ExtResource( 2 )
+description = ""
+Type = 0
+Stats = SubResource( 8 )
+
+[sub_resource type="Resource" id=10]
+script = ExtResource( 1 )
+stats = [  ]
+values = {
+}
+"Preset or Remove" = 0
+
+[sub_resource type="Resource" id=11]
+resource_name = "Level 6"
+script = ExtResource( 2 )
+description = ""
+Type = 0
+Stats = SubResource( 10 )
+
+[sub_resource type="Resource" id=12]
+script = ExtResource( 1 )
+stats = [  ]
+values = {
+}
+"Preset or Remove" = 0
+
+[sub_resource type="Resource" id=13]
+resource_name = "Level 7"
+script = ExtResource( 2 )
+description = ""
+Type = 0
+Stats = SubResource( 12 )
+
+[sub_resource type="Resource" id=14]
+script = ExtResource( 1 )
+stats = [  ]
+values = {
+}
+"Preset or Remove" = 0
+
+[sub_resource type="Resource" id=15]
+resource_name = "Level 8"
+script = ExtResource( 2 )
+description = ""
+Type = 0
+Stats = SubResource( 14 )
+
+[sub_resource type="Resource" id=16]
+script = ExtResource( 1 )
+stats = [ ExtResource( 5 ), ExtResource( 6 ) ]
+values = {
+ExtResource( 6 ): 2.0,
+ExtResource( 5 ): 0.1
+}
+"Values/Spawn Rate" = 0.1
+"Values/Money Multiplier" = 2.0
+"Preset or Remove" = 0
+
+[resource]
+script = ExtResource( 3 )
+name = "Zebra"
+icon = ExtResource( 4 )
+description = "Money drops are worth more, but enemies get stronger and spawn more frequently."
+max_level = 8
+rarity = 100.0
+stats = SubResource( 16 )
+level_modifiers = [ SubResource( 3 ), SubResource( 5 ), SubResource( 7 ), SubResource( 9 ), SubResource( 11 ), SubResource( 13 ), SubResource( 15 ) ]

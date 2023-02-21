@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/Equipment_Spawner.gd" type="Script" id=1]
+[ext_resource path="res://Prefabs/Templates/Prefab_Equipment.tscn" type="PackedScene" id=2]
+
+[node name="Node2D" instance=ExtResource( 2 )]
+script = ExtResource( 1 )
+projectile_prefab = null
+pool_limit = 30

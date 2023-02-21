@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Prefabs/UI/Prefab_Menu.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Fonts/DynFont_Headers.tres" type="DynamicFont" id=2]
@@ -21,6 +21,7 @@
 [ext_resource path="res://Textures/UI/spr_results_level_a2xt.png" type="Texture" id=19]
 [ext_resource path="res://Textures/UI/spr_results_time_a2xt.png" type="Texture" id=20]
 [ext_resource path="res://Textures/UI/spr_results_revives_a2xt.png" type="Texture" id=21]
+[ext_resource path="res://Textures/UI/spr_hud_tooth_a2xt.png" type="Texture" id=22]
 
 [sub_resource type="StyleBoxEmpty" id=2]
 
@@ -435,7 +436,6 @@ tracks/26/keys = {
 }
 
 [node name="Menu - Game Over" instance=ExtResource( 1 )]
-modulate = Color( 1, 1, 1, 0 )
 script = ExtResource( 11 )
 
 [node name="CursorSound" type="AudioStreamPlayer" parent="." index="4"]
@@ -460,12 +460,13 @@ margin_right = 768.0
 margin_bottom = 432.0
 
 [node name="Header" type="Control" parent="Control" index="0"]
+modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -384.0
-margin_top = 40.0
+margin_top = 12.0
 margin_right = 384.0
-margin_bottom = 111.0
+margin_bottom = 83.0
 
 [node name="ClearHeader" type="Label" parent="Control/Header" index="0"]
 anchor_left = 0.5
@@ -482,6 +483,7 @@ align = 1
 valign = 1
 
 [node name="ClearHeaderBack" type="Label" parent="Control/Header/ClearHeader" index="0"]
+modulate = Color( 1, 1, 1, 0 )
 show_behind_parent = true
 anchor_left = 0.5
 anchor_right = 0.5
@@ -502,9 +504,9 @@ anchor_left = -0.023
 anchor_top = 0.296
 anchor_right = 1.026
 anchor_bottom = 0.704
-margin_left = -0.336
+margin_left = 402.664
 margin_top = -0.0160007
-margin_right = 0.0319824
+margin_right = -402.968
 margin_bottom = 0.0159988
 
 [node name="ColorRect2" type="ColorRect" parent="Control/Header/ClearHeader/ClearBands" index="0"]
@@ -555,6 +557,7 @@ align = 1
 valign = 1
 
 [node name="DeathHeaderBack" type="Label" parent="Control/Header/DeathHeader" index="0"]
+modulate = Color( 1, 1, 1, 0 )
 show_behind_parent = true
 anchor_left = 0.5
 anchor_right = 0.5
@@ -575,9 +578,9 @@ anchor_left = -0.023
 anchor_top = 0.296
 anchor_right = 1.026
 anchor_bottom = 0.704
-margin_left = -0.336
+margin_left = 402.664
 margin_top = -0.0160007
-margin_right = 0.0319824
+margin_right = -402.968
 margin_bottom = 0.0159988
 
 [node name="ColorRect2" type="ColorRect" parent="Control/Header/DeathHeader/DeathBands" index="0"]
@@ -621,9 +624,12 @@ margin_right = -82.0
 margin_bottom = 287.0
 
 [node name="Panel" type="NinePatchRect" parent="Control/Results" index="0"]
+modulate = Color( 1, 1, 1, 0 )
 self_modulate = Color( 0.256027, 0.295427, 0.464844, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 235.0
+margin_right = -234.0
 texture = ExtResource( 9 )
 patch_margin_left = 69
 patch_margin_top = 60
@@ -643,6 +649,7 @@ patch_margin_right = 66
 patch_margin_bottom = 54
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/Results" index="1"]
+modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 47.0
@@ -651,40 +658,44 @@ margin_right = -51.0
 margin_bottom = -11.0
 
 [node name="Equipment" type="GridContainer" parent="Control/Results/HBoxContainer" index="0"]
-margin_right = 192.0
+margin_right = 108.0
 margin_bottom = 126.0
 
 [node name="Space" type="Control" parent="Control/Results/HBoxContainer/Equipment" index="0"]
-margin_right = 192.0
-margin_bottom = 15.0
-rect_min_size = Vector2( 0, 15 )
+margin_right = 108.0
+margin_bottom = 5.0
+rect_min_size = Vector2( 0, 5 )
 
 [node name="Weapons" parent="Control/Results/HBoxContainer/Equipment" index="1" instance=ExtResource( 5 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 19.0
-margin_right = 192.0
-margin_bottom = 51.0
+margin_top = 9.0
+margin_right = 108.0
+margin_bottom = 41.0
 size_flags_horizontal = 1
 slots_type = 1
 row_name_for_debug = "weapons"
 
-[node name="Space2" type="Control" parent="Control/Results/HBoxContainer/Equipment" index="2"]
-margin_top = 55.0
-margin_right = 192.0
-margin_bottom = 65.0
-rect_min_size = Vector2( 0, 10 )
-
-[node name="Passives" parent="Control/Results/HBoxContainer/Equipment" index="3" instance=ExtResource( 5 )]
+[node name="Passives" parent="Control/Results/HBoxContainer/Equipment" index="2" instance=ExtResource( 5 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 69.0
-margin_right = 192.0
-margin_bottom = 101.0
+margin_top = 45.0
+margin_right = 108.0
+margin_bottom = 77.0
 size_flags_horizontal = 1
 
+[node name="Boosts" parent="Control/Results/HBoxContainer/Equipment" index="3" instance=ExtResource( 5 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 81.0
+margin_right = 108.0
+margin_bottom = 113.0
+size_flags_horizontal = 1
+slots_type = 2
+row_name_for_debug = "boosts"
+
 [node name="Space" type="Control" parent="Control/Results/HBoxContainer" index="1"]
-margin_left = 196.0
+margin_left = 112.0
 margin_right = 242.0
 margin_bottom = 126.0
 size_flags_horizontal = 3
@@ -756,11 +767,12 @@ rect_pivot_offset = Vector2( 130, 10 )
 
 [node name="Icons" parent="Control/Results/HBoxContainer/VBoxContainer/Coins" index="0"]
 margin_bottom = 20.0
+texture = ExtResource( 22 )
 
 [node name="Name" parent="Control/Results/HBoxContainer/VBoxContainer/Coins" index="1"]
 margin_right = 146.0
 margin_bottom = 20.0
-text = "Coins"
+text = "Teeth"
 
 [node name="Value" parent="Control/Results/HBoxContainer/VBoxContainer/Coins" index="2"]
 margin_left = 150.0
@@ -826,9 +838,9 @@ margin_bottom = -9.00902
 
 [node name="Rank" type="HBoxContainer" parent="Control/Results/CenterContainer" index="0"]
 modulate = Color( 1, 1, 1, 0 )
-margin_left = 218.0
+margin_left = 132.0
 margin_top = 2.0
-margin_right = 380.0
+margin_right = 466.0
 margin_bottom = 39.0
 rect_pivot_offset = Vector2( 81, 18 )
 
@@ -847,10 +859,10 @@ size_flags_horizontal = 3
 
 [node name="RankValue" type="Label" parent="Control/Results/CenterContainer/Rank" index="2"]
 margin_left = 107.0
-margin_right = 162.0
+margin_right = 334.0
 margin_bottom = 37.0
 custom_fonts/font = ExtResource( 3 )
-text = "S++"
+text = "B (for Birthday)"
 
 [node name="ItemLists" type="Control" parent="Control" index="2"]
 modulate = Color( 1, 1, 1, 0 )

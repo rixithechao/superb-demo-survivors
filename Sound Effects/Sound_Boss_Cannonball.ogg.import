@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Sound_Boss_Cannonball.ogg-a0248db1eca20b26817aaa360f653858.oggstr"
+
+[deps]
+
+source_file="res://Sound Effects/Sound_Boss_Cannonball.ogg"
+dest_files=[ "res://.import/Sound_Boss_Cannonball.ogg-a0248db1eca20b26817aaa360f653858.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

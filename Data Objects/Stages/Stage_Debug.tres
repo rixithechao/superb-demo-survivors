@@ -1,12 +1,10 @@
-[gd_resource type="Resource" load_steps=8 format=2]
+[gd_resource type="Resource" load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/ScriptableObjects/StageData.gd" type="Script" id=1]
 [ext_resource path="res://Stage Scenes/Scene_Stage_Debug.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Data Objects/Waves/Wave_Debug_Boss.tres" type="Resource" id=3]
-[ext_resource path="res://Data Objects/Waves/Wave_Debug_Event.tres" type="Resource" id=4]
-[ext_resource path="res://Data Objects/Waves/Wave_Debug_FinalBoss.tres" type="Resource" id=5]
 [ext_resource path="res://Textures/Level Previews/tex_levelpreview_debug.png" type="Texture" id=6]
 [ext_resource path="res://Data Objects/Soundtrack/MusicData_Stage_Debug.tres" type="Resource" id=7]
+[ext_resource path="res://Data Objects/Waves/Wave_Stage1_FinalBoss.tres" type="Resource" id=8]
 
 [resource]
 script = ExtResource( 1 )
@@ -15,5 +13,6 @@ preview = ExtResource( 6 )
 scene = ExtResource( 2 )
 tint = Color( 1, 1, 1, 1 )
 music_data = ExtResource( 7 )
-waves = [ ExtResource( 4 ), ExtResource( 3 ), ExtResource( 5 ) ]
-minutes = 8
+waves = [ ExtResource( 8 ) ]
+boss_minute = 1
+reaper_minute = 7

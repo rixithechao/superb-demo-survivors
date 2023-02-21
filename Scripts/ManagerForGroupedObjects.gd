@@ -17,16 +17,23 @@ func get_count():
 
 
 
-func get_nearest():
+func get_nearest(from_node = null):
+	var return_data = {"node": null, "distance": INF}
 	
 	var all_objs = get_all()
+	var count = all_objs.size()
+	
+	if  count == 0:
+		return return_data
 	
 	# assume the first spawn node is closest
 	var nearest = all_objs[0]
 	var nearest_dist = INF
 	var this_dist = 0
 	
-	var player_pos = PlayerManager.instance.global_position
+	if  from_node == null:
+		from_node = PlayerManager.instance
+	var player_pos = from_node.global_position
 
 	# look through enemies to see if any are closer
 	for obj in all_objs:
@@ -35,8 +42,10 @@ func get_nearest():
 			nearest_dist = this_dist
 			nearest = obj
 
-	# reposition player
-	return nearest
+	# return data
+	return_data.node = nearest
+	return_data.distance = nearest_dist
+	return return_data
 
 func get_random():
 	if get_count() > 0:

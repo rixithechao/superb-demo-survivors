@@ -39,6 +39,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/dictionary_inspector/elements/base_property_editor.gd"
 }, {
+"base": "EquipmentData",
+"class": "BoostData",
+"language": "GDScript",
+"path": "res://Scripts/ScriptableObjects/BoostData.gd"
+}, {
 "base": "Resource",
 "class": "BossData",
 "language": "GDScript",
@@ -105,6 +110,11 @@ _global_script_classes=[ {
 "path": "res://Scripts/EnemyCharacter.gd"
 }, {
 "base": "EnemyCharacter",
+"class": "EnemyCharacter_Charger",
+"language": "GDScript",
+"path": "res://Scripts/EnemyCharacter_Charger.gd"
+}, {
+"base": "EnemyCharacter",
 "class": "EnemyCharacter_Hopper",
 "language": "GDScript",
 "path": "res://Scripts/EnemyCharacter_Hopper.gd"
@@ -124,15 +134,35 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/EnemyWarning.gd"
 }, {
+"base": "Node2D",
+"class": "Equipment",
+"language": "GDScript",
+"path": "res://Scripts/Equipment.gd"
+}, {
 "base": "Resource",
 "class": "EquipmentData",
 "language": "GDScript",
 "path": "res://Scripts/ScriptableObjects/EquipmentData.gd"
 }, {
+"base": "Equipment",
+"class": "Equipment_Shield",
+"language": "GDScript",
+"path": "res://Scripts/Equipment_Shield.gd"
+}, {
+"base": "Equipment",
+"class": "Equipment_Spawner",
+"language": "GDScript",
+"path": "res://Scripts/Equipment_Spawner.gd"
+}, {
 "base": "Character",
 "class": "HarmableCharacter",
 "language": "GDScript",
 "path": "res://Scripts/HarmableCharacter.gd"
+}, {
+"base": "Area2D",
+"class": "Hazard",
+"language": "GDScript",
+"path": "res://Scripts/Hazard.gd"
 }, {
 "base": "Resource",
 "class": "LevelModifierData",
@@ -174,10 +204,20 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/ScriptableObjects/PassiveData.gd"
 }, {
+"base": "Area2D",
+"class": "Pickup",
+"language": "GDScript",
+"path": "res://Scripts/Pickup.gd"
+}, {
 "base": "Resource",
 "class": "PickupData",
 "language": "GDScript",
 "path": "res://Scripts/ScriptableObjects/PickupData.gd"
+}, {
+"base": "Pickup",
+"class": "Pickup_Burst",
+"language": "GDScript",
+"path": "res://Scripts/Pickup_Burst.gd"
 }, {
 "base": "Resource",
 "class": "PlayableData",
@@ -188,6 +228,11 @@ _global_script_classes=[ {
 "class": "PlayerGraphic",
 "language": "GDScript",
 "path": "res://Scripts/PlayerGraphic.gd"
+}, {
+"base": "Node",
+"class": "Projectile",
+"language": "GDScript",
+"path": "res://Scripts/Projectile.gd"
 }, {
 "base": "Node",
 "class": "RandomAudioNodePlayer",
@@ -223,6 +268,11 @@ _global_script_classes=[ {
 "class": "SaveableData",
 "language": "GDScript",
 "path": "res://Scripts/Saved Data/SaveableData.gd"
+}, {
+"base": "Node2D",
+"class": "Shockwave",
+"language": "GDScript",
+"path": "res://Scripts/Shockwave.gd"
 }, {
 "base": "Resource",
 "class": "StageData",
@@ -260,6 +310,11 @@ _global_script_classes=[ {
 "path": "res://addons/dictionary_inspector/elements/type_option_button.gd"
 }, {
 "base": "Node2D",
+"class": "VFX",
+"language": "GDScript",
+"path": "res://Scripts/VFX.gd"
+}, {
+"base": "Node2D",
 "class": "Warning",
 "language": "GDScript",
 "path": "res://Scripts/Warning.gd"
@@ -281,6 +336,7 @@ _global_script_class_icons={
 "ArrayPropertyEditor": "",
 "AverageDictionaryEnjoyer": "",
 "BaseCollectionPropertyEditor": "",
+"BoostData": "",
 "BossData": "",
 "BreakableObject": "",
 "Character": "",
@@ -294,12 +350,17 @@ _global_script_class_icons={
 "DropTableEntry": "",
 "EditorArrayIndex": "",
 "EnemyCharacter": "",
+"EnemyCharacter_Charger": "",
 "EnemyCharacter_Hopper": "",
 "EnemyData": "",
 "EnemySpawnData": "",
 "EnemyWarning": "",
+"Equipment": "",
 "EquipmentData": "",
+"Equipment_Shield": "",
+"Equipment_Spawner": "",
 "HarmableCharacter": "",
+"Hazard": "",
 "LevelModifierData": "",
 "LevelUpPickupData": "",
 "MapEventData": "",
@@ -308,9 +369,12 @@ _global_script_class_icons={
 "OldStatSheetData": "",
 "PackedArrayPropertyEditor": "",
 "PassiveData": "",
+"Pickup": "",
 "PickupData": "",
+"Pickup_Burst": "",
 "PlayableData": "",
 "PlayerGraphic": "",
+"Projectile": "",
 "RandomAudioNodePlayer": "",
 "RichTextMatrix": "",
 "Save_Progress": "",
@@ -318,6 +382,7 @@ _global_script_class_icons={
 "Save_Serac": "",
 "Save_Settings": "",
 "SaveableData": "",
+"Shockwave": "",
 "StageData": "",
 "StatChangeData": "",
 "StatData": "",
@@ -325,6 +390,7 @@ _global_script_class_icons={
 "TensorPropertyEditor": "",
 "ThemeIconButton": "",
 "TypeOptionButton": "",
+"VFX": "",
 "Warning": "",
 "WaveData": "",
 "WeaponData": ""
@@ -364,6 +430,11 @@ VFXManager="*res://Scripts/Managers/VFXManager.gd"
 WarningManager="*res://Scripts/Managers/WarningManager.gd"
 WorldManager="*res://Scripts/Managers/WorldManager.gd"
 AntialiasedLine2DTexture="*res://addons/antialiased_line2d/texture.gd"
+
+[debug]
+
+shapes/collision/shape_color=Color( 0, 0.6, 0.701961, 0.235294 )
+shapes/collision/contact_color=Color( 1, 0.2, 0.101961, 0.517647 )
 
 [display]
 
@@ -468,6 +539,8 @@ ui_pause={
 2d_physics/layer_8="intangibleEnemies"
 2d_physics/layer_9="breakables"
 2d_physics/layer_10="playerPickup"
+2d_physics/layer_11="shockwave"
+2d_physics/layer_12="hazards"
 
 [network]
 

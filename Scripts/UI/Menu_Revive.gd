@@ -129,7 +129,7 @@ func _ready():
 	
 	var list_ref = $Skew/List/ItemList
 
-	list_ref.set_item_text(0, "Revive (-" + String(cost) + " coins)")
+	list_ref.set_item_text(0, "Revive (-" + String(cost) + " " + ("teeth" if  SaveManager.settings.teeth  else  "coins") + ")")
 	list_ref.set_item_disabled(0, PlayerManager.coins < cost)
 
 	var random_no = NO_STRINGS[randi() % NO_STRINGS.size()]

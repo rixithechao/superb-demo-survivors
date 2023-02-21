@@ -16,6 +16,7 @@ const TRACKS = {
 	"MENU_MAIN" : preload("res://Data Objects/Soundtrack/MusicData_Menu_Main.tres"),
 	"STAGE_DEBUG" : preload("res://Data Objects/Soundtrack/MusicData_Stage_Debug.tres"),
 	"STAGE_ISLANDS" : preload("res://Data Objects/Soundtrack/MusicData_Stage_Islands01.tres"),
+	"BOSS" : preload("res://Data Objects/Soundtrack/MusicData_Boss_Regular.tres")
 }
 
 

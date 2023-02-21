@@ -1,0 +1,121 @@
+[gd_resource type="Resource" load_steps=20 format=2]
+
+[ext_resource path="res://Scripts/ScriptableObjects/StatSheetData.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/ScriptableObjects/LevelModifierData.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/ScriptableObjects/PassiveData.gd" type="Script" id=3]
+[ext_resource path="res://Textures/Items/spr_passive_sheep_a2xt.png" type="Texture" id=4]
+
+[sub_resource type="Resource" id=2]
+script = ExtResource( 1 )
+stats = [  ]
+values = {
+}
+"Preset or Remove" = 0
+
+[sub_resource type="Resource" id=3]
+resource_name = "Level 2"
+script = ExtResource( 2 )
+description = ""
+Type = 0
+Stats = SubResource( 2 )
+
+[sub_resource type="Resource" id=4]
+script = ExtResource( 1 )
+stats = [  ]
+values = {
+}
+"Preset or Remove" = 0
+
+[sub_resource type="Resource" id=5]
+resource_name = "Level 3"
+script = ExtResource( 2 )
+description = ""
+Type = 0
+Stats = SubResource( 4 )
+
+[sub_resource type="Resource" id=6]
+script = ExtResource( 1 )
+stats = [  ]
+values = {
+}
+"Preset or Remove" = 0
+
+[sub_resource type="Resource" id=7]
+resource_name = "Level 4"
+script = ExtResource( 2 )
+description = ""
+Type = 0
+Stats = SubResource( 6 )
+
+[sub_resource type="Resource" id=8]
+script = ExtResource( 1 )
+stats = [  ]
+values = {
+}
+"Preset or Remove" = 0
+
+[sub_resource type="Resource" id=9]
+resource_name = "Level 5"
+script = ExtResource( 2 )
+description = ""
+Type = 0
+Stats = SubResource( 8 )
+
+[sub_resource type="Resource" id=10]
+script = ExtResource( 1 )
+stats = [  ]
+values = {
+}
+"Preset or Remove" = 0
+
+[sub_resource type="Resource" id=11]
+resource_name = "Level 6"
+script = ExtResource( 2 )
+description = ""
+Type = 0
+Stats = SubResource( 10 )
+
+[sub_resource type="Resource" id=12]
+script = ExtResource( 1 )
+stats = [  ]
+values = {
+}
+"Preset or Remove" = 0
+
+[sub_resource type="Resource" id=13]
+resource_name = "Level 7"
+script = ExtResource( 2 )
+description = ""
+Type = 0
+Stats = SubResource( 12 )
+
+[sub_resource type="Resource" id=14]
+script = ExtResource( 1 )
+stats = [  ]
+values = {
+}
+"Preset or Remove" = 0
+
+[sub_resource type="Resource" id=15]
+resource_name = "Level 8"
+script = ExtResource( 2 )
+description = ""
+Type = 0
+Stats = SubResource( 14 )
+
+[sub_resource type="Resource" id=16]
+script = ExtResource( 1 )
+stats = [  ]
+values = {
+}
+"Preset or Remove" = 0
+
+[resource]
+script = ExtResource( 3 )
+name = "Pocket Sheep"
+icon = ExtResource( 4 )
+description = "Provides a shield that negates up to 3 hits or 50 HP of damage.  Refreshes every 10 seconds."
+max_level = 8
+rarity = 100.0
+stats = SubResource( 16 )
+level_modifiers = [ SubResource( 3 ), SubResource( 5 ), SubResource( 7 ), SubResource( 9 ), SubResource( 11 ), SubResource( 13 ), SubResource( 15 ) ]

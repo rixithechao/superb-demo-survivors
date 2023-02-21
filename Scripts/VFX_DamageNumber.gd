@@ -1,6 +1,7 @@
-extends Node2D
+extends VFX
 
 export var value : int
+export var is_crit : bool = false
 
 
 func _ready():
@@ -21,14 +22,6 @@ func _ready():
 
 func _process(_delta):
 	if  SaveManager.settings.damage_numbers:
-		$LocalPosition/Label.text = String(value)
+		$LocalPosition/Label.text = String(value) + ("!!!" if is_crit else "")
 	else:
 		$LocalPosition/Label.text = ""
-
-
-
-func _on_Tween_tween_completed(object, key):
-	if key == ":modulate":
-		self.queue_free()
-		pass
-	pass # Replace with function body.

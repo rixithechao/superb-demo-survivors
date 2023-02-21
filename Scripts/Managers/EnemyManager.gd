@@ -4,6 +4,8 @@ extends "res://Scripts/ManagerForGroupedObjects.gd"
 var spawner_point = preload("res://Prefabs/Enemy Warnings/Prefab_EnemyWarning_Point.tscn")
 var spawner_vector = preload("res://Prefabs/Enemy Warnings/Prefab_EnemyWarning_Vector.tscn")
 
+var pre_final_shockwave = preload("res://Prefabs/Shockwaves/Prefab_Shockwave_FinalBossPreWipe.tscn")
+
 var kills = 0
 
 
@@ -20,6 +22,12 @@ func get_group_name():
 func add_kill():
 	kills += 1
 	emit_signal("change_kills")
+
+
+func clear_all_enemies():
+	var inst = pre_final_shockwave.instance()
+	WorldManager.add_object(inst)
+	inst.global_position = PlayerManager.instance.global_position
 
 
 
@@ -64,6 +72,15 @@ func spawn_boss(boss_data, position = null):
 	var spawned = spawn(boss_data.enemy, position)
 	spawned.spawn_type = 1
 	spawned.treasure = boss_data.treasure
+	spawned.is_final_boss = boss_data.final
+	
+	if  boss_data.final:
+		clear_all_enemies()
+		
+		var boss_music = StageManager.current_stage_data.boss_music_data
+		if  boss_music == null:
+			boss_music = MusicManager.TRACKS.BOSS
+		MusicManager.play(boss_music)
 	
 	return spawned
 

@@ -46,6 +46,7 @@ func _process(_delta):
 	
 	var blonk = floor(fmod(PlayerManager.mercy_seconds*10, 2))
 	$AirOffset.modulate.a = (blonk if PlayerManager.mercy_seconds > 0 else 1)
+	$AnimationTree.set("parameters/looking/current", lookDir)
 
 
 func _set_anim_state(value):

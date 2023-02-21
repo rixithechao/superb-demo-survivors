@@ -133,6 +133,7 @@ func _set(prop_name: String, val) -> bool:
 								load("res://Data Objects/Stats/Stat_Recovery.tres"),
 								load("res://Data Objects/Stats/Stat_Cooldown.tres"),
 								load("res://Data Objects/Stats/Stat_Area.tres"),
+								load("res://Data Objects/Stats/Stat_SpawnRate.tres"),
 								load("res://Data Objects/Stats/Stat_Speed.tres"),
 								load("res://Data Objects/Stats/Stat_Duration.tres"),
 								load("res://Data Objects/Stats/Stat_Amount.tres"),

@@ -1,0 +1,141 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://Prefabs/Templates/Prefab_EnemyCharacter.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/EnemyCharacter_Hopper.gd" type="Script" id=2]
+
+[sub_resource type="AnimationNodeAnimation" id=50]
+animation = "Air"
+
+[sub_resource type="AnimationNodeAnimation" id=51]
+animation = "Bounce"
+
+[sub_resource type="AnimationNodeAnimation" id=52]
+animation = "Jump"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=53]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=54]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=57]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=58]
+
+[sub_resource type="AnimationNodeStateMachine" id=55]
+states/Air/node = SubResource( 50 )
+states/Air/position = Vector2( 298, 159 )
+states/Bounce/node = SubResource( 51 )
+states/Bounce/position = Vector2( 298, 40 )
+states/Jump/node = SubResource( 52 )
+states/Jump/position = Vector2( 427, 99 )
+transitions = [ "Bounce", "Jump", SubResource( 53 ), "Jump", "Air", SubResource( 54 ), "Air", "Bounce", SubResource( 57 ), "Jump", "Bounce", SubResource( 58 ) ]
+start_node = "Bounce"
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=56]
+
+[sub_resource type="Animation" id=49]
+resource_local_to_scene = true
+resource_name = "Air"
+length = 0.5
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("AirOffset/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
+[sub_resource type="Animation" id=47]
+resource_local_to_scene = true
+length = 0.5
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("AirOffset/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
+[sub_resource type="Animation" id=39]
+resource_local_to_scene = true
+resource_name = "Bounce"
+length = 0.01
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("AirOffset/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 1,
+"values": [  ]
+}
+
+[sub_resource type="Animation" id=38]
+resource_local_to_scene = true
+resource_name = "Jump"
+length = 0.01
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("AirOffset/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 1,
+"values": [  ]
+}
+
+[sub_resource type="CapsuleShape2D" id=48]
+resource_local_to_scene = true
+radius = 20.0
+height = 0.0
+
+[node name="Enemy Template - Hopper" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+spread = 45.0
+hop_strength = 4.0
+hop_variance = 0.5
+limited_hops = -1
+bounce_vfx = null
+Movement/Mode = 3
+
+[node name="AnimationTree" parent="Graphic" index="2"]
+tree_root = SubResource( 55 )
+parameters/playback = SubResource( 56 )
+
+[node name="AnimationPlayer" parent="Graphic" index="3"]
+anims/Air = SubResource( 49 )
+anims/Anim_Enemy_Walk_2Frame = SubResource( 47 )
+anims/Bounce = SubResource( 39 )
+anims/Jump = SubResource( 38 )
+
+[node name="Collision" parent="." index="1"]
+shape = SubResource( 48 )
+
+[connection signal="animation_finished" from="Graphic/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+
+[editable path="Graphic"]

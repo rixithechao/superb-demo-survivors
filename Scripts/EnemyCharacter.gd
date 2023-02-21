@@ -17,14 +17,20 @@ enum EnemySpawnType {
 
 
 export var data : Resource
+export var custom_facing : bool = false
+export var collides_with_other_enemies : bool = true
 var move_mode = EnemyMoveMode.FOLLOW
 var move_speed : Vector2 = Vector2(1,0)
+var other_speed_mult: float = 1
+
+var current_move_dir : Vector2
+
 var spawn_type : int = 1
 var treasure : Resource
 var is_final_boss : bool = false
 
 var despawn_timer: float = 3
-var collides_with_other_enemies : bool = true
+
 
 
 
@@ -32,7 +38,8 @@ const DESPAWN_TIMEOUT = 3
 const BASE_MOVE_SPEED = 40
 
 
-func die():
+
+func die(prevent_drops : bool = false):
 	print("Enemy died\n")
 
 	# Bosses spawn a boss item (chest, anvil, etc)
@@ -41,12 +48,35 @@ func die():
 			StageManager.spawn_pickup(treasure, self.position)
 		
 		if  is_final_boss:
-			StageManager.clear()
+			EnemyManager.clear_all_enemies()
+			MusicManager.stop()
+			StageManager.clear_stage()
 		pass
 
 	_drop_table = data.drop_table
 	EnemyManager.add_kill()
-	.die()
+	.die(prevent_drops)
+
+
+func knock_back(force, duration):
+	status_timers.knockback = duration
+	knockback_dir = current_move_dir * force * (-1/data.get_stat(StatsManager.STURDINESS))
+
+func freeze(duration):
+	status_timers.freeze = duration/(1+data.get_stat(StatsManager.INERTIA))
+
+func apply_ailments(stats_table):
+
+	# knockback
+	if  stats_table.has(StatsManager.KNOCKBACK):
+		var weapon_knockback = stats_table[StatsManager.KNOCKBACK]
+		knock_back(weapon_knockback, 0.12)
+
+	# freeze
+	if  stats_table.has(StatsManager.FREEZE):
+		var weapon_freeze = stats_table[StatsManager.FREEZE]
+		freeze(weapon_freeze)
+
 
 
 func extra_collision_init():
@@ -54,37 +84,52 @@ func extra_collision_init():
 	set_collision_layer_bit ( 3, collides_with_other_enemies )
 	set_collision_layer_bit ( 7, not collides_with_other_enemies )
 
+func get_z_top():
+	return height + data.height
 
-func custom_movement():
+
+
+func custom_movement(delta : float = 0.0):
 	return Vector2.ZERO
 
 
-func apply_movement():
+func apply_movement(delta):
 	var direction = move_speed
-	
-	match move_mode:
-		EnemyMoveMode.FOLLOW:
-			var player_pos = PlayerManager.instance.position
-			direction = (player_pos-position).normalized()
-		
-		EnemyMoveMode.CUSTOM:
-			direction = custom_movement()
+
+	# Apply knockback
+	if  status_timers.knockback > 0:
+		direction = knockback_dir
+
+	# Apply regular movement patterns
+	else:
+
+		match move_mode:
+			EnemyMoveMode.FOLLOW:
+				var player_pos = PlayerManager.instance.position
+				var dir_to_player = (player_pos-position).normalized()
+				direction = dir_to_player
 			
-	
-	if direction.x != 0:
-		$Graphic/AirOffset/Sprite.set_flip_h( sign(direction.x) == -1 )
-	
-	move_and_slide(direction * BASE_MOVE_SPEED * data.get_stat(StatsManager.MOVEMENT) * TimeManager.time_rate, Vector2.UP)
+			EnemyMoveMode.CUSTOM:
+				direction = custom_movement(delta)
+
+		current_move_dir = direction
+
+
+		if direction.x != 0  and  not custom_facing:
+			$Graphic.mirror = ( sign(direction.x) == -1 )
+
+	# warning-ignore:return_value_discarded
+	move_and_slide(direction * BASE_MOVE_SPEED * other_speed_mult * data.get_stat(StatsManager.MOVEMENT) * TimeManager.time_rate, Vector2.UP)
 
 
 
 func _ready():
 	_max_hp = data.get_stat(StatsManager.MAX_HP)
-	$Graphic/Tween.connect("tween_completed", self, "_on_Tween_tween_completed")
+
 
 func _process(delta):
 	
-	if Engine.editor_hint or TimeManager.is_paused or is_dying:
+	if Engine.editor_hint  or  TimeManager.is_paused  or  is_dying:
 		return
 
 
@@ -125,16 +170,16 @@ func _process(delta):
 		self.queue_free()
 
 
-	# Hit delays and vertical movement
+	# Hit delays, status timers, vertical movement
 	._process(delta)
+	$Graphic.freeze_active = (status_timers.freeze > 0)
 
 
 	# Process movement
 	if not TimeManager.is_paused:
-		if freeze_timer <= 0:
-			apply_movement()
-		else:
-			freeze_timer -= delta*TimeManager.time_rate
+
+		if status_timers.freeze <= 0:
+			apply_movement(delta)
 
 
 
@@ -143,11 +188,11 @@ func _physics_process(delta):
 
 	._physics_process(delta)
 	
-	if Engine.editor_hint or TimeManager.is_paused or is_dying:
+	if  Engine.editor_hint  or  TimeManager.is_paused  or  is_dying:
 		return
 
 
-	if  PlayerManager.enemy_collision_area.overlaps_body(self):
+	if  PlayerManager.enemy_collision_area.overlaps_body(self)  and  CharacterManager.check_z_overlap(self, PlayerManager.instance):
 		if world_origin_fix_timer <= 0:
 			PlayerManager.hit_by_enemy(data)
 		else:
@@ -262,12 +307,3 @@ func _get_property_list():
 		})
 
 	return list
-
-
-
-
-func _on_Tween_tween_completed(_object, key):
-	#print("TWEEN COMPLETED. obj=", object, ", key=", key)
-	if  is_dying  and  key == ":modulate":
-		#print("I can die now!")
-		self.queue_free()

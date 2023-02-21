@@ -1,10 +1,11 @@
-[gd_resource type="Resource" load_steps=22 format=2]
+[gd_resource type="Resource" load_steps=23 format=2]
 
 [ext_resource path="res://Scripts/ScriptableObjects/PlayableData.gd" type="Script" id=1]
-[ext_resource path="res://Data Objects/Equipment/Weapons/Weapon_Leek.tres" type="Resource" id=2]
-[ext_resource path="res://Textures/Characters/spr_player_demo_a2xt.png" type="Texture" id=3]
-[ext_resource path="res://Prefabs/Prefab_PlayerGfx_Demo.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Prefabs/Prefab_PlayerCharacter_Demo.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Data Objects/Equipment/Weapons/Weapon_Cube.tres" type="Resource" id=2]
+[ext_resource path="res://Textures/Characters/spr_player_sheath_a2xt.png" type="Texture" id=3]
+[ext_resource path="res://Prefabs/Player GFX/Prefab_PlayerGfx_Sheath.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Prefabs/Playables/Prefab_PlayerCharacter_Sheath.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Data Objects/Stats/Stat_SpawnRate.tres" type="Resource" id=6]
 [ext_resource path="res://Scripts/ScriptableObjects/StatSheetData.gd" type="Script" id=10]
 [ext_resource path="res://Data Objects/Stats/Stat_Damage.tres" type="Resource" id=11]
 [ext_resource path="res://Data Objects/Stats/Stat_Amount.tres" type="Resource" id=12]
@@ -23,27 +24,28 @@
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 10 )
-stats = [ ExtResource( 11 ), ExtResource( 18 ), ExtResource( 24 ), ExtResource( 21 ), ExtResource( 13 ), ExtResource( 17 ), ExtResource( 20 ), ExtResource( 14 ), ExtResource( 12 ), ExtResource( 23 ), ExtResource( 19 ), ExtResource( 15 ), ExtResource( 22 ), ExtResource( 16 ) ]
+stats = [ ExtResource( 11 ), ExtResource( 18 ), ExtResource( 24 ), ExtResource( 21 ), ExtResource( 13 ), ExtResource( 17 ), ExtResource( 20 ), ExtResource( 14 ), ExtResource( 12 ), ExtResource( 23 ), ExtResource( 19 ), ExtResource( 15 ), ExtResource( 22 ), ExtResource( 16 ), ExtResource( 6 ) ]
 values = {
+ExtResource( 24 ): 100.0,
 ExtResource( 13 ): 1.0,
-ExtResource( 14 ): 1.0,
 ExtResource( 23 ): 1.0,
 ExtResource( 12 ): 1.0,
-ExtResource( 17 ): 1.0,
-ExtResource( 20 ): 1.0,
-ExtResource( 21 ): 0.0,
-ExtResource( 22 ): 1.0,
+ExtResource( 14 ): 1.0,
+ExtResource( 11 ): 1,
 ExtResource( 16 ): 1.0,
+ExtResource( 6 ): 1.0,
 ExtResource( 18 ): 1.0,
-ExtResource( 15 ): 1.0,
+ExtResource( 17 ): 1.0,
 ExtResource( 19 ): 1.0,
-ExtResource( 24 ): 100.0,
-ExtResource( 11 ): 1
+ExtResource( 21 ): 0.25,
+ExtResource( 15 ): 1.0,
+ExtResource( 20 ): 1.0,
+ExtResource( 22 ): 1.0
 }
 Values/Damage = 1
 Values/Defense = 1.0
 "Values/Max HP" = 100.0
-Values/Recovery = 0.0
+Values/Recovery = 0.25
 Values/Cooldown = 1.0
 Values/Area = 1.0
 Values/Speed = 1.0
@@ -54,12 +56,13 @@ Values/Movement = 1.0
 Values/Luck = 1.0
 "Values/XP Multiplier" = 1.0
 "Values/Money Multiplier" = 1.0
+"Values/Spawn Rate" = 1.0
 "Preset or Remove" = 0
 
 [resource]
 script = ExtResource( 1 )
 name = "Sheath"
-bio = "A hyperactive sixteen-year-old with a short attention span. She's been isekai'd at least twice."
+bio = "A hyper and absent-minded sixteen-year-old who shouldn't be here, timeline-wise, but managed it nonetheless.  Oh well, she's been isekai'd at least twice before anyway!"
 ability_description = "Slowly recovers HP, but can't be revived."
 prefab = ExtResource( 5 )
 gfx_prefab = ExtResource( 4 )

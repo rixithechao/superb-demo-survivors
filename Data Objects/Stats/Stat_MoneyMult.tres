@@ -6,6 +6,6 @@
 script = ExtResource( 1 )
 name = "Money Multiplier"
 type = 1
-stack_type = 1
-base_value = 1.0
-description = "A multiplier for the amount of coins a player picks up."
+stack_type = 0
+base_value = 0.0
+description = "The cumulative multiplier for the amount of coins a player picks up."

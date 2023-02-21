@@ -446,6 +446,7 @@ texture = ExtResource( 1 )
 hframes = 8
 vframes = 8
 script = ExtResource( 9 )
+main_sprite = NodePath("../Sprite")
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 17 )

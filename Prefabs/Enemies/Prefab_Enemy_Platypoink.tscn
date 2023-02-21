@@ -6,14 +6,13 @@
 
 [node name="Enemy - Fawriel" instance=ExtResource( 1 )]
 data = ExtResource( 2 )
-"Spawning/Spawn Type" = 1
-"Spawning/Boss Treasure" = null
+"Spawning/Spawn Type" = 0
 
 [node name="Sprite" parent="Graphic/AirOffset" index="0"]
 position = Vector2( 0, -20 )
 texture = ExtResource( 3 )
 offset = Vector2( -1, 0 )
-frame = 1
+frame = 0
 
 [node name="MakeshiftWhiteFlash" parent="Graphic/AirOffset" index="1"]
 position = Vector2( 0, -20 )

@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource( 1 )
 name = "XP Multiplier"
-type = 0
-stack_type = 1
-base_value = 1.0
-description = "A multiplier for the amount of XP the player gains from each piece of candy."
+type = 1
+stack_type = 0
+base_value = 0.0
+description = "The cumulative multiplier for the amount of XP the player gains from each piece of candy."

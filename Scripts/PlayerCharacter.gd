@@ -17,6 +17,7 @@ export var movement_locked : bool = false
 
 
 
+
 func _ready():
 	PlayerManager.instance = self
 	PlayerManager.enemy_collision_area = $EnemyCollision
@@ -60,6 +61,10 @@ func _process(delta):
 	# Elevation
 	._process(delta)
 
+	# Stat multipliers
+	var current_stats = PlayerManager.get_current_stats()
+	$ItemCollision.scale = Vector2.ONE * current_stats[StatsManager.PICKUP]
+
 	# Other unsorted things
 	$Graphic.draw_shadow = true
 	direction_input = Vector2.ZERO
@@ -99,9 +104,9 @@ func _process(delta):
 
 	lock_alpha = lerp(lock_alpha, (0 if not Input.is_action_pressed("ui_select") else 1), 0.25)
 
-	$Graphic/AirOffset/Sprite.set_flip_h( current_diagonal.x == -1 )
+	$Graphic.mirror = ( current_diagonal.x == -1 )
 	
-	move_and_slide(direction*TimeManager.time_rate, Vector2.UP)
+	move_and_slide(direction*TimeManager.time_rate*current_stats[StatsManager.MOVEMENT], Vector2.UP)
 	
 	#update_z()
 	

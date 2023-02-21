@@ -1,10 +1,14 @@
 extends KinematicBody2D
 class_name Character
 
+export var gravity : float = 7.5
 
 var height : float = 0
-var gravity : float = 7.5
 var air_speed : float = 0
+
+
+func get_z_top():
+	return height + 2
 
 
 func _process(delta):

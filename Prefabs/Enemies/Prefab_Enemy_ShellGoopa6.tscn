@@ -1,0 +1,71 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Textures/Characters/spr_enemy_shellgoopa6_a2xt.png" type="Texture" id=1]
+[ext_resource path="res://Prefabs/Templates/Prefab_EnemyCharacter.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Data Objects/Enemies/EnemyData_ShellGoopa.tres" type="Resource" id=3]
+
+[sub_resource type="AnimationNodeAnimation" id=36]
+animation = "Anim_Enemy_Walk_2Frame"
+
+[sub_resource type="AnimationNodeTimeScale" id=2]
+
+[sub_resource type="AnimationNodeBlendTree" id=37]
+resource_local_to_scene = true
+graph_offset = Vector2( -315.153, -13.7954 )
+nodes/Animation/node = SubResource( 36 )
+nodes/Animation/position = Vector2( -40, 140 )
+nodes/output/position = Vector2( 480, 140 )
+nodes/walkSpeed/node = SubResource( 2 )
+nodes/walkSpeed/position = Vector2( 280, 120 )
+node_connections = [ "walkSpeed", 0, "Animation", "output", 0, "walkSpeed" ]
+
+[sub_resource type="Animation" id=38]
+resource_local_to_scene = true
+length = 0.5
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("AirOffset/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
+[sub_resource type="CapsuleShape2D" id=39]
+resource_local_to_scene = true
+radius = 17.0
+height = 0.0
+
+[node name="Enemy - Pirate Goopa" instance=ExtResource( 2 )]
+data = ExtResource( 3 )
+
+[node name="Shadow" parent="Graphic" index="0"]
+polygon = PoolVector2Array( -1.39876e-06, -32, 12.2459, -29.5641, 22.6274, -22.6274, 29.5641, -12.2459, 32, 0, 29.5641, 12.2459, 22.6274, 22.6274, 12.2459, 29.5641, -1.39876e-06, 32, -12.2459, 29.5641, -22.6274, 22.6274, -29.5641, 12.2459, -32, 4.83187e-06, -29.5641, -12.2459, -22.6274, -22.6274, -12.2459, -29.5641 )
+
+[node name="Sprite" parent="Graphic/AirOffset" index="0"]
+position = Vector2( 0, -28 )
+texture = ExtResource( 1 )
+offset = Vector2( -2, 0 )
+frame = 1
+
+[node name="MakeshiftWhiteFlash" parent="Graphic/AirOffset" index="1"]
+position = Vector2( 0, -28 )
+texture = ExtResource( 1 )
+offset = Vector2( -2, 0 )
+
+[node name="AnimationTree" parent="Graphic" index="2"]
+tree_root = SubResource( 37 )
+
+[node name="AnimationPlayer" parent="Graphic" index="3"]
+anims/Anim_Enemy_Walk_2Frame = SubResource( 38 )
+
+[node name="Collision" parent="." index="1"]
+shape = SubResource( 39 )
+
+[editable path="Graphic"]

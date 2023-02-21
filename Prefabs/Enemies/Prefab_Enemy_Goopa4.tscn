@@ -6,11 +6,12 @@
 
 [node name="Enemy - Goopa" instance=ExtResource( 1 )]
 data = ExtResource( 2 )
+"Spawning/Spawn Type" = 0
 
 [node name="Sprite" parent="Graphic/AirOffset" index="0"]
 position = Vector2( 0, -28 )
 texture = ExtResource( 3 )
-frame = 1
+frame = 0
 
 [node name="MakeshiftWhiteFlash" parent="Graphic/AirOffset" index="1"]
 position = Vector2( 0, -28 )

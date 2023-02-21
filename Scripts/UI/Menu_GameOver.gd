@@ -39,10 +39,18 @@ func show_item_list():
 
 
 
+
 func _ready():
 	$Control/ItemLists/ClearList.active = false
 	$Control/ItemLists/DeathList.active = false
 	
+	# Teeth or coins
+	var coin_tex = load("res://Textures/UI/spr_hud_coin_a2xt.png")
+	var tooth_tex = load("res://Textures/UI/spr_hud_tooth_a2xt.png")
+
+	$Control/Results/HBoxContainer/VBoxContainer/Coins/Icons.texture = (tooth_tex if  SaveManager.settings.teeth  else coin_tex)
+	$Control/Results/HBoxContainer/VBoxContainer/Coins/Name.text = ("Teeth" if  SaveManager.settings.teeth  else "Coins")
+
 	# Set results
 	$Control/Results/HBoxContainer/VBoxContainer/Time/Value.text = String(TimeManager.minutes_passed) + ":" + String(TimeManager.seconds_passed)
 	$Control/Results/HBoxContainer/VBoxContainer/Level/Value.text = String(PlayerManager.level)
@@ -51,13 +59,17 @@ func _ready():
 	$Control/Results/HBoxContainer/VBoxContainer/Revives/Value.text = String(PlayerManager.revives)
 	
 	var wepnz = $Control/Results/HBoxContainer/Equipment/Weapons
-	wepnz.slots_const = PlayerManager.WEAPON_SLOTS
-	wepnz._on_get_equipment(EquipmentData.EquipmentType.WEAPON, PlayerManager.weapons)
+	wepnz.slots_const = PlayerManager.EQUIP_SLOTS
+	wepnz._on_get_equipment(EquipmentData.EquipmentType.WEAPON, PlayerManager.equipment.weapons)
 
 	var pasvz = $Control/Results/HBoxContainer/Equipment/Passives
-	pasvz.slots_const = PlayerManager.PASSIVE_SLOTS
-	pasvz._on_get_equipment(EquipmentData.EquipmentType.PASSIVE, PlayerManager.passives)
-	
+	pasvz.slots_const = PlayerManager.EQUIP_SLOTS
+	pasvz._on_get_equipment(EquipmentData.EquipmentType.PASSIVE, PlayerManager.equipment.passives)
+
+	var bootz = $Control/Results/HBoxContainer/Equipment/Passives
+	bootz.slots_const = PlayerManager.EQUIP_SLOTS
+	bootz._on_get_equipment(EquipmentData.EquipmentType.BOOST, PlayerManager.equipment.boosts)
+
 	
 	# The player has cleared the stage
 	if  StageManager.cleared:

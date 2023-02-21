@@ -1,0 +1,90 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Prefabs/Templates/Prefab_NPCGraphic.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Textures/Characters/spr_npc_ace_a2xt.png" type="Texture" id=2]
+
+[sub_resource type="AnimationNodeAnimation" id=29]
+animation = "Anim_Startled"
+
+[sub_resource type="AnimationNodeAnimation" id=30]
+animation = "Anim_Idle"
+
+[sub_resource type="AnimationNodeTransition" id=31]
+input_count = 2
+input_0/name = "idle"
+input_0/auto_advance = false
+input_1/name = "startled"
+input_1/auto_advance = false
+
+[sub_resource type="AnimationNodeBlendTree" id=13]
+resource_local_to_scene = true
+graph_offset = Vector2( 115.735, 108.06 )
+nodes/Animation/node = SubResource( 30 )
+nodes/Animation/position = Vector2( 280, 140 )
+"nodes/Animation 3/node" = SubResource( 29 )
+"nodes/Animation 3/position" = Vector2( 280, 260 )
+nodes/movement/node = SubResource( 31 )
+nodes/movement/position = Vector2( 540, 120 )
+nodes/output/position = Vector2( 780, 120 )
+node_connections = [ "movement", 0, "Animation", "movement", 1, "Animation 3", "output", 0, "movement" ]
+
+[sub_resource type="Animation" id=18]
+resource_local_to_scene = true
+resource_name = "Anim_Idle"
+length = 0.5
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("AirOffset/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
+[sub_resource type="Animation" id=19]
+resource_local_to_scene = true
+resource_name = "Anim_Startled"
+length = 0.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("AirOffset/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 2 ]
+}
+
+[node name="NPC - Ace" instance=ExtResource( 1 )]
+
+[node name="Shadow" parent="." index="0"]
+polygon = PoolVector2Array( -1.39876e-06, -32, 12.2459, -29.5641, 22.6274, -22.6274, 29.5641, -12.2459, 32, 0, 29.5641, 12.2459, 22.6274, 22.6274, 12.2459, 29.5641, -1.39876e-06, 32, -12.2459, 29.5641, -22.6274, 22.6274, -29.5641, 12.2459, -32, 4.83187e-06, -29.5641, -12.2459, -22.6274, -22.6274, -12.2459, -29.5641 )
+
+[node name="Sprite" parent="AirOffset" index="0"]
+position = Vector2( 0, -20 )
+texture = ExtResource( 2 )
+offset = Vector2( 0, -6 )
+hframes = 3
+
+[node name="MakeshiftWhiteFlash" parent="AirOffset" index="1"]
+position = Vector2( 0, -20 )
+texture = ExtResource( 2 )
+offset = Vector2( 0, -6 )
+hframes = 3
+
+[node name="AnimationTree" parent="." index="2"]
+tree_root = SubResource( 13 )
+
+[node name="AnimationPlayer" parent="." index="3"]
+anims/Anim_Idle = SubResource( 18 )
+anims/Anim_Startled = SubResource( 19 )

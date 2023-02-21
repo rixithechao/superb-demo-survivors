@@ -5,11 +5,11 @@ export (int) var max_hp = 30
 export (Resource) var drop_table
 
 
-func die():
+func die(prevent_drops: bool = false):
 	$Collision.set_deferred("disabled", true)
 	set_collision_layer_bit ( 8, false )
 	set_collision_mask_bit ( 1, false )
-	.die()
+	.die(prevent_drops)
 
 
 func _ready():

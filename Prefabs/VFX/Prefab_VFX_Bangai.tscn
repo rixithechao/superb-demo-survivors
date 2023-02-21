@@ -1,0 +1,175 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://Prefabs/Templates/Prefab_VFX.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Textures/Particles/spr_particle_smokePuff.png" type="Texture" id=2]
+[ext_resource path="res://Textures/Particles/spr_particle_explode.png" type="Texture" id=3]
+[ext_resource path="res://Textures/Particles/spr_particle_spark.png" type="Texture" id=4]
+[ext_resource path="res://Sound Effects/Sound_Boss_Cannonball.ogg" type="AudioStream" id=6]
+[ext_resource path="res://addons/RandomAudioNodePlayer/RandomAudioNodePlayer.gd" type="Script" id=7]
+
+[sub_resource type="Gradient" id=24]
+interpolation_mode = 2
+offsets = PoolRealArray( 0, 0.183616, 0.364407, 0.550847, 1 )
+colors = PoolColorArray( 1, 0.802274, 0, 1, 1, 0.403922, 0, 0.831373, 0.921569, 0.196078, 0.0509804, 0.662745, 0.388235, 0.388235, 0.388235, 0.392157, 0.388235, 0.388235, 0.388235, 0 )
+
+[sub_resource type="GradientTexture" id=25]
+gradient = SubResource( 24 )
+
+[sub_resource type="ParticlesMaterial" id=26]
+lifetime_randomness = 0.6
+flag_disable_z = true
+direction = Vector3( 0, -1, 0 )
+spread = 90.0
+gravity = Vector3( 0, -98, 0 )
+initial_velocity = 120.0
+initial_velocity_random = 0.59
+angular_velocity = 132.24
+angular_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+damping = 140.0
+scale = 2.0
+scale_random = 1.0
+color_ramp = SubResource( 25 )
+
+[sub_resource type="CanvasItemMaterial" id=16]
+blend_mode = 1
+
+[sub_resource type="Gradient" id=17]
+offsets = PoolRealArray( 0.488439, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=8]
+gradient = SubResource( 17 )
+
+[sub_resource type="Curve" id=18]
+_data = [ Vector2( 0, 0 ), 0.0, 1.0, 0, 1, Vector2( 1, 1 ), 1.0, 0.0, 1, 0 ]
+
+[sub_resource type="CurveTexture" id=10]
+curve = SubResource( 18 )
+
+[sub_resource type="ParticlesMaterial" id=27]
+lifetime_randomness = 0.5
+flag_align_y = true
+flag_rotate_y = true
+flag_disable_z = true
+direction = Vector3( 0, -1, 0 )
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 400.0
+initial_velocity_random = 0.37
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = -300.0
+angle_random = 1.0
+scale = 0.5
+scale_random = 1.0
+scale_curve = SubResource( 10 )
+color_ramp = SubResource( 8 )
+anim_offset_random = 1.0
+
+[sub_resource type="Gradient" id=20]
+offsets = PoolRealArray( 0, 0.583548, 1 )
+colors = PoolColorArray( 1, 0.421875, 0, 1, 1, 0.887449, 0, 1, 1, 0.956863, 0.623529, 0 )
+
+[sub_resource type="GradientTexture" id=21]
+gradient = SubResource( 20 )
+
+[sub_resource type="ParticlesMaterial" id=28]
+lifetime_randomness = 0.5
+flag_align_y = true
+flag_rotate_y = true
+flag_disable_z = true
+direction = Vector3( 0, -1, 0 )
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 50.0
+initial_velocity_random = 0.37
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = -25.0
+angle_random = 1.0
+scale = 0.5
+scale_random = 1.0
+scale_curve = SubResource( 10 )
+color_ramp = SubResource( 21 )
+anim_offset_random = 1.0
+
+[sub_resource type="Animation" id=23]
+resource_local_to_scene = true
+resource_name = "Sequence"
+length = 2.0
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("RandomAudioNodePlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "play"
+} ]
+}
+
+[node name="VFX - Bangai Explosion" instance=ExtResource( 1 )]
+particles_paths = [ NodePath("SpawnParticles"), NodePath("SpawnParticles2"), NodePath("SpawnParticles3") ]
+
+[node name="SpawnParticles" type="Particles2D" parent="." index="0"]
+scale = Vector2( 2, 2 )
+emitting = false
+amount = 48
+one_shot = true
+explosiveness = 0.92
+process_material = SubResource( 26 )
+texture = ExtResource( 2 )
+
+[node name="SpawnParticles2" type="Particles2D" parent="." index="1"]
+material = SubResource( 16 )
+scale = Vector2( 2, 2 )
+emitting = false
+amount = 20
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+process_material = SubResource( 27 )
+texture = ExtResource( 4 )
+
+[node name="SpawnParticles3" type="Particles2D" parent="." index="2"]
+material = SubResource( 16 )
+scale = Vector2( 2, 2 )
+emitting = false
+amount = 20
+lifetime = 0.5
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+process_material = SubResource( 28 )
+texture = ExtResource( 3 )
+
+[node name="RandomAudioNodePlayer" type="Node" parent="." index="3"]
+script = ExtResource( 7 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="RandomAudioNodePlayer" index="0"]
+stream = ExtResource( 6 )
+pitch_scale = 0.830351
+bus = "SoundEffects"
+
+[node name="AnimationPlayer" parent="." index="4"]
+anims/Sequence = SubResource( 23 )

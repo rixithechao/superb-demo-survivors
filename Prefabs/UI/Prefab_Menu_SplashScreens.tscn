@@ -5,6 +5,7 @@
 [ext_resource path="res://Textures/Logos/logo_hauses.png" type="Texture" id=3]
 
 [sub_resource type="Animation" id=1]
+resource_local_to_scene = true
 resource_name = "Menu_Splashes"
 length = 6.0
 tracks/0/type = "value"
@@ -38,7 +39,7 @@ tracks/1/keys = {
 "args": [ 5.6 ],
 "method": "set_skip"
 }, {
-"args": [ "title" ],
+"args": [ "intro" ],
 "method": "next_menu"
 } ]
 }
@@ -54,6 +55,20 @@ tracks/2/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.7 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 1.9, NodePath("") ],
+"method": "set_skip"
+} ]
+}
 
 [node name="Menu - Splash Screens" instance=ExtResource( 1 )]
 
@@ -63,7 +78,7 @@ margin_bottom = 432.0
 color = Color( 0, 0, 0, 1 )
 
 [node name="Label" type="Label" parent="." index="2"]
-modulate = Color( 1, 1, 1, 0 )
+modulate = Color( 1, 1, 1, 0.625 )
 margin_right = 768.0
 margin_bottom = 432.0
 custom_fonts/font = ExtResource( 2 )

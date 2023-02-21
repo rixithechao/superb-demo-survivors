@@ -8,6 +8,7 @@ var world_objects_node
 var map_events_node
 var tilemap_node
 var terrain_node
+var hazards_node
 
 var _blit_images = []
 var _blit_textures = []
@@ -42,6 +43,8 @@ func add_object(node):
 func add_map_event(node):
 	add_node_to_world_stack(node, map_events_node)
 
+func add_hazard(node):
+	add_node_to_world_stack(node, hazards_node)
 
 func tile_to_world(coord):
 	var local_position = tilemap_node.map_to_world(coord)

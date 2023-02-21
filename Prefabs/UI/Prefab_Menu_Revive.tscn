@@ -299,7 +299,7 @@ custom_styles/bg_focus = SubResource( 8 )
 custom_styles/cursor_unfocused = SubResource( 3 )
 custom_styles/selected = SubResource( 4 )
 custom_styles/bg = SubResource( 5 )
-items = [ "Revive (-X Coins)", null, false, "I'm good, thanks", null, false ]
+items = [ "Revive (-X money)", null, false, "I'm good, thanks", null, false ]
 auto_height = true
 fixed_icon_size = Vector2( 128, 128 )
 script = ExtResource( 5 )
@@ -320,7 +320,7 @@ margin_bottom = 900.0
 modulate = Color( 1, 0.673993, 0.673993, 1 )
 anchor_right = 0.0
 margin_left = -142.0
-margin_top = -203.0
+margin_top = -245.0
 margin_right = 155.0
 margin_bottom = -103.0
 rect_pivot_offset = Vector2( 142, 70 )
@@ -340,7 +340,7 @@ scale = Vector2( 4, 4 )
 texture = ExtResource( 3 )
 
 [node name="Glow" type="Sprite" parent="Serac/Serac Sprite" index="1"]
-modulate = Color( 0.870588, 0.207843, 0.207843, 0.285224 )
+modulate = Color( 0.870588, 0.207843, 0.207843, 0.267502 )
 position = Vector2( -2, -24 )
 scale = Vector2( 4, 4 )
 texture = ExtResource( 4 )

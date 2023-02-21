@@ -1,0 +1,15 @@
+[gd_resource type="AnimationNodeBlendTree" load_steps=3 format=2]
+
+[sub_resource type="AnimationNodeAnimation" id=1]
+animation = "Anim_Enemy_Walk_3FramePong"
+
+[sub_resource type="AnimationNodeTimeScale" id=2]
+
+[resource]
+graph_offset = Vector2( -332.068, -0.19162 )
+nodes/Animation/node = SubResource( 1 )
+nodes/Animation/position = Vector2( -160, 140 )
+nodes/output/position = Vector2( 400, 160 )
+nodes/walkSpeed/node = SubResource( 2 )
+nodes/walkSpeed/position = Vector2( 200, 140 )
+node_connections = [ "output", 0, "walkSpeed", "walkSpeed", 0, "Animation" ]

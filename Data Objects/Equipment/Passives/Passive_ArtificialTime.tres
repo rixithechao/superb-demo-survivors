@@ -1,0 +1,57 @@
+[gd_resource type="Resource" load_steps=12 format=2]
+
+[ext_resource path="res://Scripts/ScriptableObjects/StatSheetData.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/ScriptableObjects/LevelModifierData.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/ScriptableObjects/PassiveData.gd" type="Script" id=3]
+[ext_resource path="res://Textures/Items/spr_passive_artificialtime_a2xt.png" type="Texture" id=4]
+[ext_resource path="res://Prefabs/Equipment/Prefab_Passive_ArtificialTime.tscn" type="PackedScene" id=5]
+
+[sub_resource type="Resource" id=3]
+resource_name = "Level 2"
+script = ExtResource( 2 )
+description = "Critical hits have a better chance to freeze enemies."
+Type = 1
+
+[sub_resource type="Resource" id=5]
+resource_name = "Level 3"
+script = ExtResource( 2 )
+description = "Crit-frozen enemies stay frozen for longer."
+Type = 1
+
+[sub_resource type="Resource" id=7]
+resource_name = "Level 4"
+script = ExtResource( 2 )
+description = "Critical hits have an even better chance to freeze enemies."
+Type = 1
+
+[sub_resource type="Resource" id=17]
+script = ExtResource( 1 )
+stats = [  ]
+values = {
+}
+"Preset or Remove" = 0
+
+[sub_resource type="Resource" id=18]
+resource_name = "Level 5"
+script = ExtResource( 2 )
+description = "All attacks have a chance to freeze enemies."
+Type = 0
+Stats = SubResource( 17 )
+
+[sub_resource type="Resource" id=16]
+script = ExtResource( 1 )
+stats = [  ]
+values = {
+}
+"Preset or Remove" = 0
+
+[resource]
+script = ExtResource( 3 )
+name = "Artificial Time"
+icon = ExtResource( 4 )
+description = "Critical hits have a chance to freeze enemies."
+max_level = 5
+rarity = 100.0
+prefab = ExtResource( 5 )
+stats = SubResource( 16 )
+level_modifiers = [ SubResource( 3 ), SubResource( 5 ), SubResource( 7 ), SubResource( 18 ) ]

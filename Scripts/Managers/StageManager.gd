@@ -21,6 +21,8 @@ var started = false
 var cleared = false
 var exiting = false
 
+var faded_stage_music = false
+
 var current_wave = -1
 var current_wave_data
 var current_stage_data
@@ -34,6 +36,7 @@ var instance
 
 signal stage_loaded
 signal stage_generated
+signal stage_cleared
 signal stage_exited
 
 
@@ -104,8 +107,12 @@ func restart_stage():
 
 func clear_stage():
 	cleared = true
-	WorldManager.instance.start_sequence("Sequence_Clear")
-	pass
+	
+	var signal_data = {"cancelled": false}
+	emit_signal("stage_cleared", signal_data)
+	if  not signal_data.cancelled:
+		WorldManager.instance.start_sequence("Sequence_Clear")
+
 
 func begin_restarting(prompt_character_change : bool = false):
 	TimeManager.add_pause("restarting")
@@ -196,22 +203,29 @@ func spawn_pickup(pickup_data, position):
 	var spawned = pickup_data.instance()
 	WorldManager.add_object(spawned)
 	spawned.position = position
+	return spawned
 
 
 
 func _on_change_second():
 	var one_sec = TimeManager.get_seconds_passed()
-	
+
 	if current_map_events.has(one_sec):
 		var events_array = current_map_events[one_sec]
 		for  mev in events_array:
 			if  mev.conditions == null  or  mev.conditions.evaluate():
 				WorldManager.add_map_event(mev.event_scene.instance())
-	pass
+
+	# Fade music out in anticipation of the boss
+	if  not  faded_stage_music  and  one_sec >= 55  and  TimeManager.get_minutes_passed() == current_stage_data.boss_minute - 1:
+		faded_stage_music = true
+		MusicManager.fade_out()
+	
 
 func _on_change_minute():
 	current_map_events.clear()
-	current_wave += 1
+	current_wave = TimeManager.get_minutes_passed()
+
 	if current_wave < current_stage_data.waves.size():
 		current_wave_data = current_stage_data.waves[current_wave]
 		start_wave(current_wave_data)
@@ -226,9 +240,12 @@ func _ready():
 func _process(delta):
 	if not started or TimeManager.is_paused:
 		return
-	
+
+	# Enemy spawning
+	if  cleared:
+		return
 	for entry in spawn_data:
-		entry.timer -= delta*TimeManager.time_rate
+		entry.timer -= delta*TimeManager.time_rate*PlayerManager.get_stat(StatsManager.SPAWN_RATE)
 		if entry.timer <= 0:
 			var data = entry.data
 			var count = EnemyManager.count

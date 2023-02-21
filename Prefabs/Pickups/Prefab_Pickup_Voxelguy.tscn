@@ -1,0 +1,22 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Prefabs/Templates/Prefab_Pickup_Spawner.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Textures/Items/spr_pickup_voxelman_a2xt.png" type="Texture" id=2]
+[ext_resource path="res://Prefabs/Shockwaves/Prefab_Shockwave_KillEnemies.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Sound Effects/Sound_Pickup_ScreenWipe.ogg" type="AudioStream" id=4]
+
+[sub_resource type="CircleShape2D" id=1]
+resource_local_to_scene = true
+radius = 19.0
+
+[node name="Pickup - Voxatron" instance=ExtResource( 1 )]
+instanced_prefab = ExtResource( 3 )
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" parent="." index="2"]
+shape = SubResource( 1 )
+
+[node name="CollectSound" parent="." index="5"]
+stream = ExtResource( 4 )

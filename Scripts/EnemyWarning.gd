@@ -7,7 +7,10 @@ export (float, 0.0, 120.0) var despawn_seconds = 15.0
 export (bool) var collides_with_other_enemies = true
 export (PackedScene) var enemy_scene
 export (bool) var spawn_effects = true
+export (bool) var destroy_on_spawn = true
 
+
+signal on_spawn
 
 
 func configure_enemy(_spawned):
@@ -22,6 +25,7 @@ func place():
 	global_position = pos
 
 func spawn():
+	emit_signal("on_spawn", self)
 	if  enemy_scene != null:
 		var spawned = EnemyManager.spawn(enemy_scene, global_position)
 		configure_enemy(spawned)
@@ -29,6 +33,14 @@ func spawn():
 		spawned.collides_with_other_enemies = collides_with_other_enemies
 		spawned.despawn_timer = despawn_seconds
 	#print("ENEMY SPAWNED VIA WARNING: ", spawned.name, ", ", spawned.position, ", ", spawned.get_parent())
+
+func destroy_after_spawn():
+	if  destroy_on_spawn:
+		self.queue_free()
+	else:
+		started_spawning = false
+		spawning = false
+		time = 0
 
 
 
@@ -54,9 +66,8 @@ func on_start_spawning():
 		$AnimationPlayer.play("Sequence_SpawnEnemy")
 	else:
 		spawn()
-		self.queue_free()
+		destroy_after_spawn()
 
 
 func _on_AnimationPlayer_animation_finished(_anim_name):
-	self.queue_free()
-	pass # Replace with function body.
+	destroy_after_spawn()

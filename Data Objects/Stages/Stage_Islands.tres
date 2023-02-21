@@ -17,4 +17,5 @@ scene = ExtResource( 5 )
 tint = Color( 1, 1, 1, 1 )
 music_data = ExtResource( 8 )
 waves = [ ExtResource( 3 ), ExtResource( 2 ), ExtResource( 6 ), ExtResource( 7 ) ]
-minutes = 20
+boss_minute = 15
+reaper_minute = 20

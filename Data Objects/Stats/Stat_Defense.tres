@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource( 1 )
 name = "Defense"
-type = 0
+type = 1
 stack_type = 1
 base_value = 1.0
 description = "A multiplier for the player's resistance to damage."

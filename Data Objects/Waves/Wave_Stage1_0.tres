@@ -5,9 +5,9 @@
 [ext_resource path="res://Scripts/ScriptableObjects/EnemySpawnData.gd" type="Script" id=5]
 
 [sub_resource type="Resource" id=1]
-resource_name = "Spawn"
+resource_name = "Furbas"
 script = ExtResource( 5 )
-interval = 1.0
+interval = 2.0
 delay = 0.0
 enemies = [ ExtResource( 1 ) ]
 

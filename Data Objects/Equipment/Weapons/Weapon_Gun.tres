@@ -1,0 +1,54 @@
+[gd_resource type="Resource" load_steps=15 format=2]
+
+[ext_resource path="res://Textures/Items/spr_weapon_gun_a2xt.png" type="Texture" id=1]
+[ext_resource path="res://Data Objects/Stats/Stat_Damage.tres" type="Resource" id=2]
+[ext_resource path="res://Data Objects/Stats/Stat_EffectChance.tres" type="Resource" id=3]
+[ext_resource path="res://Data Objects/Stats/Stat_Knockback.tres" type="Resource" id=4]
+[ext_resource path="res://Data Objects/Stats/Stat_Amount.tres" type="Resource" id=5]
+[ext_resource path="res://Data Objects/Stats/Stat_ShotInterval.tres" type="Resource" id=6]
+[ext_resource path="res://Data Objects/Stats/Stat_Cooldown.tres" type="Resource" id=7]
+[ext_resource path="res://Data Objects/Stats/Stat_Pierce.tres" type="Resource" id=8]
+[ext_resource path="res://Data Objects/Stats/Stat_Crit.tres" type="Resource" id=9]
+[ext_resource path="res://Data Objects/Stats/Stat_Duration.tres" type="Resource" id=10]
+[ext_resource path="res://Data Objects/Stats/Stat_HitInterval.tres" type="Resource" id=11]
+[ext_resource path="res://Scripts/ScriptableObjects/StatSheetData.gd" type="Script" id=13]
+[ext_resource path="res://Scripts/ScriptableObjects/WeaponData.gd" type="Script" id=14]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 13 )
+stats = [ ExtResource( 2 ), ExtResource( 5 ), ExtResource( 10 ), ExtResource( 8 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 11 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 9 ) ]
+values = {
+ExtResource( 7 ): 3.0,
+ExtResource( 3 ): 1.0,
+ExtResource( 5 ): 1,
+ExtResource( 4 ): 1.0,
+ExtResource( 10 ): 2.0,
+ExtResource( 8 ): 1,
+ExtResource( 11 ): 1.0,
+ExtResource( 9 ): 10.0,
+ExtResource( 6 ): 0.1,
+ExtResource( 2 ): 10
+}
+Values/Damage = 10
+Values/Amount = 1
+Values/Duration = 2.0
+Values/Pierce = 1
+Values/Cooldown = 3.0
+"Values/Shot Interval" = 0.1
+"Values/Hit Interval" = 1.0
+Values/Knockback = 1.0
+"Values/Effect Chance" = 1.0
+"Values/Crit Damage Multiplier" = 10.0
+"Preset or Remove" = 0
+
+[resource]
+script = ExtResource( 14 )
+name = "Gun"
+icon = ExtResource( 1 )
+description = "Instantly fire forward.  Has more legal rights than children."
+max_level = 0
+rarity = 100.0
+stats = SubResource( 1 )
+level_modifiers = [  ]
+pierce_type = 1
+blocked_by_terrain = false

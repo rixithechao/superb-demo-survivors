@@ -1,7 +1,7 @@
-[gd_resource type="Resource" load_steps=31 format=2]
+[gd_resource type="Resource" load_steps=32 format=2]
 
 [ext_resource path="res://Scripts/ScriptableObjects/WeaponData.gd" type="Script" id=1]
-[ext_resource path="res://Prefabs/Projectiles/Prefab_Projectile_Leek.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Data Objects/Stats/Stat_Area.tres" type="Resource" id=2]
 [ext_resource path="res://Textures/Items/spr_weapon_leek_a2xt.png" type="Texture" id=3]
 [ext_resource path="res://Scripts/ScriptableObjects/StatSheetData.gd" type="Script" id=4]
 [ext_resource path="res://Data Objects/Stats/Stat_Damage.tres" type="Resource" id=5]
@@ -14,6 +14,7 @@
 [ext_resource path="res://Data Objects/Stats/Stat_HitInterval.tres" type="Resource" id=12]
 [ext_resource path="res://Data Objects/Stats/Stat_Knockback.tres" type="Resource" id=13]
 [ext_resource path="res://Data Objects/Stats/Stat_ShotInterval.tres" type="Resource" id=14]
+[ext_resource path="res://Prefabs/Equipment/Prefab_Weapon_Leek.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Data Objects/Stats/Stat_Amount.tres" type="Resource" id=16]
 
 [sub_resource type="Resource" id=2]
@@ -28,91 +29,103 @@ Values/Amount = 1
 [sub_resource type="Resource" id=3]
 resource_name = "Level 2"
 script = ExtResource( 11 )
-description = "Fires a second projectile."
+description = "Swings a second time."
 Type = 0
 Stats = SubResource( 2 )
 
 [sub_resource type="Resource" id=4]
 script = ExtResource( 4 )
-stats = [  ]
+stats = [ ExtResource( 2 ) ]
 values = {
+ExtResource( 2 ): 1.2
 }
+Values/Area = 1.2
 "Preset or Remove" = 0
 
 [sub_resource type="Resource" id=5]
 resource_name = "Level 3"
 script = ExtResource( 11 )
-description = ""
+description = "The leek gets bigger."
 Type = 0
 Stats = SubResource( 4 )
 
 [sub_resource type="Resource" id=6]
 script = ExtResource( 4 )
-stats = [  ]
+stats = [ ExtResource( 13 ) ]
 values = {
+ExtResource( 13 ): 2.0
 }
+Values/Knockback = 2.0
 "Preset or Remove" = 0
 
 [sub_resource type="Resource" id=7]
 resource_name = "Level 4"
 script = ExtResource( 11 )
-description = ""
+description = "Increases knockback."
 Type = 0
 Stats = SubResource( 6 )
 
 [sub_resource type="Resource" id=8]
 script = ExtResource( 4 )
-stats = [  ]
+stats = [ ExtResource( 5 ) ]
 values = {
+ExtResource( 5 ): 1.4
 }
+Values/Damage = 1.4
 "Preset or Remove" = 0
 
 [sub_resource type="Resource" id=9]
 resource_name = "Level 5"
 script = ExtResource( 11 )
-description = ""
+description = "Deals more damage."
 Type = 0
 Stats = SubResource( 8 )
 
 [sub_resource type="Resource" id=10]
 script = ExtResource( 4 )
-stats = [  ]
+stats = [ ExtResource( 2 ) ]
 values = {
+ExtResource( 2 ): 1.3
 }
+Values/Area = 1.3
 "Preset or Remove" = 0
 
 [sub_resource type="Resource" id=11]
 resource_name = "Level 6"
 script = ExtResource( 11 )
-description = ""
+description = "The leek gets even bigger."
 Type = 0
 Stats = SubResource( 10 )
 
 [sub_resource type="Resource" id=12]
 script = ExtResource( 4 )
-stats = [  ]
+stats = [ ExtResource( 16 ) ]
 values = {
+ExtResource( 16 ): 1.0
 }
+Values/Amount = 1.0
 "Preset or Remove" = 0
 
 [sub_resource type="Resource" id=13]
 resource_name = "Level 7"
 script = ExtResource( 11 )
-description = ""
+description = "Swings a third time."
 Type = 0
 Stats = SubResource( 12 )
 
 [sub_resource type="Resource" id=14]
 script = ExtResource( 4 )
-stats = [  ]
+stats = [ ExtResource( 5 ) ]
 values = {
+ExtResource( 5 ): 1.3
 }
+Values/Damage = 1.3
 "Preset or Remove" = 0
 
 [sub_resource type="Resource" id=15]
 resource_name = "Level 8"
 script = ExtResource( 11 )
-description = ""
+description = "Swings a full 360 degrees."
 Type = 0
 Stats = SubResource( 14 )
 
@@ -120,16 +133,16 @@ Stats = SubResource( 14 )
 script = ExtResource( 4 )
 stats = [ ExtResource( 5 ), ExtResource( 16 ), ExtResource( 10 ), ExtResource( 6 ), ExtResource( 8 ), ExtResource( 14 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 7 ), ExtResource( 9 ) ]
 values = {
-ExtResource( 5 ): 10.0,
-ExtResource( 7 ): 1.0,
-ExtResource( 6 ): 1.0,
 ExtResource( 8 ): 2.5,
-ExtResource( 10 ): 0.35,
-ExtResource( 13 ): 1.0,
-ExtResource( 14 ): 0.5,
+ExtResource( 7 ): 1.0,
 ExtResource( 16 ): 1.0,
-ExtResource( 9 ): 2.0,
-ExtResource( 12 ): 1.0
+ExtResource( 13 ): 1.0,
+ExtResource( 10 ): 0.35,
+ExtResource( 6 ): 1.0,
+ExtResource( 12 ): 1.0,
+ExtResource( 9 ): 1.5,
+ExtResource( 14 ): 0.5,
+ExtResource( 5 ): 10.0
 }
 Values/Damage = 10.0
 Values/Amount = 1.0
@@ -140,7 +153,7 @@ Values/Cooldown = 2.5
 "Values/Hit Interval" = 1.0
 Values/Knockback = 1.0
 "Values/Effect Chance" = 1.0
-"Values/Crit Damage Multiplier" = 2.0
+"Values/Crit Damage Multiplier" = 1.5
 "Preset or Remove" = 0
 
 [resource]
@@ -150,9 +163,8 @@ icon = ExtResource( 3 )
 description = "Swipes in front.  Also makes a pretty good soup."
 max_level = 8
 rarity = 100.0
+prefab = ExtResource( 15 )
 stats = SubResource( 1 )
 level_modifiers = [ SubResource( 3 ), SubResource( 5 ), SubResource( 7 ), SubResource( 9 ), SubResource( 11 ), SubResource( 13 ), SubResource( 15 ) ]
-projectile = ExtResource( 2 )
 pierce_type = 0
-pool_limit = 30
 blocked_by_terrain = false

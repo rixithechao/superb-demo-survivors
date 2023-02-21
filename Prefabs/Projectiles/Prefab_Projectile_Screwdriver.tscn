@@ -1,0 +1,37 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Sound Effects/Sound_Weapon_Leek_1.ogg" type="AudioStream" id=1]
+[ext_resource path="res://Prefabs/Templates/Prefab_Projectile.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/RandomizedSound.gd" type="Script" id=3]
+[ext_resource path="res://Sound Effects/Sound_Weapon_Leek_3.ogg" type="AudioStream" id=4]
+[ext_resource path="res://Sound Effects/Sound_Weapon_Leek_2.ogg" type="AudioStream" id=5]
+[ext_resource path="res://Textures/Projectiles/spr_proj_screwdriver.png" type="Texture" id=6]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 27.5, 11 )
+
+[node name="Projectile - Screwdriver" instance=ExtResource( 2 )]
+orientation_mode = 4
+aim_type = 5
+aim_spread = 4.0
+speed = 10.0
+deceleration = 5.0
+
+[node name="CollisionShape2D" parent="LocalPos/Collision" index="0"]
+position = Vector2( 15, 0 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="LocalPos/Collision/Graphic" index="0"]
+scale = Vector2( 2, 2 )
+texture = ExtResource( 6 )
+offset = Vector2( 8, 0 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="1"]
+stream = ExtResource( 1 )
+autoplay = true
+bus = "SoundEffects"
+script = ExtResource( 3 )
+sounds = [ ExtResource( 1 ), ExtResource( 5 ), ExtResource( 4 ) ]
+
+[node name="Duration" parent="." index="2"]
+wait_time = 0.5

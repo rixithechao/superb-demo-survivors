@@ -8,6 +8,7 @@
 
 [sub_resource type="Animation" id=4]
 resource_name = "Sequence_Clear"
+length = 2.0
 tracks/0/type = "method"
 tracks/0/path = NodePath(".")
 tracks/0/interp = 1
@@ -15,12 +16,24 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 1 ),
+"times": PoolRealArray( 1.8 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
 "method": "clear_stage"
 } ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SequenceAnimation:pause_mode")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 1, 2 ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -218,6 +231,8 @@ tile_set = ExtResource( 2 )
 cell_size = Vector2( 32, 32 )
 format = 1
 
+[node name="Hazards" type="YSort" parent="."]
+
 [node name="WorldObjects" type="YSort" parent="."]
 
 [node name="Main Camera" parent="WorldObjects" instance=ExtResource( 7 )]
@@ -238,8 +253,8 @@ margin_bottom = 5.0
 [node name="HUD" parent="." instance=ExtResource( 4 )]
 follow_viewport_enable = false
 
-[node name="Elements" parent="HUD" index="1"]
-modulate = Color( 1, 1, 1, 0 )
+[node name="ScreenFade" parent="HUD" index="0"]
+modulate = Color( 0, 0, 0, 0.333333 )
 
 [node name="SequenceAnimation" type="AnimationPlayer" parent="."]
 pause_mode = 2
@@ -253,3 +268,4 @@ anims/Sequence_Start = SubResource( 1 )
 [editable path="HUD"]
 [editable path="HUD/Elements/Weapons"]
 [editable path="HUD/Elements/Passives"]
+[editable path="HUD/Elements/Boosts"]

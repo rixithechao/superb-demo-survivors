@@ -29,7 +29,7 @@ script = ExtResource( 6 )
 [node name="Panel" type="NinePatchRect" parent="Skew" index="0"]
 self_modulate = Color( 0.682353, 0.984314, 1, 1 )
 margin_left = -548.0
-margin_top = -128.0
+margin_top = -151.0
 margin_right = 526.0
 margin_bottom = 138.0
 rect_pivot_offset = Vector2( 250, 135 )
@@ -125,9 +125,9 @@ margin_bottom = 30.0
 color = Color( 0.160784, 0.2, 0.368627, 1 )
 
 [node name="CharactersCenter" type="CenterContainer" parent="." index="3"]
-margin_top = 120.0
+margin_top = 107.0
 margin_right = 768.0
-margin_bottom = 240.0
+margin_bottom = 227.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -151,9 +151,9 @@ alignment = 1
 
 [node name="CharacterInfo" type="HBoxContainer" parent="." index="5"]
 margin_left = 71.0
-margin_top = 254.0
+margin_top = 236.0
 margin_right = 697.0
-margin_bottom = 310.0
+margin_bottom = 292.0
 
 [node name="BioLabel" type="Label" parent="CharacterInfo" index="0"]
 margin_right = 436.0
@@ -191,7 +191,7 @@ custom_fonts/font = ExtResource( 10 )
 [node name="WeaponLabel2" type="Label" parent="CharacterInfo/VBoxContainer" index="1"]
 margin_top = 22.0
 margin_right = 118.0
-margin_bottom = 44.0
+margin_bottom = 40.0
 rect_min_size = Vector2( 118, 0 )
 size_flags_vertical = 5
 custom_colors/font_color_shadow = Color( 0.0851834, 0.117517, 0.256552, 1 )
@@ -218,9 +218,9 @@ stretch_mode = 6
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 71.0
-margin_top = 310.0
+margin_top = 308.0
 margin_right = 697.0
-margin_bottom = 335.0
+margin_bottom = 333.0
 grow_horizontal = 2
 grow_vertical = 2
 custom_colors/font_color_shadow = Color( 0.0851834, 0.117517, 0.256552, 1 )

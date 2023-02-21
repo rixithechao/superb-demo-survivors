@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Sound_Boss_Cannon.ogg-6d1cd26ceff9ab72ff09fcea4f72567e.oggstr"
+
+[deps]
+
+source_file="res://Sound Effects/Sound_Boss_Cannon.ogg"
+dest_files=[ "res://.import/Sound_Boss_Cannon.ogg-6d1cd26ceff9ab72ff09fcea4f72567e.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

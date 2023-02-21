@@ -1,0 +1,67 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Scripts/RandomizedSound.gd" type="Script" id=1]
+[ext_resource path="res://Sound Effects/Sound_GrabPickup_2.ogg" type="AudioStream" id=2]
+[ext_resource path="res://Sound Effects/Sound_GrabPickup_4.ogg" type="AudioStream" id=3]
+[ext_resource path="res://Sound Effects/Sound_GrabPickup_3.ogg" type="AudioStream" id=4]
+[ext_resource path="res://Sound Effects/Sound_Pickup_XP.ogg" type="AudioStream" id=5]
+[ext_resource path="res://Sound Effects/Sound_GrabPickup_1.ogg" type="AudioStream" id=6]
+[ext_resource path="res://Textures/Items/spr_pickup_coin_a2xt.png" type="Texture" id=7]
+[ext_resource path="res://Scripts/Pickup_Burst.gd" type="Script" id=8]
+
+[sub_resource type="Animation" id=2]
+resource_name = "Pickup"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7, 0.8, 0.9, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 0 ]
+}
+
+[sub_resource type="CircleShape2D" id=3]
+resource_local_to_scene = true
+radius = 19.0
+
+[node name="Pickup" type="Area2D" groups=["pickup"]]
+position = Vector2( 0, -18 )
+collision_layer = 4
+collision_mask = 1536
+script = ExtResource( 8 )
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 2, 2 )
+texture = ExtResource( 7 )
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Pickup"
+anims/Pickup = SubResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 3 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="PickupSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -1.0
+bus = "SoundEffects"
+script = ExtResource( 1 )
+sounds = [ ExtResource( 6 ), ExtResource( 2 ), ExtResource( 4 ), ExtResource( 3 ) ]
+
+[node name="CollectSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = -1.0
+bus = "SoundEffects"
+script = ExtResource( 1 )
+
+[connection signal="body_entered" from="." to="." method="_on_Pickup_body_entered"]
+[connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]
+[connection signal="finished" from="CollectSound" to="." method="_on_CollectSound_finished"]

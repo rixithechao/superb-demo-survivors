@@ -8,7 +8,7 @@ export(Resource) var stats setget set_custom_stats,get_custom_stats
 var _stats
 #export var max_hp : float = 10
 #export var damage : float = 8
-export var height : float = 0.5
+export var height : float = 1
 export var spiky : bool = false
 #export var move_speed : float = 1
 #export var knockback_resistance : float = 0

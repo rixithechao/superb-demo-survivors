@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Prefabs/Templates/Prefab_VFX.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/VFX_DamageNumber.gd" type="Script" id=2]
@@ -8,9 +8,28 @@
 [ext_resource path="res://Sound Effects/Sound_Enemy_Hurt_3.ogg" type="AudioStream" id=6]
 [ext_resource path="res://addons/RandomAudioNodePlayer/RandomAudioNodePlayer.gd" type="Script" id=7]
 
-[node name="Node2D" instance=ExtResource( 1 )]
+[sub_resource type="Animation" id=1]
+resource_local_to_scene = true
+resource_name = "Sequence"
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+
+[node name="VFX - Damage Number" instance=ExtResource( 1 )]
 z_index = 4096
 script = ExtResource( 2 )
+value = 0
 
 [node name="LocalPosition" type="Node2D" parent="." index="0"]
 
@@ -36,12 +55,18 @@ autoplay = true
 
 [node name="Audio1" type="AudioStreamPlayer" parent="HurtSound" index="0"]
 stream = ExtResource( 5 )
-pitch_scale = 1.07757
+pitch_scale = 1.2029
+bus = "SoundEffects"
 
 [node name="Audio2" type="AudioStreamPlayer" parent="HurtSound" index="1"]
 stream = ExtResource( 4 )
+pitch_scale = 0.89233
+bus = "SoundEffects"
 
 [node name="Audio3" type="AudioStreamPlayer" parent="HurtSound" index="2"]
 stream = ExtResource( 6 )
+pitch_scale = 1.06602
+bus = "SoundEffects"
 
-[connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]
+[node name="AnimationPlayer" parent="." index="3"]
+anims/Sequence = SubResource( 1 )

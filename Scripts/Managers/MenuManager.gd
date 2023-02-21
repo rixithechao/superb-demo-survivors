@@ -2,6 +2,7 @@ extends Node
 
 var resources = {
 	"splashes": preload("res://Prefabs/UI/Prefab_Menu_SplashScreens.tscn"),
+	"intro": preload("res://Prefabs/UI/Prefab_Menu_Intro.tscn"),
 	"title": preload("res://Prefabs/UI/Prefab_Menu_Title.tscn"),
 	"stages": preload("res://Prefabs/UI/Prefab_Menu_StageSelect.tscn"),
 	"options": preload("res://Prefabs/UI/Prefab_Menu_Options.tscn"),

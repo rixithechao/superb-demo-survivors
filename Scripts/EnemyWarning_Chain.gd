@@ -71,7 +71,8 @@ func start():
 		if  orient_to_path:
 			spawned.get_node("Telegraph/Direction").global_rotation = (follower.global_rotation - rotation_offset) + stamp_node.get_node("Telegraph/Direction").global_rotation
 		else:
-			spawned.get_node("Telegraph/Direction").global_rotation = stamp_node.get_node("Telegraph/Direction").global_rotation
+			if  spawned.get_node_or_null("Telegraph/Direction") != null:
+				spawned.get_node("Telegraph/Direction").global_rotation = stamp_node.get_node("Telegraph/Direction").global_rotation
 
 		#var new_rot = spawned.get_node("Telegraph/Direction").global_rotation
 		#print("SPAWN CHAIN ROTATION: ", rad2deg(new_rot))

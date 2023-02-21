@@ -10,7 +10,7 @@
 [ext_resource path="res://Prefabs/UI/Prefab_HUDEquipmentSlots.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Textures/UI/tex_ui_xpBar_fill.png" type="Texture" id=9]
 [ext_resource path="res://Textures/UI/tex_ui_xpBar_under.png" type="Texture" id=10]
-[ext_resource path="res://Textures/UI/spr_hud_coin_a2xt.png" type="Texture" id=11]
+[ext_resource path="res://Textures/UI/spr_hud_tooth_a2xt.png" type="Texture" id=11]
 [ext_resource path="res://Fonts/DynFont_EquipmentLevels.tres" type="DynamicFont" id=12]
 [ext_resource path="res://Fonts/DynFont_EXPBarLevel.tres" type="DynamicFont" id=13]
 [ext_resource path="res://Scripts/UI/HUDCoinCounter.gd" type="Script" id=14]
@@ -180,71 +180,70 @@ valign = 1
 
 [node name="Weapons" parent="Elements" instance=ExtResource( 8 )]
 margin_left = 11.0
-margin_top = 73.0
-margin_right = -545.0
-margin_bottom = 75.192
+margin_top = 63.0
+margin_right = -649.0
+margin_bottom = 65.192
 slots_type = 1
 row_name_for_debug = "weapons"
 
 [node name="EquipmentSlot1" parent="Elements/Weapons" index="0"]
-margin_right = 26.0
+margin_right = 24.0
 
 [node name="EquipmentSlot2" parent="Elements/Weapons" index="1"]
-margin_left = 30.0
-margin_right = 57.0
+margin_left = 28.0
+margin_right = 52.0
 
 [node name="EquipmentSlot3" parent="Elements/Weapons" index="2"]
-margin_left = 61.0
-margin_right = 88.0
+margin_left = 56.0
+margin_right = 80.0
 
 [node name="EquipmentSlot4" parent="Elements/Weapons" index="3"]
-margin_left = 92.0
-margin_right = 119.0
-
-[node name="EquipmentSlot5" parent="Elements/Weapons" index="4"]
-margin_left = 123.0
-margin_right = 150.0
-
-[node name="EquipmentSlot6" parent="Elements/Weapons" index="5"]
-margin_left = 154.0
-margin_right = 181.0
-
-[node name="EquipmentSlot7" parent="Elements/Weapons" index="6"]
-margin_left = 185.0
-margin_right = 212.0
+margin_left = 84.0
+margin_right = 108.0
 
 [node name="Passives" parent="Elements" instance=ExtResource( 8 )]
 margin_left = 11.0
-margin_top = 110.0
-margin_right = -545.0
-margin_bottom = 112.192
+margin_top = 100.0
+margin_right = -649.0
+margin_bottom = 102.192
 
 [node name="EquipmentSlot1" parent="Elements/Passives" index="0"]
-margin_right = 26.0
+margin_right = 24.0
 
 [node name="EquipmentSlot2" parent="Elements/Passives" index="1"]
-margin_left = 30.0
-margin_right = 57.0
+margin_left = 28.0
+margin_right = 52.0
 
 [node name="EquipmentSlot3" parent="Elements/Passives" index="2"]
-margin_left = 61.0
-margin_right = 88.0
+margin_left = 56.0
+margin_right = 80.0
 
 [node name="EquipmentSlot4" parent="Elements/Passives" index="3"]
-margin_left = 92.0
-margin_right = 119.0
+margin_left = 84.0
+margin_right = 108.0
 
-[node name="EquipmentSlot5" parent="Elements/Passives" index="4"]
-margin_left = 123.0
-margin_right = 150.0
+[node name="Boosts" parent="Elements" instance=ExtResource( 8 )]
+margin_left = 11.0
+margin_top = 137.0
+margin_right = -649.0
+margin_bottom = 139.192
+slots_type = 2
+row_name_for_debug = "boosts"
 
-[node name="EquipmentSlot6" parent="Elements/Passives" index="5"]
-margin_left = 154.0
-margin_right = 181.0
+[node name="EquipmentSlot1" parent="Elements/Boosts" index="0"]
+margin_right = 24.0
 
-[node name="EquipmentSlot7" parent="Elements/Passives" index="6"]
-margin_left = 185.0
-margin_right = 212.0
+[node name="EquipmentSlot2" parent="Elements/Boosts" index="1"]
+margin_left = 28.0
+margin_right = 52.0
+
+[node name="EquipmentSlot3" parent="Elements/Boosts" index="2"]
+margin_left = 56.0
+margin_right = 80.0
+
+[node name="EquipmentSlot4" parent="Elements/Boosts" index="3"]
+margin_left = 84.0
+margin_right = 108.0
 
 [node name="Money" type="HSplitContainer" parent="Elements"]
 anchor_left = 0.5
@@ -306,3 +305,4 @@ align = 2
 
 [editable path="Elements/Weapons"]
 [editable path="Elements/Passives"]
+[editable path="Elements/Boosts"]

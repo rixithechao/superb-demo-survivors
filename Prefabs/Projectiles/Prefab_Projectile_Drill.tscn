@@ -1,0 +1,120 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Sound Effects/Sound_Weapon_Leek_1.ogg" type="AudioStream" id=1]
+[ext_resource path="res://Prefabs/Templates/Prefab_Projectile.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/RandomizedSound.gd" type="Script" id=3]
+[ext_resource path="res://Sound Effects/Sound_Weapon_Leek_3.ogg" type="AudioStream" id=4]
+[ext_resource path="res://Sound Effects/Sound_Weapon_Leek_2.ogg" type="AudioStream" id=5]
+[ext_resource path="res://Textures/Projectiles/spr_proj_drill.png" type="Texture" id=6]
+[ext_resource path="res://Scripts/Projectile_Drill.gd" type="Script" id=7]
+
+[sub_resource type="CapsuleShape2D" id=6]
+resource_local_to_scene = true
+radius = 21.0
+height = 0.0
+
+[sub_resource type="Animation" id=3]
+resource_name = "Down"
+length = 0.2
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("LocalPos/Collision/Graphic/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Left"
+length = 0.2
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("LocalPos/Collision/Graphic/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 12, 13, 14, 15 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "Right"
+length = 0.2
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("LocalPos/Collision/Graphic/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 5, 6, 7 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "Up"
+length = 0.2
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("LocalPos/Collision/Graphic/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 8, 9, 10, 11 ]
+}
+
+[node name="Projectile - Drill" instance=ExtResource( 2 )]
+script = ExtResource( 7 )
+orientation_mode = 4
+speed = 8.0
+
+[node name="CollisionShape2D" parent="LocalPos/Collision" index="0"]
+position = Vector2( 7, 0 )
+shape = SubResource( 6 )
+
+[node name="Sprite" type="Sprite" parent="LocalPos/Collision/Graphic" index="0"]
+scale = Vector2( 2, 2 )
+texture = ExtResource( 6 )
+hframes = 4
+vframes = 4
+frame = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="LocalPos/Collision/Graphic" index="1"]
+root_node = NodePath("../../../..")
+autoplay = "Right"
+anims/Down = SubResource( 3 )
+anims/Left = SubResource( 4 )
+anims/Right = SubResource( 2 )
+anims/Up = SubResource( 5 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="1"]
+stream = ExtResource( 1 )
+autoplay = true
+bus = "SoundEffects"
+script = ExtResource( 3 )
+sounds = [ ExtResource( 1 ), ExtResource( 5 ), ExtResource( 4 ) ]
+
+[node name="Duration" parent="." index="2"]
+wait_time = 0.5

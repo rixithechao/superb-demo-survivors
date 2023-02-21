@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Sound_Enemy_KingDuck3.ogg-d18fbaf75549cfb392de45a28dbf533e.oggstr"
+
+[deps]
+
+source_file="res://Sound Effects/Sound_Enemy_KingDuck3.ogg"
+dest_files=[ "res://.import/Sound_Enemy_KingDuck3.ogg-d18fbaf75549cfb392de45a28dbf533e.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

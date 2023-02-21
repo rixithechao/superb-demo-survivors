@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scripts/Shockwave.gd" type="Script" id=1]
+[ext_resource path="res://Textures/Particles/spr_particle_shockwave.png" type="Texture" id=2]
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 0.01
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 0.01
+
+[node name="Shockwave" type="Node2D" groups=["shockwave"]]
+script = ExtResource( 1 )
+
+[node name="OuterCircle" type="Area2D" parent="."]
+collision_layer = 1024
+collision_mask = 4294967295
+
+[node name="Shape" type="CollisionShape2D" parent="OuterCircle"]
+shape = SubResource( 2 )
+
+[node name="InnerCircle" type="Area2D" parent="."]
+collision_layer = 1024
+collision_mask = 4294967295
+
+[node name="Shape" type="CollisionShape2D" parent="InnerCircle"]
+shape = SubResource( 1 )
+
+[node name="RingSprite" type="Sprite" parent="."]
+scale = Vector2( 1e-05, 1e-05 )
+texture = ExtResource( 2 )

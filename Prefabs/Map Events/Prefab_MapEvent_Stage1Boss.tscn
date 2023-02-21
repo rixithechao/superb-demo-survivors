@@ -1,0 +1,982 @@
+[gd_scene load_steps=54 format=2]
+
+[ext_resource path="res://Prefabs/Templates/Prefab_MapEvent.tscn" type="PackedScene" id=1]
+[ext_resource path="res://addons/antialiased_line2d/antialiased_regular_polygon2d.gd" type="Script" id=2]
+[ext_resource path="res://Tilesets/Tileset_EvilShip.tres" type="TileSet" id=3]
+[ext_resource path="res://Prefabs/NPCs/Prefab_NPC_Ace.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Prefabs/NPCs/Prefab_NPC_Oob.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Prefabs/NPCs/Prefab_NPC_Ee.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Prefabs/NPCs/Prefab_NPC_Tas.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Prefabs/NPCs/Prefab_NPC_PB.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Prefabs/Enemies/Prefab_Enemy_Ee_Stage1.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scripts/MapEvent_StageBoss1.gd" type="Script" id=10]
+[ext_resource path="res://Prefabs/VFX/Prefab_VFX_CannonSmoke.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Prefabs/Map Events/Prefab_MapEvent_Cannonballs.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Sound Effects/Sound_Boss_Cannon.ogg" type="AudioStream" id=13]
+
+[sub_resource type="Animation" id=53]
+resource_name = "Sequence_End"
+length = 10.0
+tracks/0/type = "animation"
+tracks/0/path = NodePath("SubAnimations")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"clips": PoolStringArray( "EeReturn", "ShipLeave" ),
+"times": PoolRealArray( 4, 6 )
+}
+
+[sub_resource type="Animation" id=54]
+resource_name = "Sequence_Start"
+length = 9.2
+tracks/0/type = "animation"
+tracks/0/path = NodePath("SubAnimations")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"clips": PoolStringArray( "Shadow", "ShipArrive", "EeLeave" ),
+"times": PoolRealArray( 0, 3, 6 )
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 9 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ ExtResource( 9 ) ],
+"method": "spawn_stage_boss"
+} ]
+}
+
+[sub_resource type="Animation" id=55]
+resource_name = "Cannonballs"
+length = 2.0
+step = 0.05
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("ForegroundShip:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 9, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("ForegroundShip:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( -24, -0.25, 0, 0.0167874, 27.0169, -23.1737, -0.0243286, 5.75999, 0.0296504, 8.13987, -24, -0.0177406, 8.96614, 0.195731, 212.062 ),
+"times": PoolRealArray( 0, 0.05, 0.15 )
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ ExtResource( 12 ) ],
+"method": "start_other_map_event"
+} ]
+}
+tracks/3/type = "audio"
+tracks/3/path = NodePath("CannonSound")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 13 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 13 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 13 )
+} ],
+"times": PoolRealArray( 0, 0.05, 0.1 )
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ [ NodePath("ForegroundShip/VFX - Cannon Smoke"), NodePath("ForegroundShip/VFX - Cannon Smoke2"), NodePath("ForegroundShip/VFX - Cannon Smoke3") ], 0.0, false ],
+"method": "start_warnings"
+} ]
+}
+
+[sub_resource type="Animation" id=22]
+resource_name = "EeLeave"
+length = 2.0
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("ForegroundShip/NPC - Ee:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 187.5, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("ForegroundShip/NPC - Ee:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 207, -0.25, 0, 0.25, 0, 207, -0.25, 0, 0.1, -8.24109, 156.138, -0.2, 17.2242, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5, 1.1 )
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ForegroundShip/NPC - Ee/AnimationTree:parameters/movement/current")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 3 ]
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("ForegroundShip/NPC - Ee:height")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.1, 14.276, 0, -0.1, 14.276, 0.0859411, -10.9083, -48, -0.156678, 26.0416, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5, 1, 1.31826 )
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("ForegroundShip/NPC - Ee:draw_shadow")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("ForegroundShip/NPC - Ee:z_index")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.8, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 1, 0 ]
+}
+tracks/6/type = "method"
+tracks/6/path = NodePath("CannonTimer")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ -1 ],
+"method": "start"
+} ]
+}
+
+[sub_resource type="Animation" id=52]
+resource_name = "EeReturn"
+length = 2.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("ForegroundShip/NPC - Ee/AnimationTree:parameters/movement/current")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 1, 2 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ForegroundShip/NPC - Ee:draw_shadow")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("ForegroundShip/NPC - Ee:height")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 29.9345, -0.25, 0, 0.25, 0, 29.9345, -0.25, 0, 0.2, -6.78323, 0, -0.098565, 8.45422, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5, 0.998565 )
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("ForegroundShip/NPC - Ee:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 187.5, 207 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("ForegroundShip/NPC - Ee:z_index")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+tracks/5/type = "bezier"
+tracks/5/path = NodePath("ForegroundShip:position:x")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"points": PoolRealArray( 9, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 1 )
+}
+tracks/6/type = "bezier"
+tracks/6/path = NodePath("ForegroundShip:position:y")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"points": PoolRealArray( -24, -0.25, 0, 0.0167874, 27.0169, -23.1737, -0.0243286, 5.75999, 0.0296504, 8.13987, -24, -0.0177406, 8.96614, 0.195731, 212.062 ),
+"times": PoolRealArray( 1, 1.05708, 1.125 )
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("ForegroundShip/NPC - Oob/AnimationTree:parameters/movement/current")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("ForegroundShip/NPC - Ace/AnimationTree:parameters/movement/current")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("ForegroundShip/NPC - Tas/AnimationTree:parameters/movement/current")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("ForegroundShip/NPC - PB/AnimationTree:parameters/movement/current")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
+[sub_resource type="Animation" id=1]
+resource_name = "Shadow"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Shadow/AntialiasedRegularPolygon2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 2400, 212 ), Vector2( -1454, 212 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ForegroundShip:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -2048, 360 ) ]
+}
+
+[sub_resource type="Animation" id=23]
+resource_name = "ShipArrive"
+length = 3.0
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("ForegroundShip:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( -2048, -0.25, 0, 0.3, 964.103, 9, -0.6, -33.5421, 0.4, 18.8079, 9, -0.675, 0.101603, 0.25, 0 ),
+"times": PoolRealArray( 0, 1.6, 3 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("ForegroundShip:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 360, -0.25, 0, 0.1, -172.864, -24, -0.3, 26.9258, 0.3, -22.1033, -13.0017, -0.25, 0, 0.25, 0, -24, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.8, 1.7, 2.6 )
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ForegroundShip/NPC - Ee/AnimationTree:parameters/movement/current")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("ForegroundShip/NPC - Oob/AnimationTree:parameters/movement/current")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("ForegroundShip/NPC - Ace/AnimationTree:parameters/movement/current")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("ForegroundShip/NPC - Tas/AnimationTree:parameters/movement/current")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("ForegroundShip/NPC - PB/AnimationTree:parameters/movement/current")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("ForegroundShip:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=24]
+resource_name = "ShipLeave"
+length = 4.0
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("ForegroundShip:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 9, -0.25, 0, 1.5, -64.7711, 2300, -0.7, -1109.29, 0.25, 0 ),
+"times": PoolRealArray( 0, 3 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("ForegroundShip:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( -24, -0.25, 0, 0.8, -34.5489, 360, -0.7, -0.604637, 0.25, 0 ),
+"times": PoolRealArray( 0, 3 )
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "clear_stage"
+} ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=15]
+animation = "Anim_Startled"
+
+[sub_resource type="AnimationNodeAnimation" id=25]
+animation = "Anim_Idle"
+
+[sub_resource type="AnimationNodeTransition" id=12]
+input_count = 2
+input_0/name = "idle"
+input_0/auto_advance = false
+input_1/name = "startled"
+input_1/auto_advance = false
+
+[sub_resource type="AnimationNodeBlendTree" id=26]
+resource_local_to_scene = true
+graph_offset = Vector2( 115.735, 108.06 )
+nodes/Animation/node = SubResource( 25 )
+nodes/Animation/position = Vector2( 280, 140 )
+"nodes/Animation 3/node" = SubResource( 15 )
+"nodes/Animation 3/position" = Vector2( 280, 260 )
+nodes/movement/node = SubResource( 12 )
+nodes/movement/position = Vector2( 540, 120 )
+nodes/output/position = Vector2( 780, 120 )
+node_connections = [ "movement", 0, "Animation", "movement", 1, "Animation 3", "output", 0, "movement" ]
+
+[sub_resource type="Animation" id=27]
+resource_local_to_scene = true
+resource_name = "Anim_Idle"
+length = 0.5
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("AirOffset/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
+[sub_resource type="Animation" id=28]
+resource_local_to_scene = true
+resource_name = "Anim_Startled"
+length = 0.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("AirOffset/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 2 ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=29]
+animation = "Anim_Startled"
+
+[sub_resource type="AnimationNodeAnimation" id=30]
+animation = "Anim_Idle"
+
+[sub_resource type="AnimationNodeTransition" id=31]
+input_count = 2
+input_0/name = "idle"
+input_0/auto_advance = false
+input_1/name = "startled"
+input_1/auto_advance = false
+
+[sub_resource type="AnimationNodeBlendTree" id=32]
+resource_local_to_scene = true
+graph_offset = Vector2( 115.735, 108.06 )
+nodes/Animation/node = SubResource( 30 )
+nodes/Animation/position = Vector2( 280, 140 )
+"nodes/Animation 3/node" = SubResource( 29 )
+"nodes/Animation 3/position" = Vector2( 280, 260 )
+nodes/movement/node = SubResource( 31 )
+nodes/movement/position = Vector2( 540, 120 )
+nodes/output/position = Vector2( 780, 120 )
+node_connections = [ "movement", 0, "Animation", "movement", 1, "Animation 3", "output", 0, "movement" ]
+
+[sub_resource type="Animation" id=33]
+resource_local_to_scene = true
+resource_name = "Anim_Idle"
+length = 0.5
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("AirOffset/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
+[sub_resource type="Animation" id=34]
+resource_local_to_scene = true
+resource_name = "Anim_Startled"
+length = 0.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("AirOffset/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 2 ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=14]
+animation = "Anim_BlastOff"
+
+[sub_resource type="AnimationNodeAnimation" id=35]
+animation = "Anim_KO"
+
+[sub_resource type="AnimationNodeAnimation" id=20]
+animation = "Anim_Jump"
+
+[sub_resource type="AnimationNodeAnimation" id=21]
+animation = "Anim_Pirate_Avast"
+
+[sub_resource type="AnimationNodeAnimation" id=36]
+animation = "Anim_Enemy_Walk_2Frame"
+
+[sub_resource type="AnimationNodeTransition" id=37]
+input_count = 5
+input_0/name = "idle"
+input_0/auto_advance = false
+input_1/name = "blastoff"
+input_1/auto_advance = false
+input_2/name = "ko"
+input_2/auto_advance = false
+input_3/name = "jump"
+input_3/auto_advance = false
+input_4/name = "pirate_avast"
+input_4/auto_advance = false
+
+[sub_resource type="AnimationNodeBlendTree" id=38]
+resource_local_to_scene = true
+graph_offset = Vector2( -165.524, -29.9237 )
+nodes/Animation/node = SubResource( 36 )
+nodes/Animation/position = Vector2( 200, 20 )
+"nodes/Animation 2/node" = SubResource( 14 )
+"nodes/Animation 2/position" = Vector2( 0, 100 )
+"nodes/Animation 3/node" = SubResource( 35 )
+"nodes/Animation 3/position" = Vector2( -160, 180 )
+"nodes/Animation 4/node" = SubResource( 20 )
+"nodes/Animation 4/position" = Vector2( 0, 240 )
+"nodes/Animation 5/node" = SubResource( 21 )
+"nodes/Animation 5/position" = Vector2( 180, 300 )
+nodes/movement/node = SubResource( 37 )
+nodes/movement/position = Vector2( 540, 120 )
+nodes/output/position = Vector2( 780, 120 )
+node_connections = [ "movement", 0, "Animation", "movement", 1, "Animation 2", "movement", 2, "Animation 3", "movement", 3, "Animation 4", "movement", 4, "Animation 5", "output", 0, "movement" ]
+
+[sub_resource type="Animation" id=39]
+resource_local_to_scene = true
+resource_name = "Anim_Idle"
+length = 0.6
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("AirOffset/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=40]
+animation = "Anim_Startled"
+
+[sub_resource type="AnimationNodeAnimation" id=41]
+animation = "Anim_Idle"
+
+[sub_resource type="AnimationNodeTransition" id=42]
+input_count = 2
+input_0/name = "idle"
+input_0/auto_advance = false
+input_1/name = "startled"
+input_1/auto_advance = false
+
+[sub_resource type="AnimationNodeBlendTree" id=43]
+resource_local_to_scene = true
+graph_offset = Vector2( 115.735, 108.06 )
+nodes/Animation/node = SubResource( 41 )
+nodes/Animation/position = Vector2( 280, 140 )
+"nodes/Animation 3/node" = SubResource( 40 )
+"nodes/Animation 3/position" = Vector2( 280, 260 )
+nodes/movement/node = SubResource( 42 )
+nodes/movement/position = Vector2( 540, 120 )
+nodes/output/position = Vector2( 780, 120 )
+node_connections = [ "movement", 0, "Animation", "movement", 1, "Animation 3", "output", 0, "movement" ]
+
+[sub_resource type="Animation" id=44]
+resource_local_to_scene = true
+resource_name = "Anim_Idle"
+length = 0.6
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("AirOffset/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3, 0.45 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+
+[sub_resource type="Animation" id=45]
+resource_local_to_scene = true
+resource_name = "Anim_Startled"
+length = 0.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("AirOffset/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4 ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=46]
+animation = "Anim_Startled"
+
+[sub_resource type="AnimationNodeAnimation" id=47]
+animation = "Anim_Idle"
+
+[sub_resource type="AnimationNodeTransition" id=48]
+input_count = 2
+input_0/name = "idle"
+input_0/auto_advance = false
+input_1/name = "startled"
+input_1/auto_advance = false
+
+[sub_resource type="AnimationNodeBlendTree" id=49]
+resource_local_to_scene = true
+graph_offset = Vector2( 115.735, 108.06 )
+nodes/Animation/node = SubResource( 47 )
+nodes/Animation/position = Vector2( 280, 140 )
+"nodes/Animation 3/node" = SubResource( 46 )
+"nodes/Animation 3/position" = Vector2( 280, 260 )
+nodes/movement/node = SubResource( 48 )
+nodes/movement/position = Vector2( 540, 120 )
+nodes/output/position = Vector2( 780, 120 )
+node_connections = [ "movement", 0, "Animation", "movement", 1, "Animation 3", "output", 0, "movement" ]
+
+[sub_resource type="Animation" id=50]
+resource_local_to_scene = true
+resource_name = "Anim_Idle"
+length = 0.5
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("AirOffset/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
+[sub_resource type="Animation" id=51]
+resource_local_to_scene = true
+resource_name = "Anim_Startled"
+length = 0.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("AirOffset/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 2 ]
+}
+
+[node name="Node2D" instance=ExtResource( 1 )]
+script = ExtResource( 10 )
+centered = false
+
+[node name="AnimationPlayer" parent="." index="0"]
+autoplay = "Sequence_Start"
+anims/Sequence_End = SubResource( 53 )
+anims/Sequence_Start = SubResource( 54 )
+
+[node name="SubAnimations" type="AnimationPlayer" parent="." index="1"]
+anims/Cannonballs = SubResource( 55 )
+anims/EeLeave = SubResource( 22 )
+anims/EeReturn = SubResource( 52 )
+anims/Shadow = SubResource( 1 )
+anims/ShipArrive = SubResource( 23 )
+anims/ShipLeave = SubResource( 24 )
+
+[node name="Shadow" type="Node2D" parent="." index="2"]
+modulate = Color( 1, 1, 1, 0.341176 )
+
+[node name="AntialiasedRegularPolygon2D" type="Polygon2D" parent="Shadow" index="0"]
+position = Vector2( 2400, 212 )
+scale = Vector2( 19.5938, 7.28125 )
+color = Color( 0.0851834, 0.117517, 0.256552, 1 )
+polygon = PoolVector2Array( -1.39876e-06, -32, 6.24289, -31.3851, 12.2459, -29.5641, 17.7782, -26.607, 22.6274, -22.6274, 26.607, -17.7782, 29.5641, -12.2459, 31.3851, -6.24289, 32, 0, 31.3851, 6.24289, 29.5641, 12.2459, 26.607, 17.7782, 22.6274, 22.6274, 17.7782, 26.607, 12.2459, 29.5641, 6.24289, 31.3851, -1.39876e-06, 32, -6.24289, 31.3851, -12.2459, 29.5641, -17.7782, 26.607, -22.6274, 22.6274, -26.607, 17.7783, -29.5641, 12.2459, -31.3851, 6.2429, -32, 4.83187e-06, -31.3851, -6.24289, -29.5641, -12.2459, -26.607, -17.7782, -22.6274, -22.6274, -17.7783, -26.607, -12.2459, -29.5641, -6.24289, -31.3851 )
+script = ExtResource( 2 )
+stroke_color = Color( 0.4, 0.501961, 1, 0 )
+
+[node name="ForegroundShip" type="Node2D" parent="." index="3"]
+position = Vector2( -2048, 360 )
+scale = Vector2( 4, 4 )
+
+[node name="VFX - Cannon Smoke" parent="ForegroundShip" index="0" instance=ExtResource( 11 )]
+position = Vector2( 60, 203 )
+
+[node name="VFX - Cannon Smoke2" parent="ForegroundShip" index="1" instance=ExtResource( 11 )]
+position = Vector2( 187.5, 203 )
+
+[node name="VFX - Cannon Smoke3" parent="ForegroundShip" index="2" instance=ExtResource( 11 )]
+position = Vector2( 325.75, 203 )
+
+[node name="Ship" type="TileMap" parent="ForegroundShip" index="3"]
+z_index = 1
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 32, 32 )
+cell_custom_transform = Transform2D( 32, 0, 0, 32, 0, 0 )
+format = 1
+tile_data = PoolIntArray( 393207, 4, 0, 393208, 4, 0, 393209, 4, 0, 393210, 4, 0, 393211, 4, 0, 393212, 4, 0, 393213, 4, 0, 393214, 4, 0, 393215, 4, 0, 327680, 4, 0, 327681, 4, 0, 327682, 4, 0, 327683, 4, 0, 327684, 4, 0, 327685, 4, 0, 327686, 4, 0, 327687, 4, 0, 327688, 4, 0, 327689, 4, 0, 327690, 4, 0, 327691, 4, 0, 327692, 4, 0, 327693, 4, 0, 327694, 4, 0, 327695, 4, 0, 327696, 4, 0, 327697, 4, 0, 327698, 4, 0, 327699, 4, 0, 327700, 4, 0, 458743, 5, 0, 458748, 5, 0, 393217, 5, 0, 393222, 5, 0, 393227, 5, 0, 393232, 5, 0, 524278, 5, 0, 524283, 5, 0, 458752, 5, 0, 458757, 5, 0, 458762, 5, 0, 458767, 5, 0, 589815, 5, 0, 589820, 5, 0, 524289, 5, 0, 524294, 5, 0, 524299, 5, 0, 524304, 5, 0 )
+
+[node name="Masts" type="TileMap" parent="ForegroundShip" index="4"]
+z_index = 1
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 32, 32 )
+cell_custom_transform = Transform2D( 32, 0, 0, 32, 0, 0 )
+format = 1
+tile_data = PoolIntArray( -262146, 0, 0, -327667, 0, 0, -131074, 0, 0, -196595, 0, 0, -65538, 3, 0, -131059, 3, 0, -2, 0, 0, -65523, 0, 0, 131070, 0, 0, 65549, 0, 0, 196606, 3, 0, 131085, 3, 0, 262142, 0, 0, 196621, 0, 0, 393214, 0, 0, 327693, 0, 0, 458750, 3, 0, 393229, 3, 0, 524286, 0, 0, 458765, 0, 0, 655358, 0, 0, 589837, 0, 0 )
+
+[node name="NPC - Oob" parent="ForegroundShip" index="5" instance=ExtResource( 5 )]
+position = Vector2( 100, 207 )
+scale = Vector2( 0.5, 0.5 )
+z_index = 1
+
+[node name="Shadow" parent="ForegroundShip/NPC - Oob" index="0"]
+polygon = PoolVector2Array( -1.39876e-06, -32, 12.2459, -29.5641, 22.6274, -22.6274, 29.5641, -12.2459, 32, 0, 29.5641, 12.2459, 22.6274, 22.6274, 12.2459, 29.5641, -1.39876e-06, 32, -12.2459, 29.5641, -22.6274, 22.6274, -29.5641, 12.2459, -32, 4.83187e-06, -29.5641, -12.2459, -22.6274, -22.6274, -12.2459, -29.5641 )
+
+[node name="Sprite" parent="ForegroundShip/NPC - Oob/AirOffset" index="0"]
+frame = 1
+
+[node name="AnimationTree" parent="ForegroundShip/NPC - Oob" index="2"]
+tree_root = SubResource( 26 )
+
+[node name="AnimationPlayer" parent="ForegroundShip/NPC - Oob" index="3"]
+anims/Anim_Idle = SubResource( 27 )
+anims/Anim_Startled = SubResource( 28 )
+
+[node name="NPC - Ace" parent="ForegroundShip" index="6" instance=ExtResource( 4 )]
+position = Vector2( 128, 207 )
+scale = Vector2( 0.5, 0.5 )
+z_index = 1
+
+[node name="Shadow" parent="ForegroundShip/NPC - Ace" index="0"]
+polygon = PoolVector2Array( -1.39876e-06, -32, 12.2459, -29.5641, 22.6274, -22.6274, 29.5641, -12.2459, 32, 0, 29.5641, 12.2459, 22.6274, 22.6274, 12.2459, 29.5641, -1.39876e-06, 32, -12.2459, 29.5641, -22.6274, 22.6274, -29.5641, 12.2459, -32, 4.83187e-06, -29.5641, -12.2459, -22.6274, -22.6274, -12.2459, -29.5641 )
+
+[node name="MakeshiftWhiteFlash" parent="ForegroundShip/NPC - Ace/AirOffset" index="1"]
+visible = false
+
+[node name="AnimationTree" parent="ForegroundShip/NPC - Ace" index="2"]
+tree_root = SubResource( 32 )
+
+[node name="AnimationPlayer" parent="ForegroundShip/NPC - Ace" index="3"]
+anims/Anim_Idle = SubResource( 33 )
+anims/Anim_Startled = SubResource( 34 )
+
+[node name="NPC - Ee" parent="ForegroundShip" index="7" instance=ExtResource( 6 )]
+position = Vector2( 187.5, 207 )
+scale = Vector2( 0.5, 0.5 )
+z_index = 1
+
+[node name="Shadow" parent="ForegroundShip/NPC - Ee" index="0"]
+polygon = PoolVector2Array( -1.39876e-06, -32, 12.2459, -29.5641, 22.6274, -22.6274, 29.5641, -12.2459, 32, 0, 29.5641, 12.2459, 22.6274, 22.6274, 12.2459, 29.5641, -1.39876e-06, 32, -12.2459, 29.5641, -22.6274, 22.6274, -29.5641, 12.2459, -32, 4.83187e-06, -29.5641, -12.2459, -22.6274, -22.6274, -12.2459, -29.5641 )
+
+[node name="Sprite" parent="ForegroundShip/NPC - Ee/AirOffset" index="0"]
+frame = 34
+
+[node name="AnimationTree" parent="ForegroundShip/NPC - Ee" index="2"]
+tree_root = SubResource( 38 )
+
+[node name="AnimationPlayer" parent="ForegroundShip/NPC - Ee" index="3"]
+anims/Anim_Idle = SubResource( 39 )
+
+[node name="NPC - Tas" parent="ForegroundShip" index="8" instance=ExtResource( 7 )]
+position = Vector2( 244.5, 207 )
+rotation = 3.14159
+scale = Vector2( 0.5, -0.5 )
+z_index = 1
+
+[node name="Shadow" parent="ForegroundShip/NPC - Tas" index="0"]
+polygon = PoolVector2Array( -1.39876e-06, -32, 12.2459, -29.5641, 22.6274, -22.6274, 29.5641, -12.2459, 32, 0, 29.5641, 12.2459, 22.6274, 22.6274, 12.2459, 29.5641, -1.39876e-06, 32, -12.2459, 29.5641, -22.6274, 22.6274, -29.5641, 12.2459, -32, 4.83187e-06, -29.5641, -12.2459, -22.6274, -22.6274, -12.2459, -29.5641 )
+
+[node name="Sprite" parent="ForegroundShip/NPC - Tas/AirOffset" index="0"]
+frame = 0
+
+[node name="AnimationTree" parent="ForegroundShip/NPC - Tas" index="2"]
+tree_root = SubResource( 43 )
+
+[node name="AnimationPlayer" parent="ForegroundShip/NPC - Tas" index="3"]
+anims/Anim_Idle = SubResource( 44 )
+anims/Anim_Startled = SubResource( 45 )
+
+[node name="NPC - PB" parent="ForegroundShip" index="9" instance=ExtResource( 8 )]
+position = Vector2( 283, 207 )
+scale = Vector2( -0.5, 0.5 )
+z_index = 1
+
+[node name="Shadow" parent="ForegroundShip/NPC - PB" index="0"]
+polygon = PoolVector2Array( -1.39876e-06, -32, 12.2459, -29.5641, 22.6274, -22.6274, 29.5641, -12.2459, 32, 0, 29.5641, 12.2459, 22.6274, 22.6274, 12.2459, 29.5641, -1.39876e-06, 32, -12.2459, 29.5641, -22.6274, 22.6274, -29.5641, 12.2459, -32, 4.83187e-06, -29.5641, -12.2459, -22.6274, -22.6274, -12.2459, -29.5641 )
+
+[node name="AnimationTree" parent="ForegroundShip/NPC - PB" index="2"]
+tree_root = SubResource( 49 )
+
+[node name="AnimationPlayer" parent="ForegroundShip/NPC - PB" index="3"]
+anims/Anim_Idle = SubResource( 50 )
+anims/Anim_Startled = SubResource( 51 )
+
+[node name="CannonTimer" type="Timer" parent="." index="4"]
+wait_time = 8.0
+
+[node name="CannonSound" type="AudioStreamPlayer" parent="." index="5"]
+stream = ExtResource( 13 )
+volume_db = -20.0
+bus = "SoundEffects"
+
+[connection signal="timeout" from="CannonTimer" to="." method="_on_CannonballsTimer_timeout"]
+
+[editable path="ForegroundShip/NPC - Oob"]
+[editable path="ForegroundShip/NPC - Ace"]
+[editable path="ForegroundShip/NPC - Ee"]
+[editable path="ForegroundShip/NPC - Tas"]
+[editable path="ForegroundShip/NPC - PB"]

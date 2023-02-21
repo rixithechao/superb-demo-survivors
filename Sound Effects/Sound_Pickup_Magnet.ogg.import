@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Sound_Pickup_Magnet.ogg-4262ceeeb4f8a60a8fa84bc886b43f5d.oggstr"
+
+[deps]
+
+source_file="res://Sound Effects/Sound_Pickup_Magnet.ogg"
+dest_files=[ "res://.import/Sound_Pickup_Magnet.ogg-4262ceeeb4f8a60a8fa84bc886b43f5d.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

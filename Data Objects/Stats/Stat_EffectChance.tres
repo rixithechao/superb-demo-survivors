@@ -7,5 +7,5 @@ script = ExtResource( 1 )
 name = "Effect Chance"
 type = 1
 stack_type = 1
-base_value = 1.0
+base_value = 0.1
 description = "A multiplier for the chance of a projectile dealing a critical hit or applying other special effects."

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Prefabs/Projectiles/Prefab_Projectile_Bee.tscn" type="PackedScene" id=1]
+
+[node name="Projectile - Bee" instance=ExtResource( 1 )]
+homing_radius = 240

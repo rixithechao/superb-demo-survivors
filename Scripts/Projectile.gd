@@ -1,4 +1,5 @@
 extends Node
+class_name Projectile
 
 
 enum ProjectileOrientType {
@@ -6,7 +7,8 @@ enum ProjectileOrientType {
 	FLIP_HORIZONTAL,
 	FLIP_VERTICAL,
 	FLIP_4DIR,
-	ROTATE
+	ROTATE,
+	DIRECTIONAL_FRAMES
 }
 
 enum ProjectileAlternateType {
@@ -30,7 +32,8 @@ enum ProjectileAimType {
 	PLAYER_8DIR,
 	TO_PLAYER,
 	TO_ENEMY_RANDOM,
-	TO_ENEMY_NEAREST
+	TO_ENEMY_NEAREST,
+	TO_WALL_NEAREST
 }
 
 var weapon_data : Resource
@@ -44,6 +47,9 @@ export var aim_spread : float = 0
 export var speed : float = 1
 export var acceleration : Vector3
 export var acceleration_is_relative : bool = true
+export var deceleration : float
+export (PackedScene) var spawn_vfx
+export (PackedScene) var death_vfx
 
 var fire_direction : Vector2
 var fire_speed : Vector2
@@ -57,21 +63,32 @@ var volley_index = 0
 
 
 
+
+func on_hit_enemy(enemy_node):
+	pass
+
 func custom_movement(delta):
 	var accel_applied = Vector2(acceleration.x, acceleration.y)
 	if acceleration_is_relative:
 		accel_applied = accel_applied.rotated(fire_direction.angle())
 
+	var decel_applied = fire_speed.normalized() * deceleration
+
 	var time_passed = TimeManager.time_rate * delta
 
-	fire_speed += accel_applied * time_passed
+	fire_speed += (accel_applied - decel_applied) * time_passed
 	$LocalPos.position += fire_speed * time_passed * 100
 
+func get_speed_mult():
+	return speed * weapon_data.get_stat_current(StatsManager.SPEED)
 
 
 
 
 func _ready():
+	
+	# Scale based on area stat
+	self.scale = Vector2.ONE * weapon_data.get_stat_current(StatsManager.AREA)
 	
 	# Spawn at the target
 	match target_type:
@@ -83,7 +100,7 @@ func _ready():
 			target_node = HarmableManager.get_random()
 
 		ProjectileTargetType.ENEMY_NEAREST:
-			target_node = HarmableManager.get_nearest()
+			target_node = HarmableManager.get_nearest().node
 
 	#if not relative_position:
 	self.position = target_node.position + target_offset
@@ -113,7 +130,7 @@ func _ready():
 			enemy_node = PlayerManager.instance
 		
 		ProjectileAimType.TO_ENEMY_NEAREST:
-			enemy_node = HarmableManager.get_nearest()
+			enemy_node = HarmableManager.get_nearest().node
 			if enemy_node == null:
 				fire_direction = PlayerManager.instance.direction
 
@@ -127,16 +144,18 @@ func _ready():
 		fire_direction = enemy_node.position - self.position
 
 	var normalized_dir = fire_direction.normalized()
-	fire_speed = normalized_dir.rotated(deg2rad(rand_range(-aim_spread, aim_spread))) * speed #*PlayerManager.get_weapon_speed()
+	self.position = self.position + normalized_dir * spawn_radius
+	
+	fire_speed = normalized_dir.rotated(deg2rad(rand_range(-aim_spread, aim_spread))) * get_speed_mult()  #*PlayerManager.get_weapon_speed()
 	
 	$Duration.wait_time = weapon_data.get_stat_current(StatsManager.DURATION)
 	$Duration.start()
 	
-	if self.has_node("AnimationPlayer"):
+	if  self.has_node("AnimationPlayer"):
 		$AnimationPlayer.play("default")
 
-	elif self.has_node("LocalPos/Graphic/AnimatedSprite"):
-		$LocalPos/Graphic/AnimatedSprite.playing = true
+	elif  self.has_node("LocalPos/Graphic/AnimatedSprite"):
+		$LocalPos/Collision/Graphic/AnimatedSprite.playing = true
 	
 	match orientation_mode:
 		ProjectileOrientType.FLIP_HORIZONTAL:
@@ -160,6 +179,16 @@ func _ready():
 		ProjectileAlternateType.FLIP_Y:
 			$LocalPos.scale.y *= pow(-1, volley_index)
 
+	# Spawn vfx
+	if  spawn_vfx != null:
+		VFXManager.spawn(spawn_vfx, $LocalPos.global_position)
+
+
+
+func destroy():
+	if  death_vfx != null:
+		VFXManager.spawn(death_vfx, $LocalPos.global_position)
+	self.queue_free()
 
 
 
@@ -168,20 +197,19 @@ func _process(delta):
 		self.position = target_node.position + target_offset
 	
 	if weapon_data.pierce_type == WeaponData.WeaponPierceType.LIMITED  and  enemies_pierced > weapon_data.get_stat_current(StatsManager.PIERCE):
-		queue_free()
+		destroy()
 
 	custom_movement(delta)
-	
-	
+
 
 
 func _on_Duration_timeout():
-	self.queue_free()
+	destroy()
 	pass # Replace with function body.
 
 
-func _on_LocalPos_body_entered(body):
-	
+func _on_Collision_body_entered(body):
 	if body.is_in_group("harmable"):
 		body.hit_by_projectile(self)
+		on_hit_enemy(body)
 		pass # Replace with function body.

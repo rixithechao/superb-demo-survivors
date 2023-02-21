@@ -15,6 +15,17 @@ func set_custom_spawns(value):
 			enemy_spawns[i] = EnemySpawnData.new()
 			
 			enemy_spawns[i].resource_name = "Spawn "+i.to_string()
+		else:
+			#var spwn = enemy_spawns[i]
+			#var full_name = ""
+			#for j in spwn.enemies.size():
+				#var this_enemy = spwn.enemies[j]
+				#if  j > 0:
+				#	full_name += ", "
+				#full_name += this_enemy.name
+
+			#spwn.resource_name = full_name
+			pass
 
 func set_custom_bosses(value):
 	bosses.resize(value.size())

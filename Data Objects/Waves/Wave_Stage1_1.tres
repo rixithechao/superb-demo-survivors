@@ -17,9 +17,9 @@ enemy = ExtResource( 4 )
 final = false
 
 [sub_resource type="Resource" id=2]
-resource_name = "Spawn"
+resource_name = "Goopas"
 script = ExtResource( 2 )
-interval = 1.0
+interval = 2.0
 delay = 0.0
 enemies = [ ExtResource( 3 ), ExtResource( 6 ), ExtResource( 8 ), ExtResource( 7 ), ExtResource( 10 ), ExtResource( 9 ) ]
 

@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Prefabs/Templates/Prefab_Equipment.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/Passive_SometimesFood.gd" type="Script" id=2]
+[ext_resource path="res://Prefabs/Pickups/Prefab_Pickup_Radish.tscn" type="PackedScene" id=3]
+
+[node name="Passive - Sometimes Food" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+food_prefab = ExtResource( 3 )
+
+[node name="DropTimer" type="Timer" parent="." index="0"]
+wait_time = 10.0
+autostart = true
+
+[connection signal="timeout" from="DropTimer" to="." method="_on_DropTimer_timeout"]

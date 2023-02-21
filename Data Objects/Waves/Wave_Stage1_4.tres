@@ -1,0 +1,19 @@
+[gd_resource type="Resource" load_steps=5 format=2]
+
+[ext_resource path="res://Scripts/ScriptableObjects/WaveData.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/ScriptableObjects/EnemySpawnData.gd" type="Script" id=2]
+[ext_resource path="res://Prefabs/Enemies/Prefab_Enemy_Rabbit.tscn" type="PackedScene" id=3]
+
+[sub_resource type="Resource" id=2]
+resource_name = "Rabbit"
+script = ExtResource( 2 )
+interval = 2.0
+delay = 0.0
+enemies = [ ExtResource( 3 ) ]
+
+[resource]
+script = ExtResource( 1 )
+minimum = 30.0
+enemy_spawns = [ SubResource( 2 ) ]
+bosses = [  ]
+map_events = [  ]

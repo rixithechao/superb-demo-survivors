@@ -1,0 +1,37 @@
+[gd_resource type="Resource" load_steps=10 format=2]
+
+[ext_resource path="res://Scripts/ScriptableObjects/EnemyData.gd" type="Script" id=1]
+[ext_resource path="res://Data Objects/Drop Tables/DropTable_Enemy_Basic1.tres" type="Resource" id=2]
+[ext_resource path="res://Data Objects/Stats/Stat_Damage.tres" type="Resource" id=3]
+[ext_resource path="res://Data Objects/Stats/Stat_MaxHP.tres" type="Resource" id=4]
+[ext_resource path="res://Data Objects/Stats/Stat_Movement.tres" type="Resource" id=5]
+[ext_resource path="res://Data Objects/Stats/Stat_Sturdiness.tres" type="Resource" id=6]
+[ext_resource path="res://Scripts/ScriptableObjects/StatSheetData.gd" type="Script" id=7]
+[ext_resource path="res://Data Objects/Stats/Stat_Inertia.tres" type="Resource" id=8]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 7 )
+stats = [ ExtResource( 4 ), ExtResource( 3 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 8 ) ]
+values = {
+ExtResource( 6 ): 1.0,
+ExtResource( 4 ): 60,
+ExtResource( 8 ): 0.0,
+ExtResource( 5 ): 1.0,
+ExtResource( 3 ): 10.0
+}
+"Values/Max HP" = 60
+Values/Damage = 10.0
+Values/Movement = 1.0
+Values/Sturdiness = 1.0
+Values/Inertia = 0.0
+"Preset or Remove" = 0
+
+[resource]
+script = ExtResource( 1 )
+name = "Tantrunt"
+stats = SubResource( 1 )
+height = 0.5
+spiky = false
+kill_resistance = false
+hp_scaling = 0.0
+drop_table = ExtResource( 2 )

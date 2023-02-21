@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Sound_BigBounce.ogg-c8cbdaa7c35fea8dec7035926f1aeaed.oggstr"
+
+[deps]
+
+source_file="res://Sound Effects/Sound_BigBounce.ogg"
+dest_files=[ "res://.import/Sound_BigBounce.ogg-c8cbdaa7c35fea8dec7035926f1aeaed.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

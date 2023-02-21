@@ -11,13 +11,13 @@ script = ExtResource( 1 )
 weight = 5
 
 [sub_resource type="Resource" id=2]
-resource_name = "Drop"
+resource_name = "Pickup - Small Exp"
 script = ExtResource( 1 )
 pickup = ExtResource( 3 )
 weight = 10
 
 [sub_resource type="Resource" id=3]
-resource_name = "Drop"
+resource_name = "Pickup - Coin"
 script = ExtResource( 1 )
 pickup = ExtResource( 4 )
 weight = 1

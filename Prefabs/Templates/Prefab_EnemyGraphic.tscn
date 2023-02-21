@@ -21,6 +21,7 @@ image = SubResource( 9 )
 size = Vector2( 256, 256 )
 
 [sub_resource type="Animation" id=6]
+resource_local_to_scene = true
 length = 0.5
 loop = true
 step = 0.05
@@ -75,11 +76,13 @@ scale = Vector2( 2, 2 )
 texture = ExtResource( 6 )
 hframes = 2
 script = ExtResource( 1 )
+main_sprite = NodePath("../Sprite")
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = ExtResource( 2 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
+parameters/walkSpeed/scale = 1.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Anim_Enemy_Walk_2Frame = SubResource( 6 )

@@ -1,22 +1,130 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=15 format=2]
 
-[ext_resource path="res://Prefabs/Templates/Prefab_EnemyCharacter.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Scripts/EnemyCharacter_Hopper.gd" type="Script" id=2]
+[ext_resource path="res://Prefabs/Templates/Prefab_EnemyCharacter_Hopper.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Textures/Characters/spr_enemy_catfish_a2xt.png" type="Texture" id=3]
 [ext_resource path="res://Data Objects/Enemies/EnemyData_Fish.tres" type="Resource" id=4]
 
+[sub_resource type="AnimationNodeAnimation" id=44]
+resource_local_to_scene = true
+animation = "Bounce"
+
+[sub_resource type="AnimationNodeAnimation" id=45]
+resource_local_to_scene = true
+animation = "Jump"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=43]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachine" id=46]
+resource_local_to_scene = true
+states/Bounce/node = SubResource( 44 )
+states/Bounce/position = Vector2( 176, 63 )
+states/Jump/node = SubResource( 45 )
+states/Jump/position = Vector2( 403, 63 )
+transitions = [ "Bounce", "Jump", SubResource( 43 ) ]
+start_node = "Bounce"
+
+[sub_resource type="AnimationNodeTimeScale" id=47]
+resource_local_to_scene = true
+
+[sub_resource type="AnimationNodeBlendTree" id=48]
+resource_local_to_scene = true
+graph_offset = Vector2( 23.8798, 92.2651 )
+nodes/StateMachine/node = SubResource( 46 )
+nodes/StateMachine/position = Vector2( 360, 160 )
+nodes/output/position = Vector2( 860, 140 )
+nodes/walkSpeed/node = SubResource( 47 )
+nodes/walkSpeed/position = Vector2( 640, 140 )
+node_connections = [ "walkSpeed", 0, "StateMachine", "output", 0, "walkSpeed" ]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=49]
+
+[sub_resource type="Animation" id=50]
+resource_local_to_scene = true
+length = 0.5
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("AirOffset/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
+[sub_resource type="Animation" id=51]
+resource_local_to_scene = true
+resource_name = "Bounce"
+length = 0.01
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("AirOffset/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 1,
+"values": [  ]
+}
+
+[sub_resource type="Animation" id=52]
+resource_local_to_scene = true
+resource_name = "Jump"
+length = 0.5
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("AirOffset/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
+[sub_resource type="CapsuleShape2D" id=53]
+resource_local_to_scene = true
+radius = 20.0
+height = 0.0
+
 [node name="Enemy - Fish" instance=ExtResource( 1 )]
-script = ExtResource( 2 )
 data = ExtResource( 4 )
 spread = 45.0
-hop_strength = 4.0
-hop_variance = 0.5
-Movement/Mode = 3
+
+[node name="Shadow" parent="Graphic" index="0"]
+polygon = PoolVector2Array( -1.39876e-06, -32, 12.2459, -29.5641, 22.6274, -22.6274, 29.5641, -12.2459, 32, 0, 29.5641, 12.2459, 22.6274, 22.6274, 12.2459, 29.5641, -1.39876e-06, 32, -12.2459, 29.5641, -22.6274, 22.6274, -29.5641, 12.2459, -32, 4.83187e-06, -29.5641, -12.2459, -22.6274, -22.6274, -12.2459, -29.5641 )
 
 [node name="Sprite" parent="Graphic/AirOffset" index="0"]
 texture = ExtResource( 3 )
+frame = 0
 
 [node name="MakeshiftWhiteFlash" parent="Graphic/AirOffset" index="1"]
 texture = ExtResource( 3 )
+
+[node name="AnimationTree" parent="Graphic" index="2"]
+tree_root = SubResource( 48 )
+parameters/StateMachine/playback = SubResource( 49 )
+
+[node name="AnimationPlayer" parent="Graphic" index="3"]
+anims/Anim_Enemy_Walk_2Frame = SubResource( 50 )
+anims/Bounce = SubResource( 51 )
+anims/Jump = SubResource( 52 )
+
+[node name="Collision" parent="." index="1"]
+shape = SubResource( 53 )
 
 [editable path="Graphic"]

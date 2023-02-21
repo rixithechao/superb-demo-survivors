@@ -9,6 +9,7 @@ func _ready():
 	WorldManager.world_objects_node = $WorldObjects
 	WorldManager.map_events_node = $MapEvents
 	WorldManager.tilemap_node = $Terrain/TileMap
+	WorldManager.hazards_node = $Hazards
 	StageManager.on_stage_loaded()
 
 
@@ -26,7 +27,10 @@ func call_menu(name : String):
 func post_death_menu():
 	MenuManager.open("deathbg")
 
-	if  PlayerManager.show_serac  or  PlayerManager.coins >= PlayerManager.get_revive_cost():
+	var signal_data = {"cancelled": (not PlayerManager.show_serac)  and  PlayerManager.coins < PlayerManager.get_revive_cost()}
+	PlayerManager.emit_signal("revive_check", signal_data)
+	
+	if  not signal_data.cancelled:
 		MenuManager.open("revive")
 		PlayerManager.show_serac = false
 	else:

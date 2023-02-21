@@ -1,0 +1,25 @@
+[gd_resource type="Resource" load_steps=6 format=2]
+
+[ext_resource path="res://Scripts/ScriptableObjects/BoostData.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/ScriptableObjects/StatSheetData.gd" type="Script" id=2]
+[ext_resource path="res://Data Objects/Stats/Stat_Cooldown.tres" type="Resource" id=3]
+[ext_resource path="res://Textures/Items/spr_boost_down.png" type="Texture" id=4]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 2 )
+stats = [ ExtResource( 3 ) ]
+values = {
+ExtResource( 3 ): 1.08
+}
+Values/Cooldown = 1.08
+"Preset or Remove" = 0
+
+[resource]
+script = ExtResource( 1 )
+name = "Reduce Cooldown"
+icon = ExtResource( 4 )
+description = "Reduce weapon cooldown."
+max_level = 1000
+rarity = 20.0
+stats = SubResource( 1 )
+level_modifiers = [  ]

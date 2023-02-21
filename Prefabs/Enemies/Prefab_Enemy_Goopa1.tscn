@@ -6,6 +6,7 @@
 
 [node name="Enemy - Goopa" instance=ExtResource( 2 )]
 data = ExtResource( 3 )
+"Spawning/Spawn Type" = 0
 
 [node name="Sprite" parent="Graphic/AirOffset" index="0"]
 position = Vector2( 0, -28 )

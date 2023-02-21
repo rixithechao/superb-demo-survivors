@@ -27,3 +27,15 @@ collision_mask = 8
 
 [node name="SpawnShape" type="CollisionShape2D" parent="SpawnArea"]
 shape = SubResource( 2 )
+
+[node name="TL" type="Node2D" parent="."]
+position = Vector2( -768, -432 )
+
+[node name="BL" type="Node2D" parent="."]
+position = Vector2( -768, 432 )
+
+[node name="TR" type="Node2D" parent="."]
+position = Vector2( 768, -432 )
+
+[node name="BR" type="Node2D" parent="."]
+position = Vector2( 768, 432 )

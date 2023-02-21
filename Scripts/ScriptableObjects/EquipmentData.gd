@@ -5,6 +5,8 @@ class_name EquipmentData
 enum EquipmentType {
 	PASSIVE,
 	WEAPON,
+	BOOST,
+	ABILITY,
 	PICKUP
 }
 
@@ -12,8 +14,9 @@ enum EquipmentType {
 export var name : String
 export var icon : Texture
 export(String, MULTILINE) var description = ""
-export(int, 2,20) var max_level = 8
+export(int, 2,1000) var max_level = 8
 export var rarity : float = 100
+export var prefab : PackedScene
 
 export(Resource) var stats setget set_custom_stats,get_custom_stats
 var _stats : Resource
@@ -25,6 +28,16 @@ var equipment_type = EquipmentType.PASSIVE setget ,get_equipment_type
 
 func get_equipment_type():
 	return EquipmentType.PASSIVE
+
+func get_current_level():
+	var lvl
+	if PlayerManager.equipment_levels.has(self):
+		lvl = PlayerManager.equipment_levels[self]
+	else:
+		lvl = 1
+	
+	return lvl
+
 
 
 
@@ -50,9 +63,11 @@ func get_custom_stats():
 
 
 func set_custom_level_modifiers(value):
-	if  true:#Engine.editor_hint:
-		level_modifiers = value
+	if  get_equipment_type() == EquipmentType.BOOST:
+		level_modifiers.clear()
+	else:
 		level_modifiers.resize(max(0, max_level-1))
+		level_modifiers = value
 		for i in level_modifiers.size():
 			if not level_modifiers[i]:
 				level_modifiers[i] = LevelModifierData.new()
@@ -64,12 +79,9 @@ func set_custom_level_modifiers(value):
 
 
 func apply_stats(modified, current_level = null):
-	
+
 	if current_level == null:
-		if PlayerManager.equipment_levels.has(self):
-			current_level = PlayerManager.equipment_levels[self]
-		else:
-			current_level = 1
+		current_level = get_current_level()
 
 
 	# Apply base stat modifications

@@ -4,6 +4,7 @@ var button_hovered = false
 
 
 func _ready():
+	SaveManager.settings.connect("settings_changed", self, "on_settings_changed")
 	$Skew/Panel/CloseButton.connect("pressed", self, "begin_cancel_close")
 
 	# If the screen resolution is too small, remove additional scale options
@@ -27,9 +28,14 @@ func _ready():
 	$Skew/Panel/TabContainer/Display/ControlsGrid/VsyncToggleCenter/VsyncToggle.set_pressed_no_signal(SaveManager.settings.vsync)
 	$Skew/Panel/TabContainer/Effects/ControlsGrid/ScreenshakeToggleCenter/ScreenshakeToggle.set_pressed_no_signal(SaveManager.settings.screen_shake)
 	$Skew/Panel/TabContainer/Effects/ControlsGrid/DamageNumToggleCenter/DamageNumToggle.set_pressed_no_signal(SaveManager.settings.damage_numbers)
+	$Skew/Panel/TabContainer/Other/ControlsGrid/TeethToggleCenter/TeethToggle.set_pressed_no_signal(SaveManager.settings.teeth)
 
 func on_close():
 	SaveManager.settings.save()
+
+func on_settings_changed():
+	$SaveDelayTimer.start()
+
 
 
 func _input_unhandled(event):
@@ -59,33 +65,30 @@ func _on_SaveDelayTimer_timeout():
 func _on_MusicVolumeSlider_value_changed(value):
 	SaveManager.settings.music_volume = value*0.01
 	AudioServer.set_bus_volume_db(SaveManager._bus_music, linear2db(SaveManager.settings.music_volume))
-	$SaveDelayTimer.start()
+
 
 func _on_SFXVolumeSlider_value_changed(value):
 	SaveManager.settings.sound_volume = value*0.01
 	AudioServer.set_bus_volume_db(SaveManager._bus_soundeffects, linear2db(SaveManager.settings.sound_volume))
 	if  not $CursorSound.playing:
 		$CursorSound.play()
-	$SaveDelayTimer.start()
 
 func _on_FullscreenToggle_toggled(button_pressed):
 	SaveManager.settings.fullscreen = button_pressed
 	OS.window_fullscreen = button_pressed
-	$SaveDelayTimer.start()
 
 func _on_VsyncToggle_toggled(button_pressed):
 	SaveManager.settings.vsync = button_pressed
 	OS.set_use_vsync(button_pressed)
-	$SaveDelayTimer.start()
 
 func _on_ScreenshakeToggle_toggled(button_pressed):
 	SaveManager.settings.screen_shake = button_pressed
-	$SaveDelayTimer.start()
 
 func _on_DamageNumToggle_toggled(button_pressed):
 	SaveManager.settings.damage_numbers = button_pressed
-	$SaveDelayTimer.start()
 
+func _on_TeethToggle_toggled(button_pressed):
+	SaveManager.settings.teeth = button_pressed
 
 func _on_WindowScaleTabs_tab_changed(tab):
 	var sc = tab+1
@@ -94,7 +97,8 @@ func _on_WindowScaleTabs_tab_changed(tab):
 	OS.set_window_size(Vector2(768, 432) * sc)
 	OS.center_window()
 	#OS.set_screen_position(old_screen_pos)
-	$SaveDelayTimer.start()
+
+
 
 func _on_WindowScaleLeftArrow_pressed():
 	var tabs = $Skew/Panel/TabContainer/Display/ControlsGrid/HBoxContainer/WindowScaleTabs
@@ -105,3 +109,4 @@ func _on_WindowScaleRightArrow_pressed():
 	var tabs = $Skew/Panel/TabContainer/Display/ControlsGrid/HBoxContainer/WindowScaleTabs
 	tabs.scroll_tab(1, true)
 	$CursorSound.play()
+

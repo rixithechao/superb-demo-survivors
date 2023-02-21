@@ -1,0 +1,49 @@
+[gd_resource type="Resource" load_steps=11 format=2]
+
+[ext_resource path="res://Scripts/ScriptableObjects/StatSheetData.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/ScriptableObjects/LevelModifierData.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/ScriptableObjects/PassiveData.gd" type="Script" id=3]
+[ext_resource path="res://Textures/Items/spr_passive_sometimesfood_a2xt.png" type="Texture" id=4]
+[ext_resource path="res://Prefabs/Equipment/Prefab_Passive_SometimesFood.tscn" type="PackedScene" id=5]
+
+[sub_resource type="Resource" id=3]
+resource_name = "Level 2"
+script = ExtResource( 2 )
+description = "Food takes less time to spawn."
+Type = 1
+
+[sub_resource type="Resource" id=5]
+resource_name = "Level 3"
+script = ExtResource( 2 )
+description = "Food appears at shorter intervals."
+Type = 1
+
+[sub_resource type="Resource" id=7]
+resource_name = "Level 4"
+script = ExtResource( 2 )
+description = "The rate at which food manifests decreases by a further degree."
+Type = 1
+
+[sub_resource type="Resource" id=9]
+resource_name = "Level 5"
+script = ExtResource( 2 )
+description = "Now to eat food and food and more food and also time to maybe eat food and then you eat some food and then you eat more food then you eat and you eat and you eat food make sure not to eat a foot though I really do mean it you eat some food and don't eat a big dorito that doesn't really count as food le sync (?) I don't know though what is food well it is things you eat what is food that is a thing you eat also known as food what is food it's something you eat what is food it is something you eat what is food I honestly think I forgot what is food what is food well it is something that you eat what is food something what is something food I don't know I can't tell the difference what is food it is something you eat what is you eat it is sometimes food but sometimes it it is rubber but we don't talk about that anymore it's kinda impolite you see so what is you well uh you are me and what is me well I am food for an animal somewhere I'm pretty sure hey there there's a coin there I won't get caught there's a guy there I'm oh look at that we're at the end myeeeh"
+Type = 1
+
+[sub_resource type="Resource" id=16]
+script = ExtResource( 1 )
+stats = [  ]
+values = {
+}
+"Preset or Remove" = 0
+
+[resource]
+script = ExtResource( 3 )
+name = "Sometimes Food"
+icon = ExtResource( 4 )
+description = "As in, sometimes you get food.  From that place.  You know the one."
+max_level = 5
+rarity = 100.0
+prefab = ExtResource( 5 )
+stats = SubResource( 16 )
+level_modifiers = [ SubResource( 3 ), SubResource( 5 ), SubResource( 7 ), SubResource( 9 ) ]
