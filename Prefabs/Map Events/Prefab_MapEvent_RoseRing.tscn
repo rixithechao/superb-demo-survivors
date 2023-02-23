@@ -13,7 +13,7 @@ tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
-tracks/0/enabled = true
+tracks/0/enabled = false
 tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -49,7 +49,7 @@ anims/Sequence_MapEvent = SubResource( 1 )
 
 [node name="Enemy Warning - Vector Chain" parent="." index="1" instance=ExtResource( 3 )]
 position = Vector2( -1161, 0 )
-gap = 32.0
+gap = 64.0
 duration = 0.0
 
 [node name="Path2D" parent="Enemy Warning - Vector Chain" index="0"]
