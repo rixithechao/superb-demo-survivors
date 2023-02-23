@@ -3,7 +3,7 @@
 [ext_resource path="res://Scripts/ScriptableObjects/WaveData.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/ScriptableObjects/EnemySpawnData.gd" type="Script" id=2]
 [ext_resource path="res://Prefabs/Enemies/Prefab_Enemy_Goopa1.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Prefabs/Enemies/Prefab_Enemy_Caterpillar.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Prefabs/Enemies/Prefab_Enemy_Caterpillar_Boss.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scripts/ScriptableObjects/BossData.gd" type="Script" id=5]
 [ext_resource path="res://Prefabs/Enemies/Prefab_Enemy_Goopa2.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Prefabs/Enemies/Prefab_Enemy_Goopa4.tscn" type="PackedScene" id=7]
@@ -12,6 +12,7 @@
 [ext_resource path="res://Prefabs/Enemies/Prefab_Enemy_Goopa5.tscn" type="PackedScene" id=10]
 
 [sub_resource type="Resource" id=3]
+resource_name = "Caterpillar"
 script = ExtResource( 5 )
 enemy = ExtResource( 4 )
 final = false
@@ -19,7 +20,7 @@ final = false
 [sub_resource type="Resource" id=2]
 resource_name = "Goopas"
 script = ExtResource( 2 )
-interval = 2.0
+interval = 1.5
 delay = 0.0
 enemies = [ ExtResource( 3 ), ExtResource( 6 ), ExtResource( 8 ), ExtResource( 7 ), ExtResource( 10 ), ExtResource( 9 ) ]
 

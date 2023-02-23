@@ -15,7 +15,7 @@ height = 0.0
 [node name="Projectile - Knife" instance=ExtResource( 1 )]
 orientation_mode = 4
 relative_position = false
-aim_type = 5
+aim_type = 6
 aim_spread = 4.0
 speed = 7.0
 

@@ -21,6 +21,8 @@ var started = false
 var cleared = false
 var exiting = false
 
+var regular_spawns_active = true
+
 var faded_stage_music = false
 
 var current_wave = -1
@@ -122,6 +124,9 @@ func begin_restarting(prompt_character_change : bool = false):
 
 func keep_going():
 	pass
+
+func toggle_regular_spawns(value):
+	regular_spawns_active = value
 
 
 
@@ -242,8 +247,9 @@ func _process(delta):
 		return
 
 	# Enemy spawning
-	if  cleared:
+	if  cleared  or  not regular_spawns_active:
 		return
+
 	for entry in spawn_data:
 		entry.timer -= delta*TimeManager.time_rate*PlayerManager.get_stat(StatsManager.SPAWN_RATE)
 		if entry.timer <= 0:

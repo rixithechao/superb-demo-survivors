@@ -13,4 +13,4 @@ nodes/Animation/position = Vector2( -40, 140 )
 nodes/output/position = Vector2( 480, 140 )
 nodes/walkSpeed/node = SubResource( 2 )
 nodes/walkSpeed/position = Vector2( 280, 120 )
-node_connections = [ "walkSpeed", 0, "Animation", "output", 0, "walkSpeed" ]
+node_connections = [ "output", 0, "walkSpeed", "walkSpeed", 0, "Animation" ]

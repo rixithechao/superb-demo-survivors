@@ -21,6 +21,9 @@ func _ready():
 
 
 func _process(_delta):
+	if  is_crit:
+		$LocalPosition/Label.rect_scale = Vector2.ONE*1.75
+	
 	if  SaveManager.settings.damage_numbers:
 		$LocalPosition/Label.text = String(value) + ("!!!" if is_crit else "")
 	else:

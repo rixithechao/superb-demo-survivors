@@ -31,7 +31,7 @@ var enemy_collision_area
 
 
 const EQUIP_SLOTS = 4
-const REVIVE_COST_LEVEL_MULT = 0.25
+const REVIVE_COST_LEVEL_MULT = 0.08
 const REVIVE_COST_DEATH_MULT = 5
 const OBTAINED_BIAS_CHANCE = 0.6
 
@@ -54,6 +54,7 @@ signal revive_check
 func reset_equipment():
 	for  equip_group in equipment:
 		equipment[equip_group].clear()
+		print ("CLEARED PLAYER EQUIPMENT ", equip_group)
 	equipment_levels.clear()
 	equipment_nodes.clear()
 
@@ -352,7 +353,7 @@ func remove_coins(amount):
 func get_revive_cost():
 	var base_cost = floor(pow(REVIVE_COST_DEATH_MULT*(deaths+1), 1 + REVIVE_COST_LEVEL_MULT*level))
 
-	if  deaths == 0:
+	if  deaths == 0 + (1 if dead else 0):
 		return clamp(coins, 1, base_cost)
 	else:
 		return base_cost
@@ -363,6 +364,7 @@ func revive():
 	set_hp(curr_stats[StatsManager.MAX_HP])
 	instance.start_sequence("Sequence_Spawn")
 	WorldManager.instance.start_sequence("Sequence_Revive")
+	MusicManager.resume()
 	dead = false
 	revives += 1
 	pass

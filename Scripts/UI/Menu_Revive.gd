@@ -149,6 +149,7 @@ func on_choose(_node, item):
 		pass
 		SaveManager.serac.refusals_current = 0
 		SaveManager.serac.revives += 1
+		
 
 	# Refuse
 	else:

@@ -88,6 +88,7 @@ tracks/0/keys = {
 [node name="Projectile - Drill" instance=ExtResource( 2 )]
 script = ExtResource( 7 )
 orientation_mode = 4
+aim_type = 4
 speed = 8.0
 
 [node name="CollisionShape2D" parent="LocalPos/Collision" index="0"]

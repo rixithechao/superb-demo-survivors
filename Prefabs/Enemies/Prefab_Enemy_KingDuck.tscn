@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Prefabs/Templates/Prefab_EnemyCharacter_Hopper.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Textures/Characters/spr_enemy_kingrubberduck_a2xt.png" type="Texture" id=2]
@@ -47,6 +47,43 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ 0, 1 ]
+}
+
+[sub_resource type="Animation" id=56]
+resource_local_to_scene = true
+resource_name = "Anim_Enemy_Walk_3FramePong"
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("AirOffset/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 1 ]
+}
+
+[sub_resource type="Animation" id=57]
+resource_local_to_scene = true
+resource_name = "Anim_Enemy_Walk_3FrameWrap"
+length = 0.75
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("AirOffset/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2 ]
 }
 
 [sub_resource type="Animation" id=51]
@@ -158,6 +195,40 @@ resource_local_to_scene = true
 radius = 35.0
 height = 1.99999
 
+[sub_resource type="Animation" id=55]
+resource_local_to_scene = true
+resource_name = "Death"
+length = 0.25
+step = 0.05
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.25 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("Graphic")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.0, 0.25 ],
+"method": "fade"
+} ]
+}
+
 [node name="Enemy - King Mr The Duck" instance=ExtResource( 1 )]
 gravity = 0.5
 data = ExtResource( 3 )
@@ -165,6 +236,8 @@ collides_with_other_enemies = false
 spread = 0.0
 hop_strength = 1.0
 hop_variance = 0.125
+"Spawning/Spawn Type" = 1
+"Spawning/Boss Treasure" = null
 
 [node name="Shadow" parent="Graphic" index="0"]
 scale = Vector2( 0.875, 0.375 )
@@ -187,6 +260,8 @@ parameters/playback = SubResource( 54 )
 [node name="AnimationPlayer" parent="Graphic" index="3"]
 anims/Air = SubResource( 53 )
 anims/Anim_Enemy_Walk_2Frame = SubResource( 50 )
+anims/Anim_Enemy_Walk_3FramePong = SubResource( 56 )
+anims/Anim_Enemy_Walk_3FrameWrap = SubResource( 57 )
 anims/Bounce = SubResource( 51 )
 anims/Jump = SubResource( 52 )
 
@@ -220,5 +295,8 @@ script = ExtResource( 8 )
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Boing" index="0"]
 stream = ExtResource( 9 )
 bus = "SoundEffects"
+
+[node name="DeathAnimation" parent="." index="4"]
+anims/Death = SubResource( 55 )
 
 [editable path="Graphic"]

@@ -385,10 +385,11 @@ func handle_proximity_spawning(func_spawn: FuncRef, point_list: Array, node_tabl
 
 		if  dist_to_player > max_distance+256  and  node_exists:
 			var node = node_table[point]
-			print("DESPAWNING " + object_string + ": ", node.name, "\n")
+			if  is_instance_valid(node):
+				print("DESPAWNING " + object_string + ": ", node.name, "\n")
 
-			node.unload()
-			# warning-ignore:return_value_discarded
+				node.unload()
+				# warning-ignore:return_value_discarded
 			node_table.erase(point)
 
 

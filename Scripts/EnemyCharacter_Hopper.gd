@@ -55,9 +55,9 @@ func custom_movement(delta : float = 0.0):
 
 	if  (height <= 0  and  air_speed <= 0):
 		dir = Vector2.ZERO
-		print("HOPPER STUCK?")
+		#print("HOPPER STUCK?")
 		if  state_machine.get_current_node() != "Bounce":
-			print("HOPPER START BOUNCE")
+			#print("HOPPER START BOUNCE")
 			state_machine.travel("Bounce")
 
 	else:

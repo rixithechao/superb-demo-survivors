@@ -19,7 +19,7 @@ radius = 160.0
 [node name="Projectile - Bee" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 relative_position = false
-aim_type = 4
+aim_type = 6
 aim_spread = 360.0
 speed = 4.0
 homing_radius = 160

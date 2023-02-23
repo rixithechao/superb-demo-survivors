@@ -9,21 +9,24 @@
 [sub_resource type="Resource" id=2]
 resource_name = "Fawriels"
 script = ExtResource( 2 )
-interval = 2.0
+interval = 1.5
 delay = 0.0
 enemies = [ ExtResource( 3 ) ]
 
 [sub_resource type="Resource" id=3]
+resource_name = "Platy Swarm 1"
 script = ExtResource( 5 )
 second = 2
 event_scene = ExtResource( 4 )
 
 [sub_resource type="Resource" id=4]
+resource_name = "Platy Swarm 2"
 script = ExtResource( 5 )
 second = 12
 event_scene = ExtResource( 4 )
 
 [sub_resource type="Resource" id=5]
+resource_name = "Platy Swarm 3"
 script = ExtResource( 5 )
 second = 22
 event_scene = ExtResource( 4 )

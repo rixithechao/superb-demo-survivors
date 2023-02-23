@@ -6,6 +6,9 @@ const MAX_SPEED = 120.0
 var direction_input = Vector2.ZERO
 var direction = Vector2.ZERO
 
+var aim_input = Vector2.ZERO
+var aim = Vector2.ZERO
+
 var current_diagonal = Vector2.ONE
 var current_cardinal = Vector2(1,0)
 var current_8dir = Vector2(1,0)
@@ -14,7 +17,7 @@ var last_facing_arrow = Vector2(1,0)
 var lock_alpha = 0
 
 export var movement_locked : bool = false
-
+export var aiming_locked : bool = false
 
 
 
@@ -66,14 +69,33 @@ func _process(delta):
 	$ItemCollision.scale = Vector2.ONE * current_stats[StatsManager.PICKUP]
 
 	# Other unsorted things
+	var strafe_input = (Input.is_action_pressed(InputManager.gameplay_controls.select)  or  Input.is_action_pressed(InputManager.gameplay_controls.strafe))
+	var instant_aim = false
+
+
 	$Graphic.draw_shadow = true
 	direction_input = Vector2.ZERO
 
 	if  not movement_locked:
-		direction_input.x = Input.get_axis("ui_left", "ui_right")
-		direction_input.y = Input.get_axis("ui_up","ui_down")
-	
-	if direction_input == Vector2.ZERO:
+		direction_input.x = Input.get_axis(InputManager.gameplay_controls.move_l, InputManager.gameplay_controls.move_r)
+		direction_input.y = Input.get_axis(InputManager.gameplay_controls.move_u,InputManager.gameplay_controls.move_d)
+
+	if  not aiming_locked:
+		if  InputManager.current_control_scheme == InputManager.control_scheme.MKB:
+			aim_input = get_local_mouse_position()
+			instant_aim = true
+		else:
+			aim_input.x = Input.get_axis(InputManager.gameplay_controls.aim_l, InputManager.gameplay_controls.aim_r)
+			aim_input.y = Input.get_axis(InputManager.gameplay_controls.aim_u,InputManager.gameplay_controls.aim_d)
+
+	if  InputManager.current_control_scheme == InputManager.control_scheme.GAMEPAD:
+		direction_input.x = clamp(direction_input.x * 2, -1,1)
+		direction_input.y = clamp(direction_input.y * 2, -1,1)
+		aim_input.x = clamp(aim_input.x * 2, -1,1)
+		aim_input.y = clamp(aim_input.y * 2, -1,1)
+
+
+	if  direction_input == Vector2.ZERO:
 		direction.x = lerp(direction.x, 0, delta / HALT_SPEED)
 		direction.y = lerp(direction.y, 0, delta / HALT_SPEED)
 		$Graphic.state = PlayerGraphic.PlayerAnimState.IDLE
@@ -81,28 +103,43 @@ func _process(delta):
 		direction.x = lerp(direction_input.x * MAX_SPEED, 0, delta)
 		direction.y = lerp(direction_input.y * MAX_SPEED, 0, delta)
 		$Graphic.state = PlayerGraphic.PlayerAnimState.WALK
-	
-	if  not Input.is_action_pressed("ui_select"):
-		if  direction.x != 0:
-			current_diagonal.x = sign(direction.x)
-		if  direction.y != 0:
-			current_diagonal.y = sign(direction.y)
 
-		# If the player is moving in any direction
-		if direction.length() > 0:
-			
+	if  aim_input != Vector2.ZERO  and  not strafe_input:
+		aim = aim_input.normalized()
+		
+		var abs_angle = abs(rad2deg(aim.angle()))
+		
+		var x_is_zero = abs_angle > 67.5  and  abs_angle < 112.5
+		var y_is_zero = abs_angle < 22.5  or  abs_angle > 157.5
+
+		var x_snapped_sign = (0.0 if x_is_zero else sign(aim.x))
+		var y_snapped_sign = (0.0 if y_is_zero else sign(aim.y))
+
+		if  not x_is_zero:
+			current_diagonal.x = x_snapped_sign
+		if  not y_is_zero:
+			current_diagonal.y = y_snapped_sign
+
+		# If the player is aiming in any direction
+		if not (x_is_zero and y_is_zero):
+
 			# Store current 8-dir and cardinal facing for weapon aiming
-			current_8dir.x = sign(direction.x)
-			current_8dir.y = sign(direction.y)
-			
-			if  direction.x == 0  or  direction.y == 0:
-				current_cardinal.x = sign(direction.x)
-				current_cardinal.y = sign(direction.y)
+			current_8dir.x = x_snapped_sign
+			current_8dir.y = y_snapped_sign
 
-			# Lerp the last facing arrow 
-			last_facing_arrow = last_facing_arrow.slerp(direction.normalized(), 0.25*TimeManager.time_rate)
+			if  x_is_zero  or  y_is_zero:
+				current_cardinal.x = x_snapped_sign
+				current_cardinal.y = y_snapped_sign
 
-	lock_alpha = lerp(lock_alpha, (0 if not Input.is_action_pressed("ui_select") else 1), 0.25)
+		#print ("CARDINAL: ", current_cardinal, "\n8DIR: ", current_8dir, "\nDIAGONAL: ", current_diagonal, "\nSNAPPED: (", x_snapped_sign,", ",y_snapped_sign, ")\nIS ZERO: (", x_is_zero, ", ", y_is_zero, ")\nANGLE: ", abs_angle, "\n")
+
+		# Angle/lerp the last facing arrow
+		if instant_aim:
+			last_facing_arrow = aim.normalized()
+		else:
+			last_facing_arrow = last_facing_arrow.slerp(aim.normalized(), 0.25*TimeManager.time_rate)
+
+	lock_alpha = lerp(lock_alpha, (0 if not strafe_input else 1), 0.25)
 
 	$Graphic.mirror = ( current_diagonal.x == -1 )
 	
@@ -113,7 +150,7 @@ func _process(delta):
 	if Input.is_action_just_pressed("ui_focus_next"):
 		MenuManager.open("console")
 
-	if Input.is_action_just_pressed("ui_pause"):
+	if Input.is_action_just_pressed(InputManager.gameplay_controls.pause):
 		MenuManager.open("pause")
 
 

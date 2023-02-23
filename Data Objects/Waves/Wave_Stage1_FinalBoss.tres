@@ -7,12 +7,14 @@
 [ext_resource path="res://Scripts/ScriptableObjects/EnemySpawnData.gd" type="Script" id=5]
 
 [sub_resource type="Resource" id=2]
+resource_name = "Assorted Enemies"
 script = ExtResource( 5 )
 interval = 1.0
 delay = 0.0
 enemies = [ ExtResource( 4 ) ]
 
 [sub_resource type="Resource" id=1]
+resource_name = "STAGE BOSS"
 script = ExtResource( 1 )
 second = 2
 event_scene = ExtResource( 3 )

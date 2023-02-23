@@ -52,6 +52,9 @@ texture = ExtResource( 2 )
 [node name="AnimationPlayer" parent="." index="1"]
 anims/default = SubResource( 2 )
 
+[node name="AudioStreamPlayer" parent="RandomAudioNodePlayer" index="0"]
+pitch_scale = 1.12728
+
 [node name="AudioStreamPlayer2" parent="RandomAudioNodePlayer" index="1"]
 pitch_scale = 1.03453
 

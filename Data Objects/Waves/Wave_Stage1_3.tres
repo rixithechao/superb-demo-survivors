@@ -2,10 +2,10 @@
 
 [ext_resource path="res://Scripts/ScriptableObjects/WaveData.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/ScriptableObjects/EnemySpawnData.gd" type="Script" id=2]
-[ext_resource path="res://Prefabs/Enemies/Prefab_Enemy_Fish_OLD.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Prefabs/Enemies/Prefab_Enemy_Fish.tscn" type="PackedScene" id=3]
 
 [sub_resource type="Resource" id=2]
-resource_name = "Spawn"
+resource_name = "Fish"
 script = ExtResource( 2 )
 interval = 2.0
 delay = 0.0

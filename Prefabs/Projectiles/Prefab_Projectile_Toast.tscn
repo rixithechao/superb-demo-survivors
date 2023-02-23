@@ -15,7 +15,7 @@ height = 0.0
 [node name="Projectile - Toast" instance=ExtResource( 2 )]
 orientation_mode = 4
 relative_position = false
-aim_type = 7
+aim_type = 8
 aim_spread = 4.0
 speed = 10.0
 

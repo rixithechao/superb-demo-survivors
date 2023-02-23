@@ -1,10 +1,15 @@
-[gd_resource type="Resource" load_steps=8 format=2]
+[gd_resource type="Resource" load_steps=13 format=2]
 
 [ext_resource path="res://Scripts/ScriptableObjects/WaveData.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/ScriptableObjects/EnemySpawnData.gd" type="Script" id=2]
 [ext_resource path="res://Prefabs/Enemies/Prefab_Enemy_RubberDuck.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Prefabs/Enemies/Prefab_Enemy_KingDuck.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scripts/ScriptableObjects/BossData.gd" type="Script" id=5]
+[ext_resource path="res://Prefabs/Enemies/Prefab_Enemy_RubberDuck_Pirate2.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Prefabs/Enemies/Prefab_Enemy_RubberDuck_Pirate3.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Prefabs/Enemies/Prefab_Enemy_RubberDuck_Pirate1.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Prefabs/Enemies/Prefab_Enemy_RubberDuck_Pirate4.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Prefabs/Enemies/Prefab_Enemy_RubberDuck_Pirate5.tscn" type="PackedScene" id=10]
 
 [sub_resource type="Resource" id=3]
 resource_name = "King Mr. the Duck"
@@ -13,11 +18,11 @@ enemy = ExtResource( 4 )
 final = false
 
 [sub_resource type="Resource" id=2]
-resource_name = "Rubber Ducks"
+resource_name = "Duck Piece"
 script = ExtResource( 2 )
 interval = 2.0
 delay = 0.0
-enemies = [ ExtResource( 3 ) ]
+enemies = [ ExtResource( 3 ), ExtResource( 3 ), ExtResource( 3 ), ExtResource( 3 ), ExtResource( 3 ), ExtResource( 8 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 9 ), ExtResource( 10 ) ]
 
 [resource]
 script = ExtResource( 1 )

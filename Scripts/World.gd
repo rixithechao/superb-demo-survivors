@@ -28,8 +28,11 @@ func post_death_menu():
 	MenuManager.open("deathbg")
 
 	var signal_data = {"cancelled": (not PlayerManager.show_serac)  and  PlayerManager.coins < PlayerManager.get_revive_cost()}
-	PlayerManager.emit_signal("revive_check", signal_data)
 	
+	print ("REVIVE CHECK SIGNAL DATA BEFORE: ", signal_data)
+	PlayerManager.emit_signal("revive_check", signal_data)
+	print ("REVIVE CHECK SIGNAL DATA AFTER: ", signal_data)
+
 	if  not signal_data.cancelled:
 		MenuManager.open("revive")
 		PlayerManager.show_serac = false

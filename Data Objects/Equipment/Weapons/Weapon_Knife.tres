@@ -52,9 +52,9 @@ Stats = SubResource( 4 )
 script = ExtResource( 4 )
 stats = [ ExtResource( 5 ) ]
 values = {
-ExtResource( 5 ): 1.2
+ExtResource( 5 ): 1.8
 }
-Values/Damage = 1.2
+Values/Damage = 1.8
 "Preset or Remove" = 0
 
 [sub_resource type="Resource" id=7]
@@ -132,16 +132,16 @@ Stats = SubResource( 14 )
 script = ExtResource( 4 )
 stats = [ ExtResource( 5 ), ExtResource( 16 ), ExtResource( 10 ), ExtResource( 6 ), ExtResource( 8 ), ExtResource( 14 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 7 ), ExtResource( 9 ) ]
 values = {
+ExtResource( 5 ): 10.0,
+ExtResource( 14 ): 0.5,
+ExtResource( 13 ): 1.0,
 ExtResource( 8 ): 2.5,
 ExtResource( 7 ): 1.0,
-ExtResource( 16 ): 1.0,
-ExtResource( 13 ): 1.0,
-ExtResource( 10 ): 0.35,
-ExtResource( 6 ): 1.0,
-ExtResource( 12 ): 0.3,
 ExtResource( 9 ): 1.5,
-ExtResource( 14 ): 0.5,
-ExtResource( 5 ): 10.0
+ExtResource( 6 ): 1.0,
+ExtResource( 16 ): 1.0,
+ExtResource( 10 ): 0.35,
+ExtResource( 12 ): 0.3
 }
 Values/Damage = 10.0
 Values/Amount = 1.0

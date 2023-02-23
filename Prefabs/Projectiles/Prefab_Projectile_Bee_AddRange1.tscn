@@ -1,6 +1,14 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Prefabs/Projectiles/Prefab_Projectile_Bee.tscn" type="PackedScene" id=1]
 
+[sub_resource type="CapsuleShape2D" id=1]
+resource_local_to_scene = true
+radius = 13.0
+height = 0.0
+
 [node name="Projectile - Bee" instance=ExtResource( 1 )]
 homing_radius = 240
+
+[node name="CollisionShape2D" parent="LocalPos/Collision" index="0"]
+shape = SubResource( 1 )

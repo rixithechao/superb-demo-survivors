@@ -12,11 +12,11 @@
 script = ExtResource( 3 )
 stats = [ ExtResource( 5 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 4 ), ExtResource( 6 ) ]
 values = {
-ExtResource( 5 ): 9999999,
-ExtResource( 4 ): 1.0,
-ExtResource( 6 ): 0.0,
 ExtResource( 8 ): 0.0,
-ExtResource( 7 ): 20.0
+ExtResource( 7 ): 20.0,
+ExtResource( 6 ): 0.0,
+ExtResource( 4 ): 1.0,
+ExtResource( 5 ): 9999999
 }
 "Values/Max HP" = 9999999
 Values/Damage = 20.0
@@ -31,5 +31,5 @@ name = "Cannonball"
 stats = SubResource( 1 )
 height = 1.0
 spiky = false
-kill_resistance = true
+kill_resistance = false
 hp_scaling = 0.0

@@ -1,19 +1,45 @@
-[gd_resource type="Resource" load_steps=5 format=2]
+[gd_resource type="Resource" load_steps=11 format=2]
 
 [ext_resource path="res://Scripts/ScriptableObjects/WaveData.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/ScriptableObjects/EnemySpawnData.gd" type="Script" id=2]
-[ext_resource path="res://Prefabs/Enemies/Prefab_Enemy_Fish_OLD.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Prefabs/Enemies/Prefab_Enemy_Drillrose.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scripts/ScriptableObjects/MapEventData.gd" type="Script" id=4]
+[ext_resource path="res://Prefabs/Map Events/Prefab_MapEvent_Swarm.tscn" type="PackedScene" id=5]
 
 [sub_resource type="Resource" id=2]
-resource_name = "Spawn"
+resource_name = "Drillroses"
 script = ExtResource( 2 )
 interval = 2.0
 delay = 0.0
 enemies = [ ExtResource( 3 ) ]
+
+[sub_resource type="Resource" id=3]
+resource_name = "Platy Swarm 1"
+script = ExtResource( 4 )
+second = 25
+event_scene = ExtResource( 5 )
+
+[sub_resource type="Resource" id=4]
+resource_name = "Platy Swarm 2"
+script = ExtResource( 4 )
+second = 34
+event_scene = ExtResource( 5 )
+
+[sub_resource type="Resource" id=5]
+resource_name = "Platy Swarm 4"
+script = ExtResource( 4 )
+second = 42
+event_scene = ExtResource( 5 )
+
+[sub_resource type="Resource" id=6]
+resource_name = "Platy Swarm 4"
+script = ExtResource( 4 )
+second = 49
+event_scene = ExtResource( 5 )
 
 [resource]
 script = ExtResource( 1 )
 minimum = 30.0
 enemy_spawns = [ SubResource( 2 ) ]
 bosses = [  ]
-map_events = [  ]
+map_events = [ SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ]

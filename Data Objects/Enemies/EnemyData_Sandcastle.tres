@@ -17,9 +17,9 @@ ExtResource( 8 ): 1.0,
 ExtResource( 7 ): 10.0,
 ExtResource( 6 ): 0.0,
 ExtResource( 4 ): 1.0,
-ExtResource( 5 ): 70
+ExtResource( 5 ): 60
 }
-"Values/Max HP" = 70
+"Values/Max HP" = 60
 Values/Damage = 10.0
 Values/Movement = 1.0
 Values/Sturdiness = 1.0

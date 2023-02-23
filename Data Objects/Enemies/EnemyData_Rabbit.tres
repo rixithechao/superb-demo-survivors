@@ -13,15 +13,15 @@
 script = ExtResource( 7 )
 stats = [ ExtResource( 4 ), ExtResource( 3 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 8 ) ]
 values = {
-ExtResource( 5 ): 1.0,
+ExtResource( 5 ): 2.0,
 ExtResource( 3 ): 10.0,
 ExtResource( 8 ): 0.0,
 ExtResource( 6 ): 1.0,
-ExtResource( 4 ): 60
+ExtResource( 4 ): 70
 }
-"Values/Max HP" = 60
+"Values/Max HP" = 70
 Values/Damage = 10.0
-Values/Movement = 1.0
+Values/Movement = 2.0
 Values/Sturdiness = 1.0
 Values/Inertia = 0.0
 "Preset or Remove" = 0

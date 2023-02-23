@@ -7,13 +7,13 @@
 [sub_resource type="Resource" id=1]
 resource_name = "Furbas"
 script = ExtResource( 5 )
-interval = 2.0
+interval = 1.1
 delay = 0.0
 enemies = [ ExtResource( 1 ) ]
 
 [resource]
 script = ExtResource( 3 )
-minimum = 5.0
+minimum = 10.0
 enemy_spawns = [ SubResource( 1 ) ]
 bosses = [  ]
 map_events = [  ]

@@ -83,7 +83,8 @@ func _ready():
 
 		# Stage clear, keep playing?
 		else:
-			$Control/ItemLists/DeathList.visible = false#modulate.a = 0
+			$Control/ItemLists/ClearList.visible = false#modulate.a = 0
+			#$Control/ItemLists/DeathList.visible = false#modulate.a = 0
 	
 	# The player died before beating the stage's final boss
 	else:

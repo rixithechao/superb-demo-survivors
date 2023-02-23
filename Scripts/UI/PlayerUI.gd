@@ -2,7 +2,7 @@ extends Node2D
 
 
 const FINAL_ALPHA_HP = 0.6
-const FINAL_ALPHA_AIM = 0.5
+const FINAL_ALPHA_AIM = 1#0.5
 
 const HP_BAR_BULGE = 1.5
 const HP_BAR_TIME = 0.25
@@ -28,6 +28,7 @@ func _process(_delta):
 	$FacingArrowLock.modulate.a = (pinst.lock_alpha) * FINAL_ALPHA_AIM
 	$FacingArrow.modulate.a = (1-pinst.lock_alpha) * FINAL_ALPHA_AIM
 	$FacingArrow.rect_rotation = rad2deg(pinst.last_facing_arrow.angle())
+	$FacingArrowLock.global_rotation_degrees = $FacingArrow.rect_rotation
 	$FacingArrowLock.global_position = $FacingArrow/Sprite.global_position
 
 

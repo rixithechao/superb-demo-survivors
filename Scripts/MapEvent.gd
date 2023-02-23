@@ -50,6 +50,9 @@ func start_warnings(node_paths : Array, delay : float = 0.0, randomized : bool =
 			yield(get_tree().create_timer(delay), "timeout")
 
 
+func toggle_regular_spawns(active : bool = false):
+	StageManager.toggle_regular_spawns(active)
+
 func clear_stage():
 	StageManager.clear_stage()
 

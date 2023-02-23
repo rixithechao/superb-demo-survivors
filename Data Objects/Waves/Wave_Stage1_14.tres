@@ -1,15 +1,36 @@
-[gd_resource type="Resource" load_steps=5 format=2]
+[gd_resource type="Resource" load_steps=26 format=2]
 
 [ext_resource path="res://Scripts/ScriptableObjects/WaveData.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/ScriptableObjects/EnemySpawnData.gd" type="Script" id=2]
-[ext_resource path="res://Prefabs/Enemies/Prefab_Enemy_Fish_OLD.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Prefabs/Enemies/Prefab_Enemy_ShellGoopa4.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Prefabs/Enemies/Prefab_Enemy_ShellGoopa6.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Prefabs/Enemies/Prefab_Enemy_ShellGoopa3.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Prefabs/Enemies/Prefab_Enemy_Fish.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Prefabs/Enemies/Prefab_Enemy_Goopa1.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Prefabs/Enemies/Prefab_Enemy_Furba.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Prefabs/Enemies/Prefab_Enemy_Goopa2.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Prefabs/Enemies/Prefab_Enemy_Goopa5.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Prefabs/Enemies/Prefab_Enemy_RubberDuck.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Prefabs/Enemies/Prefab_Enemy_Furba_Pirate.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Prefabs/Enemies/Prefab_Enemy_Drillrose.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Prefabs/Enemies/Prefab_Enemy_RubberDuck_Pirate2.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Prefabs/Enemies/Prefab_Enemy_RubberDuck_Pirate3.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Prefabs/Enemies/Prefab_Enemy_RubberDuck_Pirate1.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Prefabs/Enemies/Prefab_Enemy_RubberDuck_Pirate4.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Prefabs/Enemies/Prefab_Enemy_Tantrunt.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Prefabs/Enemies/Prefab_Enemy_RubberDuck_Pirate5.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Prefabs/Enemies/Prefab_Enemy_Rabbit.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Prefabs/Enemies/Prefab_Enemy_Sandcastle.tscn" type="PackedScene" id=21]
+[ext_resource path="res://Prefabs/Enemies/Prefab_Enemy_Charlie.tscn" type="PackedScene" id=22]
+[ext_resource path="res://Prefabs/Enemies/Prefab_Enemy_Caterpillar.tscn" type="PackedScene" id=23]
+[ext_resource path="res://Prefabs/Enemies/Prefab_Enemy_Platypoink.tscn" type="PackedScene" id=24]
 
 [sub_resource type="Resource" id=2]
-resource_name = "Spawn"
+resource_name = "Assorted Enemies"
 script = ExtResource( 2 )
 interval = 2.0
 delay = 0.0
-enemies = [ ExtResource( 3 ) ]
+enemies = [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 9 ), ExtResource( 5 ), ExtResource( 3 ), ExtResource( 10 ), ExtResource( 4 ), ExtResource( 8 ), ExtResource( 12 ), ExtResource( 18 ), ExtResource( 22 ), ExtResource( 11 ), ExtResource( 16 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 17 ), ExtResource( 19 ), ExtResource( 13 ), ExtResource( 20 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 21 ) ]
 
 [resource]
 script = ExtResource( 1 )

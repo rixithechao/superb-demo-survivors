@@ -30,6 +30,7 @@ enum ProjectileAimType {
 	PLAYER_DIAGONAL,
 	PLAYER_CARDINAL,
 	PLAYER_8DIR,
+	PLAYER_360,
 	TO_PLAYER,
 	TO_ENEMY_RANDOM,
 	TO_ENEMY_NEAREST,
@@ -125,6 +126,9 @@ func _ready():
 		
 		ProjectileAimType.PLAYER_8DIR:
 			fire_direction = PlayerManager.instance.current_8dir
+
+		ProjectileAimType.PLAYER_360:
+			fire_direction = PlayerManager.instance.last_facing_arrow
 
 		ProjectileAimType.TO_PLAYER:
 			enemy_node = PlayerManager.instance

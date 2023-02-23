@@ -6,7 +6,7 @@ animation = "Anim_Enemy_Walk_3FramePong"
 [sub_resource type="AnimationNodeTimeScale" id=2]
 
 [resource]
-graph_offset = Vector2( -332.068, -0.19162 )
+graph_offset = Vector2( -235.425, 48.1135 )
 nodes/Animation/node = SubResource( 1 )
 nodes/Animation/position = Vector2( -160, 140 )
 nodes/output/position = Vector2( 400, 160 )

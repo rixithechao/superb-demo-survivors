@@ -30,6 +30,7 @@ tracks/0/keys = {
 z_index = 4096
 script = ExtResource( 2 )
 value = 0
+is_crit = false
 
 [node name="LocalPosition" type="Node2D" parent="." index="0"]
 
@@ -60,7 +61,7 @@ bus = "SoundEffects"
 
 [node name="Audio2" type="AudioStreamPlayer" parent="HurtSound" index="1"]
 stream = ExtResource( 4 )
-pitch_scale = 0.89233
+pitch_scale = 1.22293
 bus = "SoundEffects"
 
 [node name="Audio3" type="AudioStreamPlayer" parent="HurtSound" index="2"]

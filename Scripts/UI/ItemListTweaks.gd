@@ -68,7 +68,7 @@ func _ready() -> void:
 
 
 func _on_ItemList_gui_input(event: InputEvent) -> void:
-	if not active  or  Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+	if not active  or  Input.mouse_mode == Input.MOUSE_MODE_HIDDEN:
 		return
 	
 	item = get_item_at_position(get_local_mouse_position(), true)
