@@ -1,0 +1,36 @@
+[gd_resource type="Resource" load_steps=11 format=2]
+
+[ext_resource path="res://Scripts/ScriptableObjects/DropTableEntry.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/ScriptableObjects/DropTableData.gd" type="Script" id=2]
+[ext_resource path="res://Prefabs/Pickups/Prefab_Pickup_Coin.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Prefabs/Pickups/Prefab_Pickup_Radish.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Prefabs/Pickups/Prefab_Pickup_Magnet.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Prefabs/Pickups/Prefab_Pickup_ExpMed.tscn" type="PackedScene" id=7]
+
+[sub_resource type="Resource" id=6]
+resource_name = "Pickup - Med Exp"
+script = ExtResource( 1 )
+pickup = ExtResource( 7 )
+weight = 40
+
+[sub_resource type="Resource" id=3]
+resource_name = "Pickup - Coin"
+script = ExtResource( 1 )
+pickup = ExtResource( 4 )
+weight = 4
+
+[sub_resource type="Resource" id=4]
+resource_name = "Pickup - Radish"
+script = ExtResource( 1 )
+pickup = ExtResource( 5 )
+weight = 2
+
+[sub_resource type="Resource" id=5]
+resource_name = "Pickup - Magnet"
+script = ExtResource( 1 )
+pickup = ExtResource( 6 )
+weight = 1
+
+[resource]
+script = ExtResource( 2 )
+drops = [ SubResource( 6 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ]

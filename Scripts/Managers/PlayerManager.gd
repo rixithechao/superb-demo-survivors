@@ -21,7 +21,7 @@ var mercy_seconds : float = 0
 var recovery_timer : float = 1
 
 var current_exp = 0
-var exp_needed = 5
+var exp_needed = 2
 var level : int = 1
 var coins : int = 0
 
@@ -158,7 +158,7 @@ func get_stat(stat, weaponData=null):
 
 
 
-func roll_equipment(count: int = 1, use_only_obtained = false, obtained_bias = false, offer_recovery = true):
+func roll_equipment(count: int = 1, use_only_obtained = false, obtained_bias = false, unbiased_option = false, offer_recovery = true):
 	var valid_equipment = []
 	var valid_owned = []
 	valid_owned.append_array(equipment.weapons)
@@ -221,7 +221,7 @@ func roll_equipment(count: int = 1, use_only_obtained = false, obtained_bias = f
 	while selected.size() < possible_count:
 
 		# Chance to select an owned piece of equipment
-		if  (obtained_bias  and  randf() < OBTAINED_BIAS_CHANCE  and  weighted_owned.size() > 0):
+		if  (obtained_bias  and  randf() < OBTAINED_BIAS_CHANCE  and  weighted_owned.size() > 0  and  not (unbiased_option and selected.size() == possible_count-1)):
 			eqp = weighted_owned[randi() % weighted_owned.size()]
 		else:
 			eqp = weighted_equipment[randi() % weighted_equipment.size()]
@@ -249,18 +249,18 @@ func level_up():
 	
 	match(next_level):
 		20:
-			exp_needed = (next_level*10)-5+600
+			exp_needed = (next_level*5)-5+300
 		40:
-			exp_needed = (next_level*13)-6+2400
+			exp_needed = (next_level*6)-6+1200
 		_:
 			if next_level < 20: 
-				exp_needed = (next_level*10)-5
+				exp_needed = (next_level*5)-5
 				
 			elif next_level < 40:
-				exp_needed = (next_level*13)-6
+				exp_needed = (next_level*6)-6
 			
 			else:
-				exp_needed = (next_level*16)-8
+				exp_needed = (next_level*8)-8
 
 	MenuManager.open("levelup")
 
@@ -386,7 +386,7 @@ func reset_player():
 	set_coins(0)
 	level = 1
 	set_exp(0)
-	exp_needed = 5
+	exp_needed = 2
 
 
 func unload_player():

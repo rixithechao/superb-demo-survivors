@@ -12,7 +12,7 @@ func _ready():
 
 	var list_ref = $Skew/Panel/ItemList
 	
-	var equipment_roll = PlayerManager.roll_equipment(3, false, true)
+	var equipment_roll = PlayerManager.roll_equipment(3, false, true, true)
 	equipment = equipment_roll.selected
 	
 	list_ref.clear()

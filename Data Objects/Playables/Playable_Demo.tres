@@ -27,20 +27,20 @@ script = ExtResource( 10 )
 stats = [ ExtResource( 11 ), ExtResource( 18 ), ExtResource( 24 ), ExtResource( 21 ), ExtResource( 13 ), ExtResource( 17 ), ExtResource( 20 ), ExtResource( 14 ), ExtResource( 12 ), ExtResource( 23 ), ExtResource( 19 ), ExtResource( 15 ), ExtResource( 22 ), ExtResource( 16 ), ExtResource( 6 ) ]
 values = {
 ExtResource( 24 ): 100.0,
-ExtResource( 13 ): 1.0,
-ExtResource( 23 ): 1.0,
 ExtResource( 12 ): 1.0,
-ExtResource( 14 ): 1.0,
 ExtResource( 11 ): 1,
-ExtResource( 16 ): 1.0,
-ExtResource( 6 ): 1.0,
-ExtResource( 18 ): 1.0,
 ExtResource( 17 ): 1.0,
-ExtResource( 19 ): 1.0,
+ExtResource( 14 ): 1.0,
+ExtResource( 13 ): 1.0,
+ExtResource( 23 ): 1.25,
 ExtResource( 21 ): 0.0,
+ExtResource( 19 ): 1.0,
+ExtResource( 22 ): 1.0,
+ExtResource( 18 ): 1.0,
 ExtResource( 15 ): 1.0,
 ExtResource( 20 ): 1.0,
-ExtResource( 22 ): 1.0
+ExtResource( 16 ): 1.0,
+ExtResource( 6 ): 1.0
 }
 Values/Damage = 1
 Values/Defense = 1.0
@@ -51,7 +51,7 @@ Values/Area = 1.0
 Values/Speed = 1.0
 Values/Duration = 1.0
 Values/Amount = 1.0
-Values/Movement = 1.0
+Values/Movement = 1.25
 "Values/Pickup Range" = 1.0
 Values/Luck = 1.0
 "Values/XP Multiplier" = 1.0

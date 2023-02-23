@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=12 format=2]
+[gd_resource type="Resource" load_steps=13 format=2]
 
 [ext_resource path="res://Scripts/ScriptableObjects/WaveData.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/ScriptableObjects/EnemySpawnData.gd" type="Script" id=2]
@@ -9,10 +9,12 @@
 [ext_resource path="res://Prefabs/Enemies/Prefab_Enemy_ShellGoopa3.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Prefabs/Enemies/Prefab_Enemy_ShellGoopa1.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scripts/ScriptableObjects/BossData.gd" type="Script" id=9]
+[ext_resource path="res://Prefabs/Enemies/Prefab_Enemy_GiantChestGoopa.tscn" type="PackedScene" id=10]
 
 [sub_resource type="Resource" id=3]
 resource_name = "Giant Chest Goopa"
 script = ExtResource( 9 )
+enemy = ExtResource( 10 )
 final = false
 
 [sub_resource type="Resource" id=2]

@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=10 format=2]
 
 [ext_resource path="res://Scripts/ScriptableObjects/EnemyData.gd" type="Script" id=1]
-[ext_resource path="res://Data Objects/Drop Tables/DropTable_Enemy_Basic1.tres" type="Resource" id=2]
+[ext_resource path="res://Data Objects/Drop Tables/DropTable_Enemy_Med1.tres" type="Resource" id=2]
 [ext_resource path="res://Scripts/ScriptableObjects/StatSheetData.gd" type="Script" id=3]
 [ext_resource path="res://Data Objects/Stats/Stat_MaxHP.tres" type="Resource" id=4]
 [ext_resource path="res://Data Objects/Stats/Stat_Damage.tres" type="Resource" id=5]
@@ -13,11 +13,11 @@
 script = ExtResource( 3 )
 stats = [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 8 ), ExtResource( 6 ), ExtResource( 7 ) ]
 values = {
-ExtResource( 8 ): 3.0,
-ExtResource( 5 ): 10.0,
-ExtResource( 7 ): 0.0,
+ExtResource( 4 ): 60,
 ExtResource( 6 ): 1.0,
-ExtResource( 4 ): 60
+ExtResource( 7 ): 0.0,
+ExtResource( 8 ): 3.0,
+ExtResource( 5 ): 10.0
 }
 "Values/Max HP" = 60
 Values/Damage = 10.0
