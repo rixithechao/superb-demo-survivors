@@ -21,8 +21,8 @@
 script = ExtResource( 4 )
 stats = [ ExtResource( 8 ) ]
 values = {
-ExtResource( 8 ): 0.8,
-ExtResource( 16 ): 1.0
+ExtResource( 16 ): 1.0,
+ExtResource( 8 ): 0.8
 }
 Values/Cooldown = 0.8
 "Preset or Remove" = 0
@@ -86,8 +86,8 @@ Stats = SubResource( 8 )
 script = ExtResource( 4 )
 stats = [ ExtResource( 5 ) ]
 values = {
-ExtResource( 5 ): 1.4,
-ExtResource( 15 ): 1.0
+ExtResource( 15 ): 1.0,
+ExtResource( 5 ): 1.4
 }
 Values/Damage = 1.4
 "Preset or Remove" = 0
@@ -135,16 +135,16 @@ Stats = SubResource( 14 )
 script = ExtResource( 4 )
 stats = [ ExtResource( 5 ), ExtResource( 16 ), ExtResource( 10 ), ExtResource( 6 ), ExtResource( 8 ), ExtResource( 14 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 7 ), ExtResource( 9 ) ]
 values = {
-ExtResource( 5 ): 10.0,
-ExtResource( 14 ): 0.05,
-ExtResource( 13 ): 2.0,
-ExtResource( 8 ): 2.5,
-ExtResource( 7 ): 1.0,
 ExtResource( 9 ): 1.5,
-ExtResource( 6 ): 1.0,
 ExtResource( 16 ): 1.0,
+ExtResource( 12 ): 0.5,
 ExtResource( 10 ): 0.1,
-ExtResource( 12 ): 0.03
+ExtResource( 7 ): 1.0,
+ExtResource( 13 ): 0.5,
+ExtResource( 14 ): 0.05,
+ExtResource( 5 ): 10.0,
+ExtResource( 6 ): 1.0,
+ExtResource( 8 ): 2.5
 }
 Values/Damage = 10.0
 Values/Amount = 1.0
@@ -152,8 +152,8 @@ Values/Duration = 0.1
 Values/Pierce = 1.0
 Values/Cooldown = 2.5
 "Values/Shot Interval" = 0.05
-"Values/Hit Interval" = 0.03
-Values/Knockback = 2.0
+"Values/Hit Interval" = 0.5
+Values/Knockback = 0.5
 "Values/Effect Chance" = 1.0
 "Values/Crit Damage Multiplier" = 1.5
 "Preset or Remove" = 0

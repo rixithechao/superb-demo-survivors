@@ -31,8 +31,9 @@ var enemy_collision_area
 
 
 const EQUIP_SLOTS = 4
-const REVIVE_COST_LEVEL_MULT = 0.08
-const REVIVE_COST_DEATH_MULT = 5
+const REVIVE_COST_LEVEL_MULT = 5
+const REVIVE_COST_LEVEL_POWER = 0.01
+const REVIVE_COST_DEATH_MULT = 0.45
 const OBTAINED_BIAS_CHANCE = 0.6
 
 
@@ -176,31 +177,56 @@ func roll_equipment(count: int = 1, use_only_obtained = false, obtained_bias = f
 	else:
 		valid_equipment.append_array(equipment.passives)
 		
-	if  equipment.boosts.size() < EQUIP_SLOTS  and  not use_only_obtained:
-		valid_equipment.append_array(EquipmentManager.all_passives)
+	# if  equipment.boosts.size() < EQUIP_SLOTS  and  not use_only_obtained:
+	if  not use_only_obtained:
+		valid_equipment.append_array(EquipmentManager.all_boosts)
 	else:
 		valid_equipment.append_array(equipment.boosts)
 
 
 	# Remove equipment already at max level
-	for eqp in valid_equipment:
-		#print(eqp, ", all=", valid_equipment, ", stats=", equipment_levels)
-		if  equipment_levels.has(eqp) and equipment_levels[eqp] == eqp.max_level:
+	var idx = 0
+	while idx < valid_equipment.size():
+		var eqp = valid_equipment[idx]
+		if  equipment_levels.has(eqp) and equipment_levels[eqp] >= eqp.max_level:
 			valid_equipment.erase(eqp)
 			valid_owned.erase(eqp)
-
-	var possible_count = min(count, valid_equipment.size())
-
-
-	# Add pickups if there's no equipment to give
-	if valid_equipment.size() == 0:
+		else:
+			idx+=1
+		
+	
+	#for eqp in valid_equipment:
+		#print(eqp, ", all=", valid_equipment, ", stats=", equipment_levels)
+	#	if  equipment_levels.has(eqp) and equipment_levels[eqp] >= eqp.max_level:
+	#		valid_equipment.erase(eqp)
+	#		valid_owned.erase(eqp)
+	
+	var maxed_weapons = true
+	for eqp in equipment.weapons:
+		if not equipment_levels.has(eqp) or equipment_levels[eqp] < eqp.max_level:
+			maxed_weapons = false
+			break
+			
+	var maxed_passives = true
+	for eqp in equipment.passives:
+		if not equipment_levels.has(eqp) or equipment_levels[eqp] < eqp.max_level:
+			maxed_passives = false
+			break
+			
+	# Add pickups for each individual type that's full (they spawn once you have full maxed weapons or passives)
+	if (equipment.weapons.size() >= EQUIP_SLOTS and maxed_weapons)  or  (equipment.passives.size() >= EQUIP_SLOTS and maxed_passives):
 		valid_equipment.append(load("res://Data Objects/Equipment/LevelUpPickupData_Coin.tres"))
-		possible_count = 1
-
 		if  offer_recovery:
 			valid_equipment.append(load("res://Data Objects/Equipment/LevelUpPickupData_Radish.tres"))
-			possible_count = 2
+			
+	# Add pickups if there's no equipment to give
+	else:
+		if valid_equipment.size() == 0:
+			valid_equipment.append(load("res://Data Objects/Equipment/LevelUpPickupData_Coin.tres"))
+			if  offer_recovery:
+				valid_equipment.append(load("res://Data Objects/Equipment/LevelUpPickupData_Radish.tres"))
 
+	var possible_count = min(count, valid_equipment.size())
 
 	# Derive weighted equipment table
 	var weighted_equipment = []
@@ -245,13 +271,15 @@ func level_up():
 	
 	# Determine the XP needed for the next level
 	# We're using the exact formula from VS
+	# No we're not because that's way too slow
+	# We're using a modified formula
 	var next_level = level+1
 	
 	match(next_level):
 		20:
 			exp_needed = (next_level*5)-5+300
 		40:
-			exp_needed = (next_level*6)-6+1200
+			exp_needed = (next_level*6)-6+600
 		_:
 			if next_level < 20: 
 				exp_needed = (next_level*5)-5
@@ -276,7 +304,7 @@ func give_equipment(eqpData, type_array = null, should_emit_signal = true):
 			EquipmentData.EquipmentType.PASSIVE:
 				type_array = equipment.passives
 			EquipmentData.EquipmentType.BOOST:
-				type_array = equipment.boost
+				type_array = equipment.boosts
 
 	var is_new = (not equipment_levels.has(eqpData))
 	
@@ -330,7 +358,7 @@ func give_exp(amount):
 	emit_signal("modify_exp", signal_data)
 
 	if  not signal_data.cancelled:
-		set_exp(current_exp + ceil(signal_data.amount*get_stat(StatsManager.XP_MULT)))
+		set_exp(current_exp + signal_data.amount*get_stat(StatsManager.XP_MULT))
 
 
 
@@ -351,12 +379,9 @@ func remove_coins(amount):
 
 
 func get_revive_cost():
-	var base_cost = floor(pow(REVIVE_COST_DEATH_MULT*(deaths+1), 1 + REVIVE_COST_LEVEL_MULT*level))
+	var base_cost = floor(pow(((level*REVIVE_COST_LEVEL_MULT) + 2), REVIVE_COST_DEATH_MULT*sqrt(deaths+1) + REVIVE_COST_LEVEL_POWER*level))
 
-	if  deaths == 0 + (1 if dead else 0):
-		return clamp(coins, 1, base_cost)
-	else:
-		return base_cost
+	return base_cost
 
 func revive():
 	mercy_seconds = 3

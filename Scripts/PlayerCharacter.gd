@@ -66,7 +66,8 @@ func _process(delta):
 
 	# Stat multipliers
 	var current_stats = PlayerManager.get_current_stats()
-	$ItemCollision.scale = Vector2.ONE * current_stats[StatsManager.PICKUP]
+	var pickup_mod = current_stats[StatsManager.PICKUP]
+	$ItemCollision.scale = Vector2.ONE * pickup_mod
 
 	# Other unsorted things
 	var strafe_input = (Input.is_action_pressed(InputManager.gameplay_controls.select)  or  Input.is_action_pressed(InputManager.gameplay_controls.strafe))

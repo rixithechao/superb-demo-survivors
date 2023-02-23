@@ -9,17 +9,17 @@
 script = ExtResource( 2 )
 stats = [ ExtResource( 3 ) ]
 values = {
-ExtResource( 3 ): 1.12
+ExtResource( 3 ): 1.1
 }
-Values/Area = 1.12
+Values/Area = 1.1
 "Preset or Remove" = 0
 
 [resource]
 script = ExtResource( 1 )
-name = "Boost Area"
+name = "Boost Attack Area"
 icon = ExtResource( 4 )
 description = "Increase weapon size."
 max_level = 1000
-rarity = 20.0
+rarity = 35.0
 stats = SubResource( 1 )
 level_modifiers = [  ]

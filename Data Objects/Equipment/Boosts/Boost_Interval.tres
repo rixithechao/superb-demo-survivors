@@ -20,6 +20,6 @@ name = "Reduce Shot Interval"
 icon = ExtResource( 4 )
 description = "Reduce the time between shots for all attacks."
 max_level = 1000
-rarity = 20.0
+rarity = 35.0
 stats = SubResource( 1 )
 level_modifiers = [  ]

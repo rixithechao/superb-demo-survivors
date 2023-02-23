@@ -11,4 +11,4 @@ func _on_DropTimer_timeout():
 	
 	StageManager.spawn_pickup(food_prefab, spawn_pos)
 	
-	$DropTimer.start(11 - data.get_current_level())
+	$DropTimer.start(20 - 2*data.get_current_level())
