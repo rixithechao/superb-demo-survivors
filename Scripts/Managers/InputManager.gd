@@ -65,7 +65,7 @@ func _ready():
 		action_to_scheme_map[mkb_action] = control_scheme.MKB
 		action_to_scheme_map[gamepad_action] = control_scheme.GAMEPAD
 
-	# Keyboard automatically aims in movement direction, and mkb doesn't use aim actions.  Erase them from the a2s map, set the former accordingly and the latter to inputs that can't be processed in that scheme (gamepad equivalents)
+	# Keyboard automatically aims in movement direction, and mkb doesn't use aim actions.  As precautions, erase them from the a2s map, set the former accordingly and the latter to inputs that can't be processed in that scheme (gamepad equivalents)
 	for  dir in ["l","r","u","d"]:
 		action_to_scheme_map.erase("ui_keyboard_aim_"+dir)
 		action_to_scheme_map.erase("ui_mkb_aim_"+dir)
@@ -83,7 +83,7 @@ func release_mouse():
 
 
 func update_control_scheme(event : InputEvent):
-	
+
 	# Switch control schemes based on input
 	for  action in action_to_scheme_map:
 		if  InputMap.event_is_action(event, action):
@@ -121,11 +121,11 @@ func _input(event : InputEvent) -> void:
 		release_mouse()
 		current_control_scheme = control_scheme.MKB
 	
-	elif  (event is InputEventJoypadButton  or  InputEventJoypadMotion):
+	elif  (event is InputEventJoypadButton):
 		capture_mouse()
 		current_control_scheme = control_scheme.GAMEPAD
 
-	elif  current_control_scheme != control_scheme.MKB:
+	elif  (TimeManager.is_paused  or  current_control_scheme != control_scheme.MKB):
 		capture_mouse()
 
 	# Refresh the gameplay controls accordingly

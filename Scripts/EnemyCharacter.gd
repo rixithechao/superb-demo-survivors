@@ -124,7 +124,8 @@ func apply_movement(delta):
 
 
 func _ready():
-	_max_hp = data.get_stat(StatsManager.MAX_HP)
+	if  not Engine.editor_hint:
+		_max_hp = data.get_stat(StatsManager.MAX_HP)
 
 
 func _process(delta):
@@ -165,9 +166,9 @@ func _process(delta):
 	
 	
 	# Despawn if time runs out
-	if  despawn_timer <= 0:
+	if  despawn_timer <= 0  and  not is_dying:
 		#print("Enemy despawned offscreen\n")
-		self.queue_free()
+		die(true)
 
 
 	# Hit delays, status timers, vertical movement

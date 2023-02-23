@@ -51,6 +51,7 @@ sounds = [ ExtResource( 3 ), ExtResource( 5 ), ExtResource( 6 ) ]
 wait_time = 0.5
 
 [node name="TurnTimer" type="Timer" parent="." index="3"]
+wait_time = 0.3
 autostart = true
 
 [connection signal="timeout" from="TurnTimer" to="." method="_on_TurnTimer_timeout"]

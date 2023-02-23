@@ -117,6 +117,12 @@ func clear_stage():
 
 
 func begin_restarting(prompt_character_change : bool = false):
+	if  prompt_character_change:
+		print ("BEGIN CHANGING CHARACTER")
+	else:
+		print ("BEGIN RESTART")
+
+	
 	TimeManager.add_pause("restarting")
 	PlayerManager.show_character_select = prompt_character_change
 	WorldManager.instance.start_sequence("Sequence_Restart")

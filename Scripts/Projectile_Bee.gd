@@ -6,7 +6,7 @@ export var homing_radius = 160
 var rot_dir
 var enemy_target_node
 
-const ROT_DEGREES = 180
+const ROT_DEGREES = 360
 
 
 func _ready():
@@ -43,7 +43,7 @@ func _on_TurnTimer_timeout():
 
 
 	# Restart the timer
-	$TurnTimer.start(rand_range(0.75,1.25))
+	$TurnTimer.start(rand_range(0.2,0.4))
 
 
 

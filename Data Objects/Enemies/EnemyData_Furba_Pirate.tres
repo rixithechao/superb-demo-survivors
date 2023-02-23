@@ -13,11 +13,11 @@
 script = ExtResource( 3 )
 stats = [ ExtResource( 5 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 4 ), ExtResource( 6 ) ]
 values = {
-ExtResource( 5 ): 90,
 ExtResource( 4 ): 1.0,
+ExtResource( 5 ): 90,
+ExtResource( 7 ): 10.0,
 ExtResource( 6 ): 0.0,
-ExtResource( 8 ): 1.0,
-ExtResource( 7 ): 10.0
+ExtResource( 8 ): 1.0
 }
 "Values/Max HP" = 90
 Values/Damage = 10.0

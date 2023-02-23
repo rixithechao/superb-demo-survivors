@@ -3,6 +3,8 @@ extends "res://Scripts/UI/Menu.gd"
 
 var change_character = false
 
+var show_dead_list = false
+
 
 
 func show_node(path : NodePath, dont_play_sound : bool = false):
@@ -28,7 +30,7 @@ func show_rank():
 func show_item_list():
 	var list
 	show_node("Control/ItemLists")
-	if  PlayerManager.dead:
+	if  show_dead_list:
 		list = $Control/ItemLists/DeathList
 	else:
 		list = $Control/ItemLists/ClearList
@@ -80,9 +82,12 @@ func _ready():
 			$Control/Header/ClearHeader.text = "FINAL RESULTS"
 			$Control/Header/ClearHeader/ClearHeaderBack.text = "FINAL RESULTS"
 			$Control/ItemLists/ClearList.visible = false#modulate.a = 0
+			show_dead_list = true
 
 		# Stage clear, keep playing?
 		else:
+			# Except endless mode is now post-birthday, gotta dummy it out
+			show_dead_list = true
 			$Control/ItemLists/ClearList.visible = false#modulate.a = 0
 			#$Control/ItemLists/DeathList.visible = false#modulate.a = 0
 	
@@ -105,7 +110,7 @@ func on_choose(node, item):
 	# Died, so can't keep going
 	var death_change = 0
 
-	if node == $Control/ItemLists/DeathList:
+	if show_dead_list:
 		death_change = 1
 
 

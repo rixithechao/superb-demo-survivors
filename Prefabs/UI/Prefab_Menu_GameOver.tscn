@@ -96,6 +96,7 @@ tracks/4/keys = {
 [sub_resource type="Animation" id=1]
 resource_name = "Sequence_GameOver"
 length = 7.0
+step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Control/Header:modulate")
 tracks/0/interp = 1
@@ -434,6 +435,49 @@ tracks/26/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
+tracks/27/type = "method"
+tracks/27/path = NodePath(".")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/keys = {
+"times": PoolRealArray( 2.15, 3.05, 3.85, 5.45 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"values": [ {
+"args": [ 2.55, NodePath("") ],
+"method": "set_skip"
+}, {
+"args": [ 3.35, NodePath("") ],
+"method": "set_skip"
+}, {
+"args": [ 4.15, NodePath("") ],
+"method": "set_skip"
+}, {
+"args": [ 6.85, NodePath("") ],
+"method": "set_skip"
+} ]
+}
+tracks/28/type = "method"
+tracks/28/path = NodePath(".")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/keys = {
+"times": PoolRealArray( 2.65, 3.45, 4.25 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"values": [ {
+"args": [ 2.95, NodePath("") ],
+"method": "set_skip"
+}, {
+"args": [ 3.75, NodePath("") ],
+"method": "set_skip"
+}, {
+"args": [ 5.35, NodePath("") ],
+"method": "set_skip"
+} ]
+}
 
 [node name="Menu - Game Over" instance=ExtResource( 1 )]
 script = ExtResource( 11 )
@@ -460,13 +504,12 @@ margin_right = 768.0
 margin_bottom = 432.0
 
 [node name="Header" type="Control" parent="Control" index="0"]
-modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -384.0
-margin_top = 12.0
+margin_top = 40.0
 margin_right = 384.0
-margin_bottom = 83.0
+margin_bottom = 111.0
 
 [node name="ClearHeader" type="Label" parent="Control/Header" index="0"]
 anchor_left = 0.5
@@ -483,7 +526,6 @@ align = 1
 valign = 1
 
 [node name="ClearHeaderBack" type="Label" parent="Control/Header/ClearHeader" index="0"]
-modulate = Color( 1, 1, 1, 0 )
 show_behind_parent = true
 anchor_left = 0.5
 anchor_right = 0.5
@@ -504,9 +546,9 @@ anchor_left = -0.023
 anchor_top = 0.296
 anchor_right = 1.026
 anchor_bottom = 0.704
-margin_left = 402.664
+margin_left = -0.336
 margin_top = -0.0160007
-margin_right = -402.968
+margin_right = 0.0319824
 margin_bottom = 0.0159988
 
 [node name="ColorRect2" type="ColorRect" parent="Control/Header/ClearHeader/ClearBands" index="0"]
@@ -557,7 +599,6 @@ align = 1
 valign = 1
 
 [node name="DeathHeaderBack" type="Label" parent="Control/Header/DeathHeader" index="0"]
-modulate = Color( 1, 1, 1, 0 )
 show_behind_parent = true
 anchor_left = 0.5
 anchor_right = 0.5
@@ -578,9 +619,9 @@ anchor_left = -0.023
 anchor_top = 0.296
 anchor_right = 1.026
 anchor_bottom = 0.704
-margin_left = 402.664
+margin_left = -0.336
 margin_top = -0.0160007
-margin_right = -402.968
+margin_right = 0.0319824
 margin_bottom = 0.0159988
 
 [node name="ColorRect2" type="ColorRect" parent="Control/Header/DeathHeader/DeathBands" index="0"]
@@ -624,12 +665,9 @@ margin_right = -82.0
 margin_bottom = 287.0
 
 [node name="Panel" type="NinePatchRect" parent="Control/Results" index="0"]
-modulate = Color( 1, 1, 1, 0 )
 self_modulate = Color( 0.256027, 0.295427, 0.464844, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 235.0
-margin_right = -234.0
 texture = ExtResource( 9 )
 patch_margin_left = 69
 patch_margin_top = 60
@@ -649,7 +687,6 @@ patch_margin_right = 66
 patch_margin_bottom = 54
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/Results" index="1"]
-modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 47.0
@@ -663,15 +700,15 @@ margin_bottom = 126.0
 
 [node name="Space" type="Control" parent="Control/Results/HBoxContainer/Equipment" index="0"]
 margin_right = 108.0
-margin_bottom = 5.0
-rect_min_size = Vector2( 0, 5 )
+margin_bottom = 20.0
+rect_min_size = Vector2( 0, 20 )
 
 [node name="Weapons" parent="Control/Results/HBoxContainer/Equipment" index="1" instance=ExtResource( 5 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 9.0
+margin_top = 24.0
 margin_right = 108.0
-margin_bottom = 41.0
+margin_bottom = 56.0
 size_flags_horizontal = 1
 slots_type = 1
 row_name_for_debug = "weapons"
@@ -679,12 +716,13 @@ row_name_for_debug = "weapons"
 [node name="Passives" parent="Control/Results/HBoxContainer/Equipment" index="2" instance=ExtResource( 5 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 45.0
+margin_top = 60.0
 margin_right = 108.0
-margin_bottom = 77.0
+margin_bottom = 92.0
 size_flags_horizontal = 1
 
 [node name="Boosts" parent="Control/Results/HBoxContainer/Equipment" index="3" instance=ExtResource( 5 )]
+visible = false
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 81.0

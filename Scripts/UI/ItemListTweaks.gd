@@ -71,16 +71,19 @@ func _on_ItemList_gui_input(event: InputEvent) -> void:
 	if not active  or  Input.mouse_mode == Input.MOUSE_MODE_HIDDEN:
 		return
 	
-	item = get_item_at_position(get_local_mouse_position(), true)
 	if event is InputEventMouseMotion:
-		if item != -1:
-			hover_item(item)
+		if  event.relative.length() > 0.5:
+			item = get_item_at_position(get_local_mouse_position(), true)
+			if item != -1:
+				hover_item(item)
 
-	elif event is InputEventMouseButton and event.is_pressed() and event.button_index == BUTTON_LEFT:
-		if item != -1:
-			item_chosen()
-		else:
-			play_cursor_sound(true)
+	elif event is InputEventMouseButton:
+		if event.is_pressed() and event.button_index == BUTTON_LEFT:
+			if item != -1:
+				item_chosen()
+			else:
+				play_cursor_sound(true)
+
 
 
 func _process(_delta):

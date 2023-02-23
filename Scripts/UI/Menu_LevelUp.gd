@@ -48,6 +48,7 @@ func _ready():
 	pgfx = PlayerManager.data.gfx_prefab.instance()
 	$Skew/Panel/PlayerGfxPos.add_child(pgfx)
 	pgfx.position = Vector2.ZERO
+	pgfx.mercy_blinking = false
 	
 	TimeManager.add_pause("levelup")
 
@@ -80,4 +81,10 @@ func _on_ItemList_item_hovered(index):
 	#print(descriptions, ", ", index)
 	current_hover = index
 	$Skew/Panel/Description.text = descriptions[index]
+	pass # Replace with function body.
+
+
+func _on_StartInactiveTimer_timeout():
+	var list_ref = $Skew/Panel/ItemList
+	list_ref.active = true
 	pass # Replace with function body.

@@ -22,6 +22,7 @@ func _process(_delta):
 	
 	if  char_added:
 		gfx.state = (PlayerGraphic.PlayerAnimState.WALK if (get_focus_owner() == self) else PlayerGraphic.PlayerAnimState.IDLE)
+		gfx.mercy_blinking = false
 
 
 

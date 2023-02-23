@@ -138,12 +138,13 @@ modulate = Color( 0.282353, 0.658824, 0.909804, 1 )
 position = Vector2( 480.4, -75 )
 scale = Vector2( 0.55, 0.5 )
 frames = SubResource( 14 )
+frame = 1
 playing = true
 
 [node name="SparkL" type="AnimatedSprite" parent="Skew/Panel" index="1"]
 position = Vector2( 138.4, -65 )
 frames = SubResource( 19 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="SparkR" type="AnimatedSprite" parent="Skew/Panel" index="2"]
@@ -151,7 +152,6 @@ position = Vector2( 821.4, -65 )
 rotation = 3.14159
 scale = Vector2( 1, -1 )
 frames = SubResource( 19 )
-frame = 3
 playing = true
 
 [node name="HeaderBackOutline" parent="Skew/Panel" index="3"]
@@ -200,6 +200,7 @@ margin_top = 0.0
 margin_right = -222.0
 margin_bottom = 0.0
 items = [ "Item 0", ExtResource( 2 ), false, "Item 1", ExtResource( 6 ), false, "Item 2", ExtResource( 4 ), false ]
+active = false
 
 [node name="PlayerGfxPos" type="Control" parent="Skew/Panel" index="9"]
 anchor_right = 1.0
@@ -212,4 +213,10 @@ margin_bottom = -67.0
 [node name="OpenSound" parent="." index="3"]
 stream = ExtResource( 3 )
 
+[node name="StartInactiveTimer" type="Timer" parent="." index="6"]
+wait_time = 0.6
+one_shot = true
+autostart = true
+
 [connection signal="item_hovered" from="Skew/Panel/ItemList" to="." method="_on_ItemList_item_hovered"]
+[connection signal="timeout" from="StartInactiveTimer" to="." method="_on_StartInactiveTimer_timeout"]

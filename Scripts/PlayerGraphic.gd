@@ -23,6 +23,7 @@ export(PlayerAnimState) var state setget _set_anim_state, _get_anim_state
 export(PlayerLookAngle) var lookDir = PlayerLookAngle.AHEAD
 export(float, 0, 32) var walkSpeed = 1.0
 export(bool) var fixed_animation = false
+export(bool) var mercy_blinking = true
 
 var _state = PlayerAnimState.IDLE
 
@@ -45,7 +46,7 @@ func _process(_delta):
 	._process(_delta)
 	
 	var blonk = floor(fmod(PlayerManager.mercy_seconds*10, 2))
-	$AirOffset.modulate.a = (blonk if PlayerManager.mercy_seconds > 0 else 1)
+	$AirOffset.modulate.a = (blonk if (PlayerManager.mercy_seconds > 0  and  mercy_blinking) else 1)
 	$AnimationTree.set("parameters/looking/current", lookDir)
 
 

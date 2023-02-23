@@ -150,6 +150,9 @@ func _process(_delta):
 
 	if  check_for_animation_player():
 
+		if  can_skip  and  anim_player.current_animation_position > skip_properties.time:
+			can_skip = false
+
 		if  Input.is_action_just_pressed("ui_select_or_cancel")  and  can_skip:
 			can_skip = false
 			anim_player.advance(max(0, skip_properties.time - anim_player.current_animation_position))

@@ -133,15 +133,15 @@ script = ExtResource( 4 )
 stats = [ ExtResource( 5 ), ExtResource( 16 ), ExtResource( 10 ), ExtResource( 6 ), ExtResource( 8 ), ExtResource( 14 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 7 ), ExtResource( 9 ) ]
 values = {
 ExtResource( 5 ): 10.0,
-ExtResource( 14 ): 0.5,
-ExtResource( 13 ): 1.0,
-ExtResource( 8 ): 2.5,
 ExtResource( 7 ): 1.0,
 ExtResource( 9 ): 1.5,
-ExtResource( 6 ): 1.0,
-ExtResource( 16 ): 1.0,
+ExtResource( 12 ): 0.3,
+ExtResource( 14 ): 0.5,
 ExtResource( 10 ): 0.35,
-ExtResource( 12 ): 0.3
+ExtResource( 16 ): 1.0,
+ExtResource( 8 ): 2.5,
+ExtResource( 13 ): 1.0,
+ExtResource( 6 ): 1.0
 }
 Values/Damage = 10.0
 Values/Amount = 1.0
