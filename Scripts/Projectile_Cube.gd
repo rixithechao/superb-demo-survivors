@@ -32,5 +32,6 @@ func custom_movement(delta):
 			turns_left -= 1
 			fire_speed *= get_speed_mult()
 			$LocalPos/Collision/Graphic/Sprite.frame = max(0, 3-turns_left)
+			$RedirectSound.play()
 
 	.custom_movement(delta)

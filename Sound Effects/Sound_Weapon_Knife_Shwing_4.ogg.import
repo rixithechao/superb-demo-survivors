@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Sound_Weapon_Knife_Shwing_4.ogg-cddd2bb9fcb91f63ea9a0c8246d4d32b.oggstr"
+
+[deps]
+
+source_file="res://Sound Effects/Sound_Weapon_Knife_Shwing_4.ogg"
+dest_files=[ "res://.import/Sound_Weapon_Knife_Shwing_4.ogg-cddd2bb9fcb91f63ea9a0c8246d4d32b.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Sound_Weapon_Bee_4.ogg-0aea00a48997faffe2e7f1984cdb341d.oggstr"
+
+[deps]
+
+source_file="res://Sound Effects/Sound_Weapon_Bee_4.ogg"
+dest_files=[ "res://.import/Sound_Weapon_Bee_4.ogg-0aea00a48997faffe2e7f1984cdb341d.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

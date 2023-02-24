@@ -16,7 +16,7 @@ values = {
 [sub_resource type="Resource" id=3]
 resource_name = "Level 2"
 script = ExtResource( 2 )
-description = "Reduce the time needed for the shield to refresh."
+description = ""
 Type = 0
 Stats = SubResource( 2 )
 
@@ -30,7 +30,7 @@ values = {
 [sub_resource type="Resource" id=5]
 resource_name = "Level 3"
 script = ExtResource( 2 )
-description = "Increase the number of hits shielded to 4."
+description = ""
 Type = 0
 Stats = SubResource( 4 )
 
@@ -44,7 +44,7 @@ values = {
 [sub_resource type="Resource" id=7]
 resource_name = "Level 4"
 script = ExtResource( 2 )
-description = "Further reduce the time needed for the shield to refresh."
+description = ""
 Type = 0
 Stats = SubResource( 6 )
 
@@ -58,7 +58,7 @@ values = {
 [sub_resource type="Resource" id=9]
 resource_name = "Level 5"
 script = ExtResource( 2 )
-description = "Increase the number of hits shielded to 5."
+description = ""
 Type = 0
 Stats = SubResource( 8 )
 

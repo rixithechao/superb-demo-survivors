@@ -117,8 +117,8 @@ Stats = SubResource( 12 )
 script = ExtResource( 13 )
 stats = [ ExtResource( 7 ), ExtResource( 8 ) ]
 values = {
-ExtResource( 8 ): 9994,
-ExtResource( 7 ): 0.25
+ExtResource( 7 ): 0.25,
+ExtResource( 8 ): 9994
 }
 Values/Cooldown = 0.25
 Values/Pierce = 9994
@@ -135,16 +135,16 @@ Stats = SubResource( 14 )
 script = ExtResource( 13 )
 stats = [ ExtResource( 2 ), ExtResource( 5 ), ExtResource( 10 ), ExtResource( 8 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 11 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 9 ) ]
 values = {
-ExtResource( 8 ): 6,
-ExtResource( 9 ): 1.5,
-ExtResource( 7 ): 3.0,
-ExtResource( 5 ): 1,
 ExtResource( 2 ): 10,
-ExtResource( 10 ): 2.0,
 ExtResource( 3 ): 1.0,
-ExtResource( 6 ): 0.1,
+ExtResource( 9 ): 1.5,
 ExtResource( 11 ): 1.0,
-ExtResource( 4 ): 0.01
+ExtResource( 6 ): 0.1,
+ExtResource( 10 ): 2.0,
+ExtResource( 5 ): 1,
+ExtResource( 7 ): 3.0,
+ExtResource( 4 ): 0.01,
+ExtResource( 8 ): 6
 }
 Values/Damage = 10
 Values/Amount = 1
