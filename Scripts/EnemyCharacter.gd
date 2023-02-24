@@ -55,7 +55,7 @@ func die(prevent_drops : bool = false):
 
 	_drop_table = data.drop_table
 	
-	if !prevent_drops: #todo: replace this with an actual test if the player killed them or not
+	if !prevent_drops and _drop_table != null: #todo: replace this with an actual test if the player killed them or not
 		EnemyManager.add_kill()
 	.die(prevent_drops)
 

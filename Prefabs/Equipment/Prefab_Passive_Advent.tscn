@@ -1,39 +1,107 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Prefabs/Templates/Prefab_Equipment.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Passive_Advent.gd" type="Script" id=2]
 [ext_resource path="res://Textures/Projectiles/spr_proj_advent.png" type="Texture" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "bounce"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Box_1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 0.517633, 1.17688, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -3 ), Vector2( 0, -6 ), Vector2( 0, -3 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Box_2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 0.466517, 1.26134, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -9 ), Vector2( 0, -13 ), Vector2( 0, -9 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Box_3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 0.466516, 1.5529, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -15 ), Vector2( 0, -21 ), Vector2( 0, -15 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Box_4:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 0.5, 1.60766, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -21 ), Vector2( 0, -29 ), Vector2( 0, -21 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Box_5:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 0.5, 4.39226, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -27 ), Vector2( 0, -35 ), Vector2( 0, -27 ) ]
+}
 
 [node name="Passive - Advent" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
 [node name="Boxes" type="Node2D" parent="." index="0"]
 position = Vector2( 0, -52 )
-scale = Vector2( 1.5, 1.5 )
+scale = Vector2( 2, 2 )
 
 [node name="Box_1" type="Sprite" parent="Boxes" index="0"]
 modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 0, -3 )
 texture = ExtResource( 3 )
 
 [node name="Box_2" type="Sprite" parent="Boxes" index="1"]
 modulate = Color( 1, 1, 1, 0 )
-position = Vector2( 0, -8 )
+position = Vector2( 0, -9 )
 texture = ExtResource( 3 )
 
 [node name="Box_3" type="Sprite" parent="Boxes" index="2"]
 modulate = Color( 1, 1, 1, 0 )
-position = Vector2( 0, -16 )
+position = Vector2( 0, -15 )
 texture = ExtResource( 3 )
 
 [node name="Box_4" type="Sprite" parent="Boxes" index="3"]
 modulate = Color( 1, 1, 1, 0 )
-position = Vector2( 0, -24 )
+position = Vector2( 0, -21 )
 texture = ExtResource( 3 )
 
 [node name="Box_5" type="Sprite" parent="Boxes" index="4"]
 modulate = Color( 1, 1, 1, 0 )
-position = Vector2( 0, -32 )
+position = Vector2( 0, -27 )
 texture = ExtResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Boxes" index="5"]
+anims/bounce = SubResource( 1 )
 
 [node name="ResetTimer" type="Timer" parent="." index="1"]
 wait_time = 10.0

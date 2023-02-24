@@ -7,4 +7,10 @@
 
 [node name="Graphic" parent="." index="0" instance=ExtResource( 2 )]
 
+[node name="Shadow" parent="Graphic" index="0"]
+polygon = PoolVector2Array( -1.39876e-06, -32, 12.2459, -29.5641, 22.6274, -22.6274, 29.5641, -12.2459, 32, 0, 29.5641, 12.2459, 22.6274, 22.6274, 12.2459, 29.5641, -1.39876e-06, 32, -12.2459, 29.5641, -22.6274, 22.6274, -29.5641, 12.2459, -32, 4.83187e-06, -29.5641, -12.2459, -22.6274, -22.6274, -12.2459, -29.5641 )
+
+[node name="HeadMarker" parent="." index="8"]
+position = Vector2( 0, -51 )
+
 [editable path="Graphic"]

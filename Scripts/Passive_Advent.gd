@@ -24,8 +24,13 @@ func on_change_kills():
 		update_boxes()
 		
 	$ResetTimer.start(REFRESH_DURATION)
+	
+func _process(delta):
+	if not $Boxes/AnimationPlayer.is_playing() and PlayerManager.instance.get_node("Graphic").state == PlayerGraphic.PlayerAnimState.WALK:
+		$Boxes/AnimationPlayer.play("bounce")
 
 func _ready():
 	PlayerManager.connect("modify_stats", self, "on_modify_stats")
 	EnemyManager.connect("change_kills", self, "on_change_kills")
+	$Boxes.position.y = PlayerManager.instance.get_node("HeadMarker").position.y
 	._ready()

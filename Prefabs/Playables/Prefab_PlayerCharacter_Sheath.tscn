@@ -9,3 +9,6 @@ script = ExtResource( 3 )
 movement_locked = false
 
 [node name="Graphic" parent="." index="0" instance=ExtResource( 2 )]
+
+[node name="HeadMarker" parent="." index="8"]
+position = Vector2( 0, -53 )

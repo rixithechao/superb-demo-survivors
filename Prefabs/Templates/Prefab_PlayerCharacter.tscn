@@ -122,3 +122,6 @@ bus = "SoundEffects"
 
 [node name="SequenceAnimPlayer" type="AnimationPlayer" parent="."]
 anims/Sequence_Spawn = SubResource( 6 )
+
+[node name="HeadMarker" type="Node2D" parent="."]
+position = Vector2( 0, -52 )
