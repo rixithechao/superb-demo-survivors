@@ -31,8 +31,9 @@ var all_boosts = [
 	preload("res://Data Objects/Equipment/Boosts/Boost_Cooldown.tres"),
 	preload("res://Data Objects/Equipment/Boosts/Boost_Damage.tres"),
 	preload("res://Data Objects/Equipment/Boosts/Boost_Defense.tres"),
-	preload("res://Data Objects/Equipment/Boosts/Boost_Interval.tres"),
-	preload("res://Data Objects/Equipment/Boosts/Boost_Movement.tres")
+	#preload("res://Data Objects/Equipment/Boosts/Boost_Interval.tres"),
+	preload("res://Data Objects/Equipment/Boosts/Boost_Movement.tres"),
+	preload("res://Data Objects/Equipment/Boosts/Boost_Critical.tres")
 ]
 
 

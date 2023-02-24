@@ -15,11 +15,11 @@ func calc_hits(l):
 		
 func calc_timer(l):
 	if l == 1:
-		return 12
-	elif l < 4:
 		return 10
+	elif l < 4:
+		return 8
 	else:
-		return 9
+		return 6
 
 func update_alpha():
 	var hitratio = float(hit_count)/calc_hits(data.get_current_level())

@@ -16,7 +16,7 @@ Values/Area = 1.1
 
 [resource]
 script = ExtResource( 1 )
-name = "Boost Attack Area"
+name = "Boost Attack Size"
 icon = ExtResource( 4 )
 description = "Increase weapon size."
 max_level = 1000

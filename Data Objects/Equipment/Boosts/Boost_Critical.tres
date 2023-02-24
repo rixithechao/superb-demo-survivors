@@ -1,0 +1,29 @@
+[gd_resource type="Resource" load_steps=7 format=2]
+
+[ext_resource path="res://Scripts/ScriptableObjects/BoostData.gd" type="Script" id=1]
+[ext_resource path="res://Textures/Items/spr_boost_up.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/ScriptableObjects/StatSheetData.gd" type="Script" id=3]
+[ext_resource path="res://Data Objects/Stats/Stat_EffectChance.tres" type="Resource" id=4]
+[ext_resource path="res://Data Objects/Stats/Stat_Crit.tres" type="Resource" id=5]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 3 )
+stats = [ ExtResource( 4 ), ExtResource( 5 ) ]
+values = {
+Resource( "res://Data Objects/Stats/Stat_Damage.tres" ): 1.1,
+ExtResource( 4 ): 1.05,
+ExtResource( 5 ): 1.05
+}
+"Values/Effect Chance" = 1.05
+"Values/Crit Damage Multiplier" = 1.05
+"Preset or Remove" = 0
+
+[resource]
+script = ExtResource( 1 )
+name = "Boost Critical"
+icon = ExtResource( 2 )
+description = "Increase critical hit rate and damage."
+max_level = 1000
+rarity = 35.0
+stats = SubResource( 1 )
+level_modifiers = [  ]

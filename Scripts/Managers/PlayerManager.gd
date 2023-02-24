@@ -379,7 +379,7 @@ func remove_coins(amount):
 
 
 func get_revive_cost():
-	var base_cost = floor(pow(((level*REVIVE_COST_LEVEL_MULT) + 2), REVIVE_COST_DEATH_MULT*sqrt(deaths+1) + REVIVE_COST_LEVEL_POWER*level))
+	var base_cost = floor(pow(((level*REVIVE_COST_LEVEL_MULT) + 2), REVIVE_COST_DEATH_MULT*sqrt(deaths+1) + REVIVE_COST_LEVEL_POWER*level)/2)
 
 	return base_cost
 

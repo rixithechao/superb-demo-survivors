@@ -1,24 +1,27 @@
-[gd_resource type="Resource" load_steps=6 format=2]
+[gd_resource type="Resource" load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/ScriptableObjects/BoostData.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/ScriptableObjects/StatSheetData.gd" type="Script" id=2]
 [ext_resource path="res://Data Objects/Stats/Stat_Cooldown.tres" type="Resource" id=3]
-[ext_resource path="res://Textures/Items/spr_boost_down.png" type="Texture" id=4]
+[ext_resource path="res://Textures/Items/spr_boost_up.png" type="Texture" id=4]
+[ext_resource path="res://Data Objects/Stats/Stat_ShotInterval.tres" type="Resource" id=5]
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 2 )
-stats = [ ExtResource( 3 ) ]
+stats = [ ExtResource( 3 ), ExtResource( 5 ) ]
 values = {
-ExtResource( 3 ): 1.08
+ExtResource( 3 ): 1.08,
+ExtResource( 5 ): 1.1
 }
 Values/Cooldown = 1.08
+"Values/Shot Interval" = 1.1
 "Preset or Remove" = 0
 
 [resource]
 script = ExtResource( 1 )
-name = "Reduce Cooldown"
+name = "Boost Attack Speed"
 icon = ExtResource( 4 )
-description = "Reduce weapon cooldown."
+description = "Increase speed of attacks and reduce weapon cooldown."
 max_level = 1000
 rarity = 35.0
 stats = SubResource( 1 )
