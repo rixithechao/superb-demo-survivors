@@ -14,12 +14,17 @@ radius = 24.0
 height = 0.0
 
 [node name="Projectile - Knife" instance=ExtResource( 1 )]
+aim_spread = 20.0
 
 [node name="CollisionShape2D" parent="LocalPos/Collision" index="0"]
 shape = SubResource( 1 )
 
+[node name="AudioStreamPlayer" parent="WhooshSound" index="0"]
+pitch_scale = 0.76929
+
 [node name="AudioStreamPlayer" parent="SchwingSound" index="0"]
 stream = ExtResource( 2 )
+pitch_scale = 1.10176
 
 [node name="AudioStreamPlayer2" parent="SchwingSound" index="1"]
 stream = ExtResource( 4 )
