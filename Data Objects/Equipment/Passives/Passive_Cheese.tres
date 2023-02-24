@@ -8,9 +8,11 @@
 
 [sub_resource type="Resource" id=2]
 script = ExtResource( 1 )
-stats = [  ]
+stats = [ ExtResource( 5 ) ]
 values = {
+ExtResource( 5 ): 0.075
 }
+Values/Recovery = 0.075
 "Preset or Remove" = 0
 
 [sub_resource type="Resource" id=3]
@@ -22,9 +24,11 @@ Stats = SubResource( 2 )
 
 [sub_resource type="Resource" id=4]
 script = ExtResource( 1 )
-stats = [  ]
+stats = [ ExtResource( 5 ) ]
 values = {
+ExtResource( 5 ): 0.075
 }
+Values/Recovery = 0.075
 "Preset or Remove" = 0
 
 [sub_resource type="Resource" id=5]
@@ -36,9 +40,11 @@ Stats = SubResource( 4 )
 
 [sub_resource type="Resource" id=6]
 script = ExtResource( 1 )
-stats = [  ]
+stats = [ ExtResource( 5 ) ]
 values = {
+ExtResource( 5 ): 0.075
 }
+Values/Recovery = 0.075
 "Preset or Remove" = 0
 
 [sub_resource type="Resource" id=7]
@@ -50,9 +56,11 @@ Stats = SubResource( 6 )
 
 [sub_resource type="Resource" id=8]
 script = ExtResource( 1 )
-stats = [  ]
+stats = [ ExtResource( 5 ) ]
 values = {
+ExtResource( 5 ): 0.075
 }
+Values/Recovery = 0.075
 "Preset or Remove" = 0
 
 [sub_resource type="Resource" id=9]

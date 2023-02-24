@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/spr_levelup_coin_a2xt.png-9009452f966a3b88566e9433f01d94c1.stex"
+path="res://.import/spr_proj_yoyo.png-d07fd6186d1adb94101f8d5d194c622a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Items/spr_levelup_coin_a2xt.png"
-dest_files=[ "res://.import/spr_levelup_coin_a2xt.png-9009452f966a3b88566e9433f01d94c1.stex" ]
+source_file="res://Textures/Projectiles/spr_proj_yoyo.png"
+dest_files=[ "res://.import/spr_proj_yoyo.png-d07fd6186d1adb94101f8d5d194c622a.stex" ]
 
 [params]
 
