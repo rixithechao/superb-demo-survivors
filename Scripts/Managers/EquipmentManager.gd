@@ -27,6 +27,7 @@ var all_passives = [
 	preload("res://Data Objects/Equipment/Passives/Passive_PocketSheep.tres"),
 	preload("res://Data Objects/Equipment/Passives/Passive_PoisonMilk.tres"),
 	preload("res://Data Objects/Equipment/Passives/Passive_Kappatilism.tres"),
+	preload("res://Data Objects/Equipment/Passives/Passive_Advent.tres"),
 	#preload("res://Data Objects/Equipment/Passives/Passive_Zebra.tres"),
 ]
 var all_boosts = [

@@ -1,7 +1,5 @@
 extends Equipment
 
-const REFRESH_DURATION = 10
-
 var hit_count = 3
 var level = 1
 		
