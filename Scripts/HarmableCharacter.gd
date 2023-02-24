@@ -110,7 +110,9 @@ func hit_by_projectile(projectile):
 			# Check for crits
 			var effect_chance = weapon_data.get_stat_current(StatsManager.EFFECT_CHANCE)
 			var player_luck = PlayerManager.get_stat(StatsManager.LUCK)
-			var critical_hit = randf() <= (effect_chance * player_luck)
+			var critical_hit = (randf() <= (effect_chance * player_luck))
+			if  signal_data.has("override_crit"):
+				critical_hit = signal_data.override_crit
 
 			var total_stats = PlayerManager.get_current_stats(weapon_data)
 

@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://addons/RandomAudioNodePlayer/RandomAudioNodePlayer.gd" type="Script" id=1]
+[ext_resource path="res://Prefabs/Projectiles/Prefab_Projectile_Screwdriver.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Sound Effects/Sound_Weapon_Screwdriver.ogg" type="AudioStream" id=3]
+
+[node name="Projectile - Screwdriver" instance=ExtResource( 2 )]
+
+[node name="RandomAudioNodePlayer" type="Node" parent="." index="2"]
+script = ExtResource( 1 )
+autoplay = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="RandomAudioNodePlayer" index="0"]
+stream = ExtResource( 3 )
+bus = "SoundEffects"

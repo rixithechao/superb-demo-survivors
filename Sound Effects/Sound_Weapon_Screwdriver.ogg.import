@@ -11,5 +11,5 @@ dest_files=[ "res://.import/Sound_Weapon_Screwdriver.ogg-2045d93f471969602b4cdc5
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

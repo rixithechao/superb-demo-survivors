@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Sound_Weapon_Cube.ogg-7f64f9eb35b803764617dc80d9ff11b8.oggstr"
+
+[deps]
+
+source_file="res://Sound Effects/Sound_Weapon_Cube.ogg"
+dest_files=[ "res://.import/Sound_Weapon_Cube.ogg-7f64f9eb35b803764617dc80d9ff11b8.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
