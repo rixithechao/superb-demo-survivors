@@ -11,7 +11,7 @@ var all_weapons = [
 	# Other
 	#preload("res://Data Objects/Equipment/Weapons/Weapon_Lemon.tres"),
 	#preload("res://Data Objects/Equipment/Weapons/Weapon_Bangai.tres"),
-	#preload("res://Data Objects/Equipment/Weapons/Weapon_Drill.tres"),
+	preload("res://Data Objects/Equipment/Weapons/Weapon_Drill.tres"),
 	preload("res://Data Objects/Equipment/Weapons/Weapon_Toaster.tres"),
 	preload("res://Data Objects/Equipment/Weapons/Weapon_Screwdriver.tres"),
 	preload("res://Data Objects/Equipment/Weapons/Weapon_Bee.tres"),
@@ -23,6 +23,7 @@ var all_passives = [
 	preload("res://Data Objects/Equipment/Passives/Passive_SometimesFood.tres"),
 	preload("res://Data Objects/Equipment/Passives/Passive_StrangeCat.tres"),
 	preload("res://Data Objects/Equipment/Passives/Passive_Tapestry.tres"),
+	preload("res://Data Objects/Equipment/Passives/Passive_PocketSheep.tres"),
 	#preload("res://Data Objects/Equipment/Passives/Passive_Zebra.tres"),
 ]
 var all_boosts = [
