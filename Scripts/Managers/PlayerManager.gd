@@ -396,6 +396,7 @@ func revive():
 	set_hp(curr_stats[StatsManager.MAX_HP])
 	instance.start_sequence("Sequence_Spawn")
 	WorldManager.instance.start_sequence("Sequence_Revive")
+	instance.z_index = 0
 	MusicManager.resume()
 	dead = false
 	revives += 1
