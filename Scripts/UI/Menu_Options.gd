@@ -28,7 +28,7 @@ func _ready():
 	$Skew/Panel/TabContainer/Display/ControlsGrid/VsyncToggleCenter/VsyncToggle.set_pressed_no_signal(SaveManager.settings.vsync)
 	$Skew/Panel/TabContainer/Effects/ControlsGrid/ScreenshakeToggleCenter/ScreenshakeToggle.set_pressed_no_signal(SaveManager.settings.screen_shake)
 	$Skew/Panel/TabContainer/Effects/ControlsGrid/DamageNumToggleCenter/DamageNumToggle.set_pressed_no_signal(SaveManager.settings.damage_numbers)
-	$Skew/Panel/TabContainer/Other/ControlsGrid/TeethToggleCenter/TeethToggle.set_pressed_no_signal(SaveManager.settings.teeth)
+	$Skew/Panel/TabContainer/Content/ControlsGrid/TeethToggleCenter/TeethToggle.set_pressed_no_signal(SaveManager.settings.teeth)
 
 func on_close():
 	SaveManager.settings.save()

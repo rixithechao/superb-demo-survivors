@@ -17,14 +17,18 @@ aim_spread = 45.0
 shape = SubResource( 1 )
 
 [node name="AudioStreamPlayer" parent="WhooshSound" index="0"]
-pitch_scale = 0.940292
+pitch_scale = 0.857582
 
 [node name="AudioStreamPlayer" parent="SchwingSound" index="0"]
 stream = ExtResource( 2 )
+volume_db = -15.0
 
 [node name="AudioStreamPlayer2" parent="SchwingSound" index="1"]
 stream = ExtResource( 4 )
+volume_db = -15.0
+pitch_scale = 1.16176
 
 [node name="AudioStreamPlayer3" parent="SchwingSound" index="2"]
 stream = ExtResource( 3 )
+volume_db = -15.0
 pitch_scale = 1.22846

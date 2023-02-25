@@ -44,7 +44,7 @@ func _on_ItemList_item_hovered(index):
 	var data = StageManager.unlocked[index]
 	
 	# Stage info
-	$Skew/LevelPreview/TextureRect.texture = data.preview
+	$Skew/LevelPreview/Unskew/TextureRect.texture = data.preview
 	$Skew/ScorePanel/Duration.text = String(data.boss_minute) + ":00"
 	$Skew/ScorePanel/Duration/TwoDigitFill.visible = (data.boss_minute >= 10)
 	$Skew/ScorePanel/Duration/OneDigitFill.visible = (data.boss_minute < 10)

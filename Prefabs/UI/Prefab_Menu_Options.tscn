@@ -160,9 +160,9 @@ valign = 1
 
 [node name="TabNavigation" type="Button" parent="Skew/Panel" index="4"]
 anchor_right = 1.0
-margin_left = 140.0
+margin_left = 128.0
 margin_top = 32.0
-margin_right = -150.0
+margin_right = -138.0
 margin_bottom = 71.0
 custom_styles/hover = ExtResource( 21 )
 custom_styles/pressed = ExtResource( 21 )
@@ -492,7 +492,7 @@ margin_right = 72.0
 margin_bottom = 24.0
 focus_mode = 1
 
-[node name="Other" type="Control" parent="Skew/Panel/TabContainer" index="3"]
+[node name="Content" type="Control" parent="Skew/Panel/TabContainer" index="3"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -501,7 +501,7 @@ margin_top = 31.0
 margin_right = -8.0
 margin_bottom = -8.0
 
-[node name="ItemList" type="ItemList" parent="Skew/Panel/TabContainer/Other" index="0"]
+[node name="ItemList" type="ItemList" parent="Skew/Panel/TabContainer/Content" index="0"]
 margin_left = 54.0
 margin_top = 26.0
 margin_right = 554.0
@@ -530,7 +530,7 @@ immediate_focus = false
 custom_navigation = false
 controls_nodes = [ NodePath("../ControlsGrid/TeethToggleCenter/TeethToggle"), NodePath("") ]
 
-[node name="ControlsGrid" type="GridContainer" parent="Skew/Panel/TabContainer/Other" index="1"]
+[node name="ControlsGrid" type="GridContainer" parent="Skew/Panel/TabContainer/Content" index="1"]
 margin_left = 430.0
 margin_top = 26.0
 margin_right = 550.0
@@ -540,12 +540,12 @@ mouse_filter = 2
 size_flags_horizontal = 3
 custom_constants/vseparation = 10
 
-[node name="TeethToggleCenter" type="CenterContainer" parent="Skew/Panel/TabContainer/Other/ControlsGrid" index="0"]
+[node name="TeethToggleCenter" type="CenterContainer" parent="Skew/Panel/TabContainer/Content/ControlsGrid" index="0"]
 margin_right = 120.0
 margin_bottom = 24.0
 rect_min_size = Vector2( 120, 0 )
 
-[node name="TeethToggle" type="CheckBox" parent="Skew/Panel/TabContainer/Other/ControlsGrid/TeethToggleCenter" index="0"]
+[node name="TeethToggle" type="CheckBox" parent="Skew/Panel/TabContainer/Content/ControlsGrid/TeethToggleCenter" index="0"]
 margin_left = 48.0
 margin_right = 72.0
 margin_bottom = 24.0
@@ -614,12 +614,12 @@ one_shot = true
 [connection signal="mouse_exited" from="Skew/Panel/TabContainer/Effects/ItemList" to="Skew/Panel/TabContainer/Effects/ItemList" method="_on_ItemList_mouse_exited"]
 [connection signal="toggled" from="Skew/Panel/TabContainer/Effects/ControlsGrid/ScreenshakeToggleCenter/ScreenshakeToggle" to="." method="_on_ScreenshakeToggle_toggled"]
 [connection signal="toggled" from="Skew/Panel/TabContainer/Effects/ControlsGrid/DamageNumToggleCenter/DamageNumToggle" to="." method="_on_DamageNumToggle_toggled"]
-[connection signal="focus_entered" from="Skew/Panel/TabContainer/Other/ItemList" to="Skew/Panel/TabContainer/Other/ItemList" method="_on_ItemList_focus_entered"]
-[connection signal="gui_input" from="Skew/Panel/TabContainer/Other/ItemList" to="Skew/Panel/TabContainer/Other/ItemList" method="_on_ItemList_gui_input"]
-[connection signal="item_selected" from="Skew/Panel/TabContainer/Other/ItemList" to="Skew/Panel/TabContainer/Other/ItemList" method="_on_ItemList_item_selected"]
-[connection signal="mouse_entered" from="Skew/Panel/TabContainer/Other/ItemList" to="Skew/Panel/TabContainer/Other/ItemList" method="_on_ItemList_mouse_entered"]
-[connection signal="mouse_exited" from="Skew/Panel/TabContainer/Other/ItemList" to="Skew/Panel/TabContainer/Other/ItemList" method="_on_ItemList_mouse_exited"]
-[connection signal="toggled" from="Skew/Panel/TabContainer/Other/ControlsGrid/TeethToggleCenter/TeethToggle" to="." method="_on_TeethToggle_toggled"]
+[connection signal="focus_entered" from="Skew/Panel/TabContainer/Content/ItemList" to="Skew/Panel/TabContainer/Content/ItemList" method="_on_ItemList_focus_entered"]
+[connection signal="gui_input" from="Skew/Panel/TabContainer/Content/ItemList" to="Skew/Panel/TabContainer/Content/ItemList" method="_on_ItemList_gui_input"]
+[connection signal="item_selected" from="Skew/Panel/TabContainer/Content/ItemList" to="Skew/Panel/TabContainer/Content/ItemList" method="_on_ItemList_item_selected"]
+[connection signal="mouse_entered" from="Skew/Panel/TabContainer/Content/ItemList" to="Skew/Panel/TabContainer/Content/ItemList" method="_on_ItemList_mouse_entered"]
+[connection signal="mouse_exited" from="Skew/Panel/TabContainer/Content/ItemList" to="Skew/Panel/TabContainer/Content/ItemList" method="_on_ItemList_mouse_exited"]
+[connection signal="toggled" from="Skew/Panel/TabContainer/Content/ControlsGrid/TeethToggleCenter/TeethToggle" to="." method="_on_TeethToggle_toggled"]
 [connection signal="focus_entered" from="Skew/Panel/CloseButton" to="." method="_on_CloseButton_focus_entered"]
 [connection signal="gui_input" from="Skew/Panel/CloseButton" to="." method="_on_CloseButton_gui_input"]
 [connection signal="mouse_entered" from="Skew/Panel/CloseButton" to="." method="_on_CloseButton_mouse_entered"]

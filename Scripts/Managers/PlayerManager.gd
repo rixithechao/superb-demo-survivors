@@ -419,6 +419,7 @@ func unload_player():
 	WorldManager.world_objects_node.add_child(CameraManager.instance)
 	instance.queue_free()
 	instance = null
+	reset_player()
 
 
 func spawn():

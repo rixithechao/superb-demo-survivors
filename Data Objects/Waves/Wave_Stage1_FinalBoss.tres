@@ -1,18 +1,28 @@
-[gd_resource type="Resource" load_steps=9 format=2]
+[gd_resource type="Resource" load_steps=13 format=2]
 
 [ext_resource path="res://Scripts/ScriptableObjects/MapEventData.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/ScriptableObjects/WaveData.gd" type="Script" id=2]
 [ext_resource path="res://Prefabs/Map Events/Prefab_MapEvent_Stage1Boss.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Prefabs/Enemies/Prefab_Enemy_Furba.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Prefabs/Enemies/Prefab_Enemy_Caterpillar.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scripts/ScriptableObjects/EnemySpawnData.gd" type="Script" id=5]
 [ext_resource path="res://Prefabs/Enemies/Prefab_Enemy_Furba_Pirate.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Prefabs/Enemies/Prefab_Enemy_GiantSpearba.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Prefabs/Enemies/Prefab_Enemy_Charlie.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Prefabs/Enemies/Prefab_Enemy_GiantChestGoopa.tscn" type="PackedScene" id=9]
 
 [sub_resource type="Resource" id=2]
-resource_name = "Assorted Enemies"
+resource_name = "Minibosses"
+script = ExtResource( 5 )
+interval = 5.0
+delay = 0.0
+enemies = [ ExtResource( 4 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 7 ) ]
+
+[sub_resource type="Resource" id=3]
+resource_name = "Regular Enemies"
 script = ExtResource( 5 )
 interval = 1.0
 delay = 0.0
-enemies = [ ExtResource( 4 ), ExtResource( 6 ) ]
+enemies = [ ExtResource( 6 ) ]
 
 [sub_resource type="Resource" id=1]
 resource_name = "STAGE BOSS"
@@ -23,6 +33,6 @@ event_scene = ExtResource( 3 )
 [resource]
 script = ExtResource( 2 )
 minimum = 30.0
-enemy_spawns = [ SubResource( 2 ) ]
+enemy_spawns = [ SubResource( 2 ), SubResource( 3 ) ]
 bosses = [  ]
 map_events = [ SubResource( 1 ) ]

@@ -28,3 +28,4 @@ script = null
 
 [node name="HealSound" type="AudioStreamPlayer" parent="." index="6"]
 stream = ExtResource( 5 )
+bus = "SoundEffects"

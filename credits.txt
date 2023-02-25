@@ -1,26 +1,109 @@
-SOUND EFFECTS:
-	Title confirm, menu confirm --> Game Jingles & 8-Bit Sound FX by WOWSound
-	Various sounds --> RPG Magic SFX Pack 2 by WOWSound
-	_____ --> Casual Game SFX Pack by ZStreifel
-	_____ --> Cute GUI Sounds Set by CactusBear
+= SUPERB DEMO SURVIVORS
+Made with Godot 3.5.1
+with involvement from the Talkhaus, Codehaus and Spotzone communities
 
-FREESOUND:
-	Grab pickups --> Henrythetrain (pop)
-	Eating pickups --> ursenfuns (crunch)
-	XP pickups --> 16HPanskaZavadovsky_Igor (chamagne glass clink)
-	Level up sound --> bergice (funky guitar)
-	Damage sounds --> nekoninja (samurai slash)
-	Damage accent sounds --> Iamgiorgio (cuckoo clock), RutgerMuller (detuned piano stabs), LamaMakesMusic (rubber duck), eben-frostey (metallic clang), 3bagbrew (jaw harp), jmjeffries2 (metal clang)
-	Map event enemy spawn warning --> bbrocer (digital alarm loop)
-	Map event enemy spawn --> Euphrosyyn (anime teleport sounds)
-	Dialogue sounds --> Rvgerxini (reverse piano)
+= Lead Dinkus:
+Rixitic
 
+= The Council of Part-Time raoconspirators:
+Hoeloe
+Chaoxys
+KobaBeach
+Enjl
 
-PLUGINS:
-Random Audio Node Player --> Sander Vanhove
-Antialiased Line2D --> Calinou
-a number of others I need to add here
+= The Others Who Helped Plan This:
+Shane the Destroyer
+Camwoodstock & Tori
+SAJewers
+Sentinel
+Catabo
+Duker
+Zinfandel Z.T.
+Tangy
 
+= Even further input from:
+MyOtheHedgeFox
+FusionWarrior
+memnarch
+PizzaPony
+Gray Nine
+If you voted in the name poll and want to be here, ping or DM Rixi
 
-SHADERS:
-Halftone --> Elid Elid
+= Character and equipment sprites (A2XT2 devkit / talkhaus):
+Terry von Feleday
+Chaoxys
+Hoeloe
+Pheonix
+Paralars
+Money
+Flareblade26
+
+= Sound effect packs:
+Audio Alchemist
+CactusBear
+Soniss GDC Game Audio Bundles
+WOWSound
+ZStreifel
+
+= Sound effects (freesound.org):
+16HPanskaZavadovsky_Igor
+3bagbrew
+ani_music
+bbrocer
+BennettFilmTeacher
+bergice
+esperri
+eben-frostey
+Euphrosyyn
+FunWithSound
+fury12
+hello_flowers
+Henrythetrain
+HonorHunter
+Iamgiorgio
+JarredGibb
+jmjefferies2
+kylepyke
+LamaMakesMusic
+magnuswaker
+menvafaan
+nekoninja
+RutgerMuller
+Rvgerxini
+ShadowSilhouette
+td6d
+TrygveN
+ursenfuns
+WhaTThes
+XHALE303
+Za-Games
+
+= Godot plugins, scripts, and shaders:
+Sander Vanhove - Random Audio Node Player
+Calinou - Antialiased Line2D
+MakovWait - Improved Resource Picker
+Yuri Sizov - Editor Theme Explorer
+Matthieu Huvé - Max Size Container
+Raffaele Picca - raffaelepicca.com - Line2D Trails
+Elid Elid - Halftone Shader
+
+= Playtesters:
+Hi there! Ping or DM Rixi so we can include you here!
+
+= Y2K consultant:
+BabyPinkSnail
+
+= ABCD IP person and this game's muse:
+raocow
+
+= Special thanks, shout-outs, and finger guns:
+The dinkus' and devcouncil's friends and family
+spitznagl
+Poncle and the Holocure team
+Jonny Atma and other YouTube remixers and musicians
+Froot the Lich
+Masahiro Sakurai
+Birds. Just, in general
+The person playing this!
+Anyone and everyone who may be watching them!
+And their local post officer(s)!

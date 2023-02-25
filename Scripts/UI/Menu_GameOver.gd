@@ -93,6 +93,7 @@ func _ready():
 	
 	# The player died before beating the stage's final boss
 	else:
+		show_dead_list = true
 		$Control/Header/ClearHeader.modulate.a = 0
 		$Control/ItemLists/ClearList.visible = false#modulate.a = 0
 	

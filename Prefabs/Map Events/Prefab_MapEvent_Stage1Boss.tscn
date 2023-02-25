@@ -48,11 +48,17 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 9 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 9, 9.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "values": [ {
+"args": [ false ],
+"method": "toggle_regular_spawns"
+}, {
 "args": [ ExtResource( 9 ) ],
 "method": "spawn_stage_boss"
+}, {
+"args": [ true ],
+"method": "toggle_regular_spawns"
 } ]
 }
 
@@ -531,7 +537,7 @@ nodes/Animation/position = Vector2( 280, 140 )
 nodes/movement/node = SubResource( 12 )
 nodes/movement/position = Vector2( 540, 120 )
 nodes/output/position = Vector2( 780, 120 )
-node_connections = [ "movement", 0, "Animation", "movement", 1, "Animation 3", "output", 0, "movement" ]
+node_connections = [ "output", 0, "movement", "movement", 0, "Animation", "movement", 1, "Animation 3" ]
 
 [sub_resource type="Animation" id=27]
 resource_local_to_scene = true
@@ -593,7 +599,7 @@ nodes/Animation/position = Vector2( 280, 140 )
 nodes/movement/node = SubResource( 31 )
 nodes/movement/position = Vector2( 540, 120 )
 nodes/output/position = Vector2( 780, 120 )
-node_connections = [ "movement", 0, "Animation", "movement", 1, "Animation 3", "output", 0, "movement" ]
+node_connections = [ "output", 0, "movement", "movement", 0, "Animation", "movement", 1, "Animation 3" ]
 
 [sub_resource type="Animation" id=33]
 resource_local_to_scene = true
@@ -676,7 +682,7 @@ nodes/Animation/position = Vector2( 200, 20 )
 nodes/movement/node = SubResource( 37 )
 nodes/movement/position = Vector2( 540, 120 )
 nodes/output/position = Vector2( 780, 120 )
-node_connections = [ "movement", 0, "Animation", "movement", 1, "Animation 2", "movement", 2, "Animation 3", "movement", 3, "Animation 4", "movement", 4, "Animation 5", "output", 0, "movement" ]
+node_connections = [ "output", 0, "movement", "movement", 0, "Animation", "movement", 1, "Animation 2", "movement", 2, "Animation 3", "movement", 3, "Animation 4", "movement", 4, "Animation 5" ]
 
 [sub_resource type="Animation" id=39]
 resource_local_to_scene = true
@@ -720,7 +726,7 @@ nodes/Animation/position = Vector2( 280, 140 )
 nodes/movement/node = SubResource( 42 )
 nodes/movement/position = Vector2( 540, 120 )
 nodes/output/position = Vector2( 780, 120 )
-node_connections = [ "movement", 0, "Animation", "movement", 1, "Animation 3", "output", 0, "movement" ]
+node_connections = [ "output", 0, "movement", "movement", 0, "Animation", "movement", 1, "Animation 3" ]
 
 [sub_resource type="Animation" id=44]
 resource_local_to_scene = true
@@ -782,7 +788,7 @@ nodes/Animation/position = Vector2( 280, 140 )
 nodes/movement/node = SubResource( 48 )
 nodes/movement/position = Vector2( 540, 120 )
 nodes/output/position = Vector2( 780, 120 )
-node_connections = [ "movement", 0, "Animation", "movement", 1, "Animation 3", "output", 0, "movement" ]
+node_connections = [ "output", 0, "movement", "movement", 0, "Animation", "movement", 1, "Animation 3" ]
 
 [sub_resource type="Animation" id=50]
 resource_local_to_scene = true
@@ -923,7 +929,7 @@ z_index = 1
 polygon = PoolVector2Array( -1.39876e-06, -32, 12.2459, -29.5641, 22.6274, -22.6274, 29.5641, -12.2459, 32, 0, 29.5641, 12.2459, 22.6274, 22.6274, 12.2459, 29.5641, -1.39876e-06, 32, -12.2459, 29.5641, -22.6274, 22.6274, -29.5641, 12.2459, -32, 4.83187e-06, -29.5641, -12.2459, -22.6274, -22.6274, -12.2459, -29.5641 )
 
 [node name="Sprite" parent="ForegroundShip/NPC - Ee/AirOffset" index="0"]
-frame = 34
+frame = 37
 
 [node name="AnimationTree" parent="ForegroundShip/NPC - Ee" index="2"]
 tree_root = SubResource( 38 )
@@ -941,7 +947,7 @@ z_index = 1
 polygon = PoolVector2Array( -1.39876e-06, -32, 12.2459, -29.5641, 22.6274, -22.6274, 29.5641, -12.2459, 32, 0, 29.5641, 12.2459, 22.6274, 22.6274, 12.2459, 29.5641, -1.39876e-06, 32, -12.2459, 29.5641, -22.6274, 22.6274, -29.5641, 12.2459, -32, 4.83187e-06, -29.5641, -12.2459, -22.6274, -22.6274, -12.2459, -29.5641 )
 
 [node name="Sprite" parent="ForegroundShip/NPC - Tas/AirOffset" index="0"]
-frame = 0
+frame = 1
 
 [node name="AnimationTree" parent="ForegroundShip/NPC - Tas" index="2"]
 tree_root = SubResource( 43 )

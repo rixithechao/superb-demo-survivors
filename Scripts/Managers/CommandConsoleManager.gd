@@ -103,6 +103,49 @@ func run_command(text):
 					log_text("No value specified")
 				pass
 
+
+			# EQUIPMENT
+			"weapon":
+				if  results.size() > 1:
+					if  results[1].is_valid_integer()  and  int(results[1]) < 	EquipmentManager.all_weapons.size():
+						log_text(text)
+						PlayerManager.give_weapon(EquipmentManager.all_weapons[int(results[1])])
+					
+					elif results[1] == "start":
+						PlayerManager.give_weapon(PlayerManager.data.starting_weapon)
+
+					elif results.size() > 1:
+						log_text("Invalid weapon ID")
+
+				else:
+					log_text("No weapon ID specified")
+
+			"passive":
+				if  results.size() > 1:
+					if  results[1].is_valid_integer()  and  int(results[1]) < 	EquipmentManager.all_passives.size():
+						log_text(text)
+						PlayerManager.give_passive(EquipmentManager.all_passives[int(results[1])])
+
+					elif results.size() > 1:
+						log_text("Invalid passive ID")
+
+				else:
+					log_text("No weapon ID specified")
+
+			"boost":
+				if  results.size() > 1:
+					if  results[1].is_valid_integer()  and  int(results[1]) < 	EquipmentManager.all_boosts.size():
+						log_text(text)
+						PlayerManager.give_boost(EquipmentManager.all_boosts[int(results[1])])
+
+					elif results.size() > 1:
+						log_text("Invalid boost ID")
+
+				else:
+					log_text("No boost ID specified")
+
+
+			# NO VALID COMMAND
 			_:
 				log_text("Command not recognized: \'" + results[0] + "\'\n")
 				pass
