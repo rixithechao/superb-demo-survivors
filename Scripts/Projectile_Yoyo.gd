@@ -1,20 +1,27 @@
 extends Projectile
 
+var time = 0
+var center
+var start_rot = 0
 
-
-var rot_dir
-
-const ROT_DEGREES = 360
+const RADIUS = 32
+const SPEED = 2
 
 
 func _ready():
 	._ready()
-	rot_dir = 1
+	time = 0
+	start_rot = deg2rad(rand_range(-aim_spread, aim_spread))
+	center = $LocalPos.position
 	pass
 
 
 func custom_movement(delta):
-	fire_speed = fire_speed.rotated(deg2rad(ROT_DEGREES*rot_dir*delta))*1.015
-	rot_dir *= 0.995
 	
-	.custom_movement(delta)
+	var time_passed = TimeManager.time_rate * delta
+	time = time + time_passed
+
+	var spd = SPEED * get_speed_mult()
+	
+	$LocalPos.position.x = RADIUS * time * spd * cos(time * spd + start_rot)
+	$LocalPos.position.y = RADIUS * time * spd * sin(time * spd + start_rot)

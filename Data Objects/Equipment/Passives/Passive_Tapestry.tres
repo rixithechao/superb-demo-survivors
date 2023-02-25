@@ -10,9 +10,9 @@
 script = ExtResource( 1 )
 stats = [ ExtResource( 5 ) ]
 values = {
-ExtResource( 5 ): 0.1
+ExtResource( 5 ): 0.2
 }
-"Values/XP Multiplier" = 0.1
+"Values/XP Multiplier" = 0.2
 "Preset or Remove" = 0
 
 [sub_resource type="Resource" id=3]
@@ -26,9 +26,9 @@ Stats = SubResource( 2 )
 script = ExtResource( 1 )
 stats = [ ExtResource( 5 ) ]
 values = {
-ExtResource( 5 ): 0.1
+ExtResource( 5 ): 0.2
 }
-"Values/XP Multiplier" = 0.1
+"Values/XP Multiplier" = 0.2
 "Preset or Remove" = 0
 
 [sub_resource type="Resource" id=5]
@@ -42,9 +42,9 @@ Stats = SubResource( 4 )
 script = ExtResource( 1 )
 stats = [ ExtResource( 5 ) ]
 values = {
-ExtResource( 5 ): 0.1
+ExtResource( 5 ): 0.2
 }
-"Values/XP Multiplier" = 0.1
+"Values/XP Multiplier" = 0.2
 "Preset or Remove" = 0
 
 [sub_resource type="Resource" id=7]
@@ -58,9 +58,9 @@ Stats = SubResource( 6 )
 script = ExtResource( 1 )
 stats = [ ExtResource( 5 ) ]
 values = {
-ExtResource( 5 ): 0.1
+ExtResource( 5 ): 0.2
 }
-"Values/XP Multiplier" = 0.1
+"Values/XP Multiplier" = 0.2
 "Preset or Remove" = 0
 
 [sub_resource type="Resource" id=9]
@@ -74,9 +74,9 @@ Stats = SubResource( 8 )
 script = ExtResource( 1 )
 stats = [ ExtResource( 5 ) ]
 values = {
-ExtResource( 5 ): 0.1
+ExtResource( 5 ): 0.2
 }
-"Values/XP Multiplier" = 0.1
+"Values/XP Multiplier" = 0.2
 "Preset or Remove" = 0
 
 [resource]
