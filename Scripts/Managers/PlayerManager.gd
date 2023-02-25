@@ -54,8 +54,15 @@ signal revive_check
 
 func reset_equipment():
 	for  equip_group in equipment:
+		var first
+		if equipment[equip_group].size() > 0:
+			first = equipment[equip_group][0]
 		equipment[equip_group].clear()
+		if first != null:
+			emit_signal("change_equipment", first.equipment_type, equipment[equip_group])
+			
 		print ("CLEARED PLAYER EQUIPMENT ", equip_group)
+	
 	equipment_levels.clear()
 	equipment_nodes.clear()
 
