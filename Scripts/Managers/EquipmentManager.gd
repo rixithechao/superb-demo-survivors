@@ -19,7 +19,8 @@ var all_weapons = [
 ]
 var all_passives = [
 	preload("res://Data Objects/Equipment/Passives/Passive_ArtificialTime.tres"),
-	preload("res://Data Objects/Equipment/Passives/Passive_Asceticism.tres"),
+	#preload("res://Data Objects/Equipment/Passives/Passive_Asceticism.tres"),
+	preload("res://Data Objects/Equipment/Passives/Passive_Chopin.tres"),
 	preload("res://Data Objects/Equipment/Passives/Passive_Cheese.tres"),
 	preload("res://Data Objects/Equipment/Passives/Passive_SometimesFood.tres"),
 	preload("res://Data Objects/Equipment/Passives/Passive_StrangeCat.tres"),

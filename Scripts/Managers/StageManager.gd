@@ -225,8 +225,8 @@ func start_wave(wave):
 
 func spawn_pickup(pickup_data, position):
 	var spawned = pickup_data.instance()
-	WorldManager.add_object(spawned)
 	spawned.position = position
+	WorldManager.add_object(spawned)
 	return spawned
 
 

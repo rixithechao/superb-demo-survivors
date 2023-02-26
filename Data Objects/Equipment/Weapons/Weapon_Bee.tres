@@ -73,17 +73,19 @@ Stats = SubResource( 8 )
 
 [sub_resource type="Resource" id=10]
 script = ExtResource( 13 )
-stats = [ ExtResource( 2 ) ]
+stats = [ ExtResource( 2 ), ExtResource( 7 ) ]
 values = {
+ExtResource( 7 ): 0.6,
 ExtResource( 2 ): 1.2
 }
 Values/Damage = 1.2
+Values/Cooldown = 0.6
 "Preset or Remove" = 0
 
 [sub_resource type="Resource" id=11]
 resource_name = "Level 6"
 script = ExtResource( 15 )
-description = "Bees deal more damage."
+description = "Reduces cooldown time and bees deal more damage."
 Type = 0
 Stats = SubResource( 10 )
 
@@ -107,9 +109,9 @@ Stats = SubResource( 12 )
 script = ExtResource( 13 )
 stats = [ ExtResource( 7 ) ]
 values = {
-ExtResource( 7 ): 0.2
+ExtResource( 7 ): 0.33
 }
-Values/Cooldown = 0.2
+Values/Cooldown = 0.33
 "Preset or Remove" = 0
 
 [sub_resource type="Resource" id=15]
@@ -123,16 +125,16 @@ Stats = SubResource( 14 )
 script = ExtResource( 13 )
 stats = [ ExtResource( 2 ), ExtResource( 5 ), ExtResource( 10 ), ExtResource( 8 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 11 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 9 ) ]
 values = {
-ExtResource( 2 ): 10,
-ExtResource( 3 ): 1.0,
-ExtResource( 9 ): 1.5,
-ExtResource( 11 ): 0.2,
-ExtResource( 6 ): 0.03,
-ExtResource( 10 ): 3.0,
-ExtResource( 5 ): 3,
 ExtResource( 7 ): 3.0,
+ExtResource( 10 ): 3.0,
+ExtResource( 2 ): 10,
+ExtResource( 8 ): 0,
+ExtResource( 11 ): 0.2,
 ExtResource( 4 ): 0.0,
-ExtResource( 8 ): 0
+ExtResource( 6 ): 0.03,
+ExtResource( 5 ): 3,
+ExtResource( 9 ): 1.5,
+ExtResource( 3 ): 1.0
 }
 Values/Damage = 10
 Values/Amount = 3

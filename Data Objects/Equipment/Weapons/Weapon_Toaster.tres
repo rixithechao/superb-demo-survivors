@@ -83,17 +83,19 @@ Stats = SubResource( 8 )
 
 [sub_resource type="Resource" id=10]
 script = ExtResource( 13 )
-stats = [ ExtResource( 6 ) ]
+stats = [ ExtResource( 6 ), ExtResource( 7 ) ]
 values = {
+ExtResource( 7 ): 0.8,
 ExtResource( 6 ): 0.7
 }
 "Values/Shot Interval" = 0.7
+Values/Cooldown = 0.8
 "Preset or Remove" = 0
 
 [sub_resource type="Resource" id=11]
 resource_name = "Level 6"
 script = ExtResource( 12 )
-description = "Increases shot frequency."
+description = "Decreases cooldown time."
 Type = 0
 Stats = SubResource( 10 )
 
@@ -117,17 +119,19 @@ Stats = SubResource( 12 )
 
 [sub_resource type="Resource" id=14]
 script = ExtResource( 13 )
-stats = [ ExtResource( 8 ) ]
+stats = [ ExtResource( 8 ), ExtResource( 7 ) ]
 values = {
+ExtResource( 7 ): 0.39,
 ExtResource( 8 ): 9980
 }
 Values/Pierce = 9980
+Values/Cooldown = 0.39
 "Preset or Remove" = 0
 
 [sub_resource type="Resource" id=15]
 resource_name = "Level 8"
 script = ExtResource( 12 )
-description = "Toast pierces all enemies."
+description = "Greatly reduce cooldown and toast pierces all enemies."
 Type = 0
 Stats = SubResource( 14 )
 
@@ -135,16 +139,16 @@ Stats = SubResource( 14 )
 script = ExtResource( 13 )
 stats = [ ExtResource( 2 ), ExtResource( 5 ), ExtResource( 10 ), ExtResource( 8 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 11 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 9 ) ]
 values = {
-ExtResource( 2 ): 10,
-ExtResource( 3 ): 1.0,
-ExtResource( 9 ): 1.5,
-ExtResource( 11 ): 1.0,
-ExtResource( 6 ): 0.1,
-ExtResource( 10 ): 2.0,
-ExtResource( 5 ): 1,
 ExtResource( 7 ): 3.0,
+ExtResource( 10 ): 2.0,
+ExtResource( 2 ): 10,
+ExtResource( 8 ): 1,
+ExtResource( 11 ): 1.0,
 ExtResource( 4 ): 1.0,
-ExtResource( 8 ): 1
+ExtResource( 6 ): 0.1,
+ExtResource( 5 ): 1,
+ExtResource( 9 ): 1.5,
+ExtResource( 3 ): 1.0
 }
 Values/Damage = 10
 Values/Amount = 1

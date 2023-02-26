@@ -1,0 +1,102 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Prefabs/Templates/Prefab_VFX.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Sound Effects/Sound_Passive_Chopin.ogg" type="AudioStream" id=3]
+[ext_resource path="res://Textures/Projectiles/spr_proj_chopin.png" type="Texture" id=4]
+[ext_resource path="res://addons/RandomAudioNodePlayer/RandomAudioNodePlayer.gd" type="Script" id=7]
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0, 0.39863, 0.758904 )
+colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
+
+[sub_resource type="Curve" id=4]
+_data = [ Vector2( 0, 0.486842 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=5]
+curve = SubResource( 4 )
+
+[sub_resource type="ParticlesMaterial" id=6]
+lifetime_randomness = 0.5
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 200.0
+initial_velocity_random = 0.72
+angular_velocity = 64.8
+angular_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 4.0
+scale_random = 1.0
+scale_curve = SubResource( 5 )
+color_ramp = SubResource( 3 )
+
+[sub_resource type="Animation" id=1]
+resource_local_to_scene = true
+resource_name = "Sequence"
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("Sound")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "play"
+} ]
+}
+
+[node name="VFX - Chopins Blessing" instance=ExtResource( 1 )]
+z_index = 4096
+particles_paths = [ NodePath("Particles2D") ]
+
+[node name="Particles2D" type="Particles2D" parent="." index="0"]
+emitting = false
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource( 6 )
+texture = ExtResource( 4 )
+
+[node name="Sound" type="Node" parent="." index="1"]
+script = ExtResource( 7 )
+autoplay = true
+
+[node name="Audio1" type="AudioStreamPlayer" parent="Sound" index="0"]
+stream = ExtResource( 3 )
+volume_db = -10.0
+bus = "SoundEffects"
+
+[node name="Audio2" type="AudioStreamPlayer" parent="Sound" index="1"]
+stream = ExtResource( 3 )
+volume_db = -10.0
+pitch_scale = 1.22293
+bus = "SoundEffects"
+
+[node name="Audio3" type="AudioStreamPlayer" parent="Sound" index="2"]
+stream = ExtResource( 3 )
+volume_db = -10.0
+pitch_scale = 0.8
+bus = "SoundEffects"
+
+[node name="AnimationPlayer" parent="." index="2"]
+anims/Sequence = SubResource( 1 )

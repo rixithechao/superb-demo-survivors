@@ -29,8 +29,8 @@ func spawn(volley_index = 0):
 	spawned.volley_max = volley_count
 	spawned.weapon_data = data
 
-	WorldManager.add_object(spawned)
 	spawned.position = PlayerManager.instance.position
+	WorldManager.add_object(spawned)
 	spawned_objects.append(spawned)
 
 

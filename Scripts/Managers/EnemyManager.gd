@@ -26,8 +26,8 @@ func add_kill():
 
 func clear_all_enemies():
 	var inst = pre_final_shockwave.instance()
-	WorldManager.add_object(inst)
 	inst.global_position = PlayerManager.instance.global_position
+	WorldManager.add_object(inst)
 
 
 

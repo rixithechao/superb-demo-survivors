@@ -6,7 +6,7 @@ func get_group_name():
 func spawn(scene, position):
 	var spawned = scene.instance()
 	
-	WorldManager.add_object(spawned)
 	spawned.position = position
+	WorldManager.add_object(spawned)
 	
 	return spawned

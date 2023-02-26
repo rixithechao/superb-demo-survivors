@@ -88,9 +88,9 @@ Stats = SubResource( 8 )
 script = ExtResource( 13 )
 stats = [ ExtResource( 8 ), ExtResource( 16 ) ]
 values = {
-ExtResource( 16 ): 1.5,
 ExtResource( 8 ): 4,
-ExtResource( 6 ): 0.7
+ExtResource( 6 ): 0.7,
+ExtResource( 16 ): 1.5
 }
 Values/Pierce = 4
 Values/Speed = 1.5
@@ -107,10 +107,10 @@ Stats = SubResource( 10 )
 script = ExtResource( 13 )
 stats = [ ExtResource( 5 ) ]
 values = {
-ExtResource( 16 ): 1.2,
-ExtResource( 8 ): 2,
 Resource( "res://Data Objects/Stats/Stat_Area.tres" ): 1.4,
-ExtResource( 5 ): 1.0
+ExtResource( 8 ): 2,
+ExtResource( 5 ): 1.0,
+ExtResource( 16 ): 1.2
 }
 Values/Amount = 1.0
 "Preset or Remove" = 0
@@ -126,8 +126,8 @@ Stats = SubResource( 12 )
 script = ExtResource( 13 )
 stats = [ ExtResource( 2 ) ]
 values = {
-ExtResource( 8 ): 9980,
 ExtResource( 2 ): 1.25,
+ExtResource( 8 ): 9980,
 ExtResource( 5 ): 1.0
 }
 Values/Damage = 1.25
@@ -144,22 +144,22 @@ Stats = SubResource( 14 )
 script = ExtResource( 13 )
 stats = [ ExtResource( 2 ), ExtResource( 5 ), ExtResource( 10 ), ExtResource( 8 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 11 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 9 ) ]
 values = {
-ExtResource( 8 ): 1,
-ExtResource( 7 ): 3.0,
-ExtResource( 11 ): 1.0,
-ExtResource( 10 ): 2.0,
+ExtResource( 7 ): 3.5,
+ExtResource( 10 ): 1.75,
 ExtResource( 2 ): 10,
-ExtResource( 6 ): 0.4,
-ExtResource( 9 ): 1.5,
+ExtResource( 8 ): 1,
+ExtResource( 11 ): 1.0,
 ExtResource( 4 ): 1.0,
-ExtResource( 3 ): 1.0,
-ExtResource( 5 ): 1
+ExtResource( 6 ): 0.4,
+ExtResource( 5 ): 1,
+ExtResource( 9 ): 1.5,
+ExtResource( 3 ): 1.0
 }
 Values/Damage = 10
 Values/Amount = 1
-Values/Duration = 2.0
+Values/Duration = 1.75
 Values/Pierce = 1
-Values/Cooldown = 3.0
+Values/Cooldown = 3.5
 "Values/Shot Interval" = 0.4
 "Values/Hit Interval" = 1.0
 Values/Knockback = 1.0

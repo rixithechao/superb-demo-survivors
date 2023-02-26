@@ -103,9 +103,9 @@ func shoot_bullet():
 		return
 
 	var spawned = bullet.instance()
-	WorldManager.add_object(spawned)
 	spawned.global_position = $Graphic/AirOffset/CannonSprite.global_position
 	spawned.height = ($Graphic/AirOffset/CannonSprite.global_position.y - global_position.y)/16
+	WorldManager.add_object(spawned)
 	spawned.hop()
 
 
