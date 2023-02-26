@@ -12,19 +12,19 @@
 resource_name = "Pickup - Med Exp"
 script = ExtResource( 2 )
 pickup = ExtResource( 7 )
-weight = 10
+weight = 100
 
 [sub_resource type="Resource" id=3]
 resource_name = "Pickup - Coin"
 script = ExtResource( 2 )
 pickup = ExtResource( 1 )
-weight = 2
+weight = 20
 
 [sub_resource type="Resource" id=4]
 resource_name = "Pickup - Radish"
 script = ExtResource( 2 )
 pickup = ExtResource( 5 )
-weight = 1
+weight = 10
 
 [sub_resource type="Resource" id=5]
 resource_name = "Pickup - Magnet"
@@ -36,7 +36,7 @@ weight = 1
 resource_name = "Pickup - Large Exp"
 script = ExtResource( 2 )
 pickup = ExtResource( 6 )
-weight = 10
+weight = 100
 
 [resource]
 script = ExtResource( 3 )
