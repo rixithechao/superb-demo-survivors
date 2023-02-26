@@ -3,6 +3,7 @@ extends HSplitContainer
 
 func _ready():
 	PlayerManager.connect("change_coins", self, "_on_change_coins")
+	StageManager.connect("stage_restarted", self, "_on_change_coins")
 	_on_change_coins()
 	pass
 

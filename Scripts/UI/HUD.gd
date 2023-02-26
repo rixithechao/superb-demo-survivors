@@ -31,6 +31,10 @@ func _ready():
 	pass
 
 func _process(_delta):
+	$Controls/MKB.modulate.a = (1 if InputManager.current_control_scheme == InputManager.control_scheme.MKB else 0)
+	$Controls/Gamepad.modulate.a = (1 if InputManager.current_control_scheme == InputManager.control_scheme.GAMEPAD else 0)
+	$Controls/Keyboard.modulate.a = (1 if InputManager.current_control_scheme == InputManager.control_scheme.KEYBOARD else 0)
+
 	if  not StageManager.started:
 		return
 	
@@ -45,6 +49,7 @@ func _process(_delta):
 	boost_slots.modulate.a = alive_alpha
 	money.modulate.a = alive_alpha
 	kills.modulate.a = alive_alpha
+
 
 
 func _on_settings_changed():

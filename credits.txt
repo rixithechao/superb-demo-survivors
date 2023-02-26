@@ -88,6 +88,10 @@ Raffaele Picca - raffaelepicca.com - Line2D Trails
 Elid Elid - Halftone Shader
 
 = Playtesters:
+memnarch
+Darkonius Mavakar
+Enjl
+Kirk64
 Hi there! Ping or DM Rixi so we can include you here!
 
 = Y2K consultant:

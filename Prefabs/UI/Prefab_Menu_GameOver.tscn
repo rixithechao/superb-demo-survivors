@@ -504,12 +504,13 @@ margin_right = 768.0
 margin_bottom = 432.0
 
 [node name="Header" type="Control" parent="Control" index="0"]
+modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -384.0
-margin_top = 40.0
+margin_top = 12.0
 margin_right = 384.0
-margin_bottom = 111.0
+margin_bottom = 83.0
 
 [node name="ClearHeader" type="Label" parent="Control/Header" index="0"]
 anchor_left = 0.5
@@ -526,6 +527,7 @@ align = 1
 valign = 1
 
 [node name="ClearHeaderBack" type="Label" parent="Control/Header/ClearHeader" index="0"]
+modulate = Color( 1, 1, 1, 0 )
 show_behind_parent = true
 anchor_left = 0.5
 anchor_right = 0.5
@@ -546,9 +548,9 @@ anchor_left = -0.023
 anchor_top = 0.296
 anchor_right = 1.026
 anchor_bottom = 0.704
-margin_left = -0.336
+margin_left = 402.664
 margin_top = -0.0160007
-margin_right = 0.0319824
+margin_right = -402.968
 margin_bottom = 0.0159988
 
 [node name="ColorRect2" type="ColorRect" parent="Control/Header/ClearHeader/ClearBands" index="0"]
@@ -599,6 +601,7 @@ align = 1
 valign = 1
 
 [node name="DeathHeaderBack" type="Label" parent="Control/Header/DeathHeader" index="0"]
+modulate = Color( 1, 1, 1, 0 )
 show_behind_parent = true
 anchor_left = 0.5
 anchor_right = 0.5
@@ -619,9 +622,9 @@ anchor_left = -0.023
 anchor_top = 0.296
 anchor_right = 1.026
 anchor_bottom = 0.704
-margin_left = -0.336
+margin_left = 402.664
 margin_top = -0.0160007
-margin_right = 0.0319824
+margin_right = -402.968
 margin_bottom = 0.0159988
 
 [node name="ColorRect2" type="ColorRect" parent="Control/Header/DeathHeader/DeathBands" index="0"]
@@ -665,9 +668,12 @@ margin_right = -82.0
 margin_bottom = 287.0
 
 [node name="Panel" type="NinePatchRect" parent="Control/Results" index="0"]
+modulate = Color( 1, 1, 1, 0 )
 self_modulate = Color( 0.256027, 0.295427, 0.464844, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 235.0
+margin_right = -234.0
 texture = ExtResource( 9 )
 patch_margin_left = 69
 patch_margin_top = 60
@@ -687,6 +693,7 @@ patch_margin_right = 66
 patch_margin_bottom = 54
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/Results" index="1"]
+modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 47.0

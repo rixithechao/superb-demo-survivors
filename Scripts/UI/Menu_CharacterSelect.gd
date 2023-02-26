@@ -58,7 +58,7 @@ func _process(_delta):
 
 func _on_char_selected(node):
 	PlayerManager.set_character(node.data)
-	StageManager.spawn_player()
+	StageManager.controls_or_spawn_player()
 	self.close()
 
 func _on_char_hovered(node):

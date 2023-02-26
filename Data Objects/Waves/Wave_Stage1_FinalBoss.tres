@@ -13,14 +13,14 @@
 [sub_resource type="Resource" id=2]
 resource_name = "Minibosses"
 script = ExtResource( 5 )
-interval = 5.0
+interval = 3.0
 delay = 0.0
 enemies = [ ExtResource( 4 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 7 ) ]
 
 [sub_resource type="Resource" id=3]
 resource_name = "Regular Enemies"
 script = ExtResource( 5 )
-interval = 1.0
+interval = 0.25
 delay = 0.0
 enemies = [ ExtResource( 6 ) ]
 

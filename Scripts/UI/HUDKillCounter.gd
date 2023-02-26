@@ -3,6 +3,7 @@ extends HSplitContainer
 
 func _ready():
 	EnemyManager.connect("change_kills", self, "_on_change_kills")
+	StageManager.connect("stage_restarted", self, "_on_change_kills")
 	_on_change_kills()
 	pass
 

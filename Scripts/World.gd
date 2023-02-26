@@ -52,8 +52,11 @@ func clear_stage():
 func start_sequence(name : String):
 	$SequenceAnimation.play(name)
 
-func spawn_player():
+func prompt_change_character():
 	StageManager.prompt_change_character()
+
+func spawn_player():
+	StageManager.spawn_player()
 
 func start_stage():
 	StageManager.start_stage()

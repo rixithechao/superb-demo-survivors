@@ -560,6 +560,18 @@ tracks/2/keys = {
 } ],
 "times": PoolRealArray( 0 )
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("SkipNotice:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 2.5, 99.6, 100.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.635294 ), Color( 1, 1, 1, 0.635294 ), Color( 1, 1, 1, 0 ) ]
+}
 
 [node name="Menu - Splash Screens" instance=ExtResource( 1 )]
 
@@ -590,7 +602,7 @@ grow_vertical = 2
 alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="Screens/Screen 1" index="0"]
-modulate = Color( 1, 1, 1, 0.35 )
+modulate = Color( 1, 1, 1, 0 )
 margin_right = 400.0
 margin_bottom = 400.0
 grow_horizontal = 2
@@ -1198,3 +1210,16 @@ anims/Sequence = SubResource( 4 )
 stream = ExtResource( 15 )
 volume_db = -8.0
 bus = "Music"
+
+[node name="SkipNotice" type="Label" parent="." index="8"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 404.0
+margin_right = 768.0
+margin_bottom = 432.0
+custom_fonts/font = ExtResource( 10 )
+text = "Press confirm or cancel to skip"
+align = 1
+valign = 1

@@ -432,6 +432,7 @@ func unload_player():
 
 func spawn():
 	instance = data.prefab.instance()
+	instance.get_node("Graphic/AirOffset/Sprite").modulate.a = 0
 	WorldManager.world_objects_node.add_child(instance)
 	give_weapon(data.starting_weapon)
 

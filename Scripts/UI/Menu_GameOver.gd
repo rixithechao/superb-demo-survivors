@@ -54,7 +54,7 @@ func _ready():
 	$Control/Results/HBoxContainer/VBoxContainer/Coins/Name.text = ("Teeth" if  SaveManager.settings.teeth  else "Coins")
 
 	# Set results
-	$Control/Results/HBoxContainer/VBoxContainer/Time/Value.text = String(TimeManager.minutes_passed) + ":" + String(TimeManager.seconds_passed)
+	$Control/Results/HBoxContainer/VBoxContainer/Time/Value.text = ("%02d:%02d" % [TimeManager.minutes_passed, TimeManager.seconds_passed])
 	$Control/Results/HBoxContainer/VBoxContainer/Level/Value.text = String(PlayerManager.level)
 	$Control/Results/HBoxContainer/VBoxContainer/Coins/Value.text = String(PlayerManager.coins)
 	$Control/Results/HBoxContainer/VBoxContainer/Kills/Value.text = String(EnemyManager.kills)

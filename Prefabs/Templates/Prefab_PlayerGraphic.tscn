@@ -98,7 +98,7 @@ nodes/movement/position = Vector2( 920, 140 )
 nodes/output/position = Vector2( 1120, 140 )
 nodes/walkSpeed/node = SubResource( 8 )
 nodes/walkSpeed/position = Vector2( 20, 200 )
-node_connections = [ "walkSpeed", 0, "Animation 2", "movement", 0, "Animation", "movement", 1, "walkSpeed", "movement", 2, "looking", "movement", 3, "Animation 6", "movement", 4, "Animation 7", "movement", 5, "Animation 8", "movement", 6, "Animation 10", "looking", 0, "Animation 4", "looking", 1, "Animation 3", "looking", 2, "Animation 5", "output", 0, "movement" ]
+node_connections = [ "output", 0, "movement", "walkSpeed", 0, "Animation 2", "movement", 0, "Animation", "movement", 1, "walkSpeed", "movement", 2, "looking", "movement", 3, "Animation 6", "movement", 4, "Animation 7", "movement", 5, "Animation 8", "movement", 6, "Animation 10", "looking", 0, "Animation 4", "looking", 1, "Animation 3", "looking", 2, "Animation 5" ]
 
 [sub_resource type="Animation" id=7]
 resource_name = "Anim_Die"

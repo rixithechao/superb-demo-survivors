@@ -8,6 +8,7 @@ var credits_label
 onready var file = 'res://credits.txt'
 
 
+
 func _populate_credits():
 	var generated_text = "[center]"
 	

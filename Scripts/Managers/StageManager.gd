@@ -40,6 +40,7 @@ signal stage_loaded
 signal stage_generated
 signal stage_cleared
 signal stage_exited
+signal stage_restarted
 
 
 
@@ -62,10 +63,11 @@ func update_unlocked_list():
 func init_stage():
 	started = false
 	
-	# Reset wave info
+	# Reset wave info and spawning
 	current_wave = -1
 	current_wave_data = null
 	current_map_events.clear()
+	regular_spawns_active = true
 
 	# Set time to 0
 	TimeManager.reset_timer()
@@ -83,7 +85,15 @@ func prompt_change_character():
 	if  PlayerManager.show_character_select:
 		MenuManager.open("character")
 	else:
+		controls_or_spawn_player()
+
+func controls_or_spawn_player():
+	if  SaveManager.progress.seen_controls_prompt:
 		spawn_player()
+	else:
+		SaveManager.progress.seen_controls_prompt = true
+		SaveManager.progress.save()
+		WorldManager.instance.start_sequence("Sequence_ControlsPrompt")
 
 func spawn_player():
 	PlayerManager.spawn()
@@ -104,6 +114,9 @@ func restart_stage():
 		mangr.erase_all()
 	PlayerManager.unload_player()
 	init_stage()
+
+	emit_signal("stage_restarted")
+
 	WorldManager.instance.start_sequence("Sequence_Start")
 	pass
 

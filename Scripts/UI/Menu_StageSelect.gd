@@ -26,6 +26,7 @@ func on_choose(_node, item):
 
 	$Skew/Panel/ItemList.active = false
 	$ConfirmSound.play()
+	cancel_to_close = false
 	
 	MusicManager.fade_out()
 	UIManager.show_load_screen()

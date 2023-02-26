@@ -307,6 +307,18 @@ tracks/7/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 0.501961 ), Color( 1, 1, 1, 0 ) ]
 }
+tracks/8/type = "value"
+tracks/8/path = NodePath("Background/Version Number:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "Menu_Title_Return"
@@ -444,6 +456,18 @@ tracks/10/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.501961 ) ]
 }
+tracks/11/type = "value"
+tracks/11/path = NodePath("Background/Version Number:modulate")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
 
 [node name="Menu - Title" instance=ExtResource( 1 )]
 script = ExtResource( 17 )
@@ -455,15 +479,31 @@ modulate = Color( 1, 1, 1, 0.501961 )
 position = Vector2( 384, 216 )
 texture = ExtResource( 20 )
 
-[node name="ColorRect" type="ColorRect" parent="Background" index="2"]
+[node name="Version Number" type="Label" parent="Background" index="2"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 12.0
+margin_top = 388.0
+margin_right = 282.0
+margin_bottom = 436.0
+rect_pivot_offset = Vector2( 135, 24 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 2
+custom_fonts/font = ExtResource( 3 )
+text = "PREVIEW v1.0.1"
+valign = 1
+
+[node name="ColorRect" type="ColorRect" parent="Background" index="3"]
 margin_right = 768.0
 margin_bottom = 432.0
-color = Color( 0, 0, 0, 1 )
+color = Color( 0, 0, 0, 0 )
 
 [node name="Demo" parent="." index="2" instance=ExtResource( 18 )]
 visible = false
-modulate = Color( 1, 1, 1, 0 )
-position = Vector2( 360, 412 )
+position = Vector2( 182, 412 )
 animate_while_paused = true
 
 [node name="Shadow" parent="Demo" index="0"]
@@ -471,8 +511,7 @@ polygon = PoolVector2Array( -1.39876e-06, -32, 12.2459, -29.5641, 22.6274, -22.6
 
 [node name="Iris" parent="." index="3" instance=ExtResource( 19 )]
 visible = false
-modulate = Color( 1, 1, 1, 0 )
-position = Vector2( 413, 414 )
+position = Vector2( 585, 414 )
 animate_while_paused = true
 
 [node name="Shadow" parent="Iris" index="0"]
@@ -488,9 +527,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = 258.0
-margin_top = 285.0
+margin_top = 242.0
 margin_right = 528.0
-margin_bottom = 333.0
+margin_bottom = 290.0
 rect_pivot_offset = Vector2( 135, 24 )
 custom_fonts/font = ExtResource( 3 )
 text = "Press a thing"
@@ -498,16 +537,15 @@ align = 1
 valign = 1
 
 [node name="Panel" type="Panel" parent="." index="5"]
-modulate = Color( 1, 1, 1, 0 )
 self_modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = 373.0
-margin_top = 192.0
+margin_top = 121.0
 margin_right = 413.0
-margin_bottom = 232.0
+margin_bottom = 161.0
 
 [node name="LogoGametitle" type="Sprite" parent="Panel" index="0"]
 position = Vector2( 15, -23 )
@@ -515,7 +553,7 @@ scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 16 )
 
 [node name="Skew" type="Node2D" parent="." index="6"]
-position = Vector2( 388, 505 )
+position = Vector2( 388, 222 )
 script = ExtResource( 13 )
 
 [node name="Panel" type="NinePatchRect" parent="Skew" index="0"]
@@ -612,7 +650,6 @@ fixed_icon_size = Vector2( 32, 32 )
 script = ExtResource( 12 )
 menu_node = NodePath("../../..")
 cursor_sound_node = NodePath("../../../CursorSound")
-active = false
 immediate_focus = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="7"]

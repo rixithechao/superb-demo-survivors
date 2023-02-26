@@ -82,6 +82,7 @@ func apply_ailments(stats_table):
 
 
 func extra_collision_init():
+	set_collision_mask_bit ( 0, collides_with_other_enemies )
 	set_collision_mask_bit ( 3, collides_with_other_enemies )
 	set_collision_layer_bit ( 3, collides_with_other_enemies )
 	set_collision_layer_bit ( 7, not collides_with_other_enemies )

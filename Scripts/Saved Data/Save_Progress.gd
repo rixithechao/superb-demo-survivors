@@ -7,6 +7,8 @@ export var special_stage_unlocks = {}
 export var character_unlocks = {}
 export var equipment_unlocks = {}
 
+export var seen_controls_prompt = false
+
 
 func get_save_path():
 	return "user://save_progress.res"
