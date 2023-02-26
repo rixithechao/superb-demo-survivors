@@ -11,7 +11,7 @@ orientation_mode = 4
 aim_type = 6
 aim_spread = 4.0
 speed = 10.0
-deceleration = 20.0
+acceleration = Vector3( -180, 0, 0 )
 
 [node name="CollisionShape2D" parent="LocalPos/Collision" index="0"]
 position = Vector2( 15, 0 )

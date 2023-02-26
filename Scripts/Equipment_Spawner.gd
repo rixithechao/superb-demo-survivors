@@ -8,6 +8,8 @@ var timer_projectiles = 0
 var timer_cooldown = 0
 var projectiles_left = 9999
 
+var volley_count = 1
+
 var spawned_objects = []
 
 
@@ -24,6 +26,7 @@ func spawn(volley_index = 0):
 	
 	var spawned = pick_prefab().instance()
 	spawned.volley_index = volley_index
+	spawned.volley_max = volley_count
 	spawned.weapon_data = data
 
 	WorldManager.add_object(spawned)
@@ -39,6 +42,7 @@ func on_setup():
 	timer_projectiles = 0
 	timer_cooldown = current_stats[StatsManager.COOLDOWN]
 	projectiles_left = current_stats[StatsManager.AMOUNT]-1
+	volley_count = projectiles_left
 
 func on_process_equipment(delta):
 	#print("Equipment processing for ", name)
@@ -67,3 +71,4 @@ func on_process_equipment(delta):
 	if  timer_cooldown <= 0  and  projectiles_left == 0:
 		timer_cooldown = current_stats[StatsManager.COOLDOWN]
 		projectiles_left = current_stats[StatsManager.AMOUNT]-1
+		volley_count = projectiles_left

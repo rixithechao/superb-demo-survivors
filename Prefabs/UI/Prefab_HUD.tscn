@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Scripts/Debug/DebugMinimap.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/DynFont_Timer.tres" type="DynamicFont" id=2]
@@ -21,6 +21,7 @@
 [ext_resource path="res://Textures/Inputs/tex_input_gp_trigger_l.png" type="Texture" id=19]
 [ext_resource path="res://Textures/Inputs/tex_input_gp_stick_r.png" type="Texture" id=20]
 [ext_resource path="res://Textures/Inputs/tex_input_gp_stick_l.png" type="Texture" id=21]
+[ext_resource path="res://Textures/Inputs/tex_input_gp_pause_r.png" type="Texture" id=22]
 
 [sub_resource type="StyleBoxFlat" id=5]
 bg_color = Color( 0.160784, 0.2, 0.368627, 1 )
@@ -44,8 +45,8 @@ anchor_bottom = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_top = -62.0
-margin_bottom = -44.0
+margin_top = -92.0
+margin_bottom = -74.0
 custom_fonts/font = ExtResource( 16 )
 text = "CONTROLS:"
 align = 1
@@ -54,38 +55,44 @@ align = 1
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = 293.0
-margin_top = -21.0
-margin_right = -293.0
-margin_bottom = 55.0
+margin_left = 274.0
+margin_top = -62.0
+margin_right = -274.0
+margin_bottom = 40.0
 size_flags_horizontal = 3
 alignment = 1
 
 [node name="Label" type="Label" parent="Controls/MKB"]
-margin_top = 8.0
 margin_right = 62.0
-margin_bottom = 68.0
+margin_bottom = 144.0
 custom_fonts/font = ExtResource( 17 )
 text = "Move
+
 Aim
-Lock Aim"
+
+Lock Aim
+
+Pause"
 
 [node name="Control" type="Control" parent="Controls/MKB"]
 margin_left = 66.0
-margin_right = 116.0
-margin_bottom = 76.0
+margin_right = 143.0
+margin_bottom = 144.0
 grow_horizontal = 2
 size_flags_horizontal = 3
 
 [node name="Label2" type="Label" parent="Controls/MKB"]
-margin_left = 120.0
-margin_top = 8.0
-margin_right = 182.0
-margin_bottom = 68.0
+margin_left = 147.0
+margin_right = 220.0
+margin_bottom = 144.0
 custom_fonts/font = ExtResource( 17 )
 text = "WASD
+
 Cursor
-Left Click"
+
+Left Click
+
+Enter / Esc"
 align = 2
 
 [node name="Gamepad" type="HBoxContainer" parent="Controls"]
@@ -93,47 +100,56 @@ anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
 margin_left = 274.0
-margin_top = -36.0
+margin_top = -62.0
 margin_right = -274.0
-margin_bottom = 66.0
+margin_bottom = 40.0
 grow_horizontal = 2
 size_flags_horizontal = 3
 alignment = 1
 
 [node name="Label" type="Label" parent="Controls/Gamepad"]
 margin_right = 62.0
-margin_bottom = 102.0
+margin_bottom = 144.0
 custom_fonts/font = ExtResource( 17 )
 text = "Move
 
 Aim
 
-Lock Aim"
+Lock Aim
+
+Pause"
 
 [node name="Control" type="Control" parent="Controls/Gamepad"]
 margin_left = 66.0
 margin_right = 141.0
-margin_bottom = 102.0
+margin_bottom = 144.0
 grow_horizontal = 2
 size_flags_horizontal = 3
 
 [node name="Label2" type="Label" parent="Controls/Gamepad"]
 margin_left = 145.0
 margin_right = 220.0
-margin_bottom = 102.0
+margin_bottom = 144.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 17 )
 text = "
 
 
  
-/         "
+/         
+
+"
 align = 2
 
 [node name="TexInputGpFaceR" type="Sprite" parent="Controls/Gamepad/Label2"]
 position = Vector2( 54, 93 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 18 )
+
+[node name="TexInputGpPause" type="Sprite" parent="Controls/Gamepad/Label2"]
+position = Vector2( 38, 136 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 22 )
 
 [node name="TexInputGpTriggerL" type="Sprite" parent="Controls/Gamepad/Label2"]
 position = Vector2( 17, 94 )
@@ -154,46 +170,50 @@ texture = ExtResource( 20 )
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = 293.0
-margin_top = -21.0
-margin_right = -293.0
-margin_bottom = 55.0
+margin_left = 274.0
+margin_top = -47.0
+margin_right = -274.0
+margin_bottom = 29.0
 size_flags_horizontal = 3
 alignment = 1
 
 [node name="Label" type="Label" parent="Controls/Keyboard"]
-margin_top = 18.0
 margin_right = 62.0
-margin_bottom = 57.0
+margin_bottom = 102.0
 custom_fonts/font = ExtResource( 17 )
 text = "Move
-Lock Aim"
+
+Lock Aim
+
+Pause"
 
 [node name="Control" type="Control" parent="Controls/Keyboard"]
 margin_left = 66.0
-margin_right = 101.0
-margin_bottom = 76.0
+margin_right = 139.0
+margin_bottom = 102.0
 grow_horizontal = 2
 size_flags_horizontal = 3
 
 [node name="Label2" type="Label" parent="Controls/Keyboard"]
-margin_left = 105.0
-margin_top = 18.0
-margin_right = 182.0
-margin_bottom = 57.0
+margin_left = 143.0
+margin_right = 220.0
+margin_bottom = 102.0
 custom_fonts/font = ExtResource( 17 )
 text = "Arrow Keys
-Z"
+
+Z
+
+Enter / Esc"
 align = 2
 
 [node name="Go For It!" type="Label" parent="Controls"]
-anchor_top = 0.5
+anchor_top = 0.752
 anchor_right = 1.0
-anchor_bottom = 0.5
-margin_top = 80.0
-margin_bottom = 98.0
+anchor_bottom = 0.852
+margin_top = 0.135986
+margin_bottom = -0.0640259
 custom_fonts/font = ExtResource( 16 )
-text = "Attacks are automatic!
+text = "Attacking is automatic.
 Try to reach the end of the stage!"
 align = 1
 

@@ -12,4 +12,5 @@ autoplay = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="RandomAudioNodePlayer" index="0"]
 stream = ExtResource( 3 )
+pitch_scale = 1.08361
 bus = "SoundEffects"

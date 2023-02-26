@@ -20,26 +20,36 @@ aim_spread = 20.0
 shape = SubResource( 1 )
 
 [node name="AudioStreamPlayer" parent="WhooshSound" index="0"]
-pitch_scale = 0.76929
+pitch_scale = 1.2453
 
 [node name="AudioStreamPlayer" parent="SchwingSound" index="0"]
 stream = ExtResource( 2 )
+volume_db = 5.0
 pitch_scale = 1.10176
 
 [node name="AudioStreamPlayer2" parent="SchwingSound" index="1"]
 stream = ExtResource( 4 )
+volume_db = 5.0
+pitch_scale = 1.13678
 
 [node name="AudioStreamPlayer3" parent="SchwingSound" index="2"]
 stream = ExtResource( 6 )
+volume_db = 5.0
+pitch_scale = 1.18436
 
 [node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="SchwingSound" index="3"]
 stream = ExtResource( 5 )
+volume_db = 5.0
+pitch_scale = 0.991932
 bus = "SoundEffects"
 
 [node name="AudioStreamPlayer5" type="AudioStreamPlayer" parent="SchwingSound" index="4"]
 stream = ExtResource( 3 )
+volume_db = 5.0
+pitch_scale = 1.06007
 bus = "SoundEffects"
 
 [node name="AudioStreamPlayer6" type="AudioStreamPlayer" parent="SchwingSound" index="5"]
 stream = ExtResource( 7 )
+volume_db = 5.0
 bus = "SoundEffects"

@@ -15,16 +15,16 @@ func custom_movement(delta):
 		var current_speed = fire_speed * 1.0
 		#print ("CUBE SPEED: ", abs(current_speed.y))
 
-		if  Input.is_action_just_pressed("ui_up")  and  abs(fire_speed.y) <= 0.01:
+		if  Input.is_action_just_pressed(InputManager.gameplay_controls.move_u)  and  abs(fire_speed.y) <= 0.01:
 			fire_speed = Vector2(0, -1)
 
-		if  Input.is_action_just_pressed("ui_down")  and  abs(fire_speed.y) <= 0.01:
+		if  Input.is_action_just_pressed(InputManager.gameplay_controls.move_d)  and  abs(fire_speed.y) <= 0.01:
 			fire_speed = Vector2(0, 1)
 
-		if  Input.is_action_just_pressed("ui_left")  and  abs(fire_speed.x) <= 0.01:
+		if  Input.is_action_just_pressed(InputManager.gameplay_controls.move_l)  and  abs(fire_speed.x) <= 0.01:
 			fire_speed = Vector2(-1, 0)
 
-		if  Input.is_action_just_pressed("ui_right")  and  abs(fire_speed.x) <= 0.01:
+		if  Input.is_action_just_pressed(InputManager.gameplay_controls.move_r)  and  abs(fire_speed.x) <= 0.01:
 			fire_speed = Vector2(1, 0)
 
 		# speed has changed

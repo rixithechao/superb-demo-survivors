@@ -37,6 +37,13 @@ enum ProjectileAimType {
 	TO_WALL_NEAREST
 }
 
+enum ProjectileSpreadType {
+	RANDOM,
+	FAN,
+	#SINE
+}
+
+
 var weapon_data : Resource
 export(ProjectileOrientType) var orientation_mode
 export var relative_position = true
@@ -44,6 +51,7 @@ export var spawn_radius : float = 0
 export(ProjectileTargetType) var target_type = ProjectileTargetType.PLAYER
 export(ProjectileAimType) var aim_type = ProjectileAimType.PLAYER_HORIZONTAL
 export(ProjectileAlternateType) var alternate_type = ProjectileAlternateType.NONE
+export(ProjectileSpreadType) var spread_type = ProjectileSpreadType.RANDOM
 export var aim_spread : float = 0
 export var speed : float = 1
 export var acceleration : Vector3
@@ -61,6 +69,7 @@ var target_offset = Vector2.ZERO
 var enemies_pierced = 0
 
 var volley_index = 0
+var volley_max = 9999
 
 
 
@@ -150,7 +159,11 @@ func _ready():
 	var normalized_dir = fire_direction.normalized()
 	self.position = self.position + normalized_dir * spawn_radius
 	
-	fire_speed = normalized_dir.rotated(deg2rad(rand_range(-aim_spread, aim_spread))) * get_speed_mult()  #*PlayerManager.get_weapon_speed()
+	var spread_add = rand_range(-aim_spread, aim_spread)
+	if  spread_type == ProjectileSpreadType.FAN:
+		spread_add = lerp(-aim_spread, aim_spread, volley_index/(volley_max-1))
+	
+	fire_speed = normalized_dir.rotated(deg2rad(spread_add)) * get_speed_mult()  #*PlayerManager.get_weapon_speed()
 	
 	$Duration.wait_time = weapon_data.get_stat_current(StatsManager.DURATION)
 	$Duration.start()

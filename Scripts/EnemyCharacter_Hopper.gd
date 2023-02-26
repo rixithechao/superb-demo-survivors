@@ -74,7 +74,7 @@ func _ready():
 
 
 func _on_animation_finished(anim_name):
-	print("HOPPER ", name, " FINISHED ", anim_name)
+	#print("HOPPER ", name, " FINISHED ", anim_name)
 	if  anim_name == "Bounce":
 
 		hop_count = max(hop_count-1, -1)

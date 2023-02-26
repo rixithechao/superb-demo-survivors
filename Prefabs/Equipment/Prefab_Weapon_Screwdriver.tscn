@@ -15,5 +15,5 @@ min_levels = [ 0, 8 ]
 [node name="SoundLoop" type="AudioStreamPlayer" parent="." index="0"]
 pause_mode = 1
 stream = ExtResource( 5 )
-volume_db = -30.0
+volume_db = -25.0
 bus = "SoundEffects"

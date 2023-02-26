@@ -241,9 +241,9 @@ func _on_change_second():
 				WorldManager.add_map_event(mev.event_scene.instance())
 
 	# Fade music out in anticipation of the boss
-	if  not  faded_stage_music  and  one_sec >= 55  and  TimeManager.get_minutes_passed() == current_stage_data.boss_minute - 1:
+	if  not  faded_stage_music  and  one_sec >= 56  and  TimeManager.get_minutes_passed() == current_stage_data.boss_minute - 1:
 		faded_stage_music = true
-		MusicManager.fade_out()
+		MusicManager.fade_out(3)
 	
 
 func _on_change_minute():

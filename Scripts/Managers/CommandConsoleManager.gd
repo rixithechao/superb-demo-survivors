@@ -1,6 +1,7 @@
 extends Node
 
 var logged_strings = []
+var logged_commands = []
 var regex = RegEx.new()
 
 
@@ -29,6 +30,8 @@ func run_command(text):
 	
 	if results.size() > 0:
 		print ("COMMAND ENTERED: ", results)
+
+		logged_commands.append(text)
 		
 		match results[0]:
 			"win":
@@ -58,6 +61,26 @@ func run_command(text):
 				PlayerManager.level_up()
 				emit_signal("triggered_new_menu")
 				pass
+
+			"set_xp":
+				if results.size() > 1  and  results[1].is_valid_integer():
+					log_text(text)
+					PlayerManager.set_xp(int(results[1]))
+				
+				elif results.size() > 1:
+					log_text("Invalid number of experience points")
+
+				else:
+					log_text("No value specified")
+				pass
+
+			"add_xp":
+				if results.size() > 1  and  results[1].is_valid_integer():
+					log_text(text)
+					PlayerManager.give_exp(int(results[1]))
+				
+				elif results.size() > 1:
+					log_text("Invalid number of experience points")
 
 			"set_coins":
 				if results.size() > 1  and  results[1].is_valid_integer():
@@ -112,6 +135,7 @@ func run_command(text):
 						PlayerManager.give_weapon(EquipmentManager.all_weapons[int(results[1])])
 					
 					elif results[1] == "start":
+						log_text(text)
 						PlayerManager.give_weapon(PlayerManager.data.starting_weapon)
 
 					elif results.size() > 1:
