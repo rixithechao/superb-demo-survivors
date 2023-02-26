@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Sound_Weapon_Drill_1.ogg-2781190f5ce4befb90f1b3ba1b9b2ee0.oggstr"
+
+[deps]
+
+source_file="res://Sound Effects/Sound_Weapon_Drill_1.ogg"
+dest_files=[ "res://.import/Sound_Weapon_Drill_1.ogg-2781190f5ce4befb90f1b3ba1b9b2ee0.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
