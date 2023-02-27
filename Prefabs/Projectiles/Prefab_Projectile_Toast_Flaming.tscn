@@ -12,7 +12,7 @@ radius = 24.0
 height = 0.0
 
 [sub_resource type="Gradient" id=1]
-colors = PoolColorArray( 0, 0, 0, 1, 0, 0, 0, 0 )
+colors = PoolColorArray( 0, 0, 0, 0.501961, 0, 0, 0, 0 )
 
 [sub_resource type="GradientTexture" id=2]
 gradient = SubResource( 1 )
@@ -138,9 +138,9 @@ process_material = SubResource( 12 )
 texture = ExtResource( 3 )
 
 [node name="AudioStreamPlayer" parent="RandomAudioNodePlayer" index="0"]
-pitch_scale = 1.06185
+pitch_scale = 1.21794
 
 [node name="FireSound" type="AudioStreamPlayer" parent="." index="3"]
 stream = ExtResource( 5 )
-volume_db = -7.0
+volume_db = -14.0
 autoplay = true

@@ -145,12 +145,12 @@ func _ready():
 		ProjectileAimType.TO_ENEMY_NEAREST:
 			enemy_node = HarmableManager.get_nearest().node
 			if enemy_node == null:
-				fire_direction = PlayerManager.instance.direction
+				fire_direction = PlayerManager.instance.last_facing_arrow
 
 		ProjectileAimType.TO_ENEMY_RANDOM:
 			enemy_node = HarmableManager.get_random()
 			if enemy_node == null:
-				fire_direction = PlayerManager.instance.direction
+				fire_direction = Vector2(1,0).rotated(rand_range(-180,180))
 
 
 	if enemy_node != null:
