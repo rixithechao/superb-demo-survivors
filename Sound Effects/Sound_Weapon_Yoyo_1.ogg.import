@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Sound_Weapon_Yoyo_1.ogg-6db7f9d8fdf1e483892594d3d7545f08.oggstr"
+
+[deps]
+
+source_file="res://Sound Effects/Sound_Weapon_Yoyo_1.ogg"
+dest_files=[ "res://.import/Sound_Weapon_Yoyo_1.ogg-6db7f9d8fdf1e483892594d3d7545f08.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

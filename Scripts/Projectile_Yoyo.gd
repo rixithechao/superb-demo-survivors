@@ -3,6 +3,7 @@ extends Projectile
 var time = 0
 var center
 var start_rot = 0
+var sound_volume
 
 const RADIUS = 32
 const SPEED = 2
@@ -13,8 +14,16 @@ func _ready():
 	time = 0
 	start_rot = deg2rad(rand_range(-aim_spread, aim_spread))
 	center = $LocalPos.position
+	sound_volume = $AudioStreamPlayer.volume_db
+	
+	$AudioStreamPlayer.play()
 	pass
 
+func _process(delta):
+	if $Duration.time_left < 1:
+		$AudioStreamPlayer.volume_db = lerp(-20, sound_volume, $Duration.time_left)
+	._process(delta)
+	pass
 
 func custom_movement(delta):
 	
