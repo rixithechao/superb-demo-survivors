@@ -34,6 +34,7 @@ Terry von Feleday
 Chaoxys
 Hoeloe
 Pheonix
+Tangy
 Paralars
 Money
 Flareblade26
@@ -47,6 +48,7 @@ ZStreifel
 
 = Sound effects (freesound.org):
 16HPanskaZavadovsky_Igor
+<2<
 3bagbrew
 ani_music
 bbrocer
@@ -80,6 +82,7 @@ ursenfuns
 WhaTThes
 XHALE303
 Za-Games
+>>
 
 = Godot plugins, scripts, and shaders:
 Sander Vanhove - Random Audio Node Player

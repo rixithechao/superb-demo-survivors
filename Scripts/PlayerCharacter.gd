@@ -149,10 +149,10 @@ func _process(delta):
 	#update_z()
 	
 	if Input.is_action_just_pressed("ui_focus_next"):
-		MenuManager.open("console")
+		MenuManager.queue("console")
 
 	if Input.is_action_just_pressed(InputManager.gameplay_controls.pause):
-		MenuManager.open("pause")
+		MenuManager.queue("pause")
 
 
 

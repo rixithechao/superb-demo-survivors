@@ -21,11 +21,11 @@ func _process(_delta):
 
 
 func call_menu(name : String):
-	MenuManager.open(name)
+	MenuManager.queue(name)
 	pass
 
 func post_death_menu():
-	MenuManager.open("deathbg")
+	MenuManager.queue("deathbg")
 
 	var signal_data = {"cancelled": (not PlayerManager.show_serac)  and  PlayerManager.coins < PlayerManager.get_revive_cost()}
 	

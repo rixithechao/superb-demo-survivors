@@ -100,7 +100,12 @@ func spawn_player():
 	WorldManager.instance.start_sequence("Sequence_SpawnPlayer")
 
 func start_stage():
+	regular_spawns_active = true
+	faded_stage_music = false
 	started = true
+	cleared = false
+	exiting = false
+
 	MusicManager.play(current_stage_data.music_data)
 	print("STAGE STARTED\n")
 	_on_change_minute()
@@ -135,7 +140,9 @@ func begin_restarting(prompt_character_change : bool = false):
 	else:
 		print ("BEGIN RESTART")
 
-	
+	if  MusicManager.current_track != current_stage_data.music_data:
+		MusicManager.fade_out(1)
+
 	TimeManager.add_pause("restarting")
 	PlayerManager.show_character_select = prompt_character_change
 	WorldManager.instance.start_sequence("Sequence_Restart")

@@ -297,7 +297,7 @@ func level_up():
 			else:
 				exp_needed = (next_level*8)-8
 
-	MenuManager.open("levelup")
+	MenuManager.queue("levelup")
 
 
 

@@ -18,9 +18,22 @@ var resources = {
 
 var pressed_any_key = false
 
+var queue_priority = ["deathbg", "pause"]
+
+var queue_array = []
+var queue_current = ""
+var queue_timer = 3
+
 var stack = []
 var instances_by_name = {}
 var names_by_instance = {}
+
+
+func queue(name):
+	queue_array.append(name)
+
+func clear_queue():
+	queue_array.clear()
 
 
 func open(name):
@@ -54,3 +67,33 @@ func close(node):
 		stack.erase(node)
 		names_by_instance.erase(node)
 		node.queue_free()
+
+
+
+func open_next_in_queue():
+
+	# Certain menus take priority
+	var cut_in_line = false
+	for  name in queue_priority:
+		if  queue_array.has(name):
+			queue_array.erase(name)
+			queue_current = name
+			cut_in_line = true
+			break
+
+	# Otherwise, process as normal
+	if  not cut_in_line:
+		queue_current = queue_array.pop_front()
+
+	# Once the current queue is 
+	open(queue_current)
+
+
+func _process(_delta):
+
+	# Process the queue
+	if  queue_array.size() > 0  and  not instances_by_name.has(queue_current):
+		queue_timer -= 1
+		if  queue_timer <= 0:
+			queue_timer = 3
+			open_next_in_queue()
