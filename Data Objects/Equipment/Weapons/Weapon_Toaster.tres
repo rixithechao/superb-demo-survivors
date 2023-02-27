@@ -103,8 +103,8 @@ Stats = SubResource( 10 )
 script = ExtResource( 13 )
 stats = [ ExtResource( 16 ), ExtResource( 8 ) ]
 values = {
-ExtResource( 16 ): 1.4,
-ExtResource( 8 ): 2
+ExtResource( 8 ): 2,
+ExtResource( 16 ): 1.4
 }
 Values/Area = 1.4
 Values/Pierce = 2
@@ -131,7 +131,7 @@ Values/Cooldown = 0.39
 [sub_resource type="Resource" id=15]
 resource_name = "Level 8"
 script = ExtResource( 12 )
-description = "Greatly reduce cooldown and toast pierces all enemies."
+description = "Greatly reduce cooldown and toast pierces all enemies. The toast is also on fire."
 Type = 0
 Stats = SubResource( 14 )
 
@@ -140,15 +140,15 @@ script = ExtResource( 13 )
 stats = [ ExtResource( 2 ), ExtResource( 5 ), ExtResource( 10 ), ExtResource( 8 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 11 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 9 ) ]
 values = {
 ExtResource( 7 ): 3.0,
+ExtResource( 4 ): 1.0,
+ExtResource( 5 ): 1,
+ExtResource( 6 ): 0.1,
 ExtResource( 10 ): 2.0,
 ExtResource( 2 ): 10,
 ExtResource( 8 ): 1,
+ExtResource( 3 ): 1.0,
 ExtResource( 11 ): 1.0,
-ExtResource( 4 ): 1.0,
-ExtResource( 6 ): 0.1,
-ExtResource( 5 ): 1,
-ExtResource( 9 ): 1.5,
-ExtResource( 3 ): 1.0
+ExtResource( 9 ): 1.5
 }
 Values/Damage = 10
 Values/Amount = 1
