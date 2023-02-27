@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://Prefabs/UI/Prefab_Menu.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Fonts/DynFont_Headers.tres" type="DynamicFont" id=2]
@@ -22,6 +22,12 @@
 [ext_resource path="res://Textures/UI/spr_results_time_a2xt.png" type="Texture" id=20]
 [ext_resource path="res://Textures/UI/spr_results_revives_a2xt.png" type="Texture" id=21]
 [ext_resource path="res://Textures/UI/spr_hud_tooth_a2xt.png" type="Texture" id=22]
+[ext_resource path="res://Textures/UI/spr_stat_attack.png" type="Texture" id=23]
+[ext_resource path="res://Textures/UI/spr_stat_defense.png" type="Texture" id=24]
+[ext_resource path="res://Textures/UI/spr_stat_attackspeed.png" type="Texture" id=25]
+[ext_resource path="res://Textures/UI/spr_stat_attacksize.png" type="Texture" id=26]
+[ext_resource path="res://Textures/UI/spr_stat_movement.png" type="Texture" id=27]
+[ext_resource path="res://Textures/UI/spr_stat_crit.png" type="Texture" id=28]
 
 [sub_resource type="StyleBoxEmpty" id=2]
 
@@ -732,21 +738,172 @@ size_flags_horizontal = 1
 visible = false
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 81.0
-margin_right = 108.0
-margin_bottom = 113.0
+margin_left = 112.0
+margin_top = 36.0
+margin_right = 220.0
+margin_bottom = 68.0
 size_flags_horizontal = 1
 slots_type = 2
 row_name_for_debug = "boosts"
 
 [node name="Space" type="Control" parent="Control/Results/HBoxContainer" index="1"]
 margin_left = 112.0
+margin_right = 143.0
+margin_bottom = 126.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control/Results/HBoxContainer" index="2"]
+margin_left = 147.0
+margin_right = 207.0
+margin_bottom = 126.0
+custom_constants/separation = 0
+
+[node name="Attack" parent="Control/Results/HBoxContainer/VBoxContainer2" index="0" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 60.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 130, 10 )
+
+[node name="Icons" parent="Control/Results/HBoxContainer/VBoxContainer2/Attack" index="0"]
+margin_bottom = 20.0
+texture = ExtResource( 23 )
+
+[node name="Name" parent="Control/Results/HBoxContainer/VBoxContainer2/Attack" index="1"]
+margin_right = 46.0
+margin_bottom = 20.0
+text = "+"
+
+[node name="Value" parent="Control/Results/HBoxContainer/VBoxContainer2/Attack" index="2"]
+margin_left = 50.0
+margin_right = 60.0
+margin_bottom = 20.0
+text = "0"
+
+[node name="Defense" parent="Control/Results/HBoxContainer/VBoxContainer2" index="1" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 20.0
+margin_right = 60.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 130, 10 )
+
+[node name="Icons" parent="Control/Results/HBoxContainer/VBoxContainer2/Defense" index="0"]
+margin_bottom = 20.0
+texture = ExtResource( 24 )
+
+[node name="Name" parent="Control/Results/HBoxContainer/VBoxContainer2/Defense" index="1"]
+margin_right = 46.0
+margin_bottom = 20.0
+text = "+"
+
+[node name="Value" parent="Control/Results/HBoxContainer/VBoxContainer2/Defense" index="2"]
+margin_left = 50.0
+margin_right = 60.0
+margin_bottom = 20.0
+text = "0"
+
+[node name="Crit" parent="Control/Results/HBoxContainer/VBoxContainer2" index="2" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 40.0
+margin_right = 60.0
+margin_bottom = 60.0
+rect_pivot_offset = Vector2( 130, 10 )
+
+[node name="Icons" parent="Control/Results/HBoxContainer/VBoxContainer2/Crit" index="0"]
+margin_bottom = 20.0
+texture = ExtResource( 28 )
+
+[node name="Name" parent="Control/Results/HBoxContainer/VBoxContainer2/Crit" index="1"]
+margin_right = 46.0
+margin_bottom = 20.0
+text = "+"
+
+[node name="Value" parent="Control/Results/HBoxContainer/VBoxContainer2/Crit" index="2"]
+margin_left = 50.0
+margin_right = 60.0
+margin_bottom = 20.0
+text = "0"
+
+[node name="Movement" parent="Control/Results/HBoxContainer/VBoxContainer2" index="3" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 60.0
+margin_right = 60.0
+margin_bottom = 80.0
+rect_pivot_offset = Vector2( 130, 10 )
+
+[node name="Icons" parent="Control/Results/HBoxContainer/VBoxContainer2/Movement" index="0"]
+margin_bottom = 20.0
+texture = ExtResource( 27 )
+
+[node name="Name" parent="Control/Results/HBoxContainer/VBoxContainer2/Movement" index="1"]
+margin_right = 46.0
+margin_bottom = 20.0
+text = "+"
+
+[node name="Value" parent="Control/Results/HBoxContainer/VBoxContainer2/Movement" index="2"]
+margin_left = 50.0
+margin_right = 60.0
+margin_bottom = 20.0
+text = "0"
+
+[node name="AttackSpeed" parent="Control/Results/HBoxContainer/VBoxContainer2" index="4" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 80.0
+margin_right = 60.0
+margin_bottom = 100.0
+rect_pivot_offset = Vector2( 130, 10 )
+
+[node name="Icons" parent="Control/Results/HBoxContainer/VBoxContainer2/AttackSpeed" index="0"]
+margin_bottom = 20.0
+texture = ExtResource( 25 )
+
+[node name="Name" parent="Control/Results/HBoxContainer/VBoxContainer2/AttackSpeed" index="1"]
+margin_right = 46.0
+margin_bottom = 20.0
+text = "+"
+
+[node name="Value" parent="Control/Results/HBoxContainer/VBoxContainer2/AttackSpeed" index="2"]
+margin_left = 50.0
+margin_right = 60.0
+margin_bottom = 20.0
+text = "0"
+
+[node name="AttackSize" parent="Control/Results/HBoxContainer/VBoxContainer2" index="5" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 100.0
+margin_right = 60.0
+margin_bottom = 120.0
+rect_pivot_offset = Vector2( 130, 10 )
+
+[node name="Icons" parent="Control/Results/HBoxContainer/VBoxContainer2/AttackSize" index="0"]
+margin_bottom = 20.0
+texture = ExtResource( 26 )
+
+[node name="Name" parent="Control/Results/HBoxContainer/VBoxContainer2/AttackSize" index="1"]
+margin_right = 46.0
+margin_bottom = 20.0
+text = "+"
+
+[node name="Value" parent="Control/Results/HBoxContainer/VBoxContainer2/AttackSize" index="2"]
+margin_left = 50.0
+margin_right = 60.0
+margin_bottom = 20.0
+text = "0"
+
+[node name="Space2" type="Control" parent="Control/Results/HBoxContainer" index="3"]
+margin_left = 211.0
 margin_right = 242.0
 margin_bottom = 126.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/Results/HBoxContainer" index="2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Results/HBoxContainer" index="4"]
 margin_left = 246.0
 margin_right = 506.0
 margin_bottom = 126.0
@@ -1000,6 +1157,12 @@ anims/Sequence_GameOver = SubResource( 1 )
 [connection signal="gui_input" from="Control/ItemLists/DeathList" to="Control/ItemLists/DeathList" method="_on_ItemList_gui_input"]
 [connection signal="gui_input" from="Control/ItemLists/ClearList" to="Control/ItemLists/ClearList" method="_on_ItemList_gui_input"]
 
+[editable path="Control/Results/HBoxContainer/VBoxContainer2/Attack"]
+[editable path="Control/Results/HBoxContainer/VBoxContainer2/Defense"]
+[editable path="Control/Results/HBoxContainer/VBoxContainer2/Crit"]
+[editable path="Control/Results/HBoxContainer/VBoxContainer2/Movement"]
+[editable path="Control/Results/HBoxContainer/VBoxContainer2/AttackSpeed"]
+[editable path="Control/Results/HBoxContainer/VBoxContainer2/AttackSize"]
 [editable path="Control/Results/HBoxContainer/VBoxContainer/Time"]
 [editable path="Control/Results/HBoxContainer/VBoxContainer/Level"]
 [editable path="Control/Results/HBoxContainer/VBoxContainer/Coins"]

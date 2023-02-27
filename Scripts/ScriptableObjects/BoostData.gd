@@ -2,6 +2,8 @@ tool
 extends EquipmentData
 class_name BoostData
 
+export var stat_id = ""
+
 func get_equipment_type():
 	return EquipmentData.EquipmentType.BOOST
 

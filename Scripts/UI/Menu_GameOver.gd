@@ -72,6 +72,21 @@ func _ready():
 	bootz.slots_const = PlayerManager.EQUIP_SLOTS
 	bootz._on_get_equipment(EquipmentData.EquipmentType.BOOST, PlayerManager.equipment.boosts)
 
+	# Set boosts
+	for boost in PlayerManager.equipment.boosts:
+		match boost.stat_id:
+			"damage":
+				$Control/Results/HBoxContainer/VBoxContainer2/Attack/Value.text = String(boost.get_current_level())
+			"defense":
+				$Control/Results/HBoxContainer/VBoxContainer2/Defense/Value.text = String(boost.get_current_level())
+			"critical":
+				$Control/Results/HBoxContainer/VBoxContainer2/Crit/Value.text = String(boost.get_current_level())
+			"movement":
+				$Control/Results/HBoxContainer/VBoxContainer2/Movement/Value.text = String(boost.get_current_level())
+			"attackspeed":
+				$Control/Results/HBoxContainer/VBoxContainer2/AttackSpeed/Value.text = String(boost.get_current_level())
+			"attacksize":
+				$Control/Results/HBoxContainer/VBoxContainer2/AttackSize/Value.text = String(boost.get_current_level())
 	
 	# The player has cleared the stage
 	if  StageManager.cleared:

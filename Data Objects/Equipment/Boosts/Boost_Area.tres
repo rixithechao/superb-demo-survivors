@@ -3,7 +3,7 @@
 [ext_resource path="res://Scripts/ScriptableObjects/BoostData.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/ScriptableObjects/StatSheetData.gd" type="Script" id=2]
 [ext_resource path="res://Data Objects/Stats/Stat_Area.tres" type="Resource" id=3]
-[ext_resource path="res://Textures/Items/spr_boost_up.png" type="Texture" id=4]
+[ext_resource path="res://Textures/Items/spr_boost_attacksize.png" type="Texture" id=4]
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 2 )
@@ -23,3 +23,4 @@ max_level = 1000
 rarity = 35.0
 stats = SubResource( 1 )
 level_modifiers = [  ]
+stat_id = "attacksize"

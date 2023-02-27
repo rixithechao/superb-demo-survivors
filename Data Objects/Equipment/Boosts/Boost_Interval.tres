@@ -23,3 +23,4 @@ max_level = 1000
 rarity = 35.0
 stats = SubResource( 1 )
 level_modifiers = [  ]
+stat_id = "interval"
