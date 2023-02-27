@@ -2,7 +2,7 @@ extends Equipment
 
 var effect = preload("res://Prefabs/VFX/Prefab_VFX_Chopin.tscn")
 
-var chances = [ 0.15, 0.2, 0.25, 0.3, 0.4 ]
+var chances = [ 0.1, 0.15, 0.2, 0.25, 0.3 ]
 
 func on_hit(signal_data):
 	if  randf() <= chances[data.get_current_level()-1]:

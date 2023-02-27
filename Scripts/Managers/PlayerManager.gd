@@ -312,6 +312,11 @@ func give_equipment(eqpData, type_array = null, should_emit_signal = true):
 				type_array = equipment.passives
 			EquipmentData.EquipmentType.BOOST:
 				type_array = equipment.boosts
+	
+	if eqpData.equipment_type == EquipmentData.EquipmentType.PICKUP:
+		for i in eqpData.quantity:
+			StageManager.spawn_pickup(eqpData.pickup, instance.position + Vector2(8,0).rotated(rand_range(-180,180)))
+		return false
 
 	var is_new = (not equipment_levels.has(eqpData))
 	

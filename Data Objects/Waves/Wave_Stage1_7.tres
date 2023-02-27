@@ -20,7 +20,7 @@ final = false
 [sub_resource type="Resource" id=2]
 resource_name = "Duck Piece"
 script = ExtResource( 2 )
-interval = 2.0
+interval = 1.5
 delay = 0.0
 enemies = [ ExtResource( 3 ), ExtResource( 3 ), ExtResource( 3 ), ExtResource( 3 ), ExtResource( 3 ), ExtResource( 8 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 9 ), ExtResource( 10 ) ]
 

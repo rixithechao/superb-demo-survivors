@@ -20,7 +20,7 @@ final = false
 [sub_resource type="Resource" id=2]
 resource_name = "Goopas (Hat)"
 script = ExtResource( 2 )
-interval = 2.0
+interval = 0.4
 delay = 0.0
 enemies = [ ExtResource( 8 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ]
 

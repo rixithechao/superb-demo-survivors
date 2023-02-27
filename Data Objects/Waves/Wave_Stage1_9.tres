@@ -9,7 +9,7 @@
 [sub_resource type="Resource" id=2]
 resource_name = "Caterpillars"
 script = ExtResource( 2 )
-interval = 1.75
+interval = 0.75
 delay = 0.0
 enemies = [ ExtResource( 3 ) ]
 

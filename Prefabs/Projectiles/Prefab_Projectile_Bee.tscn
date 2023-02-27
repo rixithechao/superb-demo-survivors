@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Prefabs/Templates/Prefab_Projectile.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Projectile_Bee.gd" type="Script" id=2]
@@ -17,6 +17,23 @@
 resource_local_to_scene = true
 radius = 13.0
 height = 0.0
+
+[sub_resource type="Animation" id=3]
+resource_name = "Default"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 160.0
@@ -38,6 +55,12 @@ scale = Vector2( 2, 2 )
 texture = ExtResource( 7 )
 offset = Vector2( 0, -1 )
 hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="LocalPos/Collision/Graphic" index="1"]
+root_node = NodePath("../Sprite")
+autoplay = "Default"
+playback_speed = 2.0
+anims/Default = SubResource( 3 )
 
 [node name="HomingRange" type="Area2D" parent="LocalPos" index="1"]
 visible = false
@@ -69,6 +92,7 @@ sounds = [ ExtResource( 3 ), ExtResource( 5 ), ExtResource( 6 ) ]
 
 [node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="BuzzSound" index="3"]
 stream = ExtResource( 11 )
+pitch_scale = 1.04421
 bus = "SoundEffects"
 script = ExtResource( 4 )
 sounds = [ ExtResource( 3 ), ExtResource( 5 ), ExtResource( 6 ) ]

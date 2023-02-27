@@ -9,7 +9,7 @@
 [node name="Pickup - Med Exp" groups=["exp"] instance=ExtResource( 1 )]
 position = Vector2( 0, -12 )
 script = ExtResource( 3 )
-exp_granted = 8
+exp_granted = 5
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 2 )
