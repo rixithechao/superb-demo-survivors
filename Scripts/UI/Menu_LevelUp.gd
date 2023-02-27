@@ -21,7 +21,8 @@ func _ready():
 		var name = eqp.name
 		
 		var next_level = 1
-		if  PlayerManager.equipment_levels.has(eqp):
+		
+		if  PlayerManager.equipment_levels.has(eqp) and eqp.equipment_type != EquipmentData.EquipmentType.BOOST:
 			next_level = PlayerManager.equipment_levels[eqp]+1
 			name = "(Lv. " + String(next_level) + ") " + eqp.name
 			
