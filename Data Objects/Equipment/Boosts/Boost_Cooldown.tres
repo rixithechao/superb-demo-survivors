@@ -10,11 +10,11 @@
 script = ExtResource( 2 )
 stats = [ ExtResource( 3 ), ExtResource( 5 ) ]
 values = {
-ExtResource( 3 ): 1.08,
-ExtResource( 5 ): 1.1
+ExtResource( 3 ): 0.98,
+ExtResource( 5 ): 0.95
 }
-Values/Cooldown = 1.08
-"Values/Shot Interval" = 1.1
+Values/Cooldown = 0.98
+"Values/Shot Interval" = 0.95
 "Preset or Remove" = 0
 
 [resource]

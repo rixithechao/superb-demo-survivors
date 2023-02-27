@@ -30,7 +30,7 @@ func custom_movement(delta):
 	var time_passed = TimeManager.time_rate * delta
 	time = time + time_passed
 
-	var spd = SPEED * get_speed_mult()
+	var spd = SPEED * sqrt(get_speed_mult())
 	
 	$LocalPos.position.x = RADIUS * time * spd * cos(time * spd + start_rot)
 	$LocalPos.position.y = RADIUS * time * spd * sin(time * spd + start_rot)

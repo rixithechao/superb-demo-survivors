@@ -10,12 +10,12 @@
 script = ExtResource( 3 )
 stats = [ ExtResource( 4 ), ExtResource( 5 ) ]
 values = {
-ExtResource( 5 ): 1.05,
-ExtResource( 4 ): 1.05,
-Resource( "res://Data Objects/Stats/Stat_Damage.tres" ): 1.1
+Resource( "res://Data Objects/Stats/Stat_Damage.tres" ): 1.1,
+ExtResource( 5 ): 1.08,
+ExtResource( 4 ): 1.06
 }
-"Values/Effect Chance" = 1.05
-"Values/Crit Damage Multiplier" = 1.05
+"Values/Effect Chance" = 1.06
+"Values/Crit Damage Multiplier" = 1.08
 "Preset or Remove" = 0
 
 [resource]
