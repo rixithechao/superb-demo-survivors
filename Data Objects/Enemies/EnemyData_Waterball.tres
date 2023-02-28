@@ -12,11 +12,11 @@
 script = ExtResource( 7 )
 stats = [ ExtResource( 2 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 1 ), ExtResource( 3 ) ]
 values = {
-ExtResource( 1 ): 1.0,
-ExtResource( 2 ): 9999,
-ExtResource( 5 ): 20.0,
 ExtResource( 3 ): 0.0,
-ExtResource( 4 ): 4.0
+ExtResource( 5 ): 20.0,
+ExtResource( 4 ): 4.0,
+ExtResource( 2 ): 9999,
+ExtResource( 1 ): 1.0
 }
 "Values/Max HP" = 9999
 Values/Damage = 20.0
@@ -31,5 +31,5 @@ name = "Waterball"
 stats = SubResource( 1 )
 height = 1.0
 spiky = false
-kill_resistance = false
+kill_resistance = 1
 hp_scaling = 0.0

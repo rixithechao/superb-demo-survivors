@@ -493,17 +493,18 @@ custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 2
 custom_fonts/font = ExtResource( 3 )
-text = "PREVIEW v1.0.1"
+text = "PREVIEW v1.0.2"
 valign = 1
 
 [node name="ColorRect" type="ColorRect" parent="Background" index="3"]
 margin_right = 768.0
 margin_bottom = 432.0
-color = Color( 0, 0, 0, 0 )
+color = Color( 0, 0, 0, 1 )
 
 [node name="Demo" parent="." index="2" instance=ExtResource( 18 )]
 visible = false
-position = Vector2( 182, 412 )
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 360, 412 )
 animate_while_paused = true
 
 [node name="Shadow" parent="Demo" index="0"]
@@ -511,7 +512,8 @@ polygon = PoolVector2Array( -1.39876e-06, -32, 12.2459, -29.5641, 22.6274, -22.6
 
 [node name="Iris" parent="." index="3" instance=ExtResource( 19 )]
 visible = false
-position = Vector2( 585, 414 )
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 413, 414 )
 animate_while_paused = true
 
 [node name="Shadow" parent="Iris" index="0"]
@@ -537,15 +539,16 @@ align = 1
 valign = 1
 
 [node name="Panel" type="Panel" parent="." index="5"]
+modulate = Color( 1, 1, 1, 0 )
 self_modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = 373.0
-margin_top = 121.0
+margin_top = 192.0
 margin_right = 413.0
-margin_bottom = 161.0
+margin_bottom = 232.0
 
 [node name="LogoGametitle" type="Sprite" parent="Panel" index="0"]
 position = Vector2( 15, -23 )
@@ -553,7 +556,7 @@ scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 16 )
 
 [node name="Skew" type="Node2D" parent="." index="6"]
-position = Vector2( 388, 222 )
+position = Vector2( 388, 505 )
 script = ExtResource( 13 )
 
 [node name="Panel" type="NinePatchRect" parent="Skew" index="0"]
@@ -650,6 +653,7 @@ fixed_icon_size = Vector2( 32, 32 )
 script = ExtResource( 12 )
 menu_node = NodePath("../../..")
 cursor_sound_node = NodePath("../../../CursorSound")
+active = false
 immediate_focus = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="7"]

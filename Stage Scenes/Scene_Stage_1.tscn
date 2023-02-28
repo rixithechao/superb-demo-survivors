@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Prefabs/Templates/Prefab_GameWorld_Procedural.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Tile Rules/TileRule_Beach.gd" type="Script" id=2]
@@ -9,6 +9,10 @@
 [ext_resource path="res://Prefabs/Scenery/Prefab_Landmark_CircleJungleItem.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Prefabs/Breakables/Prefab_Breakable_IslandsCrate.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Prefabs/Scenery/Prefab_Landmark_HomeJungle.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Prefabs/Scenery/Prefab_Landmark_RockCluster2.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Prefabs/Scenery/Prefab_Landmark_RockCluster1.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Prefabs/Scenery/Prefab_Landmark_EyeJungle.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Prefabs/Scenery/Prefab_Landmark_SteveJungle.tscn" type="PackedScene" id=13]
 
 [sub_resource type="OpenSimplexNoise" id=6]
 resource_local_to_scene = true
@@ -55,8 +59,8 @@ tracks/1/keys = {
 
 [node name="World" instance=ExtResource( 1 )]
 map_size = Vector2( 400, 400 )
-landmarks = [ ExtResource( 3 ), ExtResource( 6 ), ExtResource( 4 ), ExtResource( 5 ) ]
-special_landmarks = [ ExtResource( 9 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 7 ) ]
+landmarks = [ ExtResource( 3 ), ExtResource( 6 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 11 ), ExtResource( 10 ) ]
+special_landmarks = [ ExtResource( 9 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 12 ), ExtResource( 12 ), ExtResource( 12 ), ExtResource( 12 ), ExtResource( 13 ) ]
 breakables = [ ExtResource( 8 ) ]
 landmark_count = 100
 breakables_count = 400
@@ -77,9 +81,10 @@ margin_right = 1024.0
 margin_bottom = 1024.0
 texture = SubResource( 8 )
 
-[node name="SequenceAnimation" parent="." index="6"]
+[node name="SequenceAnimation" parent="." index="7"]
 anims/Sequence_FadeInHUD = SubResource( 5 )
 
 [editable path="HUD"]
 [editable path="HUD/Elements/Weapons"]
 [editable path="HUD/Elements/Passives"]
+[editable path="HUD/Elements/Boosts"]

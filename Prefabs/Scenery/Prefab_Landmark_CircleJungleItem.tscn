@@ -36,21 +36,28 @@ position = Vector2( -234, -190 )
 
 [node name="Breakable - Crate" parent="." instance=ExtResource( 3 )]
 position = Vector2( -128, -85 )
+land_range = Vector2( 0, 3 )
 
 [node name="Breakable - Crate2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 79, -115 )
+land_range = Vector2( 0, 3 )
 
 [node name="Breakable - Crate3" parent="." instance=ExtResource( 3 )]
 position = Vector2( 132, 60 )
+land_range = Vector2( 0, 3 )
 
 [node name="Breakable - Crate4" parent="." instance=ExtResource( 3 )]
 position = Vector2( -134, 77 )
+land_range = Vector2( 0, 3 )
 
 [node name="Breakable - Crate5" parent="." instance=ExtResource( 3 )]
 position = Vector2( -9, -5 )
+land_range = Vector2( 0, 3 )
 
 [node name="Breakable - Crate6" parent="." instance=ExtResource( 3 )]
 position = Vector2( 225, -32 )
+land_range = Vector2( 0, 3 )
 
 [node name="Breakable - Crate7" parent="." instance=ExtResource( 3 )]
 position = Vector2( -231, -3 )
+land_range = Vector2( 0, 3 )

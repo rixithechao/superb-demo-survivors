@@ -6,6 +6,8 @@ var spawner_vector = preload("res://Prefabs/Enemy Warnings/Prefab_EnemyWarning_V
 
 var pre_final_shockwave = preload("res://Prefabs/Shockwaves/Prefab_Shockwave_FinalBossPreWipe.tscn")
 
+var voxatron_shockwave = preload("res://Prefabs/Shockwaves/Prefab_Shockwave_KillEnemies.tscn")
+
 var kills = 0
 
 
@@ -24,10 +26,23 @@ func add_kill():
 	emit_signal("change_kills")
 
 
-func clear_all_enemies():
-	var inst = pre_final_shockwave.instance()
-	inst.global_position = PlayerManager.instance.global_position
+func clear_enemies(shockwave_type = null, source_node = null):
+	if  shockwave_type == null:
+		shockwave_type = pre_final_shockwave
+
+	if  source_node == null:
+		source_node = PlayerManager.instance
+
+	var inst = shockwave_type.instance()
+	inst.global_position = source_node.global_position
 	WorldManager.add_object(inst)
+
+func clear_all_enemies(source_node = null):
+	clear_enemies(pre_final_shockwave, source_node)
+
+func clear_normal_enemies(source_node = null):
+	clear_enemies(voxatron_shockwave, source_node)
+
 
 
 
@@ -75,7 +90,7 @@ func spawn_boss(boss_data, position = null):
 	spawned.is_final_boss = boss_data.final
 	
 	if  boss_data.final:
-		clear_all_enemies()
+		clear_all_enemies(spawned)
 		
 		var boss_music = StageManager.current_stage_data.boss_music_data
 		if  boss_music == null:

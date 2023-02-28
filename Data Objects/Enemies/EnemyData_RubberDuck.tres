@@ -13,11 +13,11 @@
 script = ExtResource( 3 )
 stats = [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 8 ), ExtResource( 6 ), ExtResource( 7 ) ]
 values = {
-ExtResource( 6 ): 1.0,
-ExtResource( 4 ): 60,
-ExtResource( 5 ): 10.0,
 ExtResource( 7 ): 0.0,
-ExtResource( 8 ): 3.0
+ExtResource( 5 ): 10.0,
+ExtResource( 8 ): 3.0,
+ExtResource( 4 ): 60,
+ExtResource( 6 ): 1.0
 }
 "Values/Max HP" = 60
 Values/Damage = 10.0
@@ -32,6 +32,6 @@ name = "Catfish"
 stats = SubResource( 1 )
 height = 1.0
 spiky = false
-kill_resistance = false
+kill_resistance = 0
 hp_scaling = 0.0
 drop_table = ExtResource( 2 )

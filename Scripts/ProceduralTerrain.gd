@@ -138,11 +138,12 @@ func generateLandmarks():
 
 		# Spawn the others in random locations around the map
 		if  num_special > 1:
-			for i in range(1,num_special-1):
+			for i in range(1,num_special):
 				var pos = addLandmarkPoint(points_landmarks_special)
 				var sc = stage_data.special_landmarks[i]
 				var sc_spawned = sc.instance()
 				sc_spawned.position = WorldManager.tile_to_world(pos - map_size_tile_offset)
+				sc_spawned.add_to_group("landmark_special")
 				WorldManager.add_object(sc_spawned)
 				
 				#print ("SPECIAL LANDMARK ", i, " AT ", pos, "/", sc_spawned.global_position)

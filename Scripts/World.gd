@@ -2,6 +2,7 @@ extends Node2D
 
 
 export(Color) var tint = Color.white
+export(Vector2) var map_size = Vector2(400,400)
 
 
 func _ready():

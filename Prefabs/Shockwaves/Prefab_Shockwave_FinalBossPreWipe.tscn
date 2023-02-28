@@ -7,8 +7,6 @@
 script = ExtResource( 2 )
 speed = 4.0
 thickness = 512.0
-kill_bosses = true
+max_size = 3072.0
+kill_force = 1
 prevent_drops = true
-
-[node name="RingSprite" parent="." index="2"]
-modulate = Color( 1, 1, 1, 0 )

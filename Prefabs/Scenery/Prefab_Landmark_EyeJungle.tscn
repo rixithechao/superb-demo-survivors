@@ -1,0 +1,73 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Prefabs/Scenery/Prefab_Scenery_Tree_Coconut.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/Landmark.gd" type="Script" id=2]
+[ext_resource path="res://Prefabs/Scenery/Prefab_Scenery_Rock.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Prefabs/Scenery/Prefab_Scenery_Rock_Big.tscn" type="PackedScene" id=4]
+
+[node name="Landmark - Circle Jungle" type="Node2D" groups=["landmark"]]
+script = ExtResource( 2 )
+
+[node name="Coconut Tree" parent="." instance=ExtResource( 1 )]
+position = Vector2( 3, -197 )
+
+[node name="Coconut Tree2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 237, -143 )
+scale = Vector2( -1, 1 )
+
+[node name="Coconut Tree8" parent="." instance=ExtResource( 1 )]
+position = Vector2( -248, -143 )
+
+[node name="Rock9" parent="." instance=ExtResource( 3 )]
+position = Vector2( -12, -95 )
+
+[node name="Rock7" parent="." instance=ExtResource( 3 )]
+position = Vector2( 50, -78 )
+scale = Vector2( -1, 1 )
+
+[node name="Rock2" parent="." instance=ExtResource( 3 )]
+position = Vector2( -62, -78 )
+rotation = -3.14159
+scale = Vector2( 1, -1 )
+
+[node name="Rock3" parent="." instance=ExtResource( 3 )]
+position = Vector2( -78, -26 )
+
+[node name="Rock6" parent="." instance=ExtResource( 3 )]
+position = Vector2( 79, -33 )
+
+[node name="Big Rock" parent="." instance=ExtResource( 4 )]
+position = Vector2( 3, -29 )
+rotation = 3.14159
+scale = Vector2( 1, -1 )
+
+[node name="Rock4" parent="." instance=ExtResource( 3 )]
+position = Vector2( -50, 21 )
+rotation = -3.14159
+scale = Vector2( 1, -1 )
+
+[node name="Rock5" parent="." instance=ExtResource( 3 )]
+position = Vector2( 63, 10 )
+scale = Vector2( -1, 1 )
+
+[node name="Rock8" parent="." instance=ExtResource( 3 )]
+position = Vector2( 0, 40 )
+
+[node name="Coconut Tree3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 479, 40 )
+
+[node name="Coconut Tree7" parent="." instance=ExtResource( 1 )]
+position = Vector2( -485, 40 )
+rotation = 3.14159
+scale = Vector2( 1, -1 )
+
+[node name="Coconut Tree4" parent="." instance=ExtResource( 1 )]
+position = Vector2( 298, 212 )
+
+[node name="Coconut Tree5" parent="." instance=ExtResource( 1 )]
+position = Vector2( 0, 290 )
+
+[node name="Coconut Tree6" parent="." instance=ExtResource( 1 )]
+position = Vector2( -321, 212 )
+rotation = 3.14159
+scale = Vector2( 1, -1 )

@@ -39,7 +39,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id=7]
 resource_name = "Sequence_ControlsPrompt"
-length = 3.0
+length = 4.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("HUD/Controls:modulate")
 tracks/0/interp = 1
@@ -47,7 +47,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3, 2.5, 3 ),
+"times": PoolRealArray( 0, 0.3, 3.4, 4 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
@@ -59,7 +59,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 3 ),
+"times": PoolRealArray( 4 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],

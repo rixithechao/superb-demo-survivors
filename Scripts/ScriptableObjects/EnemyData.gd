@@ -13,7 +13,7 @@ export var spiky : bool = false
 #export var move_speed : float = 1
 #export var knockback_resistance : float = 0
 #export var freeze_resistance : float = 0   
-export var kill_resistance : bool = false
+export var kill_resistance : int = 0
 export(float, 0,1) var hp_scaling
 export var drop_table : Resource
 

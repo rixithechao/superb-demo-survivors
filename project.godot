@@ -328,6 +328,16 @@ _global_script_classes=[ {
 "class": "WeaponData",
 "language": "GDScript",
 "path": "res://Scripts/ScriptableObjects/WeaponData.gd"
+}, {
+"base": "Node2D",
+"class": "World_Fixed",
+"language": "GDScript",
+"path": "res://Scripts/World_Fixed.gd"
+}, {
+"base": "Node2D",
+"class": "World_Procedural",
+"language": "GDScript",
+"path": "res://Scripts/World_Procedural.gd"
 } ]
 _global_script_class_icons={
 "AntialiasedLine2D": "res://addons/antialiased_line2d/antialiased_line2d.svg",
@@ -393,7 +403,9 @@ _global_script_class_icons={
 "VFX": "",
 "Warning": "",
 "WaveData": "",
-"WeaponData": ""
+"WeaponData": "",
+"World_Fixed": "",
+"World_Procedural": ""
 }
 
 [application]

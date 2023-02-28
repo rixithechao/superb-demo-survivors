@@ -1,7 +1,5 @@
 extends "res://Scripts/World.gd"
-
-
-export(Vector2) var map_size = Vector2(400,400)
+class_name World_Procedural
 
 export(Array, PackedScene) var landmarks
 export(Array, PackedScene) var special_landmarks

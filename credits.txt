@@ -2,11 +2,11 @@
 Made with Godot 3.5.1
 with involvement from the Talkhaus, Codehaus and Spotzone communities
 
-= Lead Dinkus:
+= Lead Devs:
 Rixitic
+Hoeloe
 
 = The Council of Part-Time raoconspirators:
-Hoeloe
 Chaoxys
 KobaBeach
 Enjl
@@ -14,22 +14,27 @@ Enjl
 = The Others Who Helped Plan This:
 Shane the Destroyer
 Camwoodstock & Tori
+<2<
 SAJewers
 Sentinel
 Catabo
 Duker
 Zinfandel Z.T.
 Tangy
+>>
 
 = Even further input from:
+<2<
 MyOtheHedgeFox
 FusionWarrior
 memnarch
 PizzaPony
 Gray Nine
+>>
 If you voted in the name poll and want to be here, ping or DM Rixi
 
 = Character and equipment sprites (A2XT2 devkit / talkhaus):
+<2<
 Terry von Feleday
 Chaoxys
 Hoeloe
@@ -38,6 +43,7 @@ Paralars
 Tangy
 Money
 Flareblade26
+>>
 
 = Sound effect packs:
 Audio Alchemist
@@ -85,23 +91,40 @@ TrygveN
 ursenfuns
 WhaTThes
 XHALE303
-Za-Games
 >>
+Za-Games
 
 = Godot plugins, scripts, and shaders:
 Sander Vanhove - Random Audio Node Player
-Calinou - Antialiased Line2D
-MakovWait - Improved Resource Picker
-Yuri Sizov - Editor Theme Explorer
-Matthieu Huvé - Max Size Container
-Raffaele Picca - raffaelepicca.com - Line2D Trails
-Elid Elid - Halftone Shader
+<3<
+Calinou
+---
+Antialiased Line2D
+MakovWait
+---
+Improved Resource Picker
+Yuri Sizov
+---
+Editor Theme Explorer
+Matthieu Huvé
+---
+Max Size Container
+Raffaele Picca (raffaelepicca.com)
+---
+Line2D Trails
+Elid Elid
+---
+Halftone Shader
+>>
 
 = Playtesters:
+<2<
 memnarch
 Darkonius Mavakar
 Enjl
 Chris Charnecki
+>>
+PSI Ninja
 Hi there! Ping or DM Rixi so we can include you here!
 
 = Y2K consultant:
@@ -111,7 +134,7 @@ BabyPinkSnail
 raocow
 
 = Special thanks, shout-outs, and finger guns:
-The dinkus' and devcouncil's friends and family
+The devs' friends and family
 spitznagl
 Poncle and the Holocure team
 Jonny Atma and other YouTube remixers and musicians
@@ -121,3 +144,7 @@ Birds. Just, in general
 The person playing this!
 Anyone and everyone who may be watching them!
 And their local post officer(s)!
+
+
+
+= Happy birthday, cowguy!

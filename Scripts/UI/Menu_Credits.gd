@@ -8,7 +8,7 @@ var column_regex = RegEx.new()
 
 onready var file = 'res://credits.txt'
 
-func _parse_line(line):	
+func _parse_line(line):
 	if  line.begins_with("= "):
 		line.erase(0,2)
 		return "[font=res://Fonts//DynFont_Subheaders.tres]" + line + "[/font]"
@@ -29,14 +29,28 @@ func _populate_credits():
 	f.open(file, File.READ)
 	var index = 1
 	var columns = 1
+
 	while not f.eof_reached(): # iterate through all lines until the end of file is reached
 		var line = f.get_line()
 		var full_line = _parse_line(line)
 		if typeof(full_line) == TYPE_INT:
+			if  full_line == 1:
+				generated_text += "[/table]"
+			else:
+				generated_text += "[table=" + String(full_line) + "]"
 			columns = full_line
 
 		if full_line != null and typeof(full_line) != TYPE_INT:
-			generated_text += "\n\n" + full_line
+
+			if  columns > 1:
+				for i in columns:
+					generated_text += "[cell][/cell]"
+				generated_text += "[cell]"
+			else:
+				generated_text += "\n\n"
+
+			generated_text += full_line
+
 			var n = columns - 1
 			for i in n:
 				var last_pos = f.get_position()
@@ -45,8 +59,11 @@ func _populate_credits():
 					f.seek(last_pos)
 					break
 				else:
-					generated_text += "\t" + next
-			
+					generated_text += "[/cell][cell]" + next
+
+			if  columns > 1:
+				generated_text += "[/cell]"
+
 
 	f.close()
 	

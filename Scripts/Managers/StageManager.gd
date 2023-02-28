@@ -106,6 +106,8 @@ func start_stage():
 	cleared = false
 	exiting = false
 
+	CameraManager.set_limits()
+
 	MusicManager.play(current_stage_data.music_data)
 	print("STAGE STARTED\n")
 	_on_change_minute()
@@ -250,7 +252,8 @@ func _on_change_second():
 	# Fade music out in anticipation of the boss
 	if  not  faded_stage_music  and  one_sec >= 56  and  TimeManager.get_minutes_passed() == current_stage_data.boss_minute - 1:
 		faded_stage_music = true
-		MusicManager.fade_out(3)
+		regular_spawns_active = false
+		MusicManager.fade_out(4)
 	
 
 func _on_change_minute():

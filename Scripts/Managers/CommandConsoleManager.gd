@@ -138,7 +138,7 @@ func run_command(text):
 						log_text(text)
 						PlayerManager.give_weapon(PlayerManager.data.starting_weapon)
 
-					elif results.size() > 1:
+					else:
 						log_text("Invalid weapon ID")
 
 				else:
@@ -150,7 +150,7 @@ func run_command(text):
 						log_text(text)
 						PlayerManager.give_passive(EquipmentManager.all_passives[int(results[1])])
 
-					elif results.size() > 1:
+					else:
 						log_text("Invalid passive ID")
 
 				else:
@@ -162,11 +162,52 @@ func run_command(text):
 						log_text(text)
 						PlayerManager.give_boost(EquipmentManager.all_boosts[int(results[1])])
 
-					elif results.size() > 1:
+					else:
 						log_text("Invalid boost ID")
 
 				else:
 					log_text("No boost ID specified")
+
+
+			# Landmarks
+			"landmark":
+				var landmarks = get_tree().get_nodes_in_group("landmark")
+				if  landmarks.size() > 0:
+					var selected = landmarks[randi() % landmarks.size()]
+
+					PlayerManager.instance.global_position = selected.global_position
+
+					log_text(text)
+
+				else:
+					log_text("No landmarks to warp to")
+
+
+			"landmark_s":
+				var landmarks = get_tree().get_nodes_in_group("landmark_special")
+				if  landmarks.size() > 0:
+
+					var idx = randi()
+					var cancelled = false
+
+					if  results.size() > 1:
+						if  results[1].is_valid_integer():
+							idx = int(results[1])
+
+						else:
+							cancelled = true
+							log_text("Invalid special landmark index")
+
+					if  not cancelled:
+						log_text(text)
+						var selected = landmarks[idx % landmarks.size()]
+						PlayerManager.instance.global_position = selected.global_position
+
+					log_text(text)
+
+				else:
+					log_text("No landmarks to warp to")
+
 
 
 			# NO VALID COMMAND

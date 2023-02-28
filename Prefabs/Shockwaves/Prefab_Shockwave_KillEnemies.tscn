@@ -5,3 +5,5 @@
 
 [node name="Shockwave - Kill Enemies" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+kill_force = 0
+prevent_drops = false
