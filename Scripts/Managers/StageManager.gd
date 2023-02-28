@@ -106,7 +106,7 @@ func start_stage():
 	cleared = false
 	exiting = false
 
-	CameraManager.set_limits()
+	#CameraManager.set_limits()
 
 	MusicManager.play(current_stage_data.music_data)
 	print("STAGE STARTED\n")
