@@ -25,7 +25,7 @@ func call_menu(name : String):
 	pass
 
 func post_death_menu():
-	MenuManager.queue("deathbg")
+	MenuManager.open("deathbg")
 
 	var signal_data = {"cancelled": (not PlayerManager.show_serac)  and  PlayerManager.coins < PlayerManager.get_revive_cost()}
 	
