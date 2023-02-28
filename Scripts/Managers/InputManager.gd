@@ -33,6 +33,9 @@ var scheme_action_names = [
 	"pause"
 ]
 
+var analogue_actions = [
+]
+
 var scheme_actions = {
 	control_scheme.KEYBOARD: {},
 	control_scheme.MKB: {},
@@ -60,6 +63,9 @@ func _ready():
 		scheme_actions[control_scheme.KEYBOARD][action_name] = keyboard_action
 		scheme_actions[control_scheme.MKB][action_name] = mkb_action
 		scheme_actions[control_scheme.GAMEPAD][action_name] = gamepad_action
+		
+		if action_name.begins_with("move_") or action_name.begins_with("aim_"):
+			analogue_actions.append(gamepad_action)
 
 		action_to_scheme_map[keyboard_action] = control_scheme.KEYBOARD
 		action_to_scheme_map[mkb_action] = control_scheme.MKB
@@ -87,7 +93,11 @@ func update_control_scheme(event : InputEvent):
 	# Switch control schemes based on input
 	for  action in action_to_scheme_map:
 		if  InputMap.event_is_action(event, action):
-			current_control_scheme = action_to_scheme_map[action]
+			if action_to_scheme_map[action] == control_scheme.GAMEPAD and analogue_actions.has(action):
+				if event.get_action_strength(action) > InputMap.action_get_deadzone(action):
+					current_control_scheme = control_scheme.GAMEPAD
+			else:
+				current_control_scheme = action_to_scheme_map[action]
 			#print ("CONTROL SCHEME SET TO ", current_control_scheme)
 
 func update_gameplay_controls():

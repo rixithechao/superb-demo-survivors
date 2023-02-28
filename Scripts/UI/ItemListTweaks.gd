@@ -12,6 +12,8 @@ export var custom_navigation = true
 var item
 var selected_cache = -1
 
+var first_process = true
+
 
 const NAVIGATE_INPUTS_V = ["ui_up", "ui_down"]
 const NAVIGATE_INPUTS_H = ["ui_left", "ui_right"]
@@ -58,11 +60,6 @@ func _ready() -> void:
 	var gotten_menu_node = get_node(menu_node)
 	if  gotten_menu_node != null:
 		self.connect("item_chosen", gotten_menu_node, "_on_item_chosen")
-	
-	if  immediate_focus:
-		grab_focus()
-		if  item == null:
-			hover_item(0) 
 
 
 
@@ -87,6 +84,15 @@ func _on_ItemList_gui_input(event: InputEvent) -> void:
 
 
 func _process(_delta):
+	
+	if first_process and immediate_focus:
+		grab_focus()
+		if  item == null:
+			hover_item(0)
+		else:
+			hover_item(item)
+		first_process = false
+	
 	if  not active  or  not custom_navigation:
 		return
 
@@ -133,3 +139,6 @@ func _process(_delta):
 
 	elif Input.is_action_just_pressed("ui_select") and item != null:
 		item_chosen()
+		
+	elif item != null and !is_selected (item):
+		select(item, true)
