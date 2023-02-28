@@ -98,35 +98,39 @@ Stats = SubResource( 10 )
 
 [sub_resource type="Resource" id=12]
 script = ExtResource( 4 )
-stats = [ ExtResource( 6 ) ]
+stats = [ ExtResource( 6 ), ExtResource( 5 ) ]
 values = {
-ExtResource( 6 ): 3
+ExtResource( 6 ): 3,
+ExtResource( 5 ): 1.225
 }
 Values/Pierce = 3
+Values/Damage = 1.225
 "Preset or Remove" = 0
 
 [sub_resource type="Resource" id=13]
 resource_name = "Level 7"
 script = ExtResource( 11 )
-description = "Knives pierce more enemies."
+description = "Knives do more damage and pierce more enemies."
 Type = 0
 Stats = SubResource( 12 )
 
 [sub_resource type="Resource" id=14]
 script = ExtResource( 4 )
-stats = [ ExtResource( 14 ), ExtResource( 16 ) ]
+stats = [ ExtResource( 14 ), ExtResource( 16 ), ExtResource( 8 ) ]
 values = {
 ExtResource( 14 ): 0.05,
-ExtResource( 16 ): 2
+ExtResource( 16 ): 2,
+ExtResource( 8 ): 0.4
 }
 "Values/Shot Interval" = 0.05
 Values/Amount = 2
+Values/Cooldown = 0.4
 "Preset or Remove" = 0
 
 [sub_resource type="Resource" id=15]
 resource_name = "Level 8"
 script = ExtResource( 11 )
-description = "Throws many knives at once."
+description = "Throws many knives at once and further reduce cooldown time."
 Type = 0
 Stats = SubResource( 14 )
 
@@ -134,16 +138,16 @@ Stats = SubResource( 14 )
 script = ExtResource( 4 )
 stats = [ ExtResource( 5 ), ExtResource( 16 ), ExtResource( 10 ), ExtResource( 6 ), ExtResource( 8 ), ExtResource( 14 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 7 ), ExtResource( 9 ) ]
 values = {
-ExtResource( 8 ): 2.5,
-ExtResource( 10 ): 0.35,
-ExtResource( 5 ): 10.0,
+ExtResource( 14 ): 0.2,
 ExtResource( 6 ): 1.0,
+ExtResource( 16 ): 1.0,
+ExtResource( 8 ): 2.5,
 ExtResource( 12 ): 0.3,
 ExtResource( 13 ): 1.0,
-ExtResource( 14 ): 0.2,
-ExtResource( 16 ): 1.0,
+ExtResource( 5 ): 10.0,
+ExtResource( 7 ): 1.0,
 ExtResource( 9 ): 1.5,
-ExtResource( 7 ): 1.0
+ExtResource( 10 ): 0.35
 }
 Values/Damage = 10.0
 Values/Amount = 1.0

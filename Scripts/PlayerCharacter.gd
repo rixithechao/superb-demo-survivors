@@ -146,6 +146,10 @@ func _process(delta):
 	
 	move_and_slide(direction*TimeManager.time_rate*current_stats[StatsManager.MOVEMENT], Vector2.UP)
 	
+	var half_size = WorldManager.instance.map_size
+	
+	position.x = clamp(position.x, -32 * (half_size.x - 1), 32 * (half_size.x - 1))
+	position.y = clamp(position.y, -32 * (half_size.y - 1), 32 * (half_size.y - 1))
 	#update_z()
 	
 	if Input.is_action_just_pressed("ui_focus_next"):

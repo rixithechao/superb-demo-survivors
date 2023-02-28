@@ -161,7 +161,10 @@ func _ready():
 	
 	var spread_add = rand_range(-aim_spread, aim_spread)
 	if  spread_type == ProjectileSpreadType.FAN:
-		spread_add = lerp(-aim_spread, aim_spread, volley_index/(volley_max-1))
+		if volley_max > 1:
+			spread_add = lerp(-aim_spread, aim_spread, volley_index/(volley_max-1))
+		else:
+			spread_add = 0
 	
 	fire_speed = normalized_dir.rotated(deg2rad(spread_add)) * get_speed_mult()  #*PlayerManager.get_weapon_speed()
 	

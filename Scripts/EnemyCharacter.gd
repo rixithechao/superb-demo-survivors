@@ -144,7 +144,7 @@ func _process(delta):
 			despawn_timer = DESPAWN_TIMEOUT
 
 			var extents = CameraManager.spawn_shape.shape.extents
-			var player_pos = PlayerManager.instance.position
+			var player_pos = CameraManager.instance.get_camera_screen_center()
 
 			position.x = clamp(position.x, 
 				player_pos.x - extents.x,

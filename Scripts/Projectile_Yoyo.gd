@@ -5,7 +5,7 @@ var center
 var start_rot = 0
 var sound_volume
 
-const RADIUS = 32
+const RADIUS = 20
 const SPEED = 2
 
 

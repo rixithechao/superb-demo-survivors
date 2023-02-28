@@ -19,6 +19,8 @@ height = 0.0
 script = ExtResource( 7 )
 relative_position = false
 aim_type = 4
+spread_type = 1
+aim_spread = 90.0
 speed = 4.0
 turns_left = 1
 

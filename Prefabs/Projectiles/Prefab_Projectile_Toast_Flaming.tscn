@@ -138,9 +138,10 @@ process_material = SubResource( 12 )
 texture = ExtResource( 3 )
 
 [node name="AudioStreamPlayer" parent="RandomAudioNodePlayer" index="0"]
-pitch_scale = 1.21794
+pitch_scale = 1.01995
 
 [node name="FireSound" type="AudioStreamPlayer" parent="." index="3"]
 stream = ExtResource( 5 )
-volume_db = -14.0
+volume_db = -15.0
 autoplay = true
+bus = "SoundEffects"

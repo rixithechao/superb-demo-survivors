@@ -8,9 +8,15 @@ var _tween
 
 const TWEEN_TIME = 0.3
 
+var modified_tween_time
+
 func pickup_effect():
 	pass
 
+func get_modified_tween_time():
+	if modified_tween_time == null:
+		modified_tween_time = TWEEN_TIME * clamp((PlayerManager.instance.position-self.position).length()/500, 1, 4)
+	return modified_tween_time
 
 func collect():
 	if  collected:
@@ -18,14 +24,17 @@ func collect():
 
 	collected = true
 	
+	modified_tween_time = null
+	get_modified_tween_time()
+	
 	_tween.remove (self, "global_position")
 	
 	_tween.interpolate_property(self, "position",
-		self.position, self.position + Vector2.ONE.rotated(deg2rad(rand_range(0,360)))*96, TWEEN_TIME,
+		self.position, self.position + Vector2.ONE.rotated(deg2rad(rand_range(0,360)))*96, modified_tween_time,
 		Tween.TRANS_QUAD, Tween.EASE_OUT)
 		
 	_tween.interpolate_property(self, "scale",
-		Vector2.ONE, Vector2.ONE*0.75, TWEEN_TIME,
+		Vector2.ONE, Vector2.ONE*0.75, modified_tween_time,
 		Tween.TRANS_QUAD, Tween.EASE_OUT)
 
 	_tween.start()
@@ -53,7 +62,6 @@ func _on_CollectSound_finished():
 	pass # Replace with function body.
 
 
-
 func _process(_delta):
 	if  not burst:
 		burst = true
@@ -63,7 +71,8 @@ func _process(_delta):
 		_tween.start()
 	
 	if  collected:
-		var percent = _tween.tell()/TWEEN_TIME
+		var percent = _tween.tell()/get_modified_tween_time()
+		
 		position = lerp(self.position, PlayerManager.instance.position + Vector2(0,-32), percent)
 	#self.z_index = self.position.y
 

@@ -58,7 +58,7 @@ func spawn(spawn_data, position = null):
 		spawned.global_position = position
 	else:
 		var extents = CameraManager.spawn_area.get_node("SpawnShape").shape.extents
-		var player_pos = PlayerManager.instance.position
+		var player_pos = CameraManager.instance.get_camera_screen_center()
 		
 		var rand_side = pow(-1, randi() % 2)
 		if randi() & 1:

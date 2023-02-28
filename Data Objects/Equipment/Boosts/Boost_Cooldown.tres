@@ -10,8 +10,8 @@
 script = ExtResource( 2 )
 stats = [ ExtResource( 3 ), ExtResource( 5 ) ]
 values = {
-ExtResource( 3 ): 0.98,
-ExtResource( 5 ): 0.95
+ExtResource( 5 ): 0.95,
+ExtResource( 3 ): 0.98
 }
 Values/Cooldown = 0.98
 "Values/Shot Interval" = 0.95
@@ -23,7 +23,7 @@ name = "Boost Attack Speed"
 icon = ExtResource( 4 )
 description = "Increase speed of attacks and reduce weapon cooldown."
 max_level = 1000
-rarity = 35.0
+rarity = 25.0
 stats = SubResource( 1 )
 level_modifiers = [  ]
 stat_id = "attackspeed"

@@ -101,7 +101,7 @@ func hit_by_projectile(projectile):
 
 		hitbox_delays[weapon_data] = weapon_data.get_stat_current(StatsManager.HIT_INTERVAL)
 
-		var signal_data = {"cancelled":false, "weapon_data":weapon_data, "target": self}
+		var signal_data = {"cancelled":false, "weapon_data":weapon_data, "projectile": projectile, "target": self}
 		emit_signal("take_hit", signal_data)
 		HarmableManager.emit_signal("take_hit", signal_data)
 
