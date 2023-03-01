@@ -113,11 +113,11 @@ values = {
 
 [resource]
 script = ExtResource( 1 )
-name = "Coin"
+name = "Cash-Money Sack"
 icon = ExtResource( 5 )
 description = "Obtain 10 teeth."
 max_level = 8
-rarity = 30.0
+rarity = 20.0
 stats = SubResource( 15 )
 level_modifiers = [ SubResource( 2 ), SubResource( 4 ), SubResource( 6 ), SubResource( 8 ), SubResource( 10 ), SubResource( 12 ), SubResource( 14 ) ]
 pickup = ExtResource( 2 )
