@@ -4,19 +4,17 @@ class_name Pickup
 var burst = false
 var collected = false
 var effect_applied = false
+var magnetized = false
 var _tween
 
 const TWEEN_TIME = 0.3
-
-var modified_tween_time
+const MAGNET_CRUSH_RADIUS = 4500
 
 func pickup_effect():
 	pass
-
-func get_modified_tween_time():
-	if modified_tween_time == null:
-		modified_tween_time = TWEEN_TIME * clamp((PlayerManager.instance.position-self.position).length()/500, 1, 4)
-	return modified_tween_time
+	
+func magnetize():
+	magnetized = true
 
 func collect():
 	if  collected:
@@ -24,17 +22,14 @@ func collect():
 
 	collected = true
 	
-	modified_tween_time = null
-	get_modified_tween_time()
-	
 	_tween.remove (self, "global_position")
 	
 	_tween.interpolate_property(self, "position",
-		self.position, self.position + Vector2.ONE.rotated(deg2rad(rand_range(0,360)))*96, modified_tween_time,
+		self.position, self.position + Vector2.ONE.rotated(deg2rad(rand_range(0,360)))*96, TWEEN_TIME,
 		Tween.TRANS_QUAD, Tween.EASE_OUT)
 		
 	_tween.interpolate_property(self, "scale",
-		Vector2.ONE, Vector2.ONE*0.75, modified_tween_time,
+		Vector2.ONE, Vector2.ONE*0.75, TWEEN_TIME,
 		Tween.TRANS_QUAD, Tween.EASE_OUT)
 
 	_tween.start()
@@ -44,7 +39,12 @@ func collect():
 
 func _on_Pickup_body_entered(_area):
 	if  not collected:
-		collect()
+		if magnetized:
+			collected = true
+			$PickupSound.play()
+			_on_Tween_tween_completed(null, null)
+		else:
+			collect()
 
 func _on_Tween_tween_completed(_object, _key):
 	if  not collected:
@@ -71,9 +71,18 @@ func _process(_delta):
 		_tween.start()
 	
 	if  collected:
-		var percent = _tween.tell()/get_modified_tween_time()
+		var percent = _tween.tell()/TWEEN_TIME
 		
 		position = lerp(self.position, PlayerManager.instance.position + Vector2(0,-32), percent)
+	elif magnetized:
+		var to_player = PlayerManager.instance.position - position
+		var distance_to_player = to_player.length()
+		
+		#instantly teleport candies outside a specific radius so they don't take forever to get there
+		if distance_to_player > MAGNET_CRUSH_RADIUS:
+			position = PlayerManager.instance.position - to_player.normalized()*MAGNET_CRUSH_RADIUS
+		
+		position += to_player.normalized() * min(distance_to_player, 28*_delta*60)
 	#self.z_index = self.position.y
 
 

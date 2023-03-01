@@ -1,8 +1,143 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Prefabs/Templates/Prefab_Equipment.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Passive_Advent.gd" type="Script" id=2]
 [ext_resource path="res://Textures/Projectiles/spr_proj_advent.png" type="Texture" id=3]
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Box_12:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -78.5 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Box_15:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -96.5 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Box_14:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -90.5 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Box_13:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -84.5 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Box_16:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -102.5 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Box_10:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -66.5 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Box_11:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -72.5 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Box_7:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -48.5 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Box_8:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -54.5 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Box_9:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -60.5 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Box_6:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -42.5 ) ]
+}
 
 [sub_resource type="Animation" id=1]
 resource_name = "bounce"
@@ -67,6 +202,138 @@ tracks/4/keys = {
 "update": 0,
 "values": [ Vector2( 0, -27 ), Vector2( 0, -35 ), Vector2( 0, -27 ) ]
 }
+tracks/5/type = "value"
+tracks/5/path = NodePath("Box_6:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 0.420449, 4.92458, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -33 ), Vector2( 0, -42.5 ), Vector2( 0, -33 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Box_7:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 0.5, 3.13834, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -39 ), Vector2( 0, -49 ), Vector2( 0, -39 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Box_8:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 0.594604, 5.85634, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -45 ), Vector2( 0, -55 ), Vector2( 0, -45 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Box_9:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 0.435275, 4.75683, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -51 ), Vector2( 0, -63.5 ), Vector2( 0, -51 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Box_10:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 0.517632, 4.59479, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -57 ), Vector2( 0, -70 ), Vector2( 0, -57 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Box_11:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 0.450625, 3.86374, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -63 ), Vector2( 0, -76.5 ), Vector2( 0, -63 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Box_12:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 0.594604, 4.28709, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -69 ), Vector2( 0, -82.5 ), Vector2( 0, -69 ) ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("Box_13:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 0.482968, 3.605, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -75 ), Vector2( 0, -89.5 ), Vector2( 0, -75 ) ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("Box_14:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 0.554785, 6.27667, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -81 ), Vector2( 0, -96.5 ), Vector2( 0, -81 ) ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("Box_15:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 0.5, 4.14105, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -87 ), Vector2( 0, -103.5 ), Vector2( 0, -87 ) ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("Box_16:position")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 0.554785, 4.92458, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -93 ), Vector2( 0, -111 ), Vector2( 0, -93 ) ]
+}
 
 [node name="Passive - Advent" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
@@ -100,7 +367,63 @@ modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 0, -27 )
 texture = ExtResource( 3 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Boxes" index="5"]
+[node name="Box_6" type="Sprite" parent="Boxes" index="5"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 0, -42.5 )
+texture = ExtResource( 3 )
+
+[node name="Box_7" type="Sprite" parent="Boxes" index="6"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 0, -48.5 )
+texture = ExtResource( 3 )
+
+[node name="Box_8" type="Sprite" parent="Boxes" index="7"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 0, -54.5 )
+texture = ExtResource( 3 )
+
+[node name="Box_9" type="Sprite" parent="Boxes" index="8"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 0, -60.5 )
+texture = ExtResource( 3 )
+
+[node name="Box_10" type="Sprite" parent="Boxes" index="9"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 0, -66.5 )
+texture = ExtResource( 3 )
+
+[node name="Box_11" type="Sprite" parent="Boxes" index="10"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 0, -72.5 )
+texture = ExtResource( 3 )
+
+[node name="Box_12" type="Sprite" parent="Boxes" index="11"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 0, -78.5 )
+texture = ExtResource( 3 )
+
+[node name="Box_13" type="Sprite" parent="Boxes" index="12"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 0, -84.5 )
+texture = ExtResource( 3 )
+
+[node name="Box_14" type="Sprite" parent="Boxes" index="13"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 0, -90.5 )
+texture = ExtResource( 3 )
+
+[node name="Box_15" type="Sprite" parent="Boxes" index="14"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 0, -96.5 )
+texture = ExtResource( 3 )
+
+[node name="Box_16" type="Sprite" parent="Boxes" index="15"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 0, -102.5 )
+texture = ExtResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Boxes" index="16"]
+anims/RESET = SubResource( 2 )
 anims/bounce = SubResource( 1 )
 
 [node name="ResetTimer" type="Timer" parent="." index="1"]

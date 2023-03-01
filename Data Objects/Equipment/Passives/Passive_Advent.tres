@@ -16,7 +16,7 @@ values = {
 [sub_resource type="Resource" id=3]
 resource_name = "Level 2"
 script = ExtResource( 2 )
-description = "Increases the damage bonus of each stack."
+description = "Allows an additional 3 stacks. Gift it up, yo!"
 Type = 0
 Stats = SubResource( 2 )
 
@@ -30,7 +30,7 @@ values = {
 [sub_resource type="Resource" id=5]
 resource_name = "Level 3"
 script = ExtResource( 2 )
-description = "Further increases the damage bonus of each stack."
+description = "Maximum stacks increased by 3, spread the holiday cheer!"
 Type = 0
 Stats = SubResource( 4 )
 
@@ -44,7 +44,7 @@ values = {
 [sub_resource type="Resource" id=7]
 resource_name = "Level 4"
 script = ExtResource( 2 )
-description = "Even more damage per stack."
+description = "Stack limit increased by 3. Gifts for all!"
 Type = 0
 Stats = SubResource( 6 )
 
@@ -58,7 +58,7 @@ values = {
 [sub_resource type="Resource" id=9]
 resource_name = "Level 5"
 script = ExtResource( 2 )
-description = "A ton of bonus damage per stack."
+description = "Grants an extra 3 maximum stacks, for maximum gift power!"
 Type = 0
 Stats = SubResource( 8 )
 
@@ -73,7 +73,7 @@ values = {
 script = ExtResource( 3 )
 name = "Advent Ambush"
 icon = ExtResource( 4 )
-description = "Reduces base damage, but boosts attack power when enemies are killed (can be stacked up to 5 times). Stacks are lost if no enemies are killed for 5 seconds."
+description = "Reduces base damage, but boosts attack power when enemies are killed (can be stacked up to 4 times). Stacks are lost if no enemies are killed for 5 seconds."
 max_level = 5
 rarity = 100.0
 prefab = ExtResource( 5 )
