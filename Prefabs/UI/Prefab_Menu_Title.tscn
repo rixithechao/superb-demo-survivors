@@ -493,7 +493,7 @@ custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 2
 custom_fonts/font = ExtResource( 3 )
-text = "PREVIEW v1.0.3"
+text = "ver. Bday.0.0"
 valign = 1
 
 [node name="ColorRect" type="ColorRect" parent="Background" index="3"]
@@ -510,6 +510,9 @@ animate_while_paused = true
 [node name="Shadow" parent="Demo" index="0"]
 polygon = PoolVector2Array( -1.39876e-06, -32, 12.2459, -29.5641, 22.6274, -22.6274, 29.5641, -12.2459, 32, 0, 29.5641, 12.2459, 22.6274, 22.6274, 12.2459, 29.5641, -1.39876e-06, 32, -12.2459, 29.5641, -22.6274, 22.6274, -29.5641, 12.2459, -32, 4.83187e-06, -29.5641, -12.2459, -22.6274, -22.6274, -12.2459, -29.5641 )
 
+[node name="Sprite" parent="Demo/AirOffset" index="0"]
+frame = 1
+
 [node name="Iris" parent="." index="3" instance=ExtResource( 19 )]
 visible = false
 modulate = Color( 1, 1, 1, 0 )
@@ -521,6 +524,7 @@ polygon = PoolVector2Array( -1.39876e-06, -32, 12.2459, -29.5641, 22.6274, -22.6
 
 [node name="Sprite" parent="Iris/AirOffset" index="0"]
 flip_h = true
+frame = 1
 
 [node name="Input to Start" type="Label" parent="." index="4"]
 modulate = Color( 1, 1, 1, 0 )

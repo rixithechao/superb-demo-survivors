@@ -31,7 +31,6 @@ memnarch
 PizzaPony
 >>
 Gray Nine
-If you voted in the name poll and want to be here, ping or DM Rixi
 
 = Character and equipment sprites (A2XT2 devkit / talkhaus):
 <2<
@@ -112,6 +111,9 @@ Max Size Container
 Raffaele Picca (raffaelepicca.com)
 ---
 Line2D Trails
+Paweł Kowal
+---
+Godot Icon Creator/Replacer
 Elid Elid
 ---
 Halftone Shader
@@ -126,7 +128,6 @@ Chris Charnecki
 PSI Ninja
 Duker
 >>
-Hi there! Ping or DM Rixi so we can include you here!
 
 = Y2K consultant:
 BabyPinkSnail
