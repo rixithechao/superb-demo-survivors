@@ -41,6 +41,7 @@ signal stage_generated
 signal stage_cleared
 signal stage_exited
 signal stage_restarted
+signal stage_results
 
 
 

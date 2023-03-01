@@ -88,7 +88,7 @@ func _ready():
 			"attacksize":
 				$Control/Results/HBoxContainer/VBoxContainer2/AttackSize/Value.text = String(boost.get_current_level())
 	
-	if PlayerManager.data.name == "Sheath":
+	if PlayerManager.data == CharacterManager.PLAYABLE_SHEATH:
 		$Control/Results/HBoxContainer/VBoxContainer/Revives/Name.modulate.r = 0.5
 		$Control/Results/HBoxContainer/VBoxContainer/Revives/Name.modulate.g = 0.5
 		$Control/Results/HBoxContainer/VBoxContainer/Revives/Name.modulate.b = 0.5
@@ -124,6 +124,9 @@ func _ready():
 		
 		$OpenSound.stream = load("res://Sound Effects/Sound_UI_GameOver.ogg")
 		$OpenSound.play()
+	
+	var signal_data = {"cleared": StageManager.cleared, "game_over": PlayerManager.dead}
+	StageManager.emit_signal("stage_results", signal_data)
 	
 	TimeManager.add_pause("gameover")
 

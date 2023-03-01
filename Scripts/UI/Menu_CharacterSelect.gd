@@ -16,7 +16,9 @@ func _ready():
 	var i = 0
 	var btn_prev
 	
-	for  chara in CharacterManager.all_characters:
+	CharacterManager.update_unlocked_list()
+	
+	for  chara in CharacterManager.unlocked:
 
 		var btn = button_prefab.instance()
 		chars_container.add_child(btn)

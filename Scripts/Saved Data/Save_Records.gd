@@ -11,12 +11,6 @@ export var fewest_revives = {}
 export var highest_level_ever = 1
 export var most_coins_ever = 0
 
-export var serac_meetings = 0
-export var serac_openings = 0
-export var serac_revives = 0
-export var serac_refusals_current = 0
-export var serac_refusals_total = 0
-
 
 
 func get_save_path():
