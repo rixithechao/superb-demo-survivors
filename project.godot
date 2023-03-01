@@ -462,7 +462,7 @@ window/stretch/aspect="keep_height"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/MaxSizeContainer/plugin.cfg", "res://addons/RandomAudioNodePlayer/plugin.cfg", "res://addons/antialiased_line2d/plugin.cfg", "res://addons/explore-editor-theme/plugin.cfg", "res://addons/imrp/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/MaxSizeContainer/plugin.cfg", "res://addons/RandomAudioNodePlayer/plugin.cfg", "res://addons/antialiased_line2d/plugin.cfg", "res://addons/explore-editor-theme/plugin.cfg", "res://addons/godot_icon/plugin.cfg", "res://addons/imrp/plugin.cfg" )
 
 [global]
 

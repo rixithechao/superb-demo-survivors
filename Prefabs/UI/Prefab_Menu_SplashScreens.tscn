@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Prefabs/UI/Prefab_Menu.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Fonts/DynFont_MenuItem.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Fonts/DynFont_Subsubheaders.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Textures/Logos/logo_hauses.png" type="Texture" id=3]
 
 [sub_resource type="Animation" id=1]
@@ -81,22 +81,10 @@ color = Color( 0, 0, 0, 1 )
 margin_right = 768.0
 margin_bottom = 432.0
 custom_fonts/font = ExtResource( 2 )
-text = "HEADS UP!
+text = "Waiting for recording setup.
 
-Superb Demo Survivors is a game made as a
-surprise birthday gift for some guy named raocow.
-
-This is a preview build meant for bugtesting
-and input within the raocow fandom
-+ the developers' friends and family.
-
-Please do not leak this build or otherwise
-spoil this project's existence to raocow, and be
-discreet when sharing feedback with the devs.
-
-Thank you, and we hope you enjoy the game!
-
-Press any key to continue."
+Press any button on the gamepad, Z, or left click
+ when you're ready to continue."
 align = 1
 valign = 1
 
