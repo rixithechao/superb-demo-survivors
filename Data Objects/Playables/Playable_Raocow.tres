@@ -1,0 +1,71 @@
+[gd_resource type="Resource" load_steps=23 format=2]
+
+[ext_resource path="res://Scripts/ScriptableObjects/PlayableData.gd" type="Script" id=1]
+[ext_resource path="res://Textures/Characters/spr_player_raocow_a2xt.png" type="Texture" id=2]
+[ext_resource path="res://Data Objects/Equipment/Weapons/Weapon_Screwdriver.tres" type="Resource" id=3]
+[ext_resource path="res://Prefabs/Player GFX/Prefab_PlayerGfx_Raocow.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Prefabs/Playables/Prefab_PlayerCharacter_Raocow.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Data Objects/Stats/Stat_SpawnRate.tres" type="Resource" id=6]
+[ext_resource path="res://Scripts/ScriptableObjects/StatSheetData.gd" type="Script" id=10]
+[ext_resource path="res://Data Objects/Stats/Stat_Damage.tres" type="Resource" id=11]
+[ext_resource path="res://Data Objects/Stats/Stat_Amount.tres" type="Resource" id=12]
+[ext_resource path="res://Data Objects/Stats/Stat_Cooldown.tres" type="Resource" id=13]
+[ext_resource path="res://Data Objects/Stats/Stat_Duration.tres" type="Resource" id=14]
+[ext_resource path="res://Data Objects/Stats/Stat_Luck.tres" type="Resource" id=15]
+[ext_resource path="res://Data Objects/Stats/Stat_MoneyMult.tres" type="Resource" id=16]
+[ext_resource path="res://Data Objects/Stats/Stat_Area.tres" type="Resource" id=17]
+[ext_resource path="res://Data Objects/Stats/Stat_Defense.tres" type="Resource" id=18]
+[ext_resource path="res://Data Objects/Stats/Stat_Pickup.tres" type="Resource" id=19]
+[ext_resource path="res://Data Objects/Stats/Stat_Speed.tres" type="Resource" id=20]
+[ext_resource path="res://Data Objects/Stats/Stat_Recovery.tres" type="Resource" id=21]
+[ext_resource path="res://Data Objects/Stats/Stat_XPMult.tres" type="Resource" id=22]
+[ext_resource path="res://Data Objects/Stats/Stat_Movement.tres" type="Resource" id=23]
+[ext_resource path="res://Data Objects/Stats/Stat_MaxHP.tres" type="Resource" id=24]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 10 )
+stats = [ ExtResource( 11 ), ExtResource( 18 ), ExtResource( 24 ), ExtResource( 21 ), ExtResource( 13 ), ExtResource( 17 ), ExtResource( 20 ), ExtResource( 14 ), ExtResource( 12 ), ExtResource( 23 ), ExtResource( 19 ), ExtResource( 15 ), ExtResource( 22 ), ExtResource( 16 ), ExtResource( 6 ) ]
+values = {
+ExtResource( 24 ): 100.0,
+ExtResource( 21 ): 0.0,
+ExtResource( 14 ): 1.0,
+ExtResource( 12 ): 1.0,
+ExtResource( 17 ): 1.0,
+ExtResource( 23 ): 1.3,
+ExtResource( 13 ): 1.0,
+ExtResource( 11 ): 1,
+ExtResource( 20 ): 1.0,
+ExtResource( 22 ): 1.0,
+ExtResource( 19 ): 1.0,
+ExtResource( 18 ): 1.0,
+ExtResource( 15 ): 1.0,
+ExtResource( 16 ): 1.0,
+ExtResource( 6 ): 1.0
+}
+Values/Damage = 1
+Values/Defense = 1.0
+"Values/Max HP" = 100.0
+Values/Recovery = 0.0
+Values/Cooldown = 1.0
+Values/Area = 1.0
+Values/Speed = 1.0
+Values/Duration = 1.0
+Values/Amount = 1.0
+Values/Movement = 1.3
+"Values/Pickup Range" = 1.0
+Values/Luck = 1.0
+"Values/XP Multiplier" = 1.0
+"Values/Money Multiplier" = 1.0
+"Values/Spawn Rate" = 1.0
+"Preset or Remove" = 0
+
+[resource]
+script = ExtResource( 1 )
+name = "Raocow"
+bio = "A somewhat confused Canadian and friend of Demo and Iris, unfortunately isekai'd through his computer from his own reality into this one."
+ability_description = ""
+prefab = ExtResource( 5 )
+gfx_prefab = ExtResource( 4 )
+sprite_sheet = ExtResource( 2 )
+starting_weapon = ExtResource( 3 )
+stats = SubResource( 1 )

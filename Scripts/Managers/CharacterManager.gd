@@ -4,6 +4,7 @@ var all_characters = [
 	load("res://Data Objects/Playables/Playable_Demo.tres"),
 	load("res://Data Objects/Playables/Playable_Iris.tres"),
 	load("res://Data Objects/Playables/Playable_Sheath.tres"),
+	load("res://Data Objects/Playables/Playable_Raocow.tres"),
 ]
 
 
