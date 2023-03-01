@@ -23,7 +23,7 @@ weight = 20
 resource_name = "Pickup - Radish"
 script = ExtResource( 3 )
 pickup = ExtResource( 5 )
-weight = 10
+weight = 5
 
 [sub_resource type="Resource" id=5]
 resource_name = "Pickup - Magnet"
