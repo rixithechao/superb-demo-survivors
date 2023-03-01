@@ -94,6 +94,8 @@ func _process(delta):
 		direction_input.y = clamp(direction_input.y * 2, -1,1)
 		aim_input.x = clamp(aim_input.x * 2, -1,1)
 		aim_input.y = clamp(aim_input.y * 2, -1,1)
+		
+	direction_input = direction_input.normalized()
 
 
 	if  direction_input == Vector2.ZERO:
