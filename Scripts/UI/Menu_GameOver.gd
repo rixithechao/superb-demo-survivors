@@ -88,9 +88,19 @@ func _ready():
 			"attacksize":
 				$Control/Results/HBoxContainer/VBoxContainer2/AttackSize/Value.text = String(boost.get_current_level())
 	
+	if PlayerManager.data.name == "Sheath":
+		$Control/Results/HBoxContainer/VBoxContainer/Revives/Name.modulate.r = 0.5
+		$Control/Results/HBoxContainer/VBoxContainer/Revives/Name.modulate.g = 0.5
+		$Control/Results/HBoxContainer/VBoxContainer/Revives/Name.modulate.b = 0.5
+		$Control/Results/HBoxContainer/VBoxContainer/Revives/Value.modulate.r = 0.5
+		$Control/Results/HBoxContainer/VBoxContainer/Revives/Value.modulate.g = 0.5
+		$Control/Results/HBoxContainer/VBoxContainer/Revives/Value.modulate.b = 0.5
+	
 	# The player has cleared the stage
 	if  StageManager.cleared:
 		$Control/Header/DeathHeader.modulate.a = 0
+		$OpenSound.stream = load("res://Sound Effects/Sound_UI_StageCleared.ogg")
+		$OpenSound.play()
 
 		# Final results
 		if  PlayerManager.dead:
@@ -111,6 +121,9 @@ func _ready():
 		show_dead_list = true
 		$Control/Header/ClearHeader.modulate.a = 0
 		$Control/ItemLists/ClearList.visible = false#modulate.a = 0
+		
+		$OpenSound.stream = load("res://Sound Effects/Sound_UI_GameOver.ogg")
+		$OpenSound.play()
 	
 	TimeManager.add_pause("gameover")
 
