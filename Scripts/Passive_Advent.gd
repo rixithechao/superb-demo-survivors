@@ -29,6 +29,7 @@ func on_modify_stats(modified):
 func on_change_kills():
 	if stacks < 3*data.get_current_level() + 1:
 		stacks += 1
+		get_node(str("Boxes/Box_",stacks)).frame = randi()%6
 		update_boxes()
 		
 	$ResetTimer.start(REFRESH_DURATION)

@@ -346,81 +346,97 @@ scale = Vector2( 2, 2 )
 modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 0, -3 )
 texture = ExtResource( 3 )
+hframes = 6
 
 [node name="Box_2" type="Sprite" parent="Boxes" index="1"]
 modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 0, -9 )
 texture = ExtResource( 3 )
+hframes = 6
 
 [node name="Box_3" type="Sprite" parent="Boxes" index="2"]
 modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 0, -15 )
 texture = ExtResource( 3 )
+hframes = 6
 
 [node name="Box_4" type="Sprite" parent="Boxes" index="3"]
 modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 0, -21 )
 texture = ExtResource( 3 )
+hframes = 6
 
 [node name="Box_5" type="Sprite" parent="Boxes" index="4"]
 modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 0, -27 )
 texture = ExtResource( 3 )
+hframes = 6
 
 [node name="Box_6" type="Sprite" parent="Boxes" index="5"]
 modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 0, -42.5 )
 texture = ExtResource( 3 )
+hframes = 6
 
 [node name="Box_7" type="Sprite" parent="Boxes" index="6"]
 modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 0, -48.5 )
 texture = ExtResource( 3 )
+hframes = 6
 
 [node name="Box_8" type="Sprite" parent="Boxes" index="7"]
 modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 0, -54.5 )
 texture = ExtResource( 3 )
+hframes = 6
 
 [node name="Box_9" type="Sprite" parent="Boxes" index="8"]
 modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 0, -60.5 )
 texture = ExtResource( 3 )
+hframes = 6
 
 [node name="Box_10" type="Sprite" parent="Boxes" index="9"]
 modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 0, -66.5 )
 texture = ExtResource( 3 )
+hframes = 6
 
 [node name="Box_11" type="Sprite" parent="Boxes" index="10"]
 modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 0, -72.5 )
 texture = ExtResource( 3 )
+hframes = 6
 
 [node name="Box_12" type="Sprite" parent="Boxes" index="11"]
 modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 0, -78.5 )
 texture = ExtResource( 3 )
+hframes = 6
 
 [node name="Box_13" type="Sprite" parent="Boxes" index="12"]
 modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 0, -84.5 )
 texture = ExtResource( 3 )
+hframes = 6
 
 [node name="Box_14" type="Sprite" parent="Boxes" index="13"]
 modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 0, -90.5 )
 texture = ExtResource( 3 )
+hframes = 6
 
 [node name="Box_15" type="Sprite" parent="Boxes" index="14"]
 modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 0, -96.5 )
 texture = ExtResource( 3 )
+hframes = 6
 
 [node name="Box_16" type="Sprite" parent="Boxes" index="15"]
 modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 0, -102.5 )
 texture = ExtResource( 3 )
+hframes = 6
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Boxes" index="16"]
 anims/RESET = SubResource( 2 )
