@@ -13,3 +13,12 @@ turns_left = 9999
 
 [node name="CollisionShape2D" parent="LocalPos/Collision" index="0"]
 shape = SubResource( 1 )
+
+[node name="AfterimageParticles" parent="LocalPos/Collision/Graphic" index="0"]
+visible = true
+
+[node name="BitsParticles" parent="LocalPos/Collision/Graphic" index="1"]
+visible = true
+
+[node name="GlowParticles" parent="LocalPos/Collision/Graphic" index="3"]
+visible = true

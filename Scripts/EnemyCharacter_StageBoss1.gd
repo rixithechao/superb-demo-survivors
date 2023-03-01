@@ -24,6 +24,17 @@ const MAX_APPROACH_SPEED = 2
 const CHARGE_SPEED = 15
 
 
+func update_warning_dir():
+	var player_pos = PlayerManager.instance.position
+	var to_player = player_pos-position
+	var player_dist = to_player.length()
+	var player_dir = to_player.normalized()
+	warning_ref.get_node("Telegraph/Direction").global_rotation = to_player.angle()
+
+	charge_dir = player_dir
+
+
+
 func custom_movement(delta : float = 0.0):
 	var dir
 
@@ -45,7 +56,7 @@ func custom_movement(delta : float = 0.0):
 
 		BossState.WARNING:
 			dir = Vector2.ZERO
-			warning_ref.get_node("Telegraph/Direction").global_rotation = to_player.angle()
+			update_warning_dir()
 
 		BossState.CHARGE:
 			dir = charge_dir * CHARGE_SPEED
@@ -72,6 +83,7 @@ func _on_AvoidTimer_timeout():
 	warning_ref = $ChargeWarning
 	boss_state = BossState.WARNING
 	warning_ref.start()
+	update_warning_dir()
 
 func _on_ChargeWarning_on_spawn(node):
 	if  is_dying:
@@ -79,8 +91,6 @@ func _on_ChargeWarning_on_spawn(node):
 
 	boss_state = BossState.CHARGE
 	$ChargeTimer.start()
-	var player_pos = PlayerManager.instance.position
-	charge_dir = (player_pos-position).normalized()
 
 func finish_charge():
 	if  is_dying:

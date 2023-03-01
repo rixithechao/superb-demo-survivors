@@ -9,14 +9,22 @@ func _ready():
 	._ready()
 	top_speed = fire_speed
 	sound_volume = $AudioStreamPlayer.volume_db
-	
+
 	if fire_direction.x > 0.1:
+		$LocalPos/Collision/Graphic/RightFireParticles.visible = true
+		$LocalPos/Collision/Graphic/RightSmokeParticles.visible = true
 		$LocalPos/Collision/Graphic/AnimationPlayer.play("Right")
 	elif fire_direction.x < -0.1:
+		$LocalPos/Collision/Graphic/LeftFireParticles.visible = true
+		$LocalPos/Collision/Graphic/LeftSmokeParticles.visible = true
 		$LocalPos/Collision/Graphic/AnimationPlayer.play("Left")
 	elif fire_direction.y < -0.1:
+		$LocalPos/Collision/Graphic/UpFireParticles.visible = true
+		$LocalPos/Collision/Graphic/UpSmokeParticles.visible = true
 		$LocalPos/Collision/Graphic/AnimationPlayer.play("Up")
 	else:
+		$LocalPos/Collision/Graphic/DownFireParticles.visible = true
+		$LocalPos/Collision/Graphic/DownSmokeParticles.visible = true
 		$LocalPos/Collision/Graphic/AnimationPlayer.play("Down")
 	
 	$AudioStreamPlayer.play()

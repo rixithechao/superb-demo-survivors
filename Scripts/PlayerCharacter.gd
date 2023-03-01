@@ -152,7 +152,7 @@ func _process(delta):
 	position.y = clamp(position.y, -32 * (half_size.y - 1), 32 * (half_size.y - 1))
 	#update_z()
 	
-	if Input.is_action_just_pressed("ui_focus_next"):
+	if Input.is_action_just_pressed("ui_focus_next")  and  OS.is_debug_build():
 		MenuManager.queue("console")
 
 	if Input.is_action_just_pressed(InputManager.gameplay_controls.pause):

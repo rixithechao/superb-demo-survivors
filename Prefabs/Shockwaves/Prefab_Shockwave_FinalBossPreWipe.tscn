@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Prefabs/Templates/Prefab_Shockwave.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Shockwave_KillEnemies.gd" type="Script" id=2]
+[ext_resource path="res://Sound Effects/Sound_Pickup_ScreenWipe.ogg" type="AudioStream" id=3]
 
 [node name="Shockwave - Final Boss Pre-Wipe" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
@@ -10,3 +11,9 @@ thickness = 512.0
 max_size = 3072.0
 kill_force = 1
 prevent_drops = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="3"]
+stream = ExtResource( 3 )
+volume_db = -1.0
+autoplay = true
+bus = "SoundEffects"

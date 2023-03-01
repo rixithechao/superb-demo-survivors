@@ -8,8 +8,13 @@ radius = 39.0
 height = 0.0
 
 [node name="Projectile - Cube" instance=ExtResource( 1 )]
-aim_spread = 90.0
 turns_left = 3
 
 [node name="CollisionShape2D" parent="LocalPos/Collision" index="0"]
 shape = SubResource( 1 )
+
+[node name="AfterimageParticles" parent="LocalPos/Collision/Graphic" index="0"]
+visible = true
+
+[node name="BitsParticles" parent="LocalPos/Collision/Graphic" index="1"]
+visible = true

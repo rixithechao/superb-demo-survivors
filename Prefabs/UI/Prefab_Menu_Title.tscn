@@ -493,7 +493,7 @@ custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 2
 custom_fonts/font = ExtResource( 3 )
-text = "PREVIEW v1.0.2"
+text = "PREVIEW v1.0.3"
 valign = 1
 
 [node name="ColorRect" type="ColorRect" parent="Background" index="3"]

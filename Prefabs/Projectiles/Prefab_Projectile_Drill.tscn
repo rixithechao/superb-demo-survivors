@@ -1,15 +1,106 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Sound Effects/Sound_Weapon_Drill_1.ogg" type="AudioStream" id=1]
 [ext_resource path="res://Prefabs/Templates/Prefab_Projectile.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/RandomizedSound.gd" type="Script" id=3]
+[ext_resource path="res://Textures/Particles/spr_particle_ember.png" type="Texture" id=4]
+[ext_resource path="res://Textures/Particles/spr_particle_smokePuff.png" type="Texture" id=5]
 [ext_resource path="res://Textures/Projectiles/spr_proj_drill.png" type="Texture" id=6]
 [ext_resource path="res://Scripts/Projectile_Drill.gd" type="Script" id=7]
 
 [sub_resource type="CapsuleShape2D" id=6]
 resource_local_to_scene = true
-radius = 21.0
+radius = 24.0
 height = 0.0
+
+[sub_resource type="Gradient" id=15]
+interpolation_mode = 2
+colors = PoolColorArray( 0.388235, 0.388235, 0.388235, 1, 0.388235, 0.388235, 0.388235, 0 )
+
+[sub_resource type="GradientTexture" id=13]
+gradient = SubResource( 15 )
+
+[sub_resource type="ParticlesMaterial" id=16]
+lifetime_randomness = 0.6
+flag_disable_z = true
+direction = Vector3( 0, -1, 0 )
+spread = 90.0
+gravity = Vector3( 0, -98, 0 )
+initial_velocity = 60.0
+initial_velocity_random = 0.59
+angular_velocity = 132.24
+angular_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+damping = 140.0
+scale = 2.0
+scale_random = 1.0
+color_ramp = SubResource( 13 )
+
+[sub_resource type="Gradient" id=7]
+offsets = PoolRealArray( 0, 0.284133, 0.656827, 1 )
+colors = PoolColorArray( 1, 0, 0, 1, 1, 0.304688, 0, 1, 1, 0.890625, 0, 1, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=8]
+gradient = SubResource( 7 )
+
+[sub_resource type="ParticlesMaterial" id=9]
+flag_align_y = true
+flag_disable_z = true
+direction = Vector3( 0, -1, 0 )
+spread = 60.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 120.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 2.0
+scale_random = 0.17
+color_ramp = SubResource( 8 )
+
+[sub_resource type="ParticlesMaterial" id=10]
+flag_align_y = true
+flag_disable_z = true
+direction = Vector3( -1, 0, 0 )
+spread = 33.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 120.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 2.0
+scale_random = 0.17
+color_ramp = SubResource( 8 )
+
+[sub_resource type="ParticlesMaterial" id=11]
+flag_align_y = true
+flag_disable_z = true
+spread = 33.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 120.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 2.0
+scale_random = 0.17
+color_ramp = SubResource( 8 )
+
+[sub_resource type="Curve" id=12]
+_data = [ Vector2( 0, 0 ), 0.0, 3.38647, 0, 0, Vector2( 0.469388, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=17]
+curve = SubResource( 12 )
+
+[sub_resource type="ParticlesMaterial" id=14]
+flag_align_y = true
+flag_disable_z = true
+direction = Vector3( 0, 1, 0 )
+spread = 60.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 120.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 2.0
+scale_random = 0.17
+scale_curve = SubResource( 17 )
+color_ramp = SubResource( 8 )
 
 [sub_resource type="Animation" id=3]
 resource_name = "Down"
@@ -90,17 +181,81 @@ aim_type = 4
 speed = 8.0
 
 [node name="CollisionShape2D" parent="LocalPos/Collision" index="0"]
-position = Vector2( 7, 0 )
+position = Vector2( 0, 0 )
 shape = SubResource( 6 )
 
-[node name="Sprite" type="Sprite" parent="LocalPos/Collision/Graphic" index="0"]
+[node name="DownSmokeParticles" type="Particles2D" parent="LocalPos/Collision/Graphic" index="0"]
+visible = false
+position = Vector2( 0, -14 )
+scale = Vector2( 2, 2 )
+lifetime = 0.25
+local_coords = false
+process_material = SubResource( 16 )
+texture = ExtResource( 5 )
+
+[node name="DownFireParticles" type="Particles2D" parent="LocalPos/Collision/Graphic" index="1"]
+visible = false
+amount = 16
+lifetime = 0.25
+process_material = SubResource( 9 )
+texture = ExtResource( 4 )
+
+[node name="RightSmokeParticles" type="Particles2D" parent="LocalPos/Collision/Graphic" index="2"]
+visible = false
+position = Vector2( -24, 0 )
+scale = Vector2( 2, 2 )
+lifetime = 0.25
+local_coords = false
+process_material = SubResource( 16 )
+texture = ExtResource( 5 )
+
+[node name="RightFireParticles" type="Particles2D" parent="LocalPos/Collision/Graphic" index="3"]
+visible = false
+amount = 16
+lifetime = 0.25
+process_material = SubResource( 10 )
+texture = ExtResource( 4 )
+
+[node name="LeftSmokeParticles" type="Particles2D" parent="LocalPos/Collision/Graphic" index="4"]
+visible = false
+position = Vector2( 24, 0 )
+scale = Vector2( 2, 2 )
+lifetime = 0.25
+local_coords = false
+process_material = SubResource( 16 )
+texture = ExtResource( 5 )
+
+[node name="LeftFireParticles" type="Particles2D" parent="LocalPos/Collision/Graphic" index="5"]
+visible = false
+amount = 16
+lifetime = 0.25
+process_material = SubResource( 11 )
+texture = ExtResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="LocalPos/Collision/Graphic" index="6"]
 scale = Vector2( 2, 2 )
 texture = ExtResource( 6 )
 hframes = 4
 vframes = 4
-frame = 4
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="LocalPos/Collision/Graphic" index="1"]
+[node name="UpSmokeParticles" type="Particles2D" parent="LocalPos/Collision/Graphic" index="7"]
+visible = false
+position = Vector2( 0, 8 )
+scale = Vector2( 2, 2 )
+lifetime = 0.25
+local_coords = false
+process_material = SubResource( 16 )
+texture = ExtResource( 5 )
+
+[node name="UpFireParticles" type="Particles2D" parent="LocalPos/Collision/Graphic" index="8"]
+visible = false
+position = Vector2( 0, 8 )
+amount = 16
+lifetime = 0.25
+process_material = SubResource( 14 )
+texture = ExtResource( 4 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="LocalPos/Collision/Graphic" index="9"]
 root_node = NodePath("../../../..")
 autoplay = "Right"
 anims/Down = SubResource( 3 )

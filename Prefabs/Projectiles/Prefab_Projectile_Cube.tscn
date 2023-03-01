@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Prefabs/Templates/Prefab_Projectile.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Textures/Projectiles/spr_proj_cube.png" type="Texture" id=2]
@@ -9,11 +9,78 @@
 [ext_resource path="res://Scripts/Projectile_Cube.gd" type="Script" id=7]
 [ext_resource path="res://Sound Effects/Sound_Weapon_Cube.ogg" type="AudioStream" id=8]
 [ext_resource path="res://Sound Effects/Sound_Weapon_Cube_Turn.ogg" type="AudioStream" id=9]
+[ext_resource path="res://Textures/Particles/spr_particle_cubetrail.png" type="Texture" id=10]
 
 [sub_resource type="CapsuleShape2D" id=1]
 resource_local_to_scene = true
 radius = 39.0
 height = 0.0
+
+[sub_resource type="Gradient" id=7]
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 7 )
+
+[sub_resource type="ParticlesMaterial" id=5]
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 2.0
+color_ramp = SubResource( 3 )
+
+[sub_resource type="Curve" id=8]
+_data = [ Vector2( 0, 0.987272 ), 0.0, -1.82871, 0, 0, Vector2( 1, 0 ), 0.0875991, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=6]
+curve = SubResource( 8 )
+
+[sub_resource type="ParticlesMaterial" id=9]
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 50.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 1.8
+scale_curve = SubResource( 6 )
+color_ramp = SubResource( 3 )
+hue_variation = 1.0
+hue_variation_random = 0.04
+
+[sub_resource type="Gradient" id=17]
+colors = PoolColorArray( 0, 0.780392, 1, 1, 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture" id=12]
+gradient = SubResource( 17 )
+
+[sub_resource type="Gradient" id=18]
+offsets = PoolRealArray( 0, 0.594096, 1 )
+colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 0.262745, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=14]
+gradient = SubResource( 18 )
+
+[sub_resource type="Curve" id=19]
+max_value = 2.0
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 1.40253 ), 0.628877, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=16]
+curve = SubResource( 19 )
+
+[sub_resource type="ParticlesMaterial" id=20]
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 10.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 2.0
+scale_curve = SubResource( 16 )
+color_ramp = SubResource( 14 )
+color_initial_ramp = SubResource( 12 )
 
 [node name="Projectile - Cube" instance=ExtResource( 1 )]
 script = ExtResource( 7 )
@@ -28,10 +95,32 @@ turns_left = 1
 position = Vector2( 0, 0 )
 shape = SubResource( 1 )
 
-[node name="Sprite" type="Sprite" parent="LocalPos/Collision/Graphic" index="0"]
+[node name="AfterimageParticles" type="Particles2D" parent="LocalPos/Collision/Graphic" index="0"]
+visible = false
+amount = 4
+lifetime = 0.25
+local_coords = false
+process_material = SubResource( 5 )
+texture = ExtResource( 10 )
+
+[node name="BitsParticles" type="Particles2D" parent="LocalPos/Collision/Graphic" index="1"]
+visible = false
+lifetime = 0.5
+local_coords = false
+process_material = SubResource( 9 )
+texture = ExtResource( 10 )
+
+[node name="Sprite" type="Sprite" parent="LocalPos/Collision/Graphic" index="2"]
 scale = Vector2( 2, 2 )
 texture = ExtResource( 2 )
 hframes = 4
+
+[node name="GlowParticles" type="Particles2D" parent="LocalPos/Collision/Graphic" index="3"]
+visible = false
+amount = 4
+lifetime = 0.25
+process_material = SubResource( 20 )
+texture = ExtResource( 10 )
 
 [node name="Line2D" type="Line2D" parent="LocalPos" index="1"]
 
