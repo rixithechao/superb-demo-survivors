@@ -1,7 +1,7 @@
 [gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Prefabs/Templates/Prefab_EnemyCharacter_Hopper.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Textures/Characters/spr_enemy_kingrubberduck_a2xt.png" type="Texture" id=2]
+[ext_resource path="res://Textures/Characters/spr_enemy_kingrubberduckluffy_a2xt.png" type="Texture" id=2]
 [ext_resource path="res://Data Objects/Enemies/EnemyData_KingDuck.tres" type="Resource" id=3]
 [ext_resource path="res://Sound Effects/Sound_Enemy_KingDuck3.ogg" type="AudioStream" id=4]
 [ext_resource path="res://Sound Effects/Sound_Enemy_KingDuck4.ogg" type="AudioStream" id=5]
@@ -241,6 +241,7 @@ hop_variance = 0.125
 
 [node name="Shadow" parent="Graphic" index="0"]
 scale = Vector2( 0.875, 0.375 )
+polygon = PoolVector2Array( -1.39876e-06, -32, 12.2459, -29.5641, 22.6274, -22.6274, 29.5641, -12.2459, 32, 0, 29.5641, 12.2459, 22.6274, 22.6274, 12.2459, 29.5641, -1.39876e-06, 32, -12.2459, 29.5641, -22.6274, 22.6274, -29.5641, 12.2459, -32, 4.83187e-06, -29.5641, -12.2459, -22.6274, -22.6274, -12.2459, -29.5641 )
 
 [node name="Sprite" parent="Graphic/AirOffset" index="0"]
 position = Vector2( 0, 0 )
