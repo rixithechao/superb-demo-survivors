@@ -160,6 +160,7 @@ texture = ExtResource( 10 )
 
 [node name="ShootSound" type="AudioStreamPlayer" parent="." index="1"]
 stream = ExtResource( 8 )
+volume_db = 4.0
 autoplay = true
 bus = "SoundEffects"
 script = ExtResource( 4 )
@@ -167,6 +168,7 @@ sounds = [ ExtResource( 3 ), ExtResource( 5 ), ExtResource( 6 ) ]
 
 [node name="RedirectSound" type="AudioStreamPlayer" parent="." index="2"]
 stream = ExtResource( 9 )
+volume_db = 4.0
 bus = "SoundEffects"
 script = ExtResource( 4 )
 sounds = [ ExtResource( 3 ), ExtResource( 5 ), ExtResource( 6 ) ]
