@@ -208,7 +208,7 @@ func _ready():
 func destroy():
 	if  death_vfx != null:
 		VFXManager.spawn(death_vfx, $LocalPos.global_position)
-	self.queue_free()
+	self.call_deferred("queue_free")
 
 
 

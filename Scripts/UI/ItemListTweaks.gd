@@ -70,9 +70,9 @@ func _on_ItemList_gui_input(event: InputEvent) -> void:
 	
 	if event is InputEventMouseMotion:
 		if  event.relative.length() > 0.5:
-			item = get_item_at_position(get_local_mouse_position(), true)
-			if item != -1:
-				hover_item(item)
+			var this_item = get_item_at_position(get_local_mouse_position(), true)
+			if this_item != -1:
+				hover_item(this_item)
 
 	elif event is InputEventMouseButton:
 		if event.is_pressed() and event.button_index == BUTTON_LEFT:
@@ -100,6 +100,10 @@ func _process(_delta):
 	if  horizontal:
 		navigate_inputs = NAVIGATE_INPUTS_H
 	
+
+	var clamped_item = -1
+	if  item != null:
+		clamped_item = clamp(item, 0, get_item_count()-1)
 
 	if (Input.is_action_just_pressed(navigate_inputs[0])):
 		if item == null:
@@ -140,5 +144,5 @@ func _process(_delta):
 	elif Input.is_action_just_pressed("ui_select") and item != null:
 		item_chosen()
 		
-	elif item != null and !is_selected (item):
-		select(item, true)
+	elif item != null  and  item == clamped_item  and  !is_selected (clamped_item):
+		select(clamped_item, true)

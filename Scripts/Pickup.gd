@@ -58,7 +58,7 @@ func _on_Tween_tween_completed(_object, _key):
 		$CollectSound.play()
 
 func _on_CollectSound_finished():
-	self.queue_free()
+	self.call_deferred("queue_free")
 	pass # Replace with function body.
 
 

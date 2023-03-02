@@ -100,8 +100,10 @@ XHALE303
 Za-Games
 
 = Godot plugins, scripts, and shaders:
-Sander Vanhove - Random Audio Node Player
 <3<
+Sander Vanhove
+---
+Random Audio Node Player
 Calinou
 ---
 Antialiased Line2D

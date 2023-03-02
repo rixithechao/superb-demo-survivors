@@ -33,7 +33,7 @@ var enemy_collision_area
 const EQUIP_SLOTS = 4
 const REVIVE_COST_LEVEL_MULT = 5
 const REVIVE_COST_LEVEL_POWER = 0.01
-const REVIVE_COST_DEATH_MULT = 0.45
+const REVIVE_COST_DEATH_MULT = 0.35
 const OBTAINED_BIAS_CHANCE = 0.6
 
 

@@ -81,10 +81,6 @@ func damage(amount, is_crit):
 	harm_effects(signal_data.amount, is_crit)
 
 
-	# Die if damage reaches max HP
-	if damage_taken >= _max_hp:
-		die()
-
 
 func apply_ailments(stats_table):
 	pass
@@ -173,5 +169,9 @@ func _physics_process(delta):
 	
 	if  world_origin_fix_timer <= 0  and  not world_origin_fix_timer_over:
 		world_origin_fix_timer_over = true
-		$Collision.disabled = false
+		$Collision.set_deferred("disabled", false)
 		extra_collision_init()
+
+	# Die if damage reaches max HP
+	if damage_taken >= _max_hp:
+		die()

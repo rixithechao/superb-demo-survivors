@@ -54,15 +54,26 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 9, 9.1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 9 ),
+"transitions": PoolRealArray( 1, 1 ),
 "values": [ {
 "args": [ false ],
 "method": "toggle_regular_spawns"
 }, {
 "args": [ ExtResource( 9 ) ],
 "method": "spawn_stage_boss"
-}, {
+} ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 9.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
 "args": [ true ],
 "method": "toggle_regular_spawns"
 } ]
@@ -627,7 +638,7 @@ nodes/Animation/position = Vector2( 280, 140 )
 nodes/movement/node = SubResource( 12 )
 nodes/movement/position = Vector2( 540, 120 )
 nodes/output/position = Vector2( 780, 120 )
-node_connections = [ "output", 0, "movement", "movement", 0, "Animation", "movement", 1, "Animation 3" ]
+node_connections = [ "movement", 0, "Animation", "movement", 1, "Animation 3", "output", 0, "movement" ]
 
 [sub_resource type="Animation" id=27]
 resource_local_to_scene = true
@@ -689,7 +700,7 @@ nodes/Animation/position = Vector2( 280, 140 )
 nodes/movement/node = SubResource( 31 )
 nodes/movement/position = Vector2( 540, 120 )
 nodes/output/position = Vector2( 780, 120 )
-node_connections = [ "output", 0, "movement", "movement", 0, "Animation", "movement", 1, "Animation 3" ]
+node_connections = [ "movement", 0, "Animation", "movement", 1, "Animation 3", "output", 0, "movement" ]
 
 [sub_resource type="Animation" id=33]
 resource_local_to_scene = true
@@ -772,7 +783,7 @@ nodes/Animation/position = Vector2( 200, 20 )
 nodes/movement/node = SubResource( 37 )
 nodes/movement/position = Vector2( 540, 120 )
 nodes/output/position = Vector2( 780, 120 )
-node_connections = [ "output", 0, "movement", "movement", 0, "Animation", "movement", 1, "Animation 2", "movement", 2, "Animation 3", "movement", 3, "Animation 4", "movement", 4, "Animation 5" ]
+node_connections = [ "movement", 0, "Animation", "movement", 1, "Animation 2", "movement", 2, "Animation 3", "movement", 3, "Animation 4", "movement", 4, "Animation 5", "output", 0, "movement" ]
 
 [sub_resource type="Animation" id=39]
 resource_local_to_scene = true
@@ -816,7 +827,7 @@ nodes/Animation/position = Vector2( 280, 140 )
 nodes/movement/node = SubResource( 42 )
 nodes/movement/position = Vector2( 540, 120 )
 nodes/output/position = Vector2( 780, 120 )
-node_connections = [ "output", 0, "movement", "movement", 0, "Animation", "movement", 1, "Animation 3" ]
+node_connections = [ "movement", 0, "Animation", "movement", 1, "Animation 3", "output", 0, "movement" ]
 
 [sub_resource type="Animation" id=44]
 resource_local_to_scene = true
@@ -878,7 +889,7 @@ nodes/Animation/position = Vector2( 280, 140 )
 nodes/movement/node = SubResource( 48 )
 nodes/movement/position = Vector2( 540, 120 )
 nodes/output/position = Vector2( 780, 120 )
-node_connections = [ "output", 0, "movement", "movement", 0, "Animation", "movement", 1, "Animation 3" ]
+node_connections = [ "movement", 0, "Animation", "movement", 1, "Animation 3", "output", 0, "movement" ]
 
 [sub_resource type="Animation" id=50]
 resource_local_to_scene = true
@@ -964,7 +975,7 @@ tile_set = ExtResource( 3 )
 cell_size = Vector2( 32, 32 )
 cell_custom_transform = Transform2D( 32, 0, 0, 32, 0, 0 )
 format = 1
-tile_data = PoolIntArray( 393207, 4, 0, 393208, 4, 0, 393209, 4, 0, 393210, 4, 0, 393211, 4, 0, 393212, 4, 0, 393213, 4, 0, 393214, 4, 0, 393215, 4, 0, 327680, 4, 0, 327681, 4, 0, 327682, 4, 0, 327683, 4, 0, 327684, 4, 0, 327685, 4, 0, 327686, 4, 0, 327687, 4, 0, 327688, 4, 0, 327689, 4, 0, 327690, 4, 0, 327691, 4, 0, 327692, 4, 0, 327693, 4, 0, 327694, 4, 0, 327695, 4, 0, 327696, 4, 0, 327697, 4, 0, 327698, 4, 0, 327699, 4, 0, 327700, 4, 0, 458743, 5, 0, 458748, 5, 0, 393217, 5, 0, 393222, 5, 0, 393227, 5, 0, 393232, 5, 0, 524278, 5, 0, 524283, 5, 0, 458752, 5, 0, 458757, 5, 0, 458762, 5, 0, 458767, 5, 0, 589815, 5, 0, 589820, 5, 0, 524289, 5, 0, 524294, 5, 0, 524299, 5, 0, 524304, 5, 0 )
+tile_data = PoolIntArray( 393196, 4, 0, 393197, 4, 0, 393198, 4, 0, 393199, 4, 0, 393200, 4, 0, 393201, 4, 0, 393202, 4, 0, 393203, 4, 0, 393204, 4, 0, 393205, 4, 0, 393206, 4, 0, 393207, 4, 0, 393208, 4, 0, 393209, 4, 0, 393210, 4, 0, 393211, 4, 0, 393212, 4, 0, 393213, 4, 0, 393214, 4, 0, 393215, 4, 0, 327680, 4, 0, 327681, 4, 0, 327682, 4, 0, 327683, 4, 0, 327684, 4, 0, 327685, 4, 0, 327686, 4, 0, 327687, 4, 0, 327688, 4, 0, 327689, 4, 0, 327690, 4, 0, 327691, 4, 0, 327692, 4, 0, 327693, 4, 0, 327694, 4, 0, 327695, 4, 0, 327696, 4, 0, 327697, 4, 0, 327698, 4, 0, 327699, 4, 0, 327700, 4, 0, 327701, 4, 0, 327702, 4, 0, 327703, 4, 0, 327704, 4, 0, 327705, 4, 0, 327706, 4, 0, 327707, 4, 0, 327708, 4, 0, 327709, 4, 0, 327710, 4, 0, 458733, 5, 0, 458738, 5, 0, 458743, 5, 0, 458748, 5, 0, 393217, 5, 0, 393222, 5, 0, 393227, 5, 0, 393232, 5, 0, 393237, 5, 0, 393242, 5, 0, 524268, 5, 0, 524273, 5, 0, 524278, 5, 0, 524283, 5, 0, 458752, 5, 0, 458757, 5, 0, 458762, 5, 0, 458767, 5, 0, 458772, 5, 0, 458777, 5, 0, 589805, 5, 0, 589810, 5, 0, 589815, 5, 0, 589820, 5, 0, 524289, 5, 0, 524294, 5, 0, 524299, 5, 0, 524304, 5, 0, 524309, 5, 0, 524314, 5, 0 )
 
 [node name="Masts" type="TileMap" parent="ForegroundShip" index="4"]
 z_index = 1
@@ -982,9 +993,6 @@ z_index = 1
 [node name="Shadow" parent="ForegroundShip/NPC - Oob" index="0"]
 polygon = PoolVector2Array( -1.39876e-06, -32, 12.2459, -29.5641, 22.6274, -22.6274, 29.5641, -12.2459, 32, 0, 29.5641, 12.2459, 22.6274, 22.6274, 12.2459, 29.5641, -1.39876e-06, 32, -12.2459, 29.5641, -22.6274, 22.6274, -29.5641, 12.2459, -32, 4.83187e-06, -29.5641, -12.2459, -22.6274, -22.6274, -12.2459, -29.5641 )
 
-[node name="Sprite" parent="ForegroundShip/NPC - Oob/AirOffset" index="0"]
-frame = 1
-
 [node name="AnimationTree" parent="ForegroundShip/NPC - Oob" index="2"]
 tree_root = SubResource( 26 )
 
@@ -999,6 +1007,9 @@ z_index = 1
 
 [node name="Shadow" parent="ForegroundShip/NPC - Ace" index="0"]
 polygon = PoolVector2Array( -1.39876e-06, -32, 12.2459, -29.5641, 22.6274, -22.6274, 29.5641, -12.2459, 32, 0, 29.5641, 12.2459, 22.6274, 22.6274, 12.2459, 29.5641, -1.39876e-06, 32, -12.2459, 29.5641, -22.6274, 22.6274, -29.5641, 12.2459, -32, 4.83187e-06, -29.5641, -12.2459, -22.6274, -22.6274, -12.2459, -29.5641 )
+
+[node name="Sprite" parent="ForegroundShip/NPC - Ace/AirOffset" index="0"]
+frame = 0
 
 [node name="MakeshiftWhiteFlash" parent="ForegroundShip/NPC - Ace/AirOffset" index="1"]
 visible = false
@@ -1018,6 +1029,9 @@ z_index = 1
 [node name="Shadow" parent="ForegroundShip/NPC - Ee" index="0"]
 polygon = PoolVector2Array( -1.39876e-06, -32, 12.2459, -29.5641, 22.6274, -22.6274, 29.5641, -12.2459, 32, 0, 29.5641, 12.2459, 22.6274, 22.6274, 12.2459, 29.5641, -1.39876e-06, 32, -12.2459, 29.5641, -22.6274, 22.6274, -29.5641, 12.2459, -32, 4.83187e-06, -29.5641, -12.2459, -22.6274, -22.6274, -12.2459, -29.5641 )
 
+[node name="Sprite" parent="ForegroundShip/NPC - Ee/AirOffset" index="0"]
+frame = 35
+
 [node name="AnimationTree" parent="ForegroundShip/NPC - Ee" index="2"]
 tree_root = SubResource( 38 )
 
@@ -1032,9 +1046,6 @@ z_index = 1
 
 [node name="Shadow" parent="ForegroundShip/NPC - Tas" index="0"]
 polygon = PoolVector2Array( -1.39876e-06, -32, 12.2459, -29.5641, 22.6274, -22.6274, 29.5641, -12.2459, 32, 0, 29.5641, 12.2459, 22.6274, 22.6274, 12.2459, 29.5641, -1.39876e-06, 32, -12.2459, 29.5641, -22.6274, 22.6274, -29.5641, 12.2459, -32, 4.83187e-06, -29.5641, -12.2459, -22.6274, -22.6274, -12.2459, -29.5641 )
-
-[node name="Sprite" parent="ForegroundShip/NPC - Tas/AirOffset" index="0"]
-frame = 3
 
 [node name="AnimationTree" parent="ForegroundShip/NPC - Tas" index="2"]
 tree_root = SubResource( 43 )
@@ -1051,6 +1062,9 @@ z_index = 1
 [node name="Shadow" parent="ForegroundShip/NPC - PB" index="0"]
 polygon = PoolVector2Array( -1.39876e-06, -32, 12.2459, -29.5641, 22.6274, -22.6274, 29.5641, -12.2459, 32, 0, 29.5641, 12.2459, 22.6274, 22.6274, 12.2459, 29.5641, -1.39876e-06, 32, -12.2459, 29.5641, -22.6274, 22.6274, -29.5641, 12.2459, -32, 4.83187e-06, -29.5641, -12.2459, -22.6274, -22.6274, -12.2459, -29.5641 )
 
+[node name="Sprite" parent="ForegroundShip/NPC - PB/AirOffset" index="0"]
+frame = 0
+
 [node name="AnimationTree" parent="ForegroundShip/NPC - PB" index="2"]
 tree_root = SubResource( 49 )
 
@@ -1063,33 +1077,37 @@ wait_time = 8.0
 
 [node name="CannonSound" type="AudioStreamPlayer" parent="." index="5"]
 stream = ExtResource( 13 )
-volume_db = -20.0
+volume_db = -15.0
 bus = "SoundEffects"
 
 [node name="PassOverSound" type="AudioStreamPlayer" parent="." index="6"]
 stream = ExtResource( 16 )
+volume_db = 4.0
 bus = "SoundEffects"
 
 [node name="SettleSound" type="AudioStreamPlayer" parent="." index="7"]
 stream = ExtResource( 14 )
+volume_db = 4.0
 bus = "SoundEffects"
 
 [node name="EeHopSound" type="AudioStreamPlayer" parent="." index="8"]
 stream = ExtResource( 18 )
+volume_db = 4.0
 bus = "SoundEffects"
 
 [node name="EeDropSound" type="AudioStreamPlayer" parent="." index="9"]
 stream = ExtResource( 17 )
+volume_db = 4.0
 bus = "SoundEffects"
 
 [node name="EeLandSound" type="AudioStreamPlayer" parent="." index="10"]
 stream = ExtResource( 15 )
-volume_db = -2.0
+volume_db = 4.0
 bus = "SoundEffects"
 
 [node name="LeaveSound" type="AudioStreamPlayer" parent="." index="11"]
 stream = ExtResource( 19 )
-volume_db = -3.0
+volume_db = 4.0
 bus = "SoundEffects"
 
 [connection signal="timeout" from="CannonTimer" to="." method="_on_CannonballsTimer_timeout"]

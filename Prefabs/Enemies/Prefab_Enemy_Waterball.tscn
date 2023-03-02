@@ -168,8 +168,8 @@ tracks/0/keys = {
 "times": PoolRealArray( 0.25 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
-"args": [  ],
-"method": "queue_free"
+"args": [ "queue_free" ],
+"method": "call_deferred"
 } ]
 }
 tracks/1/type = "method"

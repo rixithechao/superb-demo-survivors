@@ -62,4 +62,4 @@ func _process(delta):
 			on_object_touched(member)
 
 	if  radius >= max_size + thickness:
-		self.queue_free()
+		self.call_deferred("queue_free")

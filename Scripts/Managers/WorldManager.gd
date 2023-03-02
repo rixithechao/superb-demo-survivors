@@ -34,7 +34,7 @@ func add_node_to_world_stack(node, stack):
 	var parnt = node.get_parent()
 	if  parnt != null:
 		parnt.remove_child(node)
-	#stack.call_deferred("add_child", node)
+	#stack.set_deferred("add_child", node)
 	stack.add_child(node)
 	pass
 

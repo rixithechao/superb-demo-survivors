@@ -18,7 +18,7 @@ nodes/Animation/position = Vector2( 280, 160 )
 nodes/output/position = Vector2( 860, 140 )
 nodes/walkSpeed/node = SubResource( 2 )
 nodes/walkSpeed/position = Vector2( 640, 140 )
-node_connections = [ "output", 0, "walkSpeed", "walkSpeed", 0, "Animation" ]
+node_connections = [ "walkSpeed", 0, "Animation", "output", 0, "walkSpeed" ]
 
 [sub_resource type="Animation" id=38]
 resource_local_to_scene = true
@@ -95,8 +95,8 @@ tracks/0/keys = {
 "times": PoolRealArray( 0.25 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
-"args": [  ],
-"method": "queue_free"
+"args": [ "queue_free" ],
+"method": "call_deferred"
 } ]
 }
 tracks/1/type = "method"
