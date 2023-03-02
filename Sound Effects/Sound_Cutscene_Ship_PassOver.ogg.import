@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Sound_Cutscene_Ship_PassOver.ogg-6f90db26c0f34667c294620d36713e88.oggstr"
+
+[deps]
+
+source_file="res://Sound Effects/Sound_Cutscene_Ship_PassOver.ogg"
+dest_files=[ "res://.import/Sound_Cutscene_Ship_PassOver.ogg-6f90db26c0f34667c294620d36713e88.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Sound_Cutscene_Ship_Leave.ogg-f0da79bb3bebd0b29ba01ad802bd806d.oggstr"
+
+[deps]
+
+source_file="res://Sound Effects/Sound_Cutscene_Ship_Leave.ogg"
+dest_files=[ "res://.import/Sound_Cutscene_Ship_Leave.ogg-f0da79bb3bebd0b29ba01ad802bd806d.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

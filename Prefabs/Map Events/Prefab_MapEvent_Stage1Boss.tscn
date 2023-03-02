@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=2]
+[gd_scene load_steps=60 format=2]
 
 [ext_resource path="res://Prefabs/Templates/Prefab_MapEvent.tscn" type="PackedScene" id=1]
 [ext_resource path="res://addons/antialiased_line2d/antialiased_regular_polygon2d.gd" type="Script" id=2]
@@ -13,6 +13,12 @@
 [ext_resource path="res://Prefabs/VFX/Prefab_VFX_CannonSmoke.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Prefabs/Map Events/Prefab_MapEvent_Cannonballs.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Sound Effects/Sound_Boss_Cannon.ogg" type="AudioStream" id=13]
+[ext_resource path="res://Sound Effects/Sound_Cutscene_Ship_Settle.ogg" type="AudioStream" id=14]
+[ext_resource path="res://Sound Effects/Sound_Cutscene_Ship_Land.ogg" type="AudioStream" id=15]
+[ext_resource path="res://Sound Effects/Sound_Cutscene_Ship_PassOver.ogg" type="AudioStream" id=16]
+[ext_resource path="res://Sound Effects/Sound_Cutscene_Ship_Fall.ogg" type="AudioStream" id=17]
+[ext_resource path="res://Sound Effects/Sound_Cutscene_Ship_Hop.ogg" type="AudioStream" id=18]
+[ext_resource path="res://Sound Effects/Sound_Cutscene_Ship_Leave.ogg" type="AudioStream" id=19]
 
 [sub_resource type="Animation" id=53]
 resource_name = "Sequence_End"
@@ -220,6 +226,20 @@ tracks/6/keys = {
 "method": "start"
 } ]
 }
+tracks/7/type = "audio"
+tracks/7/path = NodePath("EeHopSound")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 18 )
+} ],
+"times": PoolRealArray( 0.5 )
+}
 
 [sub_resource type="Animation" id=52]
 resource_name = "EeReturn"
@@ -351,6 +371,34 @@ tracks/10/keys = {
 "update": 1,
 "values": [ 0, 1 ]
 }
+tracks/11/type = "audio"
+tracks/11/path = NodePath("EeLandSound")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 15 )
+} ],
+"times": PoolRealArray( 1 )
+}
+tracks/12/type = "audio"
+tracks/12/path = NodePath("EeDropSound")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 17 )
+} ],
+"times": PoolRealArray( 0 )
+}
 
 [sub_resource type="Animation" id=1]
 resource_name = "Shadow"
@@ -378,6 +426,20 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( -2048, 360 ) ]
+}
+tracks/2/type = "audio"
+tracks/2/path = NodePath("PassOverSound")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 16 )
+} ],
+"times": PoolRealArray( 0 )
 }
 
 [sub_resource type="Animation" id=23]
@@ -475,6 +537,20 @@ tracks/7/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
+tracks/8/type = "audio"
+tracks/8/path = NodePath("SettleSound")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 14 )
+} ],
+"times": PoolRealArray( 0 )
+}
 
 [sub_resource type="Animation" id=24]
 resource_name = "ShipLeave"
@@ -512,6 +588,20 @@ tracks/2/keys = {
 "args": [  ],
 "method": "clear_stage"
 } ]
+}
+tracks/3/type = "audio"
+tracks/3/path = NodePath("LeaveSound")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 19 )
+} ],
+"times": PoolRealArray( 0 )
 }
 
 [sub_resource type="AnimationNodeAnimation" id=15]
@@ -928,9 +1018,6 @@ z_index = 1
 [node name="Shadow" parent="ForegroundShip/NPC - Ee" index="0"]
 polygon = PoolVector2Array( -1.39876e-06, -32, 12.2459, -29.5641, 22.6274, -22.6274, 29.5641, -12.2459, 32, 0, 29.5641, 12.2459, 22.6274, 22.6274, 12.2459, 29.5641, -1.39876e-06, 32, -12.2459, 29.5641, -22.6274, 22.6274, -29.5641, 12.2459, -32, 4.83187e-06, -29.5641, -12.2459, -22.6274, -22.6274, -12.2459, -29.5641 )
 
-[node name="Sprite" parent="ForegroundShip/NPC - Ee/AirOffset" index="0"]
-frame = 37
-
 [node name="AnimationTree" parent="ForegroundShip/NPC - Ee" index="2"]
 tree_root = SubResource( 38 )
 
@@ -947,7 +1034,7 @@ z_index = 1
 polygon = PoolVector2Array( -1.39876e-06, -32, 12.2459, -29.5641, 22.6274, -22.6274, 29.5641, -12.2459, 32, 0, 29.5641, 12.2459, 22.6274, 22.6274, 12.2459, 29.5641, -1.39876e-06, 32, -12.2459, 29.5641, -22.6274, 22.6274, -29.5641, 12.2459, -32, 4.83187e-06, -29.5641, -12.2459, -22.6274, -22.6274, -12.2459, -29.5641 )
 
 [node name="Sprite" parent="ForegroundShip/NPC - Tas/AirOffset" index="0"]
-frame = 1
+frame = 3
 
 [node name="AnimationTree" parent="ForegroundShip/NPC - Tas" index="2"]
 tree_root = SubResource( 43 )
@@ -977,6 +1064,32 @@ wait_time = 8.0
 [node name="CannonSound" type="AudioStreamPlayer" parent="." index="5"]
 stream = ExtResource( 13 )
 volume_db = -20.0
+bus = "SoundEffects"
+
+[node name="PassOverSound" type="AudioStreamPlayer" parent="." index="6"]
+stream = ExtResource( 16 )
+bus = "SoundEffects"
+
+[node name="SettleSound" type="AudioStreamPlayer" parent="." index="7"]
+stream = ExtResource( 14 )
+bus = "SoundEffects"
+
+[node name="EeHopSound" type="AudioStreamPlayer" parent="." index="8"]
+stream = ExtResource( 18 )
+bus = "SoundEffects"
+
+[node name="EeDropSound" type="AudioStreamPlayer" parent="." index="9"]
+stream = ExtResource( 17 )
+bus = "SoundEffects"
+
+[node name="EeLandSound" type="AudioStreamPlayer" parent="." index="10"]
+stream = ExtResource( 15 )
+volume_db = -2.0
+bus = "SoundEffects"
+
+[node name="LeaveSound" type="AudioStreamPlayer" parent="." index="11"]
+stream = ExtResource( 19 )
+volume_db = -3.0
 bus = "SoundEffects"
 
 [connection signal="timeout" from="CannonTimer" to="." method="_on_CannonballsTimer_timeout"]

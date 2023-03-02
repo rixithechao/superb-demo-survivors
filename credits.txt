@@ -60,6 +60,9 @@ bbrocer
 BennettFilmTeacher
 bergice
 blakengouda
+codefhd
+craigsmith
+ddragonpearl
 ericnorcross81
 esperri
 eben-frostey
@@ -80,6 +83,7 @@ magnuswaker
 menvafaan
 nekoninja
 NicholasJudy567
+PimFeijen
 romulofs
 RutgerMuller
 Rvgerxini
