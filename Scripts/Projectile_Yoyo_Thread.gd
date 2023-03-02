@@ -1,6 +1,8 @@
 extends Node2D
 
-func _process(delta):
+#THIS SCRIPT IS DEPRECATED
+
+func _process(delta):	
 	update()
 
 func _draw():
