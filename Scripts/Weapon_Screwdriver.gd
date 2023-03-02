@@ -11,4 +11,5 @@ func _player_equipment_changed(eqp_type, type_array):
 		_level = data.get_current_level()
 		
 		if  _level == data.max_level:
+			timer_cooldown = 0
 			$SoundLoop.play()

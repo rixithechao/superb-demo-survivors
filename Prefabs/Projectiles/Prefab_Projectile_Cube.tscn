@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://Prefabs/Templates/Prefab_Projectile.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Textures/Projectiles/spr_proj_cube.png" type="Texture" id=2]
@@ -16,19 +16,45 @@ resource_local_to_scene = true
 radius = 39.0
 height = 0.0
 
-[sub_resource type="Gradient" id=7]
+[sub_resource type="Gradient" id=24]
+offsets = PoolRealArray( 0.00146199, 1 )
 colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
 
-[sub_resource type="GradientTexture" id=3]
-gradient = SubResource( 7 )
+[sub_resource type="GradientTexture" id=25]
+gradient = SubResource( 24 )
 
-[sub_resource type="ParticlesMaterial" id=5]
+[sub_resource type="Curve" id=26]
+max_value = 2.0
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 1.99386 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=27]
+curve = SubResource( 26 )
+
+[sub_resource type="ParticlesMaterial" id=28]
 flag_disable_z = true
 spread = 180.0
 gravity = Vector3( 0, 0, 0 )
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 scale = 2.0
+scale_curve = SubResource( 27 )
+color = Color( 0.623529, 0.956863, 0.996078, 0.501961 )
+color_ramp = SubResource( 25 )
+
+[sub_resource type="Gradient" id=7]
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 7 )
+
+[sub_resource type="ParticlesMaterial" id=23]
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 2.0
+color = Color( 1, 0.992157, 1, 1 )
 color_ramp = SubResource( 3 )
 
 [sub_resource type="Curve" id=8]
@@ -95,27 +121,35 @@ turns_left = 1
 position = Vector2( 0, 0 )
 shape = SubResource( 1 )
 
-[node name="AfterimageParticles" type="Particles2D" parent="LocalPos/Collision/Graphic" index="0"]
+[node name="TrailParticles" type="Particles2D" parent="LocalPos/Collision/Graphic" index="0"]
+position = Vector2( 0, 1 )
+amount = 1
+lifetime = 0.5
+local_coords = false
+process_material = SubResource( 28 )
+texture = ExtResource( 10 )
+
+[node name="AfterimageParticles" type="Particles2D" parent="LocalPos/Collision/Graphic" index="1"]
 visible = false
 amount = 4
 lifetime = 0.25
 local_coords = false
-process_material = SubResource( 5 )
+process_material = SubResource( 23 )
 texture = ExtResource( 10 )
 
-[node name="BitsParticles" type="Particles2D" parent="LocalPos/Collision/Graphic" index="1"]
+[node name="BitsParticles" type="Particles2D" parent="LocalPos/Collision/Graphic" index="2"]
 visible = false
 lifetime = 0.5
 local_coords = false
 process_material = SubResource( 9 )
 texture = ExtResource( 10 )
 
-[node name="Sprite" type="Sprite" parent="LocalPos/Collision/Graphic" index="2"]
+[node name="Sprite" type="Sprite" parent="LocalPos/Collision/Graphic" index="3"]
 scale = Vector2( 2, 2 )
 texture = ExtResource( 2 )
 hframes = 4
 
-[node name="GlowParticles" type="Particles2D" parent="LocalPos/Collision/Graphic" index="3"]
+[node name="GlowParticles" type="Particles2D" parent="LocalPos/Collision/Graphic" index="4"]
 visible = false
 amount = 4
 lifetime = 0.25
