@@ -22,8 +22,6 @@ func _ready():
 	sound_volume = $AudioStreamPlayer.volume_db
 	
 	$AudioStreamPlayer.play()
-	
-	VisualServer.connect('frame_pre_draw', self, '_on_pre_render')
 	pass
 
 	
@@ -51,8 +49,7 @@ func _process(delta):
 			trail_length = 0
 			
 		trail_points.append(new_pt)
-			
-		print(str("Trail length: ", trail_length))
+		
 		trail_counter = TRAIL_RES
 	else:
 		trail_counter -= delta
