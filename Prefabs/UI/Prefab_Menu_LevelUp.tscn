@@ -191,7 +191,7 @@ custom_colors/font_color_shadow = Color( 0.0851834, 0.117517, 0.256552, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 2
 custom_fonts/font = ExtResource( 5 )
-text = "item description"
+text = " "
 align = 1
 autowrap = true
 

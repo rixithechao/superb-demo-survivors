@@ -20,6 +20,7 @@ var unlocked = []
 var started = false
 var cleared = false
 var exiting = false
+var restarting = false
 
 var regular_spawns_active = true
 
@@ -115,6 +116,7 @@ func start_stage():
 
 
 func restart_stage():
+	restarting = false
 	TimeManager.remove_pause("restarting")
 	TimeManager.remove_pause("revive")
 	
@@ -138,6 +140,9 @@ func clear_stage():
 
 
 func begin_restarting(prompt_character_change : bool = false):
+	restarting = true
+	MenuManager.queue_array.clear()
+
 	if  prompt_character_change:
 		print ("BEGIN CHANGING CHARACTER")
 	else:
@@ -170,6 +175,8 @@ func load_stage(stage_data):
 func exit_stage():
 	exiting = true
 	started = false
+	MenuManager.queue_array.clear()
+
 	TimeManager.add_pause("exiting")
 	MusicManager.fade_out(1)
 	UIManager.show_load_screen()

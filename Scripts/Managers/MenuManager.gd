@@ -71,6 +71,7 @@ func close(node):
 
 
 func open_next_in_queue():
+	print ("NEXT IN MENU QUEUE")
 
 	# Certain menus take priority
 	var cut_in_line = false
@@ -93,12 +94,12 @@ func _process(_delta):
 
 	if  queue_array.size() > 0:
 		
-		# Wipe the queue upon exiting the stage
-		if  StageManager.exiting:  
-			queue_array.clear()
+		# Wipe the queue upon exiting or restarting the stage
+		#if  StageManager.exiting  or  StageManager.restarting  or  not is_instance_valid(StageManager.instance):  
+		#	queue_array.clear()
 
 		# Process the queue
-		elif  not instances_by_name.has(queue_current) and not PlayerManager.dead:
+		if  not instances_by_name.has(queue_current) and not PlayerManager.dead:
 			queue_timer -= 1
 			if  queue_timer <= 0:
 				queue_timer = 3
