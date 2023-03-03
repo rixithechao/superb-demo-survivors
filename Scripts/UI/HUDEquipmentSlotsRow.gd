@@ -12,6 +12,9 @@ func _on_get_equipment(type, slots):
 		set_graphics(slots)
 		pass
 
+func _on_stage_restarted():
+	_on_get_equipment(slots_type, [])
+
 
 func resize(new_size):
 	var size = get_child_count()
@@ -35,13 +38,13 @@ func set_graphics(slots):
 		if i < slots.size():
 			var eqp = slots[i]
 			var lvl = PlayerManager.equipment_levels[eqp]
-			child.update_gfx(eqp.icon, lvl)
+			child.update_gfx(eqp.icon, lvl, eqp.max_level)
 		else:
-			child.update_gfx(null, 0)
+			child.update_gfx(null, 0, 9999)
 
 
 	
 func _ready():
 	PlayerManager.connect("change_equipment", self, "_on_get_equipment")
-	StageManager.connect("stage_restarted", self, "_on_get_equipment")
+	StageManager.connect("stage_restarted", self, "_on_stage_restarted")
 	set_graphics([])

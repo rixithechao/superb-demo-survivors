@@ -173,7 +173,6 @@ func exit_stage():
 	TimeManager.add_pause("exiting")
 	MusicManager.fade_out(1)
 	UIManager.show_load_screen()
-	UIManager.connect("load_screen_faded_in", self, "on_load_screen_faded_in")
 	pass
 
 
@@ -269,6 +268,7 @@ func _on_change_minute():
 func _ready():
 	TimeManager.connect("new_minute", self, "_on_change_minute")
 	TimeManager.connect("new_second", self, "_on_change_second")
+	UIManager.connect("load_screen_faded_in", self, "on_load_screen_faded_in")
 	pass
 
 

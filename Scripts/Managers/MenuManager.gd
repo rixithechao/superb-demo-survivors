@@ -91,9 +91,15 @@ func open_next_in_queue():
 
 func _process(_delta):
 
-	# Process the queue
-	if  queue_array.size() > 0  and  not instances_by_name.has(queue_current) and not PlayerManager.dead:
-		queue_timer -= 1
-		if  queue_timer <= 0:
-			queue_timer = 3
-			open_next_in_queue()
+	if  queue_array.size() > 0:
+		
+		# Wipe the queue upon exiting the stage
+		if  StageManager.exiting:  
+			queue_array.clear()
+
+		# Process the queue
+		elif  not instances_by_name.has(queue_current) and not PlayerManager.dead:
+			queue_timer -= 1
+			if  queue_timer <= 0:
+				queue_timer = 3
+				open_next_in_queue()

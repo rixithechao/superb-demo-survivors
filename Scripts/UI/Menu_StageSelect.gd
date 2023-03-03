@@ -22,6 +22,7 @@ func _ready():
 
 
 func on_choose(_node, item):
+	PlayerManager.show_character_select = true
 	stage_picked = item
 
 	$Skew/Panel/ItemList.active = false
